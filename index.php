@@ -27,8 +27,13 @@
 			The FootHall
 		</header>
 		
-		The content is going to go here.
-	
+		<nav class="main-menu">
+			
+			<!-- Menu icon to toggle menu using JavaScript. -->
+			<div class="menu-toggle" onclick="menuToggle('menu')">MENU &#9776;</div>	
+		
+		</nav>
+		
 	</body>
 
 </html>

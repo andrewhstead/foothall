@@ -15,6 +15,18 @@ header {
 	color: #cfb53b;
 	font-size: 3em;
 	text-align: center;
-	padding: 10px;
+	padding: 5px;
 	font-family: Gabriela, "Times New Roman", serif;
+}
+
+.main-menu {
+	background-color: #321c20;
+	color: #cfb53b;
+	font-size: 1.5em;
+	width: 100%;
+}
+
+.menu-toggle {
+	text-align: right;
+	padding: 0 10px 5px 0;
 }
