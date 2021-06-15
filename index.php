@@ -48,10 +48,14 @@
 		echo '">';
 		if ($item['type'] == 'poll') {
 			echo $item['title'];
+			echo '</a>';
 		} else if ($item['type'] == 'person') {
 			echo $item['name'];
+			echo '</a>';
+			echo ' <img class="feed-icon" src="img/flags/'
+			.strtolower($item['nationality']).'.png" alt="'
+			.$item['nationality'].'">';
 		}
-		echo '</a>';
 		echo '</span>';
 		
 		echo '<br>';
