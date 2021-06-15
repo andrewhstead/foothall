@@ -32,28 +32,44 @@
 			<!-- Menu icon to toggle menu using JavaScript. -->
 			<div class="menu-toggle" onclick="menuToggle('menu')">MENU &#9776;</div>
 			
-			<ul class="navigation">
-				<li class="menu-link">Home</li>
-				<li>+ The Hall of Fame
-					<ul class="navigation">
-						<li class="menu-link">Voting</li>
-						<li class="menu-link">Players</li>
-						<li class="menu-link">Coaches</li>
-						<li class="menu-link">Matches</li>
-						<li class="menu-link">Teams</li>
+			<ul class="menu-items toggle-items">
+				<li>Home</li>
+				<li class="nest-heading" onmouseover="showMenu()" onmouseleave="removeMenu()">
+					<span class="nest-head">
+						<span class="open-nest" onclick="menuToggle('hall')">
+							<span id="hall-icon">+</span> The Hall of Fame
+						</span>
+					</span>
+					<ul class="nest-menu">
+						<li class="hall-nested hall-item">Voting</li>
+						<li class="hall-nested hall-item">Players</li>
+						<li class="hall-nested hall-item">Coaches</li>
+						<li class="hall-nested hall-item">Matches</li>
+						<li class="hall-nested hall-item">Teams</li>
 					</ul>
 				</li>
-				<li>+ The History of Football
-					<ul class="navigation">
-						<li class="menu-link">Tournaments</li>
-						<li class="menu-link">Countries</li>
-						<li class="menu-link">Clubs</li>
-						<li class="menu-link">Stories</li>
+				<li class="nest-heading" onmouseover="showMenu()" onmouseleave="removeMenu()">
+					<span class="nest-head">
+						<span class="open-nest" onclick="menuToggle('history')">
+							<span id="history-icon">+</span> The History of Football
+						</span>
+					</span>
+					<ul class="nest-menu">
+						<li class="history-nested history-item">Tournaments</li>
+						<li class="history-nested history-item">Countries</li>
+						<li class="history-nested history-item">Clubs</li>
+						<li class="history-nested history-item">Stories</li>
 					</ul>
 				</li>
 			</ul>
 		
 		</nav>
+		
+		<main>
+		
+		</main>
+		
+		<script src="js/default.js"></script>
 		
 	</body>
 

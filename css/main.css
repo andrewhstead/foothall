@@ -31,18 +31,32 @@ header {
 	padding: 0 10px 5px 0;
 }
 
-ul.navigation {
+ul.toggle-items {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
 
-ul.navigation li {
+ul.nest-menu {
+	margin: 0 0 0 10px;
+	padding: 0;
+	list-style-type: none;
+}
+
+ul.toggle-items li {
 	border-top: 1px solid #cfb53b;
-	padding: 2px 0 2px 10px;
+	padding: 0 0 0 10px;
+}
+
+ul.menu-items li {
+	display: none;
 }
 
 li.menu-link:hover {
 	background-color: #cfb53b;
 	color: #321c20;
+}
+
+.hall-item, .history-item {
+	display: none;
 }
