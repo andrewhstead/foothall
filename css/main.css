@@ -65,4 +65,27 @@ li.menu-link:hover {
 	margin: auto;
 	background-color: white;
 	max-width: 1000px;
+	font-size: 1.2em;
+	border-bottom: 5px solid #321c20;
 }
+
+.feed-post:hover {
+	background-color: #f3fff3;
+}
+
+.feed-heading {
+	font-size: 1.5em;
+	background-color: #cfb53b;
+	color: #321c20;
+	padding: 0 0 0 10px;
+	border-bottom: 1px solid #321c20;
+}
+
+.feed-body {
+	padding: 5px 10px;
+}
+
+.post-title {
+	font-size: 1.5em;
+}
+
