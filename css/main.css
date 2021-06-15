@@ -60,3 +60,9 @@ li.menu-link:hover {
 .hall-item, .history-item {
 	display: none;
 }
+
+.feed-post {
+	margin: auto;
+	background-color: white;
+	max-width: 1000px;
+}
