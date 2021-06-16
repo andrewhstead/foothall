@@ -60,41 +60,68 @@
 		</p>
 		
 		<p>
-			<?php echo htmlentities($description); ?>
+			<?php echo nl2br($description); ?>
 		</p>
 		
+		<?php
+		
+			$choices = "SELECT * FROM people_votes 
+				INNER JOIN people ON people_votes.option = people.name
+				WHERE people_votes.poll = $poll_id
+				ORDER BY people_votes.votes desc, people.id";
+			$contender_list = $connectDB->query($choices);
+			$option_list = $connectDB->query($choices);
+
+		?>
+		
 		<h2>
-			<?php
-				$date = date('Y-m-d H:i:s');
-				if ($date > $expiry) {
-					echo "The Results ";
-				} else {
-					echo "The Contenders";
-				}
-			?>
+			The Contenders
+		</h2>
+		
+		<?php
+		
+			while ($dataRows = $contender_list->fetch()) {
+			
+				$name = $dataRows["name"];
+				$nationality = $dataRows["nationality"];
+				$intro_text = $dataRows["intro_text"];
+				$position = $dataRows["position"];
+				
+		?>
+		
+		<div class="poll-contender">
+			<span class="contender-head">
+				<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
+				.png" alt="<?php echo htmlentities($nationality); ?>">
+				<?php echo htmlentities($name); ?> (<?php echo htmlentities($nationality); ?>)
+			</span>
+			<br>
+			<strong>Position:</strong> <?php echo htmlentities($position); ?>
+			<br>
+			<?php echo htmlentities($intro_text); ?>
+		</div>
+		
+		<?php } ?>
+		
+		<h2>
+			The Standings
 		</h2>
 		
 		<table class="poll-choices">
 			
 			<?php
 
-				$choices = "SELECT * FROM people_votes 
-					INNER JOIN people ON people_votes.option = people.name
-					WHERE people_votes.poll = $poll_id
-					ORDER BY people_votes.votes desc, people.id";
-				$option_list = $connectDB->query($choices);
-
-				$position = 0;
+				$ranking = 0;
 				
 				while ($dataRows = $option_list->fetch()) {
 
-					$position ++;
+					$ranking ++;
 					
 					$name = $dataRows["name"];
 					$votes = $dataRows["votes"];
 					$nationality = $dataRows["nationality"];
 					
-					if ($position <= $places) {
+					if ($ranking <= $places) {
 						echo '<tr class="election-place">';
 					} else {
 						echo '<tr>';

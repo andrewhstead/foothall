@@ -88,6 +88,9 @@ li.menu-link:hover {
 .feed-icon {
 	height: 25px;
 }
+.text-icon {
+	height: 20px;
+}
 .poll-icon {
 	height: 15px;
 }
@@ -137,6 +140,20 @@ h2 {
 	text-align: center;
 }
 
+.poll-contender {
+	margin: 5px 0;
+	padding: 5px 0;
+	border-top: 2px solid #321c20;
+}
+
+.poll-contender:first-of-type {
+	border-top: none;
+}
+
+.contender-head {
+	font-size: 1.2em;
+}
+
 table.poll-choices {
 	width: 100%;
     table-layout: auto;
@@ -176,7 +193,7 @@ td.progress-bar {
 } 
  
 .election-place {
-	background-color: #ddeedd;
+	background-color: #bbeebb;
 }
 
 .vote-button {
