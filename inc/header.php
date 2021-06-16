@@ -29,7 +29,7 @@
 			<div class="menu-toggle" onclick="menuToggle('menu')">MENU &#9776;</div>
 			
 			<ul class="menu-items toggle-items">
-				<li>Home</li>
+				<li><a class="menu-link" href="index.php">Home Page</a></li>
 				<li class="nest-heading" onmouseover="showMenu()" onmouseleave="removeMenu()">
 					<span class="nest-head">
 						<span class="open-nest" onclick="menuToggle('hall')">

@@ -39,13 +39,13 @@
 		echo '</div>';
 		
 		echo '<div class="feed-body">';
+		echo '<span class="post-title">'
+			.'<a class="standard-link" href="'
+			.$item['type']
+			.'.php?id='
+			.$item['id']
+			.'">';
 		
-		echo '<span class="post-title">';
-		echo '<a href="';
-		echo $item['type'];
-		echo '.php?id=';
-		echo $item['id'];
-		echo '">';
 		if ($item['type'] == 'poll') {
 			echo $item['title'];
 			echo '</a>';
@@ -56,6 +56,7 @@
 			.strtolower($item['nationality']).'.png" alt="'
 			.$item['nationality'].'">';
 		}
+		
 		echo '</span>';
 		
 		echo '<br>';

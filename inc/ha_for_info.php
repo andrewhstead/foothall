@@ -1,6 +1,9 @@
 <?php
+	$thispage = "Home Page";
 	
 	require_once 'inc/db.php';
+
+	include 'inc/header.php';
 					
 	if (isset($_GET["id"])) {
 		$page_id = $_GET["id"];

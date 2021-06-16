@@ -93,3 +93,23 @@ li.menu-link:hover {
 	font-size: 1.5em;
 }
 
+.menu-link {
+	color: #cfb53b;
+	text-decoration: none;
+}
+.menu-link:hover {
+	text-decoration: underline;
+}
+.menu-link:visited {
+	color: #cfb53b;
+}
+
+.standard-link {
+	color: #9c8208;
+}
+.standard-link:hover {
+	font-weight: bold;
+}
+.standard-link:visited {
+	color: #cfb53b;
+}
