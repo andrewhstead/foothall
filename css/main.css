@@ -88,6 +88,9 @@ li.menu-link:hover {
 .feed-icon {
 	height: 25px;
 }
+.poll-icon {
+	height: 15px;
+}
 
 .post-title {
 	font-size: 1.5em;
@@ -112,4 +115,81 @@ li.menu-link:hover {
 }
 .standard-link:visited {
 	color: #cfb53b;
+}
+
+.page-template {
+	background-color: white;
+	margin: 0;
+	padding: 10px 5%;
+	font-size: 1.2em;
+	text-align: justify;
+}
+
+h1 {
+	margin: 0;
+	padding: 5px 0;
+	text-align: center;
+}
+
+h2 {
+	margin: 0;
+	padding: 5px 0;
+	text-align: center;
+}
+
+table.poll-choices {
+	width: 100%;
+    table-layout: auto;
+	border-collapse: collapse;
+}
+
+table.poll-choices tr {
+	border-top: 1px solid #321c20;
+}
+
+table.poll-choices tr:last-of-type {
+	border-bottom: 1px solid #321c20;
+}
+
+table.poll-choices td {
+	padding: 0 2px;
+	max-width:100%;
+	white-space:nowrap;
+}
+
+td.progress-bar {
+	width: 100%;
+	height: 100%;
+}
+
+.progress-box {
+	height: 100%;
+	background-color: #dddddd;
+	border-radius: 5px;
+} 
+
+.progress-fill {
+	height: 100%;
+	background-color: #cfb53b;
+	border-radius: 5px;
+	padding: 0 5px;
+} 
+ 
+.election-place {
+	background-color: #ddeedd;
+}
+
+.vote-button {
+	background-color: #3366ff;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+	padding: 0 5px;
+	border: 1px solid #0033cc;
+}
+
+.vote-button:hover {
+	background-color: #ccddff;
+	color: #0033cc;
+	border: 1px solid #003399;
 }
