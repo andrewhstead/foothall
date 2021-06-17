@@ -3,7 +3,7 @@
 	
 	require_once 'inc/db.php';
 
-	include 'inc/header.php';
+	include 'inc/header.html';
 					
 	if (isset($_GET["id"])) {
 		$poll_id = $_GET["id"];
@@ -24,6 +24,8 @@
 		$stmt2 = $connectDB->prepare($sql2);
 		$execute2= $stmt2->execute();
 		
+		unset($_POST["vote"]);
+			
 	}
 
 	$poll = "SELECT * FROM polls WHERE id = '$poll_id'";
@@ -186,6 +188,6 @@
 	
 <?php
 
-	include 'inc/footer.php';
+	include 'inc/footer.html';
 	
 ?>

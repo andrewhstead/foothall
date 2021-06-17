@@ -3,7 +3,7 @@
 	
 	require_once 'inc/db.php';
 
-	include 'inc/header.php';
+	include 'inc/header.html';
 	
 	$connectDB;
 	
@@ -79,5 +79,5 @@
 		
 	}
 	
-	include 'inc/footer.php';
+	include 'inc/footer.html';
 ?>
