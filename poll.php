@@ -23,9 +23,7 @@
 		$sql2 = "UPDATE polls SET votes = votes + 1 WHERE id = $poll_id";
 		$stmt2 = $connectDB->prepare($sql2);
 		$execute2= $stmt2->execute();
-		
-		unset($_POST["vote"]);
-			
+					
 	}
 
 	$poll = "SELECT * FROM polls WHERE id = '$poll_id'";
@@ -162,9 +160,9 @@
 					}
 					echo '%;">';
 					if ($total_votes == 0) {
-						echo '0%';
+						echo '<span class="percentage">0%</span>';
 					} else {
-						echo number_format((htmlentities($votes)/htmlentities($total_votes))*100, 1).'%';
+						echo '<span class="percentage">'.number_format((htmlentities($votes)/htmlentities($total_votes))*100, 1).'%</span>';
 					}
 					echo '</div>';
 					
