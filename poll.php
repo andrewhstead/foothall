@@ -13,6 +13,19 @@
 						
 	$connectDB;
 
+	if(isset($_POST["vote"])) {
+			
+		$chosen_option = $_POST["chosen"];		
+		$sql = "UPDATE people_votes SET votes = votes + 1 WHERE id = $chosen_option";
+		$stmt = $connectDB->prepare($sql);
+		$execute = $stmt->execute();	
+			
+		$sql2 = "UPDATE polls SET votes = votes + 1 WHERE id = $poll_id";
+		$stmt2 = $connectDB->prepare($sql2);
+		$execute2= $stmt2->execute();
+		
+	}
+
 	$poll = "SELECT * FROM polls WHERE id = '$poll_id'";
 	$page_content = $connectDB->query($poll);
 
@@ -71,7 +84,7 @@
 				ORDER BY people_votes.votes desc, people.id";
 			$contender_list = $connectDB->query($choices);
 			$option_list = $connectDB->query($choices);
-
+			
 		?>
 		
 		<h2>
@@ -117,6 +130,7 @@
 
 					$ranking ++;
 					
+					$contender_id = $dataRows["id"];
 					$name = $dataRows["name"];
 					$votes = $dataRows["votes"];
 					$nationality = $dataRows["nationality"];
@@ -130,7 +144,10 @@
 						.strtolower($nationality).'.png" alt="'
 						.$nationality.'"></td>';
 					echo '<td>'.htmlentities($name).'</td>';
-					echo '<td><span class="vote-button">Vote</span></td>';
+					echo '<td><form method="post" action="poll.php?id='.$poll_id.'">
+						<input type="hidden" name="chosen" value="'.$contender_id.'">
+						<input class="vote-button" type="submit" name="vote" value="&#10003;">
+						</form></td>';
 					
 					echo '<td class="progress-bar">';
 					echo '<div class="progress-box">';

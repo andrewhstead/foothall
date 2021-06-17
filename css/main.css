@@ -19,6 +19,12 @@ header {
 	font-family: Gabriela, "Times New Roman", serif;
 }
 
+main {
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .main-menu {
 	background-color: #321c20;
 	color: #cfb53b;
@@ -64,7 +70,6 @@ li.menu-link:hover {
 .feed-post {
 	margin: auto;
 	background-color: white;
-	max-width: 1000px;
 	font-size: 1.2em;
 	border-bottom: 5px solid #321c20;
 }
@@ -169,7 +174,7 @@ table.poll-choices tr:last-of-type {
 }
 
 table.poll-choices td {
-	padding: 0 2px;
+	padding: 0 0 0 5px;
 	max-width:100%;
 	white-space:nowrap;
 }
@@ -202,6 +207,7 @@ td.progress-bar {
 	border-radius: 5px;
 	text-align: center;
 	padding: 0 5px;
+	margin: 0 0 3px 0;
 	border: 1px solid #0033cc;
 }
 
