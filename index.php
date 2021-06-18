@@ -40,7 +40,7 @@
 		
 		echo '<div class="feed-body">';
 		echo '<span class="post-title">'
-			.'<a class="standard-link" href="'
+			.'<a class="post-link" href="'
 			.$item['type']
 			.'.php?id='
 			.$item['id']

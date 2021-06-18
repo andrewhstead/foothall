@@ -99,6 +99,9 @@ li.menu-link:hover {
 .poll-icon {
 	height: 15px;
 }
+.header-icon {
+	height: 30px;
+}
 
 .post-title {
 	font-size: 1.5em;
@@ -115,11 +118,22 @@ li.menu-link:hover {
 	color: #cfb53b;
 }
 
-.standard-link {
+.post-link {
 	color: #9c8208;
 }
-.standard-link:hover {
+.post-link:hover {
 	font-weight: bold;
+}
+.post-link:visited {
+	color: #cfb53b;
+}
+
+.standard-link {
+	color: #9c8208;
+	text-decoration: none;
+}
+.standard-link:hover {
+	text-decoration: underline;
 }
 .standard-link:visited {
 	color: #cfb53b;
@@ -223,4 +237,8 @@ td.progress-bar {
 
 .hidden {
 	display: none;
+}
+
+.info-page {
+	text-align: left;
 }

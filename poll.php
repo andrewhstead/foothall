@@ -80,8 +80,17 @@
 		
 		<?php
 		
-			$choices = "SELECT * FROM people_votes 
+			$choices = "SELECT 
+				people.name AS player_name,
+				people.nationality AS nationality,
+				people.intro_text AS intro_text,
+				people.position AS position,
+				people_votes.id AS contender_id,
+				people_votes.votes AS votes,
+				countries.id AS country_id 
+				FROM people_votes 
 				INNER JOIN people ON people_votes.option = people.name
+				INNER JOIN countries ON people.nationality = countries.abbreviation
 				WHERE people_votes.poll = $poll_id
 				ORDER BY people_votes.votes desc, people.id";
 			$contender_list = $connectDB->query($choices);
@@ -97,10 +106,11 @@
 		
 			while ($dataRows = $contender_list->fetch()) {
 			
-				$name = $dataRows["name"];
+				$name = $dataRows["player_name"];
 				$nationality = $dataRows["nationality"];
 				$intro_text = $dataRows["intro_text"];
 				$position = $dataRows["position"];
+				$country_id = $dataRows["country_id"];
 				
 		?>
 		
@@ -108,7 +118,8 @@
 			<span class="contender-head">
 				<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
 				.png" alt="<?php echo htmlentities($nationality); ?>">
-				<?php echo htmlentities($name); ?> (<?php echo htmlentities($nationality); ?>)
+				<?php echo htmlentities($name); ?> 
+				(<a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>"><?php echo htmlentities($nationality); ?></a>)
 			</span>
 			<br>
 			<strong>Position:</strong> <?php echo htmlentities($position); ?>
@@ -132,7 +143,7 @@
 
 					$ranking ++;
 					
-					$contender_id = $dataRows["id"];
+					$contender_id = $dataRows["contender_id"];
 					$name = $dataRows["name"];
 					$votes = $dataRows["votes"];
 					$nationality = $dataRows["nationality"];
