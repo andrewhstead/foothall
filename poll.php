@@ -23,6 +23,8 @@
 		$sql2 = "UPDATE polls SET votes = votes + 1 WHERE id = $poll_id";
 		$stmt2 = $connectDB->prepare($sql2);
 		$execute2= $stmt2->execute();
+		
+		header("Location:poll.php?id=$poll_id");
 					
 	}
 
