@@ -144,7 +144,7 @@
 					$ranking ++;
 					
 					$contender_id = $dataRows["contender_id"];
-					$name = $dataRows["name"];
+					$name = $dataRows["player_name"];
 					$votes = $dataRows["votes"];
 					$nationality = $dataRows["nationality"];
 					
