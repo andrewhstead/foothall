@@ -14,15 +14,16 @@
 	$connectDB;
 
 	$country = "SELECT * FROM countries WHERE id = '$country_id'";
-	$page_content = $connectDB->query($country);
-
-	while ($dataRows = $page_content->fetch()) {
+	$country_query = $connectDB->query($country);
+	
+	while ($dataRows = $country_query->fetch()) {
 
 		$display_name = $dataRows["display_name"];
 		$abbreviation = $dataRows["abbreviation"];
 		$continent = $dataRows["continent"];
 		
 	}
+	
 ?>
 
 	<div class="page-template">
@@ -33,9 +34,45 @@
 			<?php echo htmlentities($display_name); ?>
 		</h1>
 		<strong>Continent:</strong> <?php echo htmlentities($continent); ?>
+	
+	<?php
+
+		$members = "SELECT 
+			people.id as person_id,
+			people.name as name,
+			people.nationality as nationality,
+			countries.id 
+			FROM people
+			INNER JOIN countries ON people.nationality = countries.abbreviation
+			WHERE countries.id = $country_id 
+			AND people.admitted = true";
+			
+		$member_check = $connectDB->query($members);
+		
+		$has_members = $member_check->fetch();
+		
+		if ($has_members) {
+			
+			echo '<h2 class="info-page">FootHall Members</h2>';
+		
+		}
+		
+		$member_query = $connectDB->query($members);
+		
+		while ($dataRows = $member_query->fetch()) {
+
+			$display_name = $dataRows["name"];
+			$person_id = $dataRows["person_id"];
+			
+			echo '<a class="standard-link" href="player.php?id='.$person_id.'">';
+			echo $display_name;
+			echo '</a>';
+			
+		}
+		
+	?>
 		
 	</div>
-
 	
 <?php
 
