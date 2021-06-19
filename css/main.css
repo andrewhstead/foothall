@@ -139,12 +139,24 @@ li.menu-link:hover {
 	color: #cfb53b;
 }
 
+.table-link {
+	color: #321c20;
+	text-decoration: none;
+}
+.table-link:hover {
+	text-decoration: underline;
+}
+.table-link:visited {
+	color: #987f86;
+}
+
 .page-template {
 	background-color: white;
 	margin: 0;
 	padding: 10px 5%;
 	font-size: 1.2em;
 	text-align: justify;
+	min-height: 500px;
 }
 
 h1 {
@@ -241,4 +253,14 @@ td.progress-bar {
 
 .info-page {
 	text-align: left;
+}
+
+.flex-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-item {
+	flex: 1;
+	flex-basis: 50%;
 }

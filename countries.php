@@ -27,7 +27,7 @@
 	
 	}
 	
-	$countries = "SELECT * FROM countries";
+	$countries = "SELECT * FROM countries WHERE defunct = false AND affiliated = true ORDER BY display_name";
 	$country_query = $connectDB->query($countries);
 	
 	$country_list = array();
@@ -55,21 +55,26 @@
 			foreach ($continent_list as &$continent_menu) {
 				
 				echo '<h2>'.$continent_menu.'</h2>';
+				
+				echo '<div class="flex-wrapper">';
 		
 				foreach ($country_list as &$country_menu) {
 					
 					if ($country_menu["continent"] == $continent_menu) {
-							
+						
+						echo '<div class="flex-item">';	
 						echo '<img class="poll-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["abbreviation"]).'"> ';
-						echo $country_menu["display_name"];
-						echo '<br>';
+						echo '<a class="standard-link" href="country.php?id='.$country_menu["id"].'">'.$country_menu["display_name"].'</a>';
+						echo '</div>';
 							
 					}
 					
 				}
 				
+				echo '</div>';
+				
 			}
-		
+			
 		?>
 		
 		<?php
