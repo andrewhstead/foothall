@@ -20,6 +20,7 @@
 
 		$name = $dataRows["name"];
 		$nationality = $dataRows["nationality"];
+		$admitted = $dataRows["admitted"];
 		$admission_date = $dataRows["admission_date"];
 		$full_name = $dataRows["full_name"];
 		$date_of_birth = $dataRows["date_of_birth"];
@@ -30,20 +31,34 @@
 		$intro_text = $dataRows["intro_text"];
 		$biography = $dataRows["biography"];
 		
+		$country = "SELECT * FROM countries WHERE abbreviation = '$nationality'";
+		$country_query = $connectDB->query($country);
+		
+		while ($dataRows = $country_query->fetch()) {
+
+			$country_name = $dataRows["display_name"];
+			
+		}
+		
 	}
 	
 ?>
 
 	<div class="page-template">
 		
-		<h1 class="info-page">
-			<img class="header-icon" src="img/flags/<?php echo strtolower($nationality); ?>
-				.png" alt="<?php echo htmlentities($nationality); ?>">
-			<?php echo htmlentities($name); ?> 
-			(<?php echo htmlentities($nationality); ?>)
-		</h1>
-		
+		<?php
+
+			if ($admitted) {
+				
+				include 'inc/member_person.php';
 			
+			} else {
+				
+				echo '<h1>Sorry<br>Page Does Not Exist</h1>';
+			
+			}
+				
+		?>
 		
 	</div>
 	
