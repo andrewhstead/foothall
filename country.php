@@ -64,7 +64,7 @@
 			$display_name = $dataRows["name"];
 			$person_id = $dataRows["person_id"];
 			
-			echo '<a class="standard-link" href="player.php?id='.$person_id.'">';
+			echo '<a class="standard-link" href="person.php?id='.$person_id.'">';
 			echo $display_name;
 			echo '</a>';
 			

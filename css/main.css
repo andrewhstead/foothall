@@ -156,7 +156,7 @@ li.menu-link:hover {
 	padding: 10px 5%;
 	font-size: 1.2em;
 	text-align: justify;
-	min-height: 500px;
+	min-height: 600px;
 }
 
 h1 {
@@ -253,6 +253,11 @@ td.progress-bar {
 
 .info-page {
 	text-align: left;
+	margin-top: 10px;
+}
+
+h1.info-page:first-of-type {
+	margin-top: 0;
 }
 
 .flex-wrapper {
