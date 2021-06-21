@@ -272,10 +272,39 @@ h1.info-page:first-of-type {
 
 .person-stats {
 	margin: 20px 0;
+	text-align: left;
 }
 
 .admission-details {
 	font-size: 1.5em;
 	color: #cfb53b;
 	font-weight: bold;
+}
+
+.picture-frame {
+	margin-right: 10px;
+	float: left;
+	border: 2px solid #321c20;
+	color: #cfb53b;
+}
+
+.portrait {
+	display: block;
+	max-width: 100px;
+}
+
+.copyright-info{
+	background-color: #321c20;
+	padding: 2px;
+	font-size: 0.8em;
+}
+
+.biography {
+	padding-top: 20px;
+	clear: both;
+}
+
+.biography p {
+	margin: 0;
+	clear: both;
 }

@@ -19,6 +19,7 @@
 	while ($dataRows = $person_query->fetch()) {
 
 		$name = $dataRows["name"];
+		$file_code = $dataRows["file_code"];
 		$nationality = $dataRows["nationality"];
 		$admitted = $dataRows["admitted"];
 		$admission_date = $dataRows["admission_date"];
@@ -26,10 +27,12 @@
 		$full_name = $dataRows["full_name"];
 		$date_of_birth = $dataRows["date_of_birth"];
 		$place_of_birth = $dataRows["place_of_birth"];
+		$country_of_birth = $dataRows["country_of_birth"];
 		$living = $dataRows["living"];
 		$date_of_death = $dataRows["date_of_death"];
 		$position = $dataRows["position"];
 		$intro_text = $dataRows["intro_text"];
+		$picture_credit = $dataRows["picture_credit"];
 		$biography = $dataRows["biography"];
 		
 		$country = "SELECT * FROM countries WHERE abbreviation = '$nationality'";

@@ -21,8 +21,13 @@
 				<br>
 			</span>
 			<br>
+			<div class="picture-frame">
+				<img class="portrait" src="img/portraits/
+				<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
+				<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
+			</div>
 			<strong>Date of Birth:</strong> <?php echo htmlentities($date_of_birth); ?><br>
-			<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth); ?><br>
+			<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth).', '.htmlentities($country_of_birth); ?><br>
 			<?php
 				if (!$living) {	
 					echo '<strong>Date of Death:</strong> '.htmlentities($date_of_death).'<br>';
@@ -32,6 +37,14 @@
 		
 		</div>
 		
-		<p>
-			<?php echo htmlentities($biography); ?>
-		</p>
+		<div class="biography">
+			
+			<p>
+				<?php echo htmlentities($intro_text); ?>
+			</p>
+			
+			<p>
+				<?php echo htmlentities($biography); ?>
+			</p>
+			
+		</div>
