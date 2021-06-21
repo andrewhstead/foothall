@@ -6,3 +6,32 @@
 				.png" alt="<?php echo htmlentities($nationality); ?>">
 			<?php echo htmlentities($country_name); ?>
 		</div>
+		
+		<div class="person-stats">
+		
+			<span class="admission-details">
+				Elected: 
+				<?php 
+					if ($admission_poll) {
+						echo '<a class="post-link" href="poll.php?id='.$admission_poll.'">'.htmlentities($admission_date).'</a>';
+						} else {
+						echo htmlentities($admission_date).' (EP)'; 
+					}
+				?>
+				<br>
+			</span>
+			<br>
+			<strong>Date of Birth:</strong> <?php echo htmlentities($date_of_birth); ?><br>
+			<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth); ?><br>
+			<?php
+				if (!$living) {	
+					echo '<strong>Date of Death:</strong> '.htmlentities($date_of_death).'<br>';
+				}
+			?>
+			<strong>Position:</strong> <?php echo htmlentities($position); ?><br>
+		
+		</div>
+		
+		<p>
+			<?php echo htmlentities($biography); ?>
+		</p>

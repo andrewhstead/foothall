@@ -22,6 +22,7 @@
 		$nationality = $dataRows["nationality"];
 		$admitted = $dataRows["admitted"];
 		$admission_date = $dataRows["admission_date"];
+		$admission_poll = $dataRows["admission_poll"];
 		$full_name = $dataRows["full_name"];
 		$date_of_birth = $dataRows["date_of_birth"];
 		$place_of_birth = $dataRows["place_of_birth"];

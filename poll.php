@@ -81,8 +81,10 @@
 		<?php
 		
 			$choices = "SELECT 
+				people.id AS person_id,
 				people.name AS player_name,
 				people.nationality AS nationality,
+				people.admitted AS admitted,
 				people.intro_text AS intro_text,
 				people.position AS position,
 				people_votes.id AS contender_id,
@@ -106,6 +108,8 @@
 		
 			while ($dataRows = $contender_list->fetch()) {
 			
+				$person_id = $dataRows["person_id"];
+				$admitted = $dataRows["admitted"];
 				$name = $dataRows["player_name"];
 				$nationality = $dataRows["nationality"];
 				$intro_text = $dataRows["intro_text"];
@@ -118,7 +122,13 @@
 			<span class="contender-head">
 				<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
 				.png" alt="<?php echo htmlentities($nationality); ?>">
-				<?php echo htmlentities($name); ?> 
+				<?php 
+					if ($admitted) {
+						echo '<a class="standard-link" href="person.php?id='.$person_id.'">'.htmlentities($name).'</a>';
+						} else {
+						echo htmlentities($name); 
+					}
+				?> 
 				(<a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>"><?php echo htmlentities($nationality); ?></a>)
 			</span>
 			<br>

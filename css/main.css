@@ -269,3 +269,13 @@ h1.info-page:first-of-type {
 	flex: 1;
 	flex-basis: 50%;
 }
+
+.person-stats {
+	margin: 20px 0;
+}
+
+.admission-details {
+	font-size: 1.5em;
+	color: #cfb53b;
+	font-weight: bold;
+}
