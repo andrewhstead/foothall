@@ -9,7 +9,7 @@
 		
 		<div class="person-stats">
 		
-			<span class="admission-details">
+			<div class="hall-status">
 				Elected: 
 				<?php 
 					if ($admission_poll) {
@@ -19,7 +19,25 @@
 					}
 				?>
 				<br>
-			</span>
+				Rating: <?php echo htmlentities($rating); ?> (<?php echo htmlentities($votes); ?> votes)
+				<div class="rating-bar">
+					Submit Your Rating: 
+					<div class="rating-buttons">
+						<?php
+							for ($score = 1; $score <= 10; $score++) {
+								echo '
+								<div class="rating-block">
+								<form method="post" action="person.php?id='.$person_id.'">
+								<input type="hidden" name="chosen" value="'.$score.'">
+								<input class="rating-block" type="submit" name="vote" value="'.$score.'">
+								</form>
+								</div>
+								';
+							}
+						?>						
+					</div>
+				</div>
+			</div>
 			<br>
 			<div class="picture-frame">
 				<img class="portrait" src="img/portraits/

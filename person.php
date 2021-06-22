@@ -13,6 +13,19 @@
 						
 	$connectDB;
 
+	if(isset($_POST["vote"])) {
+		
+		$chosen_score = $_POST["chosen"];		
+		$sql = "UPDATE people 
+			SET score = score + $chosen_score, votes = votes + 1, rating = score / votes
+			WHERE id = $person_id";
+		$stmt = $connectDB->prepare($sql);
+		$execute = $stmt->execute();
+		
+		header("Location:person.php?id=$person_id");
+					
+	}
+	
 	$person = "SELECT * FROM people WHERE id = '$person_id'";
 	$person_query = $connectDB->query($person);
 	
@@ -24,6 +37,8 @@
 		$admitted = $dataRows["admitted"];
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];
+		$votes = $dataRows["votes"];
+		$rating = $dataRows["rating"];
 		$full_name = $dataRows["full_name"];
 		$date_of_birth = $dataRows["date_of_birth"];
 		$place_of_birth = $dataRows["place_of_birth"];
