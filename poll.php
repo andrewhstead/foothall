@@ -37,8 +37,8 @@
 		$title = $dataRows["title"];
 		$intro_text = $dataRows["intro_text"];
 		$description = $dataRows["description"];
-		$published = $dataRows["published"];
-		$expiry = $dataRows["expiry"];
+		$published = new DateTime($dataRows["published"]);
+		$expiry = new DateTime($dataRows["expiry"]);
 		
 		$options = $dataRows["options"];
 		$places = $dataRows["places"];
@@ -55,7 +55,7 @@
 			<strong>
 				Published:
 			</strong> 
-			<?php echo htmlentities($published); ?>
+			<?php echo date_format($published, "d/m/Y, H:i"); ?>
 			<br>
 			<strong>
 				<?php
@@ -67,7 +67,7 @@
 					}
 				?>
 			</strong> 
-			<?php echo htmlentities($expiry); ?>
+			<?php echo date_format($expiry, "d/m/Y, H:i"); ?>
 		</p>
 		
 		<p>

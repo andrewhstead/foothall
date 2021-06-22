@@ -9,7 +9,7 @@
 	
 	$polls = "SELECT * FROM polls";
 	$poll_content = $connectDB->query($polls);
-	$people = "SELECT * FROM people";
+	$people = "SELECT * FROM people WHERE admitted = true";
 	$people_content = $connectDB->query($people);
 
 	while ($dataRows = $poll_content->fetch()) {
@@ -20,10 +20,8 @@
 	
 	while ($dataRows = $people_content->fetch()) {
 
-		if ($dataRows["admitted"] == true) {
-			$content[] = $dataRows;
-		}
-		
+		$content[] = $dataRows;
+			
 	}
 		
 	foreach ($content as $item) {
@@ -66,11 +64,13 @@
 		echo '<br>';
 		
 		if ($item['type'] == 'poll') {
+			$display_date = new DateTime($item['expiry']);
 			echo '<strong>Expires:</strong> ';
-			echo $item['expiry'];
+			echo date_format($display_date, "d/m/Y, H:i");
 		} else if ($item['type'] == 'person') {
+			$display_date = new DateTime($item['admission_date']);
 			echo '<strong>Admitted:</strong> ';
-			echo $item['admission_date'];
+			echo date_format($display_date, "d F Y");
 		}
 		
 		echo '</div>';

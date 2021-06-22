@@ -13,12 +13,16 @@
 				Elected: 
 				<?php 
 					if ($admission_poll) {
-						echo '<a class="post-link" href="poll.php?id='.$admission_poll.'">'.htmlentities($admission_date).'</a>';
+						echo '<a class="post-link" href="poll.php?id='
+							.$admission_poll.'">'
+							.date_format($admission_date, "d F Y")
+							.'</a>';
 						} else {
-						echo htmlentities($admission_date).' (EP)'; 
+						echo date_format($admission_date, "d F Y").' (EP)'; 
 					}
 				?>
 				<br>
+				
 				Rating: <?php echo htmlentities($rating); ?> (<?php echo htmlentities($votes); ?> votes)
 				<div class="rating-bar">
 					Submit Your Rating: 
@@ -44,11 +48,11 @@
 				<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
 				<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
 			</div>
-			<strong>Date of Birth:</strong> <?php echo htmlentities($date_of_birth); ?><br>
+			<strong>Date of Birth:</strong> <?php echo date_format($date_of_birth, "d/m/Y"); ?><br>
 			<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth).', '.htmlentities($country_of_birth); ?><br>
 			<?php
 				if (!$living) {	
-					echo '<strong>Date of Death:</strong> '.htmlentities($date_of_death).'<br>';
+					echo '<strong>Date of Death:</strong> '.date_format($date_of_death, "d/m/Y").'<br>';
 				}
 			?>
 			<strong>Position:</strong> <?php echo htmlentities($position); ?><br>
