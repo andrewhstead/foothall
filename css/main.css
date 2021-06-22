@@ -257,6 +257,10 @@ td.progress-bar {
 }
 
 .sub-menu {
+	margin-bottom: 10px;
+}
+
+.sub-menu h2 {
 	text-align: left;
 }
 
