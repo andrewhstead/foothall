@@ -4,13 +4,7 @@
 	require_once 'inc/db.php';
 
 	include 'inc/header.html';
-					
-	if (isset($_GET["id"])) {
-		$person_id = $_GET["id"];
-	} else {
-		$person_id = 1;
-	}
-						
+			
 	$connectDB;
 
 	
@@ -38,9 +32,7 @@
 		
 		$player_list[] = $dataRows;
 		
-		if (in_array($nationality, $country_list)) {
-			
-		} else {
+		if (!in_array($nationality, $country_list)) {
 			$country_list[] = $nationality;
 		}
 
@@ -77,7 +69,7 @@
 				echo "<h2>Players elected to The FootHall will appear here.</h2>";
 			}
 					
-			foreach ($countries as &$country_menu) {
+			foreach ($countries as $country_menu) {
 				
 				echo '<div class="sub-menu">';
 				echo '<h2>';
@@ -86,7 +78,7 @@
 							
 				echo '<div class="flex-wrapper">';
 			
-					foreach ($player_list as &$player_menu) {
+					foreach ($player_list as $player_menu) {
 							
 						if ($player_menu["nationality"] == $country_menu["abbreviation"]) {
 							

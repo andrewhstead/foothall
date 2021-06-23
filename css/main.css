@@ -276,6 +276,7 @@ h1.info-page:first-of-type {
 .flex-item {
 	flex: 1;
 	flex-basis: 50%;
+	text-align: left;
 }
 
 .person-stats {
@@ -348,4 +349,8 @@ h1.info-page:first-of-type {
 .biography p {
 	margin: 0;
 	clear: both;
+}
+
+.bullet-point {
+	font-weight: bold;
 }

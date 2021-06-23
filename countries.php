@@ -4,12 +4,6 @@
 	require_once 'inc/db.php';
 
 	include 'inc/header.html';
-					
-	if (isset($_GET["id"])) {
-		$country_id = $_GET["id"];
-	} else {
-		$country_id = 1;
-	}
 						
 	$connectDB;
 
@@ -52,13 +46,13 @@
 		
 		<?php
 		
-			foreach ($continent_list as &$continent_menu) {
+			foreach ($continent_list as $continent_menu) {
 				
 				echo '<h2>'.$continent_menu.'</h2>';
 				
 				echo '<div class="flex-wrapper">';
 		
-				foreach ($country_list as &$country_menu) {
+				foreach ($country_list as $country_menu) {
 					
 					if ($country_menu["continent"] == $continent_menu) {
 						
