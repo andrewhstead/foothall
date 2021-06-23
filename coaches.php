@@ -1,5 +1,5 @@
 <?php
-	$thispage = "Player Menu";
+	$thispage = "Coach Menu";
 	
 	require_once 'inc/db.php';
 
@@ -14,29 +14,29 @@
 	$connectDB;
 
 	
-	$players = "
+	$coaches = "
 		SELECT 
-			people.id AS player_id,
-			people.name AS player_name,
+			people.id AS coach_id,
+			people.name AS coach_name,
 			people.nationality AS nationality,
 			countries.display_name AS country 
 		FROM people 
 		INNER JOIN countries ON people.nationality = countries.abbreviation
-		WHERE admitted = true AND as_player = true  
+		WHERE admitted = true AND as_coach = true  
 		ORDER BY nationality, file_code";
-	$player_query = $connectDB->query($players);
+	$coach_query = $connectDB->query($coaches);
 	
-	$player_list = array();
+	$coach_list = array();
 	$country_list = array();
 	
-	while ($dataRows = $player_query->fetch()) {
+	while ($dataRows = $coach_query->fetch()) {
 
-		$player_id = $dataRows["player_id"];
-		$player_name = $dataRows["player_name"];
+		$coach_id = $dataRows["coach_id"];
+		$coach_name = $dataRows["coach_name"];
 		$nationality = $dataRows["nationality"];
 		$abbreviation = $dataRows["country"];
 		
-		$player_list[] = $dataRows;
+		$coach_list[] = $dataRows;
 		
 		if (in_array($nationality, $country_list)) {
 			
@@ -68,13 +68,13 @@
 	<div class="page-template">
 		
 		<h1>
-			FootHall Players
+			FootHall Coaches
 		</h1>
 		
 		<?php
 		
-			if (!$player_list) {
-				echo "<h2>Players elected to The FootHall will appear here.</h2>";
+			if (!$coach_list) {
+				echo "<h2>Coaches elected to The FootHall will appear here.</h2>";
 			}
 					
 			foreach ($countries as &$country_menu) {
@@ -86,12 +86,12 @@
 							
 				echo '<div class="flex-wrapper">';
 			
-					foreach ($player_list as &$player_menu) {
+					foreach ($coach_list as &$coach_menu) {
 							
-						if ($player_menu["nationality"] == $country_menu["abbreviation"]) {
+						if ($coach_menu["nationality"] == $country_menu["abbreviation"]) {
 							
 							echo '<div class="flex-item">';	
-							echo '<a class="standard-link" href="person.php?id='.$player_menu["player_id"].'">'.$player_menu["player_name"].'</a>';
+							echo '<a class="standard-link" href="person.php?id='.$coach_menu["coach_id"].'">'.$coach_menu["coach_name"].'</a>';
 							echo '</div>';
 							
 						}
