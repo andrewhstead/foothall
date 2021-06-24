@@ -51,12 +51,20 @@
 			<?php echo htmlentities($name); ?>
 		</h1>
 		
+		<div class="profile-content">
+		
+			<?php
+			
+				echo htmlentities($profile);
+				
+			?>
+		
+		</div>
+		
 		<?php
 		
-			echo htmlentities($profile);
-		
 			if (!$tournament_list) {
-				echo "<h2>Editions of this competition will appear here when added to the site.</h2>";
+				echo '<h2>Editions of this competition will appear here when added to the site.</h2>';
 			} else {
 				echo '<div class="sub-menu"><h2>Competition History</h2><div>';
 			}
@@ -65,10 +73,10 @@
 		
 		<table class="tournament-list">
 			<tr>
-				<td>Year</td>
-				<td>Host</td>
-				<td>Winner</td>
-				<td>Runner-Up</td>
+				<th>Year</th>
+				<th>Host</th>
+				<th class="winner-head">Winner</th>
+				<th class="runner-up-head">Runner-Up</th>
 			</tr>
 			
 			<?php
@@ -92,8 +100,8 @@
 						echo '<br><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["host_3"]).'.png" alt="'.strtolower($tournament_menu["host_3"]).'">  '.$tournament_menu["host_3"];
 					}
 					echo '</td>';
-					echo '<td><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["winner"]).'.png" alt="'.strtolower($tournament_menu["winner"]).'">  '.$tournament_menu["winner"].'</td>';
-					echo '<td><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["runner_up"]).'.png" alt="'.strtolower($tournament_menu["runner_up"]).'">  '.$tournament_menu["runner_up"].'</td>';
+					echo '<td class="winner-cell"><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["winner"]).'.png" alt="'.strtolower($tournament_menu["winner"]).'">  '.$tournament_menu["winner"].'</td>';
+					echo '<td class="runner-up-cell"><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["runner_up"]).'.png" alt="'.strtolower($tournament_menu["runner_up"]).'">  '.$tournament_menu["runner_up"].'</td>';
 					echo '</tr>';
 								
 				}
