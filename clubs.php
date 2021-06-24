@@ -1,41 +1,28 @@
 <?php
-	$thispage = "Coach Menu";
+	$thispage = "Club Menu";
 	
 	require_once 'inc/db.php';
 
 	include 'inc/header.html';
-				
+						
 	$connectDB;
 
+	$clubs = "SELECT * FROM clubs WHERE on_site = true ORDER BY display_name";
+	$club_query = $connectDB->query($clubs);
 	
-	$coaches = "
-		SELECT 
-			people.id AS coach_id,
-			people.name AS coach_name,
-			people.nationality AS nationality,
-			countries.display_name AS country 
-		FROM people 
-		INNER JOIN countries ON people.nationality = countries.abbreviation
-		WHERE admitted = true AND as_coach = true  
-		ORDER BY nationality, file_code";
-	$coach_query = $connectDB->query($coaches);
-	
-	$coach_list = array();
 	$country_list = array();
+	$club_list = array();
 	
-	while ($dataRows = $coach_query->fetch()) {
+	while ($dataRows = $club_query->fetch()) {
 
-		$coach_id = $dataRows["coach_id"];
-		$coach_name = $dataRows["coach_name"];
-		$nationality = $dataRows["nationality"];
-		$abbreviation = $dataRows["country"];
+		$club_id = $dataRows["id"];
+		$club_name = $dataRows["display_name"];
+		$club_country = $dataRows["country"];
 		
-		$coach_list[] = $dataRows;
-		
-		if (in_array($nationality, $country_list)) {
-			
-		} else {
-			$country_list[] = $nationality;
+		$club_list[] = $dataRows;
+	
+		if (!in_array($club_country, $country_list)) {
+			$country_list[] = $club_country;
 		}
 
 	}
@@ -56,19 +43,19 @@
 		}
 		
 	}
-	
+
 ?>
 
 	<div class="page-template">
 		
 		<h1>
-			FootHall Coaches
+			Clubs
 		</h1>
 		
 		<?php
 		
-			if (!$coach_list) {
-				echo "<h2>Coaches elected to The FootHall will appear here.</h2>";
+			if (!$club_list) {
+				echo "<h2>Club profiles will appear here.</h2>";
 			}
 					
 			foreach ($countries as $country_menu) {
@@ -80,12 +67,12 @@
 							
 				echo '<div class="flex-wrapper">';
 			
-					foreach ($coach_list as $coach_menu) {
+					foreach ($club_list as $club_menu) {
 							
-						if ($coach_menu["nationality"] == $country_menu["abbreviation"]) {
+						if ($club_menu["country"] == $country_menu["abbreviation"]) {
 							
 							echo '<div class="flex-item">';	
-							echo '&#9654; <a class="standard-link" href="person.php?id='.$coach_menu["coach_id"].'">'.$coach_menu["coach_name"].'</a>';
+							echo '&#9654; <a class="standard-link" href="club.php?id='.$club_menu["id"].'">'.$club_menu["display_name"].'</a>';
 							echo '</div>';
 							
 						}

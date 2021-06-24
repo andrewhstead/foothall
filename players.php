@@ -83,7 +83,7 @@
 						if ($player_menu["nationality"] == $country_menu["abbreviation"]) {
 							
 							echo '<div class="flex-item">';	
-							echo '<a class="standard-link" href="person.php?id='.$player_menu["player_id"].'">'.$player_menu["player_name"].'</a>';
+							echo '&#9654; <a class="standard-link" href="person.php?id='.$player_menu["player_id"].'">'.$player_menu["player_name"].'</a>';
 							echo '</div>';
 							
 						}
