@@ -55,7 +55,7 @@
 		<?php
 		
 			if (!$club_list) {
-				echo "<h2>Club profiles will appear here.</h2>";
+				echo "<h2>Club profiles will appear here when added to the site.</h2>";
 			}
 					
 			foreach ($countries as $country_menu) {

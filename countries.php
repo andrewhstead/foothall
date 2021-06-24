@@ -7,24 +7,11 @@
 						
 	$connectDB;
 
-	$continents = "SELECT * FROM continents";
-	$continent_query = $connectDB->query($continents);
-	
-	$continent_list = array();
-	
-	while ($dataRows = $continent_query->fetch()) {
-
-		$continent_id = $dataRows["id"];
-		$continent_name = $dataRows["name"];
-		
-		$continent_list[] = $continent_name;
-	
-	}
-	
-	$countries = "SELECT * FROM countries WHERE defunct = false AND affiliated = true ORDER BY display_name";
+	$countries = "SELECT * FROM countries WHERE on_site = TRUE ORDER BY display_name";
 	$country_query = $connectDB->query($countries);
 	
 	$country_list = array();
+	$continent_list = array();
 	
 	while ($dataRows = $country_query->fetch()) {
 
@@ -35,6 +22,24 @@
 		
 		$country_list[] = $dataRows;
 	
+		if (!in_array($country_continent, $country_list)) {
+			$continent_list[] = $country_continent;
+		}
+	}
+	
+	$continents = "SELECT * FROM continents";
+	$continent_query = $connectDB->query($continents);
+	
+	$continents = array();
+	
+	while ($dataRows = $continent_query->fetch()) {
+
+		$continent_id = $dataRows["id"];
+		$continent_name = $dataRows["name"];
+	
+		if (in_array($continent_name, $continent_list)) {
+			$continents[] = $continent_name;
+		}
 	}
 ?>
 
@@ -46,26 +51,32 @@
 		
 		<?php
 		
-			foreach ($continent_list as $continent_menu) {
-				
-				echo '<h2>'.$continent_menu.'</h2>';
-				
-				echo '<div class="flex-wrapper">';
+			if (!$country_list) {
+				echo "<h2>Country profiles will appear here when added to the site.</h2>";
+			} else {
 		
-				foreach ($country_list as $country_menu) {
+				foreach ($continent_list as $continent_menu) {
 					
-					if ($country_menu["continent"] == $continent_menu) {
+					echo '<h2>'.$continent_menu.'</h2>';
+					
+					echo '<div class="flex-wrapper">';
+			
+					foreach ($country_list as $country_menu) {
 						
-						echo '<div class="flex-item">';	
-						echo '<img class="poll-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["abbreviation"]).'"> ';
-						echo '<a class="standard-link" href="country.php?id='.$country_menu["id"].'">'.$country_menu["display_name"].'</a>';
-						echo '</div>';
+						if ($country_menu["continent"] == $continent_menu) {
 							
+							echo '<div class="flex-item">';	
+							echo '<img class="poll-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["abbreviation"]).'"> ';
+							echo '<a class="standard-link" href="country.php?id='.$country_menu["id"].'">'.$country_menu["display_name"].'</a>';
+							echo '</div>';
+								
+						}
+						
 					}
 					
+					echo '</div>';
+					
 				}
-				
-				echo '</div>';
 				
 			}
 			
