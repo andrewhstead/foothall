@@ -62,7 +62,7 @@
 				foreach ($competition_list as $list_competition) if ($list_competition["type"] == $type_heading) {
 								
 						echo '<div>';	
-						echo '<span class="bullet-point">&#8226;</span> <a class="standard-link" href="competition.php?id='.$list_competition["id"].'">'.$list_competition["name"].'</a>';
+						echo '&#9654; <a class="standard-link" href="competition.php?id='.$list_competition["id"].'">'.$list_competition["name"].'</a>';
 						echo '</div>';
 							
 					}

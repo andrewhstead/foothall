@@ -354,3 +354,11 @@ h1.info-page:first-of-type {
 .bullet-point {
 	font-weight: bold;
 }
+
+.tournament-list td {
+	padding: 2px 10px;
+}
+
+.tournament-list td:first-of-type {
+	padding: 2px 10px 2px 0;
+}
