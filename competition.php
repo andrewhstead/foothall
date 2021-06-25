@@ -73,8 +73,8 @@
 		
 		<table class="tournament-list">
 			<tr>
-				<th>Year</th>
-				<th>Host</th>
+				<th class="year-head">Year</th>
+				<th class="host-head">Host</th>
 				<th class="winner-head">Winner</th>
 				<th class="runner-up-head">Runner-Up</th>
 			</tr>

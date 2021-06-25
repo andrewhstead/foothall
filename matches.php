@@ -71,17 +71,13 @@
 					
 					echo '<div class="flex-wrapper">';
 			
-					foreach ($match_list as $match_menu) {
+					foreach ($match_list as $match_menu) if ($match_menu["year"] == $year_head) {
 						
-						if ($match_menu["year"] == $year_head) {
-							
-							echo '<div class="flex-item">';
-							echo '&#9654; <strong>'.$match_menu["competition"].' '.$match_menu["stage"].'</strong><br>';		
-							echo $match_menu["team_1_name"].' '.$match_menu["score_1"].
-							'-'.$match_menu["score_2"].' '.$match_menu["team_2_name"];
-							echo '</div>';
-								
-						}
+						echo '<div class="flex-item">';
+						echo '&#9654; <strong>'.$match_menu["competition"].' '.$match_menu["stage"].'</strong><br>';		
+						echo $match_menu["team_1_name"].' '.$match_menu["score_1"].
+						'-'.$match_menu["score_2"].' '.$match_menu["team_2_name"];
+						echo '</div>';
 						
 					}
 					

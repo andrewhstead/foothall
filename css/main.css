@@ -361,16 +361,27 @@ h1.info-page:first-of-type {
 }
 
 .tournament-list td, th {
-	padding: 2px 10px;
+	padding: 2px 5px;
 	text-align: center;
 }
 
 .tournament-list td:first-of-type, th:first-of-type {
-	padding: 2px 10px 2px 0;
+	padding: 2px 10px 2px 2px;
 }
 
 .profile-content {
 	margin: 10px 0;
+}
+
+.year-head {
+	background-color: #666666;
+	color: white;
+}
+
+.host-head {
+	background-color: #666666;
+	color: white;
+	min-width: 70px;
 }
 
 .winner-head {
