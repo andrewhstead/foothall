@@ -7,7 +7,7 @@
 						
 	$connectDB;
 
-	$clubs = "SELECT * FROM clubs WHERE on_site = true ORDER BY display_name";
+	$clubs = "SELECT * FROM clubs WHERE type = "club" AND on_site = true ORDER BY display_name";
 	$club_query = $connectDB->query($clubs);
 	
 	$country_list = array();
