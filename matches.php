@@ -13,11 +13,9 @@
 		matches.date AS date,
 		matches.competition AS competition,
 		matches.stage AS stage,
-		matches.team_1 AS team_1,
-		matches.team_2 AS team_2,
+		team_1.display_name AS team_1_name,
 		matches.score_1 AS score_1,
 		matches.score_2 AS score_2,
-		team_1.display_name AS team_1_name,
 		team_2.display_name AS team_2_name
 		FROM matches 
 		INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
@@ -34,11 +32,9 @@
 		$year = $dataRows["year"];
 		$competition = $dataRows["competition"];
 		$stage = $dataRows["stage"];
-		$team_1 = $dataRows["team_1"];
-		$team_1 = $dataRows["team_2"];
+		$team_1_name = $dataRows["team_1_name"];
 		$score_1 = $dataRows["score_1"];
 		$score_1 = $dataRows["score_2"];
-		$team_1_name = $dataRows["team_1_name"];
 		$team_2_name = $dataRows["team_2_name"];
 		
 		$match_list[] = $dataRows;
