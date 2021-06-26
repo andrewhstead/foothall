@@ -1,5 +1,5 @@
 <?php
-	$thispage = "MATCH Menu";
+	$thispage = "Match Menu";
 	
 	require_once 'inc/db.php';
 

@@ -67,11 +67,15 @@ li.menu-link:hover {
 	display: none;
 }
 
-.feed-post {
+.feed-post, .story-post {
 	margin: auto;
 	background-color: white;
 	font-size: 1.2em;
 	border-bottom: 5px solid #321c20;
+}
+
+.article-feed {
+	border-top: 5px solid #321c20;
 }
 
 .feed-post:hover {
@@ -157,6 +161,14 @@ li.menu-link:hover {
 	font-size: 1.2em;
 	text-align: justify;
 	min-height: 600px;
+}
+
+.heading-only {
+	background-color: white;
+	margin: 0;
+	padding: 10px 5%;
+	font-size: 1.2em;
+	text-align: justify;;
 }
 
 h1 {
@@ -399,4 +411,8 @@ h1.info-page:first-of-type {
 .runner-up-cell {
 	background-color: #eeeeee;
 	min-width: 70px;
+}
+
+.read-link {
+	text-align: right;
 }
