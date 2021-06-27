@@ -9,6 +9,7 @@
 
 	$matches = "
 		SELECT 
+		matches.id AS match_id,
 		year(matches.date) AS year,
 		matches.date AS date,
 		matches.competition AS competition,
@@ -28,6 +29,7 @@
 	
 	while ($dataRows = $match_query->fetch()) {
 
+		$match_id = $dataRows["match_id"];
 		$date = new DateTime($dataRows["date"]);
 		$year = $dataRows["year"];
 		$competition = $dataRows["competition"];
@@ -61,26 +63,26 @@
 					
 			foreach ($year_list as $year_head) {
 					
-					echo '<div class="sub-menu">';
+				echo '<div class="sub-menu">';
 					
-					echo '<h2>'.$year_head.'</h2>';
+				echo '<h2>'.$year_head.'</h2>';
 					
-					echo '<div class="flex-wrapper">';
+				echo '<div class="flex-wrapper">';
 			
-					foreach ($match_list as $match_menu) if ($match_menu["year"] == $year_head) {
+				foreach ($match_list as $match_menu) if ($match_menu["year"] == $year_head) {
 						
-						echo '<div class="flex-item">';
-						echo '&#9654; <strong>'.$match_menu["competition"].' '.$match_menu["stage"].'</strong><br>';		
-						echo $match_menu["team_1_name"].' '.$match_menu["score_1"].
-						'-'.$match_menu["score_2"].' '.$match_menu["team_2_name"];
-						echo '</div>';
-						
-					}
-					
-					echo '</div>';
-					echo '</div>';
-					
+					echo '<div class="flex-item">';
+					echo '&#9654; <strong>'.$match_menu["competition"].' '.$match_menu["stage"].'</strong><br>';		
+					echo '<a class="standard-link" href="match.php?id='.$match_menu["match_id"].'">'.
+					$match_menu["team_1_name"].' '.$match_menu["score_1"].
+					'-'.$match_menu["score_2"].' '.$match_menu["team_2_name"].'</a>';
+					echo '</div>';			
 				}
+					
+				echo '</div>';
+				echo '</div>';
+					
+			}
 		?>
 		
 	</div>
