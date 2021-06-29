@@ -416,3 +416,16 @@ h1.info-page:first-of-type {
 .read-link {
 	text-align: right;
 }
+
+.tags {
+	margin: 10px 0;
+}
+
+.tag {
+	margin: 5px 5px 5px 0;
+	padding: 0 5px;
+	background-color: #cfb53b;
+	border: 1px solid #9c8208;
+	display: inline-block;
+	border-radius: 10px;
+}

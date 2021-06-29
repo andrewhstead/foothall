@@ -70,3 +70,17 @@
 			</p>
 			
 		</div>
+		
+		<div class="tags">
+			
+			<strong>Tags:</strong><br>
+			<?php 
+				
+				foreach ($tag_list as $person_tag) {
+						
+					echo '<div class="tag">'.htmlentities($person_tag).'</div>';
+						
+				}
+			?>
+			
+		</div>
