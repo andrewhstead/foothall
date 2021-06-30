@@ -159,7 +159,6 @@ li.menu-link:hover {
 	margin: 0;
 	padding: 10px 5%;
 	font-size: 1.2em;
-	text-align: justify;
 	min-height: 600px;
 }
 
@@ -183,10 +182,21 @@ h2 {
 	text-align: center;
 }
 
+h3 {
+	margin: 0;
+	padding: 5px 0;
+	text-align: left;
+}
+
+p {
+	text-align: justify;
+}
+
 .poll-contender {
 	margin: 5px 0;
 	padding: 5px 0;
 	border-top: 2px solid #321c20;
+	text-align: justify;
 }
 
 .poll-contender:first-of-type {
@@ -431,4 +441,17 @@ h1.info-page:first-of-type {
 	border: 1px solid #9c8208;
 	display: inline-block;
 	border-radius: 10px;
+}
+
+.honour-details {
+	margin: 0 5px 0 0;
+	white-space:nowrap;
+}
+
+.medal {
+	width: 15px;
+}
+
+.competition_honours {
+	text-align: left;
 }

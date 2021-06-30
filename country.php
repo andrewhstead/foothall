@@ -37,6 +37,7 @@
 	
 		<?php
 
+			/* Checking for Hall members and then displaying them. */
 			$members = "SELECT 
 				people.id as person_id,
 				people.name as name,
@@ -68,6 +69,77 @@
 				echo $display_name;
 				echo '</a>';
 				
+			}
+			
+			/* Checking for international tournament honours and displaying them. */
+			
+			$honours = "SELECT 
+				tournaments.id AS tournament_id,
+				tournaments.year AS tournament_year,
+				competitions.name AS tournament_name,
+				tournaments.winner AS tournament_winner,
+				tournaments.runner_up AS tournament_runner_up
+				FROM tournaments 
+				INNER JOIN competitions ON tournaments.competition = competitions.id
+				WHERE winner = '$abbreviation' OR runner_up = '$abbreviation'";
+			$honour_check = $connectDB->query($honours);
+			
+			$has_honours = $honour_check->fetch();
+			
+			if ($has_honours) {
+				
+				echo '<div class="competition-honours">';
+				
+				echo '<h2 class="info-page">International Honours</h2>';
+			
+				$honour_query = $connectDB->query($honours);
+				$honour_competition = array();
+				$honours_won = array();
+				
+				while ($dataRows = $honour_query->fetch()) {
+
+					$tournament_id = $dataRows["tournament_id"];
+					$tournament_year = $dataRows["tournament_year"];
+					$tournament_name = $dataRows["tournament_name"];
+					$tournament_winner = $dataRows["tournament_winner"];
+					$tournament_runner_up = $dataRows["tournament_runner_up"];
+					
+					if (!in_array($tournament_name, $honour_competition)) {
+						$honour_competition[] = $tournament_name;
+					}
+					
+					$honours_won[] = $dataRows;
+					
+				}
+					
+				foreach ($honour_competition as $honour_list) {
+						
+					echo '<strong>'.$honour_list.'</strong><br>';
+					
+					foreach ($honours_won as $honour) {
+						
+						echo '<span class="honour-details">';
+						
+						if (($honour["tournament_name"] == $honour_list) && ($honour["tournament_winner"] ==$abbreviation )) {
+							
+							echo '<img class="medal" alt="Gold Medal" src="img/awards/gold_world.png"> ';
+							echo $honour["tournament_year"];
+									
+						} elseif (($honour["tournament_name"] == $honour_list) && ($honour["tournament_runner_up"] ==$abbreviation )) {
+								
+							echo '<img class="medal" alt="Silver Medal" src="img/awards/silver_world.png"> ';
+							echo $honour["tournament_year"];
+									
+						}
+						
+						echo '</span>';
+						
+					}
+						
+				}
+				
+				echo '</span>';
+			
 			}
 			
 		?>

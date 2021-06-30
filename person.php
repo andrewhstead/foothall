@@ -80,9 +80,7 @@
 		$tag_list[] = $tag_name;
 		
 	}
-	
-
-	
+		
 ?>
 
 	<div class="page-template">
