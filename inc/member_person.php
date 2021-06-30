@@ -8,7 +8,25 @@
 		</div>
 		
 		<div class="person-stats">
-		
+			
+			<div class="personal-details">
+			
+				<div class="picture-frame">
+					<img class="portrait" src="img/portraits/
+					<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
+					<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
+				</div>
+				<strong>Date of Birth:</strong> <?php echo date_format($date_of_birth, "d/m/Y"); ?><br>
+				<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth).', '.htmlentities($country_of_birth); ?><br>
+				<?php
+					if (!$living) {	
+						echo '<strong>Date of Death:</strong> '.date_format($date_of_death, "d/m/Y").'<br>';
+					}
+				?>
+				<strong>Position:</strong> <?php echo htmlentities($position); ?><br>
+				
+			</div>
+			
 			<div class="hall-status">
 				Elected: 
 				<?php 
@@ -42,20 +60,6 @@
 					</div>
 				</div>
 			</div>
-			<br>
-			<div class="picture-frame">
-				<img class="portrait" src="img/portraits/
-				<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
-				<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
-			</div>
-			<strong>Date of Birth:</strong> <?php echo date_format($date_of_birth, "d/m/Y"); ?><br>
-			<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth).', '.htmlentities($country_of_birth); ?><br>
-			<?php
-				if (!$living) {	
-					echo '<strong>Date of Death:</strong> '.date_format($date_of_death, "d/m/Y").'<br>';
-				}
-			?>
-			<strong>Position:</strong> <?php echo htmlentities($position); ?><br>
 		
 		</div>
 		
