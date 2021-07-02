@@ -47,18 +47,22 @@
 					
 					echo '<div class="right-section">';
 					
-						echo '<div class="admin-link">';
+						echo '<div class="admin-link-box">';
+						echo '<a class="admin-link" href="'.$table_menu["table_name"].'_list.php">';
 						echo 'View List';
+						echo '</a>';
 						echo '</div>';
 						
-						echo '<div class="admin-link">';
+						echo '<div class="admin-link-box">';
+						echo '<a class="admin-link" href="'.$table_menu["table_name"].'_new.php">';
 						echo 'Add New';
+						echo '</a>';
 						echo '</div>';
 				
 					echo '</div>';
 					
 					echo '<div class="left-section">';
-					echo '<h3 class="admin-head">'.ucfirst($table_menu["table_name"]).'</h3>';
+					echo '<h3 class="admin-head">'.ucwords(str_replace('_', ' ', $table_menu["table_name"])).'</h3>';
 					echo '</div>';
 					
 				

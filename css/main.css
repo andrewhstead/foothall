@@ -446,7 +446,7 @@ h1.info-page:first-of-type {
 
 .honour-details {
 	margin: 0 5px 0 0;
-	white-space:nowrap;
+	white-space: nowrap;
 }
 
 .medal {
@@ -474,10 +474,33 @@ h1.info-page:first-of-type {
 	text-align: center;
 }
 
-.admin-link {
+.admin-link-box {
 	padding: 5px 0;
+	border-bottom: 1px solid #321c20;
+}
+
+.admin-link-box:hover {
+	background-color: #321c20;
+	color: #cfb53b;
+	border-bottom: 1px solid #cfb53b;
+}
+
+div.admin-link-box:last-of-type {
+	border-bottom: none;
 }
 
 .admin-head {
 	height: 100%;
+}
+
+.admin-link {
+	color: #321c20;
+	text-decoration: none;
+}
+.admin-link:hover {
+	color: #cfb53b;
+	text-decoration: underline;
+}
+.admin-link:visited {
+	color: #987f86;
 }
