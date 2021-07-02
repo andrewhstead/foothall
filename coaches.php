@@ -7,7 +7,6 @@
 				
 	$connectDB;
 
-	
 	$coaches = "
 		SELECT 
 			people.id AS coach_id,
@@ -32,9 +31,7 @@
 		
 		$coach_list[] = $dataRows;
 		
-		if (in_array($nationality, $country_list)) {
-			
-		} else {
+		if (!in_array($nationality, $country_list)) {
 			$country_list[] = $nationality;
 		}
 
