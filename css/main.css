@@ -502,5 +502,41 @@ div.admin-link-box:last-of-type {
 	text-decoration: underline;
 }
 .admin-link:visited {
-	color: #987f86;
+	color: #321c20;
+}
+
+.data-table {
+	margin: 10px 0;
+	width: 100%;
+	background-color: #cfb53b;
+	border-collapse: collapse;
+}
+
+.data-table th {
+	text-align: left;
+}
+
+.data-table thead {
+	background-color: #321c20;
+	color: #cfb53b;	
+}
+
+.data-table tr:nth-of-type(even) {
+	background-color: #ffe86e;
+}
+
+.data-table th, td {
+	padding: 3px;
+}
+
+.button-cell {
+	text-align: center;
+}
+
+.admin-button {
+	padding: 0 5px;
+	background-color: #66cc66;
+	border: 1px solid #339933;
+	border-radius: 5px;
+	color: white;
 }
