@@ -43,7 +43,26 @@
 			
 			foreach ($table_list as $table_menu) if ($table_menu["table_type"] == $type_menu) {
 				
-				echo '<h3 class="info-page">'.ucfirst($table_menu["table_name"]).'</h3>';
+				echo '<div class="admin-wrapper">';
+					
+					echo '<div class="right-section">';
+					
+						echo '<div class="admin-link">';
+						echo 'View List';
+						echo '</div>';
+						
+						echo '<div class="admin-link">';
+						echo 'Add New';
+						echo '</div>';
+				
+					echo '</div>';
+					
+					echo '<div class="left-section">';
+					echo '<h3 class="admin-head">'.ucfirst($table_menu["table_name"]).'</h3>';
+					echo '</div>';
+					
+				
+				echo '</div>';
 				
 			}
 							

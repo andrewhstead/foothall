@@ -180,6 +180,7 @@ h2 {
 	margin: 0;
 	padding: 5px 0;
 	text-align: center;
+	clear: both;
 }
 
 h3 {
@@ -454,4 +455,29 @@ h1.info-page:first-of-type {
 
 .competition_honours {
 	text-align: left;
+}
+
+.admin-wrapper {
+	margin: 5px 0;
+	overflow: auto;
+	background-color: #cfb53b;
+	border-radius: 10px;
+}
+
+.left-section h3{
+	text-align: center;
+}
+
+.right-section {
+	float: right;
+	width: 50%;
+	text-align: center;
+}
+
+.admin-link {
+	padding: 5px 0;
+}
+
+.admin-head {
+	height: 100%;
 }
