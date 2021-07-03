@@ -38,6 +38,24 @@
 			<?php echo ucfirst($table_name); ?>
 		</h1>
 		
+		<div class="centre-text">
+			<?php
+				if ($status == "active") {
+					echo '<strong>Active</strong>';
+				} else {
+					echo '<a class="cms-link" href="view_list.php?id='.$table_id.'&status=active">Active</a>';
+				}
+			?>
+			 | 
+			<?php
+				if ($status == "inactive") {
+					echo '<strong>Inactive</strong>';
+				} else {
+					echo '<a class="cms-link" href="view_list.php?id='.$table_id.'&status=inactive">Inactive</a>';
+				}
+			?>
+		</div>
+		
 		<?php
 		
 			if ($status == 'active') {
@@ -52,7 +70,7 @@
 			
 			if($records == 0) {
 						
-				echo '<h2>No Records Available</h2>';
+				echo '<h2 class="empty-list">No Records Available</h2>';
 						
 			} else {
 						

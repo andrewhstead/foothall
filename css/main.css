@@ -550,3 +550,23 @@ div.admin-link-box:last-of-type {
 .button-link:hover {
 	text-decoration: underline;
 }
+
+.centre-text {
+	text-align: center;
+}
+
+.empty-list {
+	margin-top: 20px;
+}
+
+
+.cms-link {
+	color: #9c8208;
+	text-decoration: none;
+}
+.cms-link:hover {
+	text-decoration: underline;
+}
+.cms-link:visited {
+	color: #9c8208;
+}
