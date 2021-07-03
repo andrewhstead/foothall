@@ -48,13 +48,13 @@
 					echo '<div class="right-section">';
 					
 						echo '<div class="admin-link-box">';
-						echo '<a class="admin-link" href="view_active.php?id='.$table_menu["id"].'">';
+						echo '<a class="admin-link" href="view_list.php?id='.$table_menu["id"].'&status=active">';
 						echo 'View Active';
 						echo '</a>';
 						echo '</div>';
 					
 						echo '<div class="admin-link-box">';
-						echo '<a class="admin-link" href="view_inactive.php?id='.$table_menu["id"].'">';
+						echo '<a class="admin-link" href="view_list.php?id='.$table_menu["id"].'&status=inactive">';
 						echo 'View Inactive';
 						echo '</a>';
 						echo '</div>';

@@ -461,6 +461,7 @@ h1.info-page:first-of-type {
 	margin: 5px 0;
 	overflow: auto;
 	background-color: #cfb53b;
+	border: 2px solid #321c20;
 	border-radius: 10px;
 }
 
@@ -497,12 +498,12 @@ div.admin-link-box:last-of-type {
 	color: #321c20;
 	text-decoration: none;
 }
+.admin-link:visited {
+	color: #321c20;
+}
 .admin-link:hover {
 	color: #cfb53b;
 	text-decoration: underline;
-}
-.admin-link:visited {
-	color: #321c20;
 }
 
 .data-table {
