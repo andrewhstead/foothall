@@ -540,3 +540,12 @@ div.admin-link-box:last-of-type {
 	border-radius: 5px;
 	color: white;
 }
+
+.button-link {
+	color: white;
+	text-decoration: none;
+}
+
+.button-link:hover {
+	text-decoration: underline;
+}

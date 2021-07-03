@@ -56,9 +56,15 @@
 
 						echo '<tr>';
 						echo '<td>'.htmlentities($dataRows["name"]).'</td>';
-						echo '<td class="button-cell"><span class="admin-button">View</span></td>';
-						echo '<td class="button-cell"><span class="admin-button">Edit</span></td>';
-						echo '<td class="button-cell"><span class="admin-button">Delete</span></td>';
+						echo '<td class="button-cell"><span class="admin-button">';
+						echo '<a class="button-link" href="../person.php?id='.$dataRows["id"].'">';
+						echo 'View</a></span></td>';
+						echo '<td class="button-cell"><span class="admin-button">';
+						echo '<a class="button-link" href="edit_person.php?id='.$dataRows["id"].'">';
+						echo 'Edit</a></span></td>';
+						echo '<td class="button-cell"><span class="admin-button">';
+						echo '<a class="button-link" href="delete.php?id='.$dataRows["id"].'">';
+						echo 'Delete</a></span></td>';
 						echo '</tr>';
 						
 					}
