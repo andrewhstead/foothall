@@ -34,7 +34,7 @@
 		$name = $dataRows["name"];
 		$file_code = $dataRows["file_code"];
 		$nationality = $dataRows["nationality"];
-		$admitted = $dataRows["admitted"];
+		$admitted = $dataRows["active"];
 		$admission_date = new DateTime($dataRows["admission_date"]);
 		$admission_poll = $dataRows["admission_poll"];
 		$votes = $dataRows["votes"];
