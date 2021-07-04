@@ -1,5 +1,5 @@
 <?php
-	$thispage = "Country Index";
+	$thispage = "Person Profile";
 	
 	require_once 'inc/db.php';
 
