@@ -53,7 +53,7 @@
 		<h2>
 			<img class="text-icon" src="../img/flags/<?php echo strtolower($nationality); ?>
 				.png" alt="<?php echo htmlentities($nationality); ?>">
-			<?php echo htmlentities($name).'<br>ID: '.htmlentities($person_id); ?>
+			<?php echo htmlentities($name).'<br>id: '.htmlentities($person_id); ?>
 		</h2>
 		
 		<form class="edit-form" method="post" action="edit_person.php?id=<?php echo $name; ?>">

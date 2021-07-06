@@ -54,6 +54,8 @@
 					echo '<a class="cms-link" href="view_list.php?id='.$table_id.'&status=inactive">Inactive</a>';
 				}
 			?>
+			 | 
+			<a class="cms-link" href="add_new.php?id=<?php echo $table_id; ?>">Add New</a>
 		</div>
 		
 		<?php
