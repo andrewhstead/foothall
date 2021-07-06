@@ -115,10 +115,10 @@
 				<input type="date" name="death-date" placeholder="DD-MM-YYYY" id="death-date" value="<?php echo $date_of_death; ?>">
 				<br><br>
 				<label for="intro-text">Introductory Text:</label>
-				<textarea rows="5" cols="35" name="intro-text"><?php echo $intro_text; ?></textarea>
+				<textarea class="editable-area" rows="5" cols="35" name="intro-text"><?php echo $intro_text; ?></textarea>
 				<br><br>
 				<label for="biography">Biography:</label>
-				<textarea rows="10" cols="35" name="biography"><?php echo $biography; ?></textarea>
+				<textarea class="editable-area" rows="10" cols="35" name="biography"><?php echo $biography; ?></textarea>
 				<br><br>
 				<input class="submit-button" type="submit" name="submit" value="Save Changes">
 			
