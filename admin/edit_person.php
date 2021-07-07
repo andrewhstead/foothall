@@ -1,17 +1,21 @@
 <?php
 	$thispage = "Edit Person";
+
+	session_start();
 	
 	require_once '../inc/db.php';
-
+	require_once '../inc/functions.php';
 	include 'inc/header.html';
+	
+	confirm_login();
+	
+	$connectDB;
 					
 	if (isset($_GET["id"])) {
 		$person_id = $_GET["id"];
 	} else {
 		$person_id = 1;
 	}
-						
-	$connectDB;
 	
 	$person = "SELECT * FROM people WHERE id = '$person_id'";
 	$person_query = $connectDB->query($person);

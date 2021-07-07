@@ -1,9 +1,14 @@
 <?php
+	
 	$thispage = "Home Page";
+
+	session_start();
 	
 	require_once '../inc/db.php';
-	
+	require_once '../inc/functions.php';
 	include 'inc/header.html';
+	
+	confirm_login();
 	
 	$connectDB;
 	

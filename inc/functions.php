@@ -1,6 +1,5 @@
 <?php
 	
-	require_once 'inc/db.php';
 
 	function redirect_to($new_location) {
 
@@ -44,7 +43,7 @@
 
 		} else {
 
-			$_SESSION["error_message"] = "Login Required";
+			$_SESSION["error_message"] = "Login Required to View Page";
 			redirect_to("login.php");
 
 		}

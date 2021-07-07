@@ -1,9 +1,15 @@
 <?php
 	$thispage = "View Table Entries";
+
+	session_start();
 	
 	require_once '../inc/db.php';
-
+	require_once '../inc/functions.php';
 	include 'inc/header.html';
+	
+	confirm_login();
+	
+	$connectDB;
 					
 	if (isset($_GET["id"])) {
 		$table_id = $_GET["id"];
@@ -16,8 +22,6 @@
 	} else {
 		$status = 'active';
 	}
-						
-	$connectDB;
 	
 	$table = "SELECT * FROM tables WHERE id = $table_id";
 	$table_query = $connectDB->query($table);
