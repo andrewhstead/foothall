@@ -24,8 +24,7 @@
 		if ($result == 1) {
 
 			$user = $stmt->fetch();
-			$hashed_password = $user["password"];
-			return $hashed_password;
+			return $user;
 
 		} else {
 
