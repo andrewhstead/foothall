@@ -28,7 +28,9 @@
 			$new_admitted = 0;
 		}
 		$new_admission_date = $_POST["admission-date"];
-		$new_admission_poll = $_POST["admission-poll"];
+		if (isset($_POST["admission-poll"])) {
+			$new_admission_poll = $_POST["admission-poll"];
+		}
 		if (isset($_POST["as-player"])) {
 			$new_as_player = 1;
 		} else {
