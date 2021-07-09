@@ -9,7 +9,7 @@
 	
 	$polls = "SELECT * FROM polls";
 	$poll_content = $connectDB->query($polls);
-	$people = "SELECT * FROM people WHERE admitted = true";
+	$people = "SELECT * FROM people WHERE active = true";
 	$people_content = $connectDB->query($people);
 	$matches = "SELECT
 		matches.id AS id,
