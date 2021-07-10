@@ -1,5 +1,5 @@
 <?php
-	$thispage = "Edit Person";
+	$thispage = "Add New Person";
 
 	session_start();
 	
@@ -10,13 +10,11 @@
 	confirm_login();
 	
 	$connectDB;
-					
-	if (isset($_GET["id"])) {
-		$person_id = $_GET["id"];
-	} else {
-		$person_id = 1;
-	}
 	
+	if (isset($_GET["id"])) {
+		$table_id = $_GET["id"];
+	}
+		
 	if(isset($_POST["submit"])) {
 		
 		$new_name = $_POST["person-name"];
@@ -65,8 +63,7 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "INSERT INTO people (name, file_code, nationality, active, admission_date, admission_poll, as_player, as_coach, score, votes, rating, full_name, date_of_birth, place_of_birth, country_of_birth, living, date_of_death, position, intro_text, picture_credit, biography)";
-		$sql .= "VALUES (:NewName, :NewFileCode, :NewNationality, :NewAdmitted, :NewAdmissionDate, :NewAdmissionPoll, :NewAsPlayer, :NewAsCoach, :NewScore, :NewVotes, :NewRating, :NewFullName, :NewBirthDate, :NewBirthPlace, :NewBirthCountry, :NewIsLiving, :NewDeathDate, :NewPosition, :NewIntroText, :NewPictureCredit, :NewBiography)";
+		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE id = $person_id";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -107,100 +104,65 @@
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("edit_person.php?id=$person_id");
+			redirect_to("add_person.php");
 			
 		}
 
 	}
 	
-	$person = "SELECT * FROM people WHERE id = '$person_id'";
-	$person_query = $connectDB->query($person);
-	
-	while ($dataRows = $person_query->fetch()) {
-
-		$name = $dataRows["name"];
-		$file_code = $dataRows["file_code"];
-		$nationality = $dataRows["nationality"];
-		$admitted = $dataRows["active"];
-		$admission_date = $dataRows["admission_date"];
-		$admission_poll = $dataRows["admission_poll"];
-		$as_player = $dataRows["as_player"];
-		$as_coach = $dataRows["as_coach"];
-		$score = $dataRows["score"];
-		$votes = $dataRows["votes"];
-		$rating = $dataRows["rating"];
-		$full_name = $dataRows["full_name"];
-		$date_of_birth = $dataRows["date_of_birth"];
-		$place_of_birth = $dataRows["place_of_birth"];
-		$country_of_birth = $dataRows["country_of_birth"];
-		$living = $dataRows["living"];
-		$date_of_death = $dataRows["date_of_death"];
-		$position = $dataRows["position"];
-		$intro_text = $dataRows["intro_text"];
-		$picture_credit = $dataRows["picture_credit"];
-		$biography = $dataRows["biography"];
-		
-	}
-		
 ?>
 
 	<div class="page-template">
 	
 		<h1>
-			Edit Person
+			Add New Person
 		</h1>		
-	
-		<h2>
-			<img class="text-icon" src="../img/flags/<?php echo strtolower($nationality); ?>
-				.png" alt="<?php echo htmlentities($nationality); ?>">
-			<?php echo htmlentities($name).'<br>id: '.htmlentities($person_id); ?>
-		</h2>
 		
-		<form class="edit-form" method="post" action="edit_person.php?id=<?php echo $person_id; ?>">
-		
+		<form class="edit-form" method="post" action="new_person.php">
+				
 				<label for="person-name">Display Name:</label>
-				<input type="text" name="person-name" placeholder="Name to Display" id="person-name" value="<?php echo $name; ?>">
+				<input type="text" name="person-name" placeholder="Name to Display" id="person-name">
 				<br>
 				<label for="full-name">Full Name:</label>
-				<input type="text" name="full-name" placeholder="Full Name" id="full-name" value="<?php echo $full_name; ?>">
+				<input type="text" name="full-name" placeholder="Full Name" id="full-name" >
 				<br>
 				<label for="file-code">File Code:</label>
-				<input type="text" name="file-code" placeholder="File Code" id="file-code" value="<?php echo $file_code; ?>">
+				<input type="text" name="file-code" placeholder="File Code" id="file-code">
 				<br>
 				<label for="picture-credit">Picture Credit:</label>
-				<input type="text" name="picture-credit" placeholder="Picture Credit" id="picture-credit" value="<?php echo $picture_credit; ?>">
+				<input type="text" name="picture-credit" placeholder="Picture Credit" id="picture-credit">
 				<br><br>
 				<label for="admitted">Admitted?</label>
-				<input type="checkbox" name="admitted" id="admitted" <?php if ($admitted) { echo 'checked'; } ?>>
+				<input type="checkbox" name="admitted" id="admitted">
 				<br>
 				<label for="admission-date">Admission Date:</label>
-				<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date" value="<?php echo $admission_date; ?>">
+				<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date">
 				<br>
 				<label for="admission-poll">Admission Poll:</label>
-				<input type="text" name="admission-poll" placeholder="Admitted in Poll..." id="admission-poll" value="<?php echo $admission_poll; ?>">
+				<input type="text" name="admission-poll" placeholder="Admitted in Poll..." id="admission-poll">
 				<br>
 				<label for="as-player">Player?</label>
-				<input type="checkbox" name="as-player" id="as-player" <?php if ($as_player) { echo 'checked'; } ?>>
+				<input type="checkbox" name="as-player" id="as-player">
 				<label for="as-coach">Coach?</label>
-				<input type="checkbox" name="as-coach" id="as-coach" <?php if ($as_coach) { echo 'checked'; } ?>>
+				<input type="checkbox" name="as-coach" id="as-coach">
 				<br><br>
 				<label for="score">Total Rating Score:</label>
-				<input type="text" name="score" placeholder="Total Rating Score..." id="score" value="<?php echo $score; ?>">
+				<input type="text" name="score" placeholder="Total Rating Score..." id="score">
 				<br>
 				<label for="votes">Rating Votes:</label>
-				<input type="text" name="votes" placeholder="Rating Votes..." id="votes" value="<?php echo $votes; ?>">
+				<input type="text" name="votes" placeholder="Rating Votes..." id="votes">
 				<br>
 				<label for="rating">Average Rating:</label>
-				<input type="text" name="rating" placeholder="Average Rating..." id="rating" value="<?php echo $rating; ?>">
+				<input type="text" name="rating" placeholder="Average Rating..." id="rating">
 				<br><br>
 				<label for="birth-date">Date of Birth:</label>
-				<input type="date" name="birth-date" placeholder="DD-MM-YYYY" id="birth-date" value="<?php echo $date_of_birth; ?>">
+				<input type="date" name="birth-date" placeholder="DD-MM-YYYY" id="birth-date">
 				<br>
 				<label for="birth-place">Place of Birth:</label>
-				<input type="text" name="birth-place" placeholder="Place of Birth" id="birth-place" value="<?php echo $place_of_birth; ?>">
+				<input type="text" name="birth-place" placeholder="Place of Birth" id="birth-place">
 				<br>
 				<label for="birth-country">Country of Birth:</label>
-				<input type="text" name="birth-country" placeholder="Country of Birth" id="birth-country" value="<?php echo $country_of_birth; ?>">
+				<input type="text" name="birth-country" placeholder="Country of Birth" id="birth-country">
 				<br>
 				<label for="nationality">Nationality:</label>
 				<select id="nationality" name="nationality">
@@ -210,36 +172,32 @@
 					while ($dataRows = $country_query->fetch()) {
 						$country_name = $dataRows["display_name"];
 						$country_abbreviation = $dataRows["abbreviation"];
-						echo '<option ';
-						if ($dataRows["abbreviation"] == $nationality) {
-							echo 'selected ';
-						}
-						echo 'value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
 					}
 				?>	
 				</select>
 				<br>
 				<label for="position">Position:</label>
-				<input type="text" name="position" placeholder="Position" id="position" value="<?php echo $position; ?>">
+				<input type="text" name="position" placeholder="Position" id="position">
 				<br><br>
 				<label for="is-living">Living?</label>
-				<input type="checkbox" name="is-living" id="is-living" <?php if ($living) { echo 'checked'; } ?>>
+				<input type="checkbox" name="is-living" id="is-living">
 				<br>
 				<label for="death-date">Date of Death:</label>
-				<input type="date" name="death-date" placeholder="DD-MM-YYYY" id="death-date" value="<?php echo $date_of_death; ?>">
+				<input type="date" name="death-date" placeholder="DD-MM-YYYY" id="death-date">
 				<br><br>
 				<label for="intro-text">Introductory Text:</label>
-				<textarea class="editable-area" rows="5" cols="35" name="intro-text"><?php echo $intro_text; ?></textarea>
-				<br>
+				<textarea class="editable-area" rows="5" cols="35" name="intro-text"></textarea>
+				<br><br>
 				<label for="biography">Biography:</label>
-				<textarea class="editable-area" rows="10" cols="35" name="biography"><?php echo $biography; ?></textarea>
-				<br>
-				<input class="submit-button" type="submit" name="submit" value="Save Changes">
+				<textarea class="editable-area" rows="10" cols="35" name="biography"></textarea>
+				<br><br>
+				<input class="submit-button" type="submit" name="submit" value="Add Record">
 			
 		</form>		
 		
 	</div>
-	
+
 <?php
 
 	include 'inc/footer.html';
