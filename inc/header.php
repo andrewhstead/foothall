@@ -58,6 +58,12 @@
 						<li class="history-nested history-item"><a class="menu-link" href="dream.php">Dream Teams</a></li>
 					</ul>
 				</li>
+				<?php
+					session_start();				
+					if(isset($_SESSION["user_id"])) {
+						echo '<li><a class="menu-link" href="admin/index.php">Admin Home</a></li>';
+					}
+				?>
 			</ul>
 		
 		</nav>

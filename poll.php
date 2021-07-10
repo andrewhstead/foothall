@@ -3,7 +3,7 @@
 	
 	require_once 'inc/db.php';
 
-	include 'inc/header.html';
+	include 'inc/header.php';
 					
 	if (isset($_GET["id"])) {
 		$poll_id = $_GET["id"];
