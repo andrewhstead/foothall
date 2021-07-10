@@ -97,6 +97,6 @@
 	
 <?php
 
-	include 'inc/footer.html';
+	include 'inc/footer.php';
 	
 ?>

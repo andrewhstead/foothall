@@ -28,7 +28,7 @@
 		FROM matches 
 		INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
 		INNER JOIN teams team_2 ON matches.team_2 = team_2.name
-		WHERE admitted = true";
+		WHERE active = true";
 	$match_content = $connectDB->query($matches);
 
 	while ($dataRows = $poll_content->fetch()) {
@@ -48,6 +48,8 @@
 		$content[] = $dataRows;
 			
 	}
+	
+	echo '<div class="feed-template">';
 		
 	if ($content) {
 		
@@ -113,5 +115,7 @@
 
 	}
 	
-	include 'inc/footer.html';
+	echo '</div>';
+	
+	include 'inc/footer.php';
 ?>
