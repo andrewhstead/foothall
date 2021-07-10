@@ -7,7 +7,11 @@
 	
 	$connectDB;
 	
-	$polls = "SELECT * FROM polls";
+	$content = array();
+	
+	$date = date('Y-m-d H:i:s');
+	
+	$polls = "SELECT * FROM polls WHERE expiry > CURDATE()";
 	$poll_content = $connectDB->query($polls);
 	$people = "SELECT * FROM people WHERE active = true";
 	$people_content = $connectDB->query($people);
@@ -45,60 +49,68 @@
 			
 	}
 		
-	foreach ($content as $item) {
+	if ($content) {
 		
-		echo '<div class="feed-post">';
+		foreach ($content as $item) {
 		
-		echo '<div class="feed-heading">';
-		if ($item['type'] == 'poll') {
-			echo 'Hall of Fame Voting';
-		} else {
-			echo 'Hall of Fame Admission';
-		}
-		echo '</div>';
-		
-		echo '<div class="feed-body">';
-		echo '<span class="post-title">'
-			.'<a class="post-link" href="'
-			.$item['type']
-			.'.php?id='
-			.$item['id']
-			.'">';
-		
-		if ($item['type'] == 'poll') {
-			echo $item['title'];
-			echo '</a>';
-		} else if ($item['type'] == 'person') {
-			echo $item['name'];
-			echo '</a>';
-			echo ' <img class="feed-icon" src="img/flags/'
-			.strtolower($item['nationality']).'.png" alt="'
-			.$item['nationality'].'">';
-		} else if ($item['type'] == 'match') {
-			echo $item['team_1_name'].' '.$item['score_1'].'-'.$item['score_2'].' '.$item['team_2_name'].' ('.$item['year'].')';
-			echo '</a>';
-		}
-		
-		echo '</span>';
-		
-		echo '<br>';
-				
-		echo '<div class="formatted-text">'.html_entity_decode($item['intro_text']).'</div>';
-				
-		if ($item['type'] == 'poll') {
-			$display_date = new DateTime($item['expiry']);
-			echo '<strong>Expires:</strong> ';
-			echo date_format($display_date, "d/m/Y, H:i");
-		} else {
-			$display_date = new DateTime($item['admission_date']);
-			echo '<strong>Admitted:</strong> ';
-			echo date_format($display_date, "d F Y");
-		}
-		
-		echo '</div>';
+			echo '<div class="feed-post">';
 			
-		echo '</div>';
+			echo '<div class="feed-heading">';
+			if ($item['type'] == 'poll') {
+				echo 'Hall of Fame Voting';
+			} else {
+				echo 'Hall of Fame Admission';
+			}
+			echo '</div>';
+			
+			echo '<div class="feed-body">';
+			echo '<span class="post-title">'
+				.'<a class="post-link" href="'
+				.$item['type']
+				.'.php?id='
+				.$item['id']
+				.'">';
+			
+			if ($item['type'] == 'poll') {
+				echo $item['title'];
+				echo '</a>';
+			} else if ($item['type'] == 'person') {
+				echo $item['name'];
+				echo '</a>';
+				echo ' <img class="feed-icon" src="img/flags/'
+				.strtolower($item['nationality']).'.png" alt="'
+				.$item['nationality'].'">';
+			} else if ($item['type'] == 'match') {
+				echo $item['team_1_name'].' '.$item['score_1'].'-'.$item['score_2'].' '.$item['team_2_name'].' ('.$item['year'].')';
+				echo '</a>';
+			}
+			
+			echo '</span>';
+			
+			echo '<br>';
+					
+			echo '<div class="formatted-text">'.html_entity_decode($item['intro_text']).'</div>';
+					
+			if ($item['type'] == 'poll') {
+				$display_date = new DateTime($item['expiry']);
+				echo '<strong>Expires:</strong> ';
+				echo date_format($display_date, "d/m/Y, H:i");
+			} else {
+				$display_date = new DateTime($item['admission_date']);
+				echo '<strong>Admitted:</strong> ';
+				echo date_format($display_date, "d F Y");
+			}
+			
+			echo '</div>';
+				
+			echo '</div>';
+			
+		}
+	
+	} else {
 		
+		echo '<div class="page-template"><h2>Sorry, no content is currently available.</h2></div>';
+
 	}
 	
 	include 'inc/footer.html';

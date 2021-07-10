@@ -11,10 +11,6 @@
 	
 	$connectDB;
 	
-	if (isset($_GET["id"])) {
-		$table_id = $_GET["id"];
-	}
-		
 	if(isset($_POST["submit"])) {
 		
 		$new_name = $_POST["person-name"];
@@ -63,7 +59,8 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE id = $person_id";
+		$sql = "INSERT INTO people (name, file_code, nationality, active, admission_date, admission_poll, as_player, as_coach, score, votes, rating, full_name, date_of_birth, place_of_birth, country_of_birth, living, date_of_death, position, intro_text, picture_credit, biography)";
+		$sql .= "VALUES (:NewName, :NewFileCode, :NewNationality, :NewAdmitted, :NewAdmissionDate, :NewAdmissionPoll, :NewAsPlayer, :NewAsCoach, :NewScore, :NewVotes, :NewRating, :NewFullName, :NewBirthDate, :NewBirthPlace, :NewBirthCountry, :NewIsLiving, :NewDeathDate, :NewPosition, :NewIntroText, :NewPictureCredit, :NewBiography)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -197,7 +194,7 @@
 		</form>		
 		
 	</div>
-
+	
 <?php
 
 	include 'inc/footer.html';
