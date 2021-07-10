@@ -65,13 +65,13 @@
 		
 		<div class="biography">
 			
-			<p>
-				<?php echo htmlentities($intro_text); ?>
-			</p>
+			<div class="formatted-text">
+				<?php echo html_entity_decode($intro_text); ?>
+			</div>
 			
-			<p>
-				<?php echo htmlentities($biography); ?>
-			</p>
+			<div class="formatted-text">
+				<?php echo html_entity_decode($biography); ?>
+			</div>
 			
 		</div>
 		

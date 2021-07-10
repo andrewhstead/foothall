@@ -27,7 +27,16 @@
 		} else {
 			$new_admitted = 0;
 		}
-		$new_admission_date = $_POST["admission-date"];
+		if (empty($_POST["admission-date"])) {
+			$new_admission_date = NULL;
+		} else {
+			$new_admission_date = $_POST["admission-date"];
+		}
+		if (empty($_POST["admission-poll"])) {
+			$new_admission_poll = NULL;
+		} else {
+			$new_admission_poll = $_POST["admission-poll"];
+		}
 		if (isset($_POST["as-player"])) {
 			$new_as_player = 1;
 		} else {
@@ -56,7 +65,7 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE id = $person_id";
+		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE id = $person_id";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -65,6 +74,7 @@
 		$stmt->bindValue(':NewNationality', $new_nationality);
 		$stmt->bindValue(':NewAdmitted', $new_admitted);
 		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
+		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
 		$stmt->bindValue(':NewAsPlayer', $new_as_player);
 		$stmt->bindValue(':NewAsCoach', $new_as_coach);
 		$stmt->bindValue(':NewScore', $new_score);
@@ -164,6 +174,9 @@
 				<br>
 				<label for="admission-date">Admission Date:</label>
 				<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date" value="<?php echo $admission_date; ?>">
+				<br>
+				<label for="admission-poll">Admission Poll:</label>
+				<input type="text" name="admission-poll" placeholder="Admitted in Poll..." id="admission-poll" value="<?php echo $admission_poll; ?>">
 				<br>
 				<label for="as-player">Player?</label>
 				<input type="checkbox" name="as-player" id="as-player" <?php if ($as_player) { echo 'checked'; } ?>>

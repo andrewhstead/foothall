@@ -82,11 +82,9 @@
 		echo '</span>';
 		
 		echo '<br>';
-		
-		echo $item['intro_text'];
-		
-		echo '<br>';
-		
+				
+		echo '<div class="formatted-text">'.html_entity_decode($item['intro_text']).'</div>';
+				
 		if ($item['type'] == 'poll') {
 			$display_date = new DateTime($item['expiry']);
 			echo '<strong>Expires:</strong> ';

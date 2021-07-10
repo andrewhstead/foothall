@@ -551,6 +551,10 @@ div.admin-link-box:last-of-type {
 	text-decoration: underline;
 }
 
+.formatted-text p {
+	margin: 0;
+}
+
 .centre-text {
 	text-align: center;
 }

@@ -84,7 +84,7 @@
 				people.id AS person_id,
 				people.name AS player_name,
 				people.nationality AS nationality,
-				people.admitted AS admitted,
+				people.active AS admitted,
 				people.intro_text AS intro_text,
 				people.position AS position,
 				people_votes.id AS contender_id,
@@ -134,7 +134,9 @@
 			<br>
 			<strong>Position:</strong> <?php echo htmlentities($position); ?>
 			<br>
-			<?php echo htmlentities($intro_text); ?>
+			<div class="formatted-text">
+				<?php echo html_entity_decode($intro_text); ?>
+			</div>
 		</div>
 		
 		<?php } ?>
