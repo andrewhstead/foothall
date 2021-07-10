@@ -51,7 +51,17 @@
 				<input type="text" name="birth-country" placeholder="Country of Birth" id="birth-country">
 				<br>
 				<label for="nationality">Nationality:</label>
-				<input type="text" name="nationality" placeholder="Nationality" id="nationality">
+				<select id="nationality" name="nationality">
+				<?php
+					$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+					$country_query = $connectDB->query($countries);
+					while ($dataRows = $country_query->fetch()) {
+						$country_name = $dataRows["display_name"];
+						$country_abbreviation = $dataRows["abbreviation"];
+						echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+					}
+				?>	
+				</select>
 				<br>
 				<label for="position">Position:</label>
 				<input type="text" name="position" placeholder="Position" id="position">

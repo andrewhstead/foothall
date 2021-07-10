@@ -23,9 +23,9 @@
 		$new_file_code = $_POST["file-code"];
 		$new_nationality = $_POST["nationality"];
 		if (isset($_POST["admitted"])) {
-			$new_admitted = 1;
+			$new_admitted = true;
 		} else {
-			$new_admitted = 0;
+			$new_admitted = false;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -38,14 +38,14 @@
 			$new_admission_poll = $_POST["admission-poll"];
 		}
 		if (isset($_POST["as-player"])) {
-			$new_as_player = 1;
+			$new_as_player = true;
 		} else {
-			$new_as_player = 0;
+			$new_as_player = false;
 		}
 		if (isset($_POST["as-coach"])) {
-			$new_as_coach = 1;
+			$new_as_coach = true;
 		} else {
-			$new_as_coach = 0;
+			$new_as_coach = false;
 		}
 		$new_score = $_POST["score"];
 		$new_votes = $_POST["votes"];
@@ -55,9 +55,9 @@
 		$new_birth_place = $_POST["birth-place"];
 		$new_birth_country = $_POST["birth-country"];
 		if (isset($_POST["is-living"])) {
-			$new_is_living = 1;
+			$new_is_living = true;
 		} else {
-			$new_is_living = 0;
+			$new_is_living = false;
 		}
 		$new_death_date = $_POST["death-date"];
 		$new_position = $_POST["position"];
@@ -202,7 +202,21 @@
 				<input type="text" name="birth-country" placeholder="Country of Birth" id="birth-country" value="<?php echo $country_of_birth; ?>">
 				<br>
 				<label for="nationality">Nationality:</label>
-				<input type="text" name="nationality" placeholder="Nationality" id="nationality" value="<?php echo $nationality; ?>">
+				<select id="nationality" name="nationality">
+				<?php
+					$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+					$country_query = $connectDB->query($countries);
+					while ($dataRows = $country_query->fetch()) {
+						$country_name = $dataRows["display_name"];
+						$country_abbreviation = $dataRows["abbreviation"];
+						echo '<option ';
+						if ($dataRows["abbreviation"] == $nationality) {
+							echo 'selected ';
+						}
+						echo 'value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+					}
+				?>	
+				</select>
 				<br>
 				<label for="position">Position:</label>
 				<input type="text" name="position" placeholder="Position" id="position" value="<?php echo $position; ?>">

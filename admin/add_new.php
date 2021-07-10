@@ -19,10 +19,10 @@
 		
 	switch ($table_id) {
 		case 8:
-			include 'inc/add_person.html';
+			include 'inc/add_person.php';
 			break;
 		default:
-			include 'inc/add_person.html';
+			include 'inc/add_person.php';
 	}
 
 	include 'inc/footer.html';

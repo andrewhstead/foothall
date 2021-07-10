@@ -46,7 +46,7 @@
 				FROM people
 				INNER JOIN countries ON people.nationality = countries.abbreviation
 				WHERE countries.id = $country_id 
-				AND people.admitted = true";
+				AND people.active = true";
 				
 			$member_check = $connectDB->query($members);
 			
