@@ -65,9 +65,9 @@
 		<?php
 		
 			if ($status == 'active') {
-				$table_data = "SELECT * FROM $table_name WHERE active = true";
+				$table_data = "SELECT * FROM $table_name WHERE active = true ORDER BY file_code";
 			} else {
-				$table_data = "SELECT * FROM $table_name WHERE active = false";
+				$table_data = "SELECT * FROM $table_name WHERE active = false ORDER BY file_code";
 			}
 					
 			$data_query = $connectDB->query($table_data);
@@ -81,11 +81,6 @@
 			} else {
 						
 				echo '<table class="data-table">';
-				echo '<thead><tr><th>Name</th><th></th><th></th>';
-				if ($status == 'active') {
-					echo '<th></th>';
-				}
-				echo '</tr></thead>';
 				echo '<tbody>';
 						
 				$table_details = array();
