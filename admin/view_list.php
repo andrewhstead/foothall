@@ -11,10 +11,19 @@
 	
 	$connectDB;
 					
-	if (isset($_GET["id"])) {
-		$table_id = $_GET["id"];
+	if (isset($_GET["type"])) {
+		$table_id = $_GET["type"];
 	} else {
-		$table_id = 8;
+		$table_id = person;
+	}
+	
+	switch ($table_id) {
+		case "people":
+			$identifier = "person";
+			break;
+		case "matches":
+			$identifier = "match";
+			break;
 	}
 					
 	if (isset($_GET["status"])) {
@@ -23,7 +32,7 @@
 		$status = 'active';
 	}
 	
-	$table = "SELECT * FROM tables WHERE id = $table_id";
+	$table = "SELECT * FROM tables WHERE table_name = '$table_id'";
 	$table_query = $connectDB->query($table);
 	
 	while ($dataRows = $table_query->fetch()) {
