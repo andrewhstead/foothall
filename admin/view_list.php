@@ -97,7 +97,7 @@
 					}
 					
 					echo '<td class="button-cell"><span class="admin-button">';
-					echo '<a class="button-link" href="edit_person.php?id='.$dataRows["id"].'">';
+					echo '<a class="button-link" href="edit_record.php?type='.$table_name.'&code='.$dataRows["file_code"].'">';
 					echo 'Edit</a></span></td>';
 					echo '<td class="button-cell"><span class="admin-button">';
 					echo '<a class="button-link" href="delete.php?id='.$dataRows["id"].'">';
