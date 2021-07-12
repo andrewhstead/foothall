@@ -11,14 +11,14 @@
 	
 	$connectDB;
 					
-	if (isset($_GET["id"])) {
-		$table_id = $_GET["id"];
+	if (isset($_GET["type"])) {
+		$table_id = $_GET["type"];
 	} else {
-		$table_id = 8;
+		$table_id = person;
 	}
 	
 	switch ($table_id) {
-		case 8:
+		case "people":
 			$identifier = "person";
 			break;
 	}

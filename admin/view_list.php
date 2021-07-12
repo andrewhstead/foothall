@@ -47,7 +47,7 @@
 				if ($status == "active") {
 					echo '<strong>Active</strong>';
 				} else {
-					echo '<a class="cms-link" href="view_list.php?id='.$table_id.'&status=active">Active</a>';
+					echo '<a class="cms-link" href="view_list.php?type='.$table_name.'&status=active">Active</a>';
 				}
 			?>
 			 | 
@@ -55,11 +55,11 @@
 				if ($status == "inactive") {
 					echo '<strong>Inactive</strong>';
 				} else {
-					echo '<a class="cms-link" href="view_list.php?id='.$table_id.'&status=inactive">Inactive</a>';
+					echo '<a class="cms-link" href="view_list.php?type='.$table_name.'&status=inactive">Inactive</a>';
 				}
 			?>
 			 | 
-			<a class="cms-link" href="add_new.php?id=<?php echo $table_id; ?>">Add New</a>
+			<a class="cms-link" href="add_new.php?type=<?php echo $table_name; ?>">Add New</a>
 		</div>
 		
 		<?php
