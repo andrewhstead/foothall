@@ -17,7 +17,7 @@
 		$table_id = "person";
 	}
 	
-	include 'inc/switch.php';	
+	include 'inc/switch.php';
 					
 	if (isset($_GET["status"])) {
 		$status = $_GET["status"];
@@ -90,11 +90,11 @@
 				while ($dataRows = $data_query->fetch()) {
 
 					echo '<tr>';
-					echo '<td>'.htmlentities($dataRows["name"]).'</td>';
+					echo '<td>'.htmlentities(str_replace('_', ' ', $dataRows[$list_column])).'</td>';
 					
 					if ($status == 'active') {
 						echo '<td class="button-cell"><span class="admin-button">';
-						echo '<a class="button-link" href="../person.php?id='.$dataRows["id"].'">';
+						echo '<a class="button-link" href="../'.$identifier.'.php?id='.$dataRows["id"].'">';
 						echo 'View</a></span></td>';
 					}
 					

@@ -3,9 +3,11 @@
 	switch ($table_id) {
 		case "people":
 			$identifier = "person";
+			$list_column = "name";
 			break;
 		case "matches":
 			$identifier = "match";
+			$list_column = "file_code";
 			break;
 		case "hall_teams":
 			$identifier = "hall_team";
