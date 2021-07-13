@@ -34,9 +34,7 @@
 		</h1>		
 	
 		<h2>
-			<img class="text-icon" src="../img/flags/<?php echo strtolower($nationality); ?>
-				.png" alt="<?php echo htmlentities($nationality); ?>">
-			<?php echo htmlentities($name).'<br>id: '.htmlentities($database_id); ?>
+			<?php echo htmlentities(str_replace('_', ' ', $$list_column)).'<br>id: '.htmlentities($database_id); ?>
 		</h2>		
 		
 		<?php
