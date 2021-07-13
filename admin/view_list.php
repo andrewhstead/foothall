@@ -14,17 +14,10 @@
 	if (isset($_GET["type"])) {
 		$table_id = $_GET["type"];
 	} else {
-		$table_id = person;
+		$table_id = "person";
 	}
 	
-	switch ($table_id) {
-		case "people":
-			$identifier = "person";
-			break;
-		case "matches":
-			$identifier = "match";
-			break;
-	}
+	include 'inc/switch.php';	
 					
 	if (isset($_GET["status"])) {
 		$status = $_GET["status"];
@@ -48,7 +41,7 @@
 	<div class="page-template">
 		
 		<h1>
-			<?php echo ucfirst($table_name); ?>
+			<?php echo ucwords(str_replace('_', ' ', $table_id)); ?>
 		</h1>
 		
 		<div class="centre-text">

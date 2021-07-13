@@ -17,11 +17,7 @@
 		$table_id = person;
 	}
 	
-	switch ($table_id) {
-		case "people":
-			$identifier = "person";
-			break;
-	}
+	include 'inc/switch.php';
 		
 	include 'inc/'.$identifier.'/process_new.php';
 	

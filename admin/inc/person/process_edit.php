@@ -48,7 +48,7 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE id = $person_id";
+		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -81,25 +81,26 @@
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
 			if ($new_admitted == 1) {
-				redirect_to("view_list.php?id=8&status=active");
+				redirect_to("view_list.php?type=people&status=active");
 			} else if ($new_admitted == 0) {
-				redirect_to("view_list.php?id=8&status=inactive");
+				redirect_to("view_list.php?type=people&status=inactive");
 			}
 			
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("edit_person.php?id=$person_id");
+			redirect_to("edit_record.php?type=people&code=$file_code");
 			
 		}
 
 	}
 		
-	$person = "SELECT * FROM people WHERE id = '$person_id'";
+	$person = "SELECT * FROM people WHERE file_code = '$record_id'";
 	$person_query = $connectDB->query($person);
 		
 	while ($dataRows = $person_query->fetch()) {
 
+		$database_id = $dataRows["id"];
 		$name = $dataRows["name"];
 		$file_code = $dataRows["file_code"];
 		$nationality = $dataRows["nationality"];
