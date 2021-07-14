@@ -15,6 +15,15 @@
 				<label for="admission-poll">Admission Poll:</label>
 				<input type="text" name="admission-poll" placeholder="Admitted in Poll..." id="admission-poll" value="<?php echo $admission_poll; ?>">
 				<br><br>
+				<label for="score">Total Rating Score:</label>
+				<input type="text" name="score" placeholder="Total Rating Score..." id="score" value="<?php echo $score; ?>">
+				<br>
+				<label for="votes">Rating Votes:</label>
+				<input type="text" name="votes" placeholder="Rating Votes..." id="votes" value="<?php echo $votes; ?>">
+				<br>
+				<label for="rating">Average Rating:</label>
+				<input type="text" name="rating" placeholder="Average Rating..." id="rating" value="<?php echo $rating; ?>">
+				<br><br>
 				<label for="match-date">Date:</label>
 				<input type="date" name="match-date" placeholder="DD-MM-YYYY" id="match-date" value="<?php echo $date; ?>">
 				<br>

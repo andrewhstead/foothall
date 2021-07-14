@@ -19,6 +19,9 @@
 		} else {
 			$new_admission_poll = $_POST["admission-poll"];
 		}
+		$new_score = $_POST["score"];
+		$new_votes = $_POST["votes"];
+		$new_rating= $_POST["rating"];
 		$new_date = $_POST["match-date"];
 		$new_competition = $_POST["competition"];
 		$new_stage = $_POST["stage"];
@@ -29,7 +32,7 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_match_report = $_POST["match-report"];
 
-		$sql = "UPDATE people SET file_code=:NewFileCode, teams=:NewTeams, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, date=:NewDate, competition=:NewCompetition, stage=:NewStage, team_1=:NewTeam1, score_1=:NewScore1, team_2=:NewTeam2, score_2=:NewScore2, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
+		$sql = "UPDATE matches SET file_code=:NewFileCode, teams=:NewTeams, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, date=:NewDate, competition=:NewCompetition, stage=:NewStage, team_1=:NewTeam1, score_1=:NewScore1, team_2=:NewTeam2, score_2=:NewScore2, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -38,6 +41,9 @@
 		$stmt->bindValue(':NewAdmitted', $new_admitted);
 		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
 		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
+		$stmt->bindValue(':NewScore', $new_score);
+		$stmt->bindValue(':NewVotes', $new_votes);
+		$stmt->bindValue(':NewRating', $new_rating);
 		$stmt->bindValue(':NewDate', $new_date);
 		$stmt->bindValue(':NewCompetition', $new_competition);
 		$stmt->bindValue(':NewStage', $new_stage);
@@ -80,6 +86,9 @@
 		$admitted = $dataRows["active"];
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];
+		$score = $dataRows["score"];
+		$votes = $dataRows["votes"];
+		$rating = $dataRows["rating"];
 		$date = $dataRows["date"];
 		$competition = $dataRows["competition"];
 		$stage = $dataRows["stage"];
