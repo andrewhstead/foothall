@@ -1,6 +1,13 @@
-		<h1 class="info-page">
-			<?php echo htmlentities($competition).' '. htmlentities($stage); ?> 
-		</h1>
+		<table class="scoreboard">
+			<tr>
+				<td><?php echo htmlentities(strtoupper($team_1)); ?></td>
+				<td><?php echo htmlentities($score_1); ?></td>
+			</tr>
+			<tr>
+				<td><?php echo htmlentities(strtoupper($team_2)); ?></td>
+				<td><?php echo htmlentities($score_2); ?></td>
+			</tr>
+		</table>
 		
 		<div class="sub-heading">
 			
