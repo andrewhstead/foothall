@@ -4,10 +4,15 @@
 		
 		$new_file_code = $_POST["file-code"];
 		$new_teams = $_POST["teams-type"];
-		if (isset($_POST["admitted"])) {
+		if ($_POST["status"] == "admitted") {
 			$new_admitted = true;
+			$new_contender = false;
+		} elseif ($_POST["status"] == "contender") {
+			$new_admitted = false;
+			$new_contender = true;
 		} else {
 			$new_admitted = false;
+			$new_contender = false;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -32,12 +37,13 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_match_report = $_POST["match-report"];
 
-		$sql = "UPDATE matches SET file_code=:NewFileCode, teams=:NewTeams, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, date=:NewDate, competition=:NewCompetition, stage=:NewStage, team_1=:NewTeam1, score_1=:NewScore1, team_2=:NewTeam2, score_2=:NewScore2, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
+		$sql = "UPDATE matches SET file_code=:NewFileCode, teams=:NewTeams, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, date=:NewDate, competition=:NewCompetition, stage=:NewStage, team_1=:NewTeam1, score_1=:NewScore1, team_2=:NewTeam2, score_2=:NewScore2, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewFileCode', $new_file_code);
 		$stmt->bindValue(':NewTeams', $new_teams);
+		$stmt->bindValue(':NewContender', $new_contender);
 		$stmt->bindValue(':NewAdmitted', $new_admitted);
 		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
 		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
@@ -60,8 +66,10 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_admitted == 1) {
+			if ($new_admitted == true) {
 				redirect_to("view_list.php?type=matches&status=active");
+			} else if (($new_contender == true) && ($new_admitted == false)) {
+				redirect_to("view_list.php?type=matches&status=contenders");
 			} else if ($new_admitted == 0) {
 				redirect_to("view_list.php?type=matches&status=inactive");
 			}
@@ -83,7 +91,13 @@
 		$database_id = $dataRows["id"];
 		$file_code = $dataRows["file_code"];
 		$teams = $dataRows["teams"];
+		$contender = $dataRows["contender"];
 		$admitted = $dataRows["active"];
+		if (($contender == true) or ($admitted == true)) {
+			$inactive = false;
+		} else {
+			$inactive = true;
+		}
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];
 		$score = $dataRows["score"];

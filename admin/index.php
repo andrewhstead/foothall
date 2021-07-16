@@ -6,7 +6,7 @@
 	
 	require_once '../inc/db.php';
 	require_once '../inc/functions.php';
-	include 'inc/header.html';
+	include 'inc/header.php';
 	
 	confirm_login();
 	
@@ -52,18 +52,40 @@
 					
 					echo '<div class="right-section">';
 					
-						echo '<div class="admin-link-box">';
-						echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=active">';
-						echo 'View Active';
-						echo '</a>';
-						echo '</div>';
-					
-						echo '<div class="admin-link-box">';
-						echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=inactive">';
-						echo 'View Inactive';
-						echo '</a>';
-						echo '</div>';
+						if ($table_menu["table_type"] == "hall") {
+							
+							echo '<div class="admin-link-box">';
+							echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=active">';
+							echo 'View Active';
+							echo '</a>';
+							echo '</div>';
 						
+							echo '<div class="admin-link-box">';
+							echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=contenders">';
+							echo 'View Contenders';
+							echo '</a>';
+							echo '</div>';
+						
+							if ($table_menu["table_name"] != "hall-teams") {
+								
+								echo '<div class="admin-link-box">';
+								echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=inactive">';
+								echo 'View Inactive';
+								echo '</a>';
+								echo '</div>';
+								
+							}
+						
+						} else {
+							
+							echo '<div class="admin-link-box">';
+							echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'">';
+							echo 'View List';
+							echo '</a>';
+							echo '</div>';
+							
+						}
+										
 						echo '<div class="admin-link-box">';
 						echo '<a class="admin-link" href="add_new.php?type='.$table_menu["table_name"].'">';
 						echo 'Add New';

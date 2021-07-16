@@ -17,7 +17,13 @@
 						echo 'After Extra-Time';
 					}
 					if ($penalties) {
-						echo ', '.$penalty_winner.' win '.$penalties_1.'-'.$penalties_2.' on penalties';
+						echo ', '.$penalty_winner.' win ';
+						if ($penalties_1 > $penalties_2) {
+							echo $penalties_1.'-'.$penalties_2;
+						} elseif ($penalties_2 > $penalties_1) {
+							echo $penalties_2.'-'.$penalties_1;
+						}
+						echo ' on penalties';
 					}
 				?>
 			</div>

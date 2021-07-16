@@ -6,8 +6,12 @@
 				<label for="teams-type">Club/National:</label>
 				<input type="text" name="teams-type" placeholder="Club or National?" id="teams-type" value="<?php echo $teams; ?>">
 				<br><br>
-				<label for="admitted">Admitted?</label>
-				<input type="checkbox" name="admitted" id="admitted" <?php if ($admitted) { echo 'checked'; } ?>>
+				<label for="admitted">Admitted:</label>
+				<input type="radio" name="status" id="admitted" value="admitted" <?php if ($admitted) { echo 'checked'; } ?>>
+				<label for="contender">Contender:</label>
+				<input type="radio" name="status" id="contender" value="contender" <?php if ($contender) { echo 'checked'; } ?>>
+				<label for="admitted">Inactive:</label>
+				<input type="radio" name="status" id="inactive" value="inactive" <?php if (!$admitted and !$contender) { echo 'checked'; } ?>>
 				<br>
 				<label for="admission-date">Admission Date:</label>
 				<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date" value="<?php echo $admission_date; ?>">

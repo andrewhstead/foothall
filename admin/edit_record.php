@@ -5,7 +5,7 @@
 	
 	require_once '../inc/db.php';
 	require_once '../inc/functions.php';
-	include 'inc/header.html';
+	include 'inc/header.php';
 	
 	confirm_login();
 	
@@ -28,7 +28,7 @@
 ?>
 
 	<div class="page-template">
-	
+	<?php if(isset($_POST["submit"])) { echo $_POST["status"]; } ?>
 		<h1>
 			Edit <?php echo ucfirst($identifier); ?>
 		</h1>		

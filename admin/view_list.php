@@ -5,7 +5,7 @@
 	
 	require_once '../inc/db.php';
 	require_once '../inc/functions.php';
-	include 'inc/header.html';
+	include 'inc/header.php';
 	
 	confirm_login();
 	
@@ -54,6 +54,14 @@
 			?>
 			 | 
 			<?php
+				if ($status == "contenders") {
+					echo '<strong>Contenders</strong>';
+				} else {
+					echo '<a class="cms-link" href="view_list.php?type='.$table_name.'&status=contenders">Contenders</a>';
+				}
+			?>
+			 | 
+			<?php
 				if ($status == "inactive") {
 					echo '<strong>Inactive</strong>';
 				} else {
@@ -68,8 +76,10 @@
 		
 			if ($status == 'active') {
 				$table_data = "SELECT * FROM $table_name WHERE active = true ORDER BY file_code";
+			} elseif ($status == 'contenders') {
+				$table_data = "SELECT * FROM $table_name WHERE contender = true ORDER BY file_code";
 			} else {
-				$table_data = "SELECT * FROM $table_name WHERE active = false ORDER BY file_code";
+				$table_data = "SELECT * FROM $table_name WHERE active = false AND contender = false ORDER BY file_code";
 			}
 					
 			$data_query = $connectDB->query($table_data);

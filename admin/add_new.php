@@ -5,7 +5,7 @@
 	
 	require_once '../inc/db.php';
 	require_once '../inc/functions.php';
-	include 'inc/header.html';
+	include 'inc/header.php';
 	
 	confirm_login();
 	

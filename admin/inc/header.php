@@ -44,10 +44,13 @@
 			<ul class="menu-items toggle-items">
 				<li><a class="menu-link" href="../index.php">Website Home</a></li>
 			</ul>
-			<ul class="menu-items toggle-items">
-				<li><a class="menu-link" href="logout.php">Log Out</a></li>
-			</ul>
-		
+			
+			<?php
+				if(isset($_SESSION["user_id"])) {
+					echo '<ul class="menu-items toggle-items"><li><a class="menu-link" href="logout.php">Log Out</a></li></ul>';
+				}
+			?>	
+					
 		</nav>
 		
 		<main>
