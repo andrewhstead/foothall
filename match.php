@@ -35,9 +35,14 @@
 		matches.date AS date,
 		matches.competition AS competition,
 		matches.stage AS stage,
+		matches.stadium AS stadium,
+		matches.city AS city,
+		matches.country AS country,
 		team_1.display_name AS team_1_name,
+		team_1.country AS team_1_nat,
 		matches.score_1 AS score_1,
 		team_2.display_name AS team_2_name,
+		team_2.country AS team_2_nat,
 		matches.score_2 AS score_2,
 		matches.intro_text AS intro_text,
 		matches.match_report AS match_report
@@ -50,16 +55,21 @@
 	while ($dataRows = $match_query->fetch()) {
 
 		$admitted = $dataRows["admitted"];
-		$admission_date = $dataRows["admission_date"];
+		$admission_date = new DateTime($dataRows["admission_date"]);
 		$admission_poll = $dataRows["admission_poll"];
 		$votes = $dataRows["votes"];
 		$rating = $dataRows["rating"];
-		$date = $dataRows["date"];
+		$date = new DateTime($dataRows["date"]);
 		$competition = $dataRows["competition"];
 		$stage = $dataRows["stage"];
+		$stadium = $dataRows["stadium"];
+		$city = $dataRows["city"];
+		$country = $dataRows["country"];
 		$team_1 = $dataRows["team_1_name"];
+		$team_1_nat = $dataRows["team_1_nat"];
 		$score_1 = $dataRows["score_1"];
 		$team_2 = $dataRows["team_2_name"];
+		$team_2_nat = $dataRows["team_2_nat"];
 		$score_2 = $dataRows["score_2"];
 		$intro_text = $dataRows["intro_text"];
 		$match_report = $dataRows["match_report"];

@@ -9,17 +9,45 @@
 			</tr>
 		</table>
 		
-		<div class="sub-heading">
+		<div class="match-stats">
 			
-		</div>
-		
-		<div class="person-stats">
-			
-			<div class="personal-details">
-				
+			<div class="match-details">
+				<?php echo htmlentities($competition).' '.htmlentities($stage).', '.date_format($date, "j F Y"); ?><br>
+				<?php echo htmlentities($stadium).', <img class="poll-icon" src="img/flags/'.$country.'.png" alt="'.$country.'"> '.htmlentities($city); ?>
 			</div>
 			
 			<div class="hall-status">
+				Elected: 
+				<?php 
+					if ($admission_poll) {
+						echo '<a class="post-link" href="poll.php?id='
+							.$admission_poll.'">'
+							.date_format($admission_date, "d F Y")
+							.'</a>';
+						} else {
+						echo date_format($admission_date, "d F Y").' (EP)'; 
+					}
+				?>
+				<br>
+				
+				Rating: <?php echo htmlentities($rating); ?> (<?php echo htmlentities($votes); ?> votes)
+				<div class="rating-bar">
+					Submit Your Rating: 
+					<div class="rating-buttons">
+						<?php
+							for ($score = 1; $score <= 10; $score++) {
+								echo '
+								<div class="rating-block">
+								<form method="post" action="match.php?id='.$match_id.'">
+								<input type="hidden" name="chosen" value="'.$score.'">
+								<input class="rating-block" type="submit" name="vote" value="'.$score.'">
+								</form>
+								</div>
+								';
+							}
+						?>						
+					</div>
+				</div>
 				
 			</div>
 		

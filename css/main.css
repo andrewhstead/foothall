@@ -604,12 +604,18 @@ div.admin-link-box:last-of-type {
 	font-family: DotMatrix;
 	background-color: black;
 	color: white;
-	border: 5px solid #cfb53b;
-    border-collapse: collapse;
     font-size: 1.5em;
     margin: 0 auto;
+    font-weight: normal;
+	border: 5px solid #cfb53b;
+    border-collapse: collapse;
+    padding: 0;
 }
 .scoreboard td {
 	padding: 7px 5px 0 8px;
 	border: 1px solid #cfb53b;
+}
+.match-details {
+	text-align: center;
+	margin: 5px 0;
 }
