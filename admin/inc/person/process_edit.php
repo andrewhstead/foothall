@@ -5,10 +5,15 @@
 		$new_name = $_POST["person-name"];
 		$new_file_code = $_POST["file-code"];
 		$new_nationality = $_POST["nationality"];
-		if (isset($_POST["admitted"])) {
+		if ($_POST["status"] == "admitted") {
 			$new_admitted = true;
+			$new_contender = false;
+		} elseif ($_POST["status"] == "contender") {
+			$new_admitted = false;
+			$new_contender = true;
 		} else {
 			$new_admitted = false;
+			$new_contender = false;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -48,13 +53,14 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE file_code = '$record_id'";
+		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewName', $new_name);
 		$stmt->bindValue(':NewFileCode', $new_file_code);
 		$stmt->bindValue(':NewNationality', $new_nationality);
+		$stmt->bindValue(':NewContender', $new_contender);
 		$stmt->bindValue(':NewAdmitted', $new_admitted);
 		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
 		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
@@ -80,8 +86,10 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_admitted == 1) {
+			if ($new_admitted == true) {
 				redirect_to("view_list.php?type=people&status=active");
+			} else if (($new_contender == true) && ($new_admitted == false)) {
+				redirect_to("view_list.php?type=people&status=contenders");
 			} else if ($new_admitted == 0) {
 				redirect_to("view_list.php?type=people&status=inactive");
 			}
@@ -104,6 +112,7 @@
 		$name = $dataRows["name"];
 		$file_code = $dataRows["file_code"];
 		$nationality = $dataRows["nationality"];
+		$contender = $dataRows["contender"];
 		$admitted = $dataRows["active"];
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];

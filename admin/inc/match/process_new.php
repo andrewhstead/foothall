@@ -5,12 +5,15 @@
 		$new_name = $_POST["person-name"];
 		$new_file_code = $_POST["file-code"];
 		$new_nationality = $_POST["nationality"];
-		if (isset($_POST["admitted"])) {
+		if ($_POST["status"] == "admitted") {
 			$new_admitted = true;
 			$new_contender = false;
-		} else {
+		} elseif ($_POST["status"] == "contender") {
 			$new_admitted = false;
 			$new_contender = true;
+		} else {
+			$new_admitted = false;
+			$new_contender = false;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;

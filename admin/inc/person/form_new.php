@@ -12,8 +12,12 @@
 				<label for="picture-credit">Picture Credit:</label>
 				<input type="text" name="picture-credit" placeholder="Picture Credit" id="picture-credit">
 				<br><br>
-				<label for="admitted">Admitted?</label>
-				<input type="checkbox" name="admitted" id="admitted">
+				<label for="admitted">Admitted:</label>
+				<input type="radio" name="status" id="admitted" value="admitted">
+				<label for="contender">Contender:</label>
+				<input type="radio" name="status" id="contender" value="contender">
+				<label for="admitted">Inactive:</label>
+				<input type="radio" name="status" id="inactive" value="inactive">
 				<br>
 				<label for="admission-date">Admission Date:</label>
 				<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date">
