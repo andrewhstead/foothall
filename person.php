@@ -61,7 +61,7 @@
 		
 	}
 	
-	$tags = "
+/*	$tags = "
 		SELECT 
 			people_tags.person_id AS person_id,
 			people_tags.tag_id AS tag_id,
@@ -79,7 +79,7 @@
 		
 		$tag_list[] = $tag_name;
 		
-	}
+	} */
 		
 ?>
 
