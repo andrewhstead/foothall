@@ -44,6 +44,10 @@
 		team_2.display_name AS team_2_name,
 		team_2.country AS team_2_nat,
 		matches.score_2 AS score_2,
+		matches.extra_time AS extra_time,
+		matches.penalties AS penalties,
+		matches.penalties_1 AS penalties_1,
+		matches.penalties_2 AS penalties_2,
 		matches.intro_text AS intro_text,
 		matches.match_report AS match_report
 		FROM matches 
@@ -71,8 +75,18 @@
 		$team_2 = $dataRows["team_2_name"];
 		$team_2_nat = $dataRows["team_2_nat"];
 		$score_2 = $dataRows["score_2"];
+		$extra_time = $dataRows["extra_time"];
+		$penalties = $dataRows["penalties"];
+		$penalties_1 = $dataRows["penalties_1"];
+		$penalties_2 = $dataRows["penalties_2"];
 		$intro_text = $dataRows["intro_text"];
 		$match_report = $dataRows["match_report"];
+		
+		if ($penalties_1 > $penalties_2) {
+			$penalty_winner = $team_1;
+		} elseif ($penalties_2 > $penalties_1) {
+			$penalty_winner = $team_2;
+		}
 		
 	}
 		

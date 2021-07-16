@@ -615,6 +615,10 @@ div.admin-link-box:last-of-type {
 	padding: 7px 5px 0 8px;
 	border: 1px solid #cfb53b;
 }
+.score-details {
+	text-align: center;
+	font-size: 0.9em;
+}
 .match-details {
 	text-align: center;
 	margin: 5px 0;

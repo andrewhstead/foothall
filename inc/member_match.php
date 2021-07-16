@@ -11,6 +11,17 @@
 		
 		<div class="match-stats">
 			
+			<div class="score-details">
+					<?php
+					if ($extra_time) {
+						echo 'After Extra-Time';
+					}
+					if ($penalties) {
+						echo ', '.$penalty_winner.' win '.$penalties_1.'-'.$penalties_2.' on penalties';
+					}
+				?>
+			</div>
+			
 			<div class="match-details">
 				<?php echo htmlentities($competition).' '.htmlentities($stage).', '.date_format($date, "j F Y"); ?><br>
 				<?php echo htmlentities($stadium).', <img class="poll-icon" src="img/flags/'.$country.'.png" alt="'.$country.'"> '.htmlentities($city); ?>
