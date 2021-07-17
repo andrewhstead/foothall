@@ -93,13 +93,56 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>
-								<img src="/img/kits/teams/<?php echo strtolower($team_1_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
+							<td class="shirt">
+								<img class="team-shirt" src="img/kits/teams/<?php echo strtolower($team_1_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
 							</td>
-							<td>
-								<img src="/img/kits/teams/<?php echo strtolower($team_2_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
+							<td class="shirt">
+								<img class="team-shirt" src="img/kits/teams/<?php echo strtolower($team_2_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
 							</td>
 						</tr>
+	
+						<?php
+							$lineups = "SELECT 
+										people.name AS name,
+										people.nationality AS nationality,
+										people_matches.shirt AS shirt,
+										people_matches.started AS started,
+										people_matches.sub_appeared AS sub_appeared,
+										people_matches.captain AS captain
+										FROM people_matches
+										INNER JOIN people ON people_matches.person_id = people.id 
+										WHERE match_id = '$match_id' 
+										ORDER BY shirt";
+							$lineup_query = $connectDB->query($lineups);
+							
+							while ($dataRows = $lineup_query->fetch()) {
+
+								$nationality = $dataRows["nationality"];
+								$person = $dataRows["name"];
+								$shirt = $dataRows["shirt"];
+								$started = $dataRows["started"];
+								$sub_appeared = $dataRows["sub_appeared"];
+								$captain = $dataRows["captain"];
+								
+								echo '<tr>';
+								
+									echo '<td>';
+									if ($nationality == "FRG") {
+										echo $person;
+									}
+									echo '</td>';
+									
+									echo '<td>';
+									if ($nationality == "HUN") {
+										echo $person;
+									}
+									echo '</td>';
+								
+								echo '</tr>';
+								
+							}
+						?>
+	
 					</tbody>
 				</table>
 				

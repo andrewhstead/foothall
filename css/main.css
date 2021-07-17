@@ -627,6 +627,12 @@ div.admin-link-box:last-of-type {
 .line-ups  {
 	width: 100%;
 }
-.line-ups  th {
+.line-ups th {
 	width: 50%;
+}
+.line-ups td {
+	text-align: center;
+}
+.team-shirt {
+	width: 100px;
 }
