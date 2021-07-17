@@ -623,3 +623,10 @@ div.admin-link-box:last-of-type {
 	text-align: center;
 	margin: 5px 0;
 }
+
+.line-ups  {
+	width: 100%;
+}
+.line-ups  th {
+	width: 50%;
+}

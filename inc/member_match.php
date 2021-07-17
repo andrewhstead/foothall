@@ -76,6 +76,35 @@
 				<?php echo html_entity_decode($intro_text); ?>
 			</div>
 			
+			<div>
+				
+				<h2>Line-Ups</h2>
+				
+				<table class="line-ups">
+					<thead>
+						<tr>
+							<th>
+								<?php echo html_entity_decode($team_1); ?>
+							</th>
+							<th>
+								<?php echo html_entity_decode($team_2); ?>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<img src="/img/kits/teams/<?php echo strtolower($team_1_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
+							</td>
+							<td>
+								<img src="/img/kits/teams/<?php echo strtolower($team_2_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+			
 			<div class="formatted-text">
 				<?php echo html_entity_decode($match_report); ?>
 			</div>

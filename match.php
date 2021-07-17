@@ -33,6 +33,7 @@
 		matches.votes AS votes,
 		matches.rating AS rating,
 		matches.date AS date,
+		year(matches.date) AS year,
 		matches.competition AS competition,
 		matches.stage AS stage,
 		matches.stadium AS stadium,
@@ -64,6 +65,7 @@
 		$votes = $dataRows["votes"];
 		$rating = $dataRows["rating"];
 		$date = new DateTime($dataRows["date"]);
+		$year = $dataRows["year"];
 		$competition = $dataRows["competition"];
 		$stage = $dataRows["stage"];
 		$stadium = $dataRows["stadium"];
