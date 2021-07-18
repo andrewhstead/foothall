@@ -31,6 +31,8 @@
 			<div class="match-details">
 				<?php echo htmlentities($competition).' '.htmlentities($stage).', '.date_format($date, "j F Y"); ?><br>
 				<?php echo htmlentities($stadium).', <img class="poll-icon" src="img/flags/'.$country.'.png" alt="'.$country.'"> '.htmlentities($city); ?>
+				<br>
+				Attendance: <?php echo htmlentities($attendance); ?>
 			</div>
 			
 			<div class="hall-status">
@@ -78,7 +80,7 @@
 			
 			<div>
 				
-				<h2>Line-Ups</h2>
+			<h2>Line-Ups</h2>
 				
 				<table class="line-ups">
 					<thead>
@@ -93,11 +95,11 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td class="shirt">
-								<img class="team-shirt" src="img/kits/teams/<?php echo strtolower($team_1_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
+							<td class="team-shirt">
+								<img src="img/kits/teams/<?php echo strtolower($team_1_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
 							</td>
-							<td class="shirt">
-								<img class="team-shirt" src="img/kits/teams/<?php echo strtolower($team_2_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
+							<td class="team-shirt">
+								<img src="img/kits/teams/<?php echo strtolower($team_2_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
 							</td>
 						</tr>
 	
@@ -106,6 +108,7 @@
 										people.name AS name,
 										people.nationality AS nationality,
 										people_matches.shirt AS shirt,
+										people_matches.team AS team,
 										people_matches.started AS started,
 										people_matches.sub_appeared AS sub_appeared,
 										people_matches.captain AS captain
@@ -115,33 +118,49 @@
 										ORDER BY shirt";
 							$lineup_query = $connectDB->query($lineups);
 							
+							$team_1_lineup = array();
+							$team_2_lineup = array();
+														
 							while ($dataRows = $lineup_query->fetch()) {
 
 								$nationality = $dataRows["nationality"];
 								$person = $dataRows["name"];
 								$shirt = $dataRows["shirt"];
+								$team = $dataRows["team"];
 								$started = $dataRows["started"];
 								$sub_appeared = $dataRows["sub_appeared"];
 								$captain = $dataRows["captain"];
 								
-								echo '<tr>';
-								
-									echo '<td>';
-									if ($nationality == "FRG") {
-										echo $person;
-									}
-									echo '</td>';
-									
-									echo '<td>';
-									if ($nationality == "HUN") {
-										echo $person;
-									}
-									echo '</td>';
-								
-								echo '</tr>';
+								if ($team == $team_1_abb) {
+									$team_1_lineup[$shirt] = $person;
+								} elseif ($team == $team_2_abb) {
+									$team_2_lineup[$shirt] = $person;
+								}
 								
 							}
+							
 						?>
+						
+						<tr>
+							<td class="team-1">
+								<?php
+									foreach($team_1_lineup as $shirt => $person) {
+										echo $person;
+										echo '<img class="line-up-shirt" src="img/kits/teams/'.strtolower($team_1_nat).'_'.$year.'/'.$shirt.'.png" alt="'.$team_1.'">';
+										echo '<br>';
+									}
+								?>
+							</td>
+							<td class="team-2">
+								<?php
+									foreach($team_2_lineup as $shirt => $person) {
+										echo '<img class="line-up-shirt" src="img/kits/teams/'.strtolower($team_2_nat).'_'.$year.'/'.$shirt.'.png" alt="'.$team_2.'">';
+										echo $person;
+										echo '<br>';
+									}
+								?>
+							</td>
+						</tr>
 	
 					</tbody>
 				</table>
@@ -149,6 +168,8 @@
 			</div>
 			
 			<div class="formatted-text">
+				<h2>Match Report</h2>
+				
 				<?php echo html_entity_decode($match_report); ?>
 			</div>
 			

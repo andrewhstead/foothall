@@ -630,9 +630,18 @@ div.admin-link-box:last-of-type {
 .line-ups th {
 	width: 50%;
 }
-.line-ups td {
+.team-shirt {
 	text-align: center;
 }
-.team-shirt {
+.team-shirt img {
 	width: 100px;
+}
+.line-up-shirt {
+	height: 30px;
+}
+.team-1 {
+	text-align: right;
+}
+.team-2 {
+	text-align: left;
 }
