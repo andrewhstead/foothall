@@ -176,9 +176,15 @@
 					
 				</table>
 				
-				<h3 class="centre-text">Substitutes</h3>
+				<?php
+					if (count($team_1_subs) + count($team_2_subs) > 0) {
+						echo '<h3 class="centre-text">Substitutes</h3>';
+						echo '<table class="line-ups">';
+					} else {
+						echo '<table class="hidden">';
+					}
+				?>
 				
-				<table class="line-ups">
 					<tbody>
 						<tr>
 							<td class="team-1">

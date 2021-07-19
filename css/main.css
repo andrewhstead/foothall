@@ -638,6 +638,8 @@ div.admin-link-box:last-of-type {
 }
 .line-up-shirt {
 	height: 30px;
+	vertical-align: text-bottom;
+	margin: 2px 2px 0 2px;
 }
 .team-1 {
 	text-align: right;
@@ -646,4 +648,7 @@ div.admin-link-box:last-of-type {
 .team-2 {
 	text-align: left;
 	vertical-align: top;
+}
+.hidden {
+	display: none;
 }
