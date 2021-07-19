@@ -1,4 +1,4 @@
-			<form class="edit-form" method="post" action="new_person.php">
+			<form class="edit-form" method="post" action="add_new.php?type=people">
 				
 				<label for="person-name">Display Name:</label>
 				<input type="text" name="person-name" placeholder="Name to Display" id="person-name">

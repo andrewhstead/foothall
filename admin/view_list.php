@@ -99,8 +99,11 @@
 				
 				while ($dataRows = $data_query->fetch()) {
 
-					echo '<tr>';
-					echo '<td>'.htmlentities(str_replace('_', ' ', $dataRows[$list_column])).'</td>';
+					echo '<tr><td>';
+					if ($table_name == "people") {
+						echo '<img class="text-icon" src="../img/flags/'.strtolower($dataRows["nationality"]).'.png" alt="'.htmlentities($dataRows["nationality"]).'"> ';
+					}
+					echo str_replace('_', ' ', $dataRows[$list_column]).'</td>';
 					
 					if ($status == 'active') {
 						echo '<td class="button-cell"><span class="admin-button">';

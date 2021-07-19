@@ -104,15 +104,19 @@ li.menu-link:hover {
 
 .feed-icon {
 	height: 25px;
+	vertical-align: text-bottom;
 }
 .text-icon {
 	height: 20px;
+	vertical-align: text-bottom;
 }
 .poll-icon {
 	height: 15px;
+	vertical-align: text-bottom;
 }
 .header-icon {
 	height: 30px;
+	vertical-align: text-bottom;
 }
 
 .post-title {
