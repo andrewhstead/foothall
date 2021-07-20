@@ -11,7 +11,7 @@
 			
 			<div class="personal-details">
 			
-				<div class="picture-frame">
+				<div class="portrait-frame">
 					<img class="portrait" src="img/portraits/
 					<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
 					<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>

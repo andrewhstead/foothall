@@ -118,6 +118,10 @@ li.menu-link:hover {
 	height: 30px;
 	vertical-align: text-bottom;
 }
+.banner-icon {
+	height: 45px;
+	vertical-align: text-bottom;
+}
 
 .post-title {
 	font-size: 1.5em;
@@ -368,11 +372,18 @@ h1.info-page:first-of-type {
 	font-size: 1em;
 }
 
-.picture-frame {
+.portrait-frame {
 	margin-right: 10px;
 	float: left;
 	border: 2px solid #321c20;
 	color: #cfb53b;
+}
+
+.team-picture-frame {
+	border: 2px solid #321c20;
+	color: #cfb53b;
+	margin: 10px auto 0 auto;
+	max-width: 600px;
 }
 
 .portrait {
@@ -380,10 +391,17 @@ h1.info-page:first-of-type {
 	max-width: 100px;
 }
 
+.team-picture {
+	display: block;
+	width: 100%;
+	float: left;
+}
+
 .copyright-info{
 	background-color: #321c20;
 	padding: 2px;
 	font-size: 0.8em;
+	clear: both;
 }
 
 .biography {

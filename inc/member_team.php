@@ -1,4 +1,14 @@
-		<h1><?php echo $name.' '.$era; ?></h1>
+		<h1 class="info-page">
+			<img class="banner-icon" src="img/flags/<?php echo strtolower($nationality); ?>
+				.png" alt="<?php echo htmlentities($nationality); ?>">
+			<?php echo $name.' '.$era; ?>
+		</h1>
+		
+		<div class="team-picture-frame">
+			<img class="team-picture" src="img/teams/
+			<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
+			<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
+		</div>
 		
 		<div class="hall-status">
 			Elected: 
