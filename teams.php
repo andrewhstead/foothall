@@ -10,13 +10,14 @@
 	$teams = "
 		SELECT 
 		hall_teams.id AS team_id,
+		hall_teams.file_code AS file_code,
 		hall_teams.display_name AS name,
 		hall_teams.era AS era,
 		hall_teams.biography AS biography,
 		teams.type AS type
 		FROM hall_teams 
 		INNER JOIN teams on hall_teams.display_name = teams.display_name
-		WHERE admitted = true ORDER BY type desc, hall_teams.admission_date";
+		WHERE active = true ORDER BY type desc, hall_teams.admission_date";
 	$team_query = $connectDB->query($teams);
 	
 	$team_list = array();

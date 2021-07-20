@@ -40,12 +40,12 @@
 				<label for="team-1">Team 1:</label>
 				<input type="text" name="team-1" placeholder="Team Name" id="team-1">
 				<label for="score-1">Score:</label>
-				<input type="text" name="score-1" placeholder="0" id="score-1">
+				<input type="text" name="score-1" placeholder="0" id="score-1" size="1">
 				<br>
 				<label for="team-2">Team 2:</label>
 				<input type="text" name="team-2" placeholder="Team Name" id="team-2">
 				<label for="score-2">Score:</label>
-				<input type="text" name="score-2" placeholder="0" id="score-2">
+				<input type="text" name="score-2" placeholder="0" id="score-2" size="1">
 				<br><br>
 				<label for="intro-text">Introductory Text:</label>
 				<textarea class="editable-area" rows="5" cols="35" name="intro-text"></textarea>

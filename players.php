@@ -16,7 +16,7 @@
 			countries.display_name AS country 
 		FROM people 
 		INNER JOIN countries ON people.nationality = countries.abbreviation
-		WHERE admitted = true AND as_player = true  
+		WHERE active = true AND as_player = true  
 		ORDER BY nationality, file_code";
 	$player_query = $connectDB->query($players);
 	

@@ -36,11 +36,12 @@
 		hall_teams.display_name AS name,
 		hall_teams.era AS era,
 		teams.country AS nationality,
-		hall_teams.biography AS biography,
+		hall_teams.intro_text AS intro_text,
+		hall_teams.biography AS biography
 		FROM hall_teams 
 		INNER JOIN teams ON hall_teams.team_name = teams.name 
 		WHERE hall_teams.id = '$team_id'";
-	$team_query = $connectDB->query($match);
+	$team_query = $connectDB->query($team);
 	
 	while ($dataRows = $team_query->fetch()) {
 
@@ -53,13 +54,8 @@
 		$name = $dataRows["name"];
 		$era = $dataRows["era"];
 		$nationality = $dataRows["nationality"];
+		$intro_text = $dataRows["intro_text"];
 		$biography = $dataRows["biography"];
-		
-		if ($penalties_1 > $penalties_2) {
-			$penalty_winner = $team_1;
-		} elseif ($penalties_2 > $penalties_1) {
-			$penalty_winner = $team_2;
-		}
 		
 	}
 		
