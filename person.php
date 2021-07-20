@@ -48,6 +48,7 @@
 		$position = $dataRows["position"];
 		$intro_text = $dataRows["intro_text"];
 		$picture_credit = $dataRows["picture_credit"];
+		$license_link = $dataRows["license_link"];
 		$biography = $dataRows["biography"];
 		
 		$country = "SELECT * FROM countries WHERE abbreviation = '$nationality'";

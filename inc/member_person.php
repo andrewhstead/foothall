@@ -14,7 +14,17 @@
 				<div class="portrait-frame">
 					<img class="portrait" src="img/portraits/
 					<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
-					<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
+					<div class="copyright-info">
+						<?php
+							if ($license_link) {
+								echo '<a class="menu-link" href="'.htmlentities($license_link).'">';
+							}
+							echo htmlentities($picture_credit);
+							if ($license_link) {
+								echo '</a>';
+							}
+						?>
+					</div>
 				</div>
 				<strong>Date of Birth:</strong> <?php echo date_format($date_of_birth, "d/m/Y"); ?><br>
 				<strong>Place of Birth:</strong> <?php echo htmlentities($place_of_birth).', '.htmlentities($country_of_birth); ?><br>

@@ -7,7 +7,11 @@
 		<div class="team-picture-frame">
 			<img class="team-picture" src="img/teams/
 			<?php echo htmlentities($file_code); ?>.jpg" alt="<?php echo htmlentities($name); ?>">
-			<div class="copyright-info"><?php echo htmlentities($picture_credit); ?></div>
+			<div class="copyright-info">
+				<a class="menu-link" href="<?php echo htmlentities($license_link); ?>">
+					<?php echo htmlentities($picture_credit); ?>
+				</a>
+			</div>
 		</div>
 		
 		<div class="hall-status">

@@ -38,6 +38,7 @@
 		teams.country AS nationality,
 		hall_teams.intro_text AS intro_text,
 		hall_teams.picture_credit AS picture_credit,
+		hall_teams.license_link AS license_link,
 		hall_teams.biography AS biography
 		FROM hall_teams 
 		INNER JOIN teams ON hall_teams.team_name = teams.name 
@@ -57,6 +58,7 @@
 		$nationality = $dataRows["nationality"];
 		$intro_text = $dataRows["intro_text"];
 		$picture_credit = $dataRows["picture_credit"];
+		$license_link = $dataRows["license_link"];
 		$biography = $dataRows["biography"];
 		
 	}
