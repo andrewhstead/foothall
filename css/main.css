@@ -211,6 +211,10 @@ h3 {
 	text-align: left;
 }
 
+.inline-heading {
+	padding-top: 0px;
+}
+
 p {
 	text-align: justify;
 }
@@ -379,6 +383,13 @@ h1.info-page:first-of-type {
 	color: #cfb53b;
 }
 
+.small-frame {
+	margin-left: 10px;
+	float: right;
+	border: 2px solid #321c20;
+	color: #cfb53b;
+}
+
 .team-picture-frame {
 	border: 2px solid #321c20;
 	color: #cfb53b;
@@ -389,6 +400,10 @@ h1.info-page:first-of-type {
 .portrait {
 	display: block;
 	max-width: 100px;
+}
+.small-portrait {
+	display: block;
+	height: 100px;
 }
 
 .team-picture {
@@ -673,4 +688,8 @@ div.admin-link-box:last-of-type {
 }
 .hidden {
 	display: none;
+}
+
+.player-summary {
+	margin: 5px 0;
 }
