@@ -102,8 +102,8 @@ li.menu-link:hover {
 	padding: 5px 10px;
 }
 
-.feed-icon {
-	height: 25px;
+.feed-icon, .header-icon {
+	height: 30px;
 	vertical-align: text-bottom;
 }
 .text-icon {
@@ -112,10 +112,6 @@ li.menu-link:hover {
 }
 .poll-icon {
 	height: 15px;
-	vertical-align: text-bottom;
-}
-.header-icon {
-	height: 30px;
 	vertical-align: text-bottom;
 }
 .banner-icon {
@@ -412,10 +408,17 @@ h1.info-page:first-of-type {
 	float: left;
 }
 
-.copyright-info{
+.copyright-info {
 	background-color: #321c20;
 	padding: 2px;
 	font-size: 0.8em;
+	clear: both;
+}
+
+.copyright-info-small {
+	background-color: #321c20;
+	padding: 2px;
+	font-size: 0.7em;
 	clear: both;
 }
 

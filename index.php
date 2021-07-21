@@ -30,6 +30,22 @@
 		INNER JOIN teams team_2 ON matches.team_2 = team_2.name
 		WHERE active = true";
 	$match_content = $connectDB->query($matches);
+	$teams = "
+		SELECT 
+		hall_teams.id AS id,
+		hall_teams.file_code AS file_code,
+		hall_teams.type AS type,
+		hall_teams.display_name AS name,
+		hall_teams.era AS era,
+		hall_teams.biography AS biography,
+		hall_teams.intro_text AS intro_text,
+		hall_teams.admission_date AS admission_date,
+		teams.country AS nationality,
+		teams.type AS team_type
+		FROM hall_teams 
+		INNER JOIN teams on hall_teams.display_name = teams.display_name
+		WHERE active = true ORDER BY type desc, hall_teams.admission_date";
+	$team_content = $connectDB->query($teams);
 
 	while ($dataRows = $poll_content->fetch()) {
 
@@ -44,6 +60,12 @@
 	}
 	
 	while ($dataRows = $match_content->fetch()) {
+
+		$content[] = $dataRows;
+			
+	}
+	
+	while ($dataRows = $team_content->fetch()) {
 
 		$content[] = $dataRows;
 			
@@ -85,6 +107,12 @@
 			} else if ($item['type'] == 'match') {
 				echo $item['team_1_name'].' '.$item['score_1'].'-'.$item['score_2'].' '.$item['team_2_name'].' ('.$item['year'].')';
 				echo '</a>';
+			} else if ($item['type'] == 'team') {
+				echo $item['name'].' '.$item['era'];
+				echo '</a>';
+				echo ' <img class="feed-icon" src="img/flags/'
+				.strtolower($item['nationality']).'.png" alt="'
+				.$item['nationality'].'">';
 			}
 			
 			echo '</span>';

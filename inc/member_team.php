@@ -98,7 +98,7 @@
 							echo '<div class="small-frame"><img class="small-portrait" src="img/portraits/';
 							echo $person_file;
 							echo '.jpg" alt="'.$person.'">';
-							echo '<div class="copyright-info">';
+							echo '<div class="copyright-info-small">';
 							if ($person_license) {
 								echo '<a class="menu-link" href="'.htmlentities($person_license).'">';
 							}
