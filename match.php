@@ -6,9 +6,9 @@
 	include 'inc/header.php';
 					
 	if (isset($_GET["id"])) {
-		$team_id = $_GET["id"];
+		$match_id = $_GET["id"];
 	} else {
-		$team_id = 1;
+		$match_id = 1;
 	}
 						
 	$connectDB;
@@ -26,23 +26,42 @@
 					
 	}
 	
-	$team = "SELECT 
-		hall_teams.file_code AS file_code,
-		hall_teams.active AS admitted,
-		hall_teams.admission_date AS admission_date,
-		hall_teams.admission_poll AS admission_poll,
-		hall_teams.votes AS votes,
-		hall_teams.rating AS rating,
-		hall_teams.display_name AS name,
-		hall_teams.era AS era,
-		teams.country AS nationality,
-		hall_teams.biography AS biography,
-		FROM hall_teams 
-		INNER JOIN teams ON hall_teams.team_name = teams.name 
-		WHERE hall_teams.id = '$team_id'";
-	$team_query = $connectDB->query($match);
+	$match = "SELECT 
+		matches.active AS admitted,
+		matches.file_code AS file_code,
+		matches.admission_date AS admission_date,
+		matches.admission_poll AS admission_poll,
+		matches.votes AS votes,
+		matches.rating AS rating,
+		matches.date AS date,
+		year(matches.date) AS year,
+		matches.competition AS competition,
+		matches.stage AS stage,
+		matches.stadium AS stadium,
+		matches.city AS city,
+		matches.country AS country,
+		team_1.abbreviation AS team_1_abb,
+		team_1.display_name AS team_1_name,
+		team_1.country AS team_1_nat,
+		matches.score_1 AS score_1,
+		team_2.abbreviation AS team_2_abb,
+		team_2.display_name AS team_2_name,
+		team_2.country AS team_2_nat,
+		matches.score_2 AS score_2,
+		matches.extra_time AS extra_time,
+		matches.penalties AS penalties,
+		matches.penalties_1 AS penalties_1,
+		matches.penalties_2 AS penalties_2,
+		matches.attendance AS attendance,
+		matches.intro_text AS intro_text,
+		matches.match_report AS match_report
+		FROM matches 
+		INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
+		INNER JOIN teams team_2 ON matches.team_2 = team_2.name 
+		WHERE matches.id = '$match_id'";
+	$match_query = $connectDB->query($match);
 	
-	while ($dataRows = $team_query->fetch()) {
+	while ($dataRows = $match_query->fetch()) {
 
 		$file_code = $dataRows["file_code"];
 		$admitted = $dataRows["admitted"];
@@ -50,10 +69,28 @@
 		$admission_poll = $dataRows["admission_poll"];
 		$votes = $dataRows["votes"];
 		$rating = $dataRows["rating"];
-		$name = $dataRows["name"];
-		$era = $dataRows["era"];
-		$nationality = $dataRows["nationality"];
-		$biography = $dataRows["biography"];
+		$date = new DateTime($dataRows["date"]);
+		$year = $dataRows["year"];
+		$competition = $dataRows["competition"];
+		$stage = $dataRows["stage"];
+		$stadium = $dataRows["stadium"];
+		$city = $dataRows["city"];
+		$country = $dataRows["country"];
+		$team_1 = $dataRows["team_1_name"];
+		$team_1_abb = $dataRows["team_1_abb"];
+		$team_1_nat = $dataRows["team_1_nat"];
+		$score_1 = $dataRows["score_1"];
+		$team_2 = $dataRows["team_2_name"];
+		$team_2_abb = $dataRows["team_2_abb"];
+		$team_2_nat = $dataRows["team_2_nat"];
+		$score_2 = $dataRows["score_2"];
+		$extra_time = $dataRows["extra_time"];
+		$penalties = $dataRows["penalties"];
+		$penalties_1 = $dataRows["penalties_1"];
+		$penalties_2 = $dataRows["penalties_2"];
+		$attendance = $dataRows["attendance"];
+		$intro_text = $dataRows["intro_text"];
+		$match_report = $dataRows["match_report"];
 		
 		if ($penalties_1 > $penalties_2) {
 			$penalty_winner = $team_1;
@@ -71,7 +108,7 @@
 
 			if ($admitted) {
 				
-				include 'inc/member_team.php';
+				include 'inc/member_match.php';
 			
 			} else {
 				

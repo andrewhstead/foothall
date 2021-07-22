@@ -111,7 +111,6 @@ li.menu-link:hover {
 }
 .text-icon {
 	height: 20px;
-	vertical-align: text-bottom;
 }
 .poll-icon {
 	height: 15px;
@@ -358,9 +357,10 @@ h1.info-page:first-of-type {
 
 .rating-block {
 	display: inline-block;
-	width: 22px;
-	height: 22px;
+	width: 20px;
+	height: 25px;
 	background-color: #cfb53b;
+	border: 1px solid #9c8208;
 	border-radius: 50%;
 	text-align: center;
 	font-size: 0.7em;
@@ -496,7 +496,7 @@ h1.info-page:first-of-type {
 }
 
 .tag {
-	margin: 5px 5px 5px 0;
+	margin: 1px 5px 1px 0;
 	padding: 0 5px;
 	background-color: #cfb53b;
 	border: 1px solid #9c8208;

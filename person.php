@@ -62,26 +62,6 @@
 		
 	}
 	
-/*	$tags = "
-		SELECT 
-			people_tags.person_id AS person_id,
-			people_tags.tag_id AS tag_id,
-			tags.name AS tag_name
-		FROM people_tags 
-		INNER JOIN tags on people_tags.tag_id = tags.id
-		WHERE person_id = '$person_id'";
-	$tag_query = $connectDB->query($tags);
-	
-	$tag_list = array();
-	
-	while ($dataRows = $tag_query->fetch()) {
-
-		$tag_name = $dataRows["tag_name"];
-		
-		$tag_list[] = $tag_name;
-		
-	} */
-		
 ?>
 
 	<div class="page-template">

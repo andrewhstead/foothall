@@ -88,14 +88,49 @@
 		
 		<div class="tags">
 			
-			<strong>Tags:</strong><br>
+			<strong>Tags:</strong>
+			
 			<?php 
+	
+				$tags = "
+					SELECT people_positions.position AS position_name, 
+					people_positions.person AS position_person 
+					FROM people_positions
+					WHERE people_positions.person = '$name'
+					UNION ALL 
+					SELECT people_matches.match_title AS match_title, 
+					people_matches.person AS match_person 
+					FROM people_matches
+					WHERE people_matches.person = '$name'
+					UNION ALL 
+					SELECT people_teams.hall_team AS hall_team, 
+					people_teams.person AS team_person 
+					FROM people_teams
+					WHERE people_teams.person = '$name'
+					";
+				$tag_query = $connectDB->query($tags);
 				
-				/* foreach ($tag_list as $person_tag) {
+				$tag_list = array();
+				
+				while ($dataRows = $tag_query->fetch()) {
+
+					if ($dataRows["position_name"]) {
+						$tag_name = $dataRows["position_name"];
+					} elseif ($dataRows["match_title"]) {
+						$tag_name = $dataRows["match_title"];
+					} elseif ($dataRows["hall_team"]) {
+						$tag_name = $dataRows["hall_team"];
+					}
+					
+					$tag_list[] = $tag_name;
+					
+				}
+				
+				foreach ($tag_list as $person_tag) {
 						
 					echo '<div class="tag">'.htmlentities($person_tag).'</div>';
 						
-				} */
+				}
 				
 			?>
 			
