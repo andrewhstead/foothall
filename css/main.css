@@ -102,9 +102,12 @@ li.menu-link:hover {
 	padding: 5px 10px;
 }
 
-.feed-icon, .header-icon {
+.feed-icon {
 	height: 30px;
 	vertical-align: text-bottom;
+}
+.header-icon {
+	height: 30px;
 }
 .text-icon {
 	height: 20px;
@@ -113,6 +116,9 @@ li.menu-link:hover {
 .poll-icon {
 	height: 15px;
 	vertical-align: text-bottom;
+}
+.table-icon {
+	height: 15px;
 }
 .banner-icon {
 	height: 45px;
@@ -499,7 +505,8 @@ h1.info-page:first-of-type {
 }
 
 .honour-details {
-	margin: 0 5px 0 0;
+	display: inline-block;
+	padding: 0 5px 0 0;
 	white-space: nowrap;
 }
 

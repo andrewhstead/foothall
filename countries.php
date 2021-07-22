@@ -41,6 +41,7 @@
 			$continents[] = $continent_name;
 		}
 	}
+	
 ?>
 
 	<div class="page-template">
@@ -55,7 +56,7 @@
 				echo "<h2>Country profiles will appear here when added to the site.</h2>";
 			} else {
 		
-				foreach ($continent_list as $continent_menu) {
+				foreach ($continents as $continent_menu) {
 					
 					echo '<h2>'.$continent_menu.'</h2>';
 					
@@ -66,7 +67,7 @@
 						if ($country_menu["continent"] == $continent_menu) {
 							
 							echo '<div class="flex-item">';	
-							echo '<img class="poll-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["abbreviation"]).'"> ';
+							echo '<img class="table-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["abbreviation"]).'"> ';
 							echo '<a class="standard-link" href="country.php?id='.$country_menu["id"].'">'.$country_menu["display_name"].'</a>';
 							echo '</div>';
 								

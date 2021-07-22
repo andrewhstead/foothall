@@ -92,16 +92,19 @@
 					}
 					echo '</td>';
 					echo '<td>';
-					echo '<img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["host"]).'.png" alt="'.strtolower($tournament_menu["host"]).'">  '.$tournament_menu["host"];
+					if ($tournament_menu["host"] != "N/A") {
+						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host"]).'.png" alt="'.strtolower($tournament_menu["host"]).'">  ';
+					}
+					echo $tournament_menu["host"];
 					if ($tournament_menu["host_2"]) {
-						echo '<br><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["host_2"]).'.png" alt="'.strtolower($tournament_menu["host_2"]).'">  '.$tournament_menu["host_2"];
+						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_2"]).'.png" alt="'.strtolower($tournament_menu["host_2"]).'">  '.$tournament_menu["host_2"];
 					}
 					if ($tournament_menu["host_3"]) {
-						echo '<br><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["host_3"]).'.png" alt="'.strtolower($tournament_menu["host_3"]).'">  '.$tournament_menu["host_3"];
+						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_3"]).'.png" alt="'.strtolower($tournament_menu["host_3"]).'">  '.$tournament_menu["host_3"];
 					}
 					echo '</td>';
-					echo '<td class="winner-cell"><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["winner"]).'.png" alt="'.strtolower($tournament_menu["winner"]).'">  '.$tournament_menu["winner"].'</td>';
-					echo '<td class="runner-up-cell"><img class="poll-icon" src="img/flags/'.strtolower($tournament_menu["runner_up"]).'.png" alt="'.strtolower($tournament_menu["runner_up"]).'">  '.$tournament_menu["runner_up"].'</td>';
+					echo '<td class="winner-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["winner"]).'.png" alt="'.strtolower($tournament_menu["winner"]).'">  '.$tournament_menu["winner"].'</td>';
+					echo '<td class="runner-up-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["runner_up"]).'.png" alt="'.strtolower($tournament_menu["runner_up"]).'">  '.$tournament_menu["runner_up"].'</td>';
 					echo '</tr>';
 								
 				}
