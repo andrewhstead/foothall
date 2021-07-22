@@ -28,6 +28,7 @@
 	
 	$team = "SELECT 
 		hall_teams.file_code AS file_code,
+		hall_teams.title AS title,
 		hall_teams.active AS admitted,
 		hall_teams.admission_date AS admission_date,
 		hall_teams.admission_poll AS admission_poll,
@@ -48,6 +49,7 @@
 	while ($dataRows = $team_query->fetch()) {
 
 		$file_code = $dataRows["file_code"];
+		$title = $dataRows["title"];
 		$admitted = $dataRows["admitted"];
 		$admission_date = new DateTime($dataRows["admission_date"]);
 		$admission_poll = $dataRows["admission_poll"];

@@ -92,8 +92,8 @@
 								people_matches.sub_appeared AS sub_appeared,
 								people_matches.captain AS captain
 								FROM people_matches
-								INNER JOIN people ON people_matches.person_id = people.id 
-								WHERE match_id = '$match_id' 
+								INNER JOIN people ON people_matches.person = people.name 
+								WHERE match_title = '$title' 
 								ORDER BY goalkeeper desc, shirt";
 					$lineup_query = $connectDB->query($lineups);
 							

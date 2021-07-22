@@ -29,6 +29,7 @@
 	$match = "SELECT 
 		matches.active AS admitted,
 		matches.file_code AS file_code,
+		matches.title AS title,
 		matches.admission_date AS admission_date,
 		matches.admission_poll AS admission_poll,
 		matches.votes AS votes,
@@ -64,6 +65,7 @@
 	while ($dataRows = $match_query->fetch()) {
 
 		$file_code = $dataRows["file_code"];
+		$title = $dataRows["title"];
 		$admitted = $dataRows["admitted"];
 		$admission_date = new DateTime($dataRows["admission_date"]);
 		$admission_poll = $dataRows["admission_poll"];

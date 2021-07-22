@@ -73,8 +73,8 @@
 								people_teams.goals AS goals,
 								people_teams.summary AS summary
 								FROM people_teams
-								INNER JOIN people ON people_teams.person_id = people.id 
-								WHERE hall_team_id = '$team_id' 
+								INNER JOIN people ON people_teams.person = people.name 
+								WHERE hall_team = '$title' 
 								ORDER BY file_code";
 					$players_query = $connectDB->query($players);
 														
