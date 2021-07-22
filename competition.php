@@ -23,7 +23,8 @@
 		
 	}
 	
-	$tournaments = "SELECT * FROM tournaments WHERE competition = $competition_id AND completed = true";
+	$tournaments = "
+		SELECT * FROM tournaments WHERE competition = $competition_id AND completed = true";
 	$tournament_query = $connectDB->query($tournaments);
 	
 	$tournament_list = array();
