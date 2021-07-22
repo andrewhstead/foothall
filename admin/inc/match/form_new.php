@@ -32,7 +32,16 @@
 				<input type="date" name="match-date" placeholder="DD-MM-YYYY" id="match-date"">
 				<br>
 				<label for="competition">Competition:</label>
-				<input type="text" name="competition" placeholder="Competition" id="competition"">
+				<select id="competition" name="competition">
+				<?php
+					$competitions = "SELECT * FROM competitions ORDER BY type desc, area, continent, name";
+					$competition_query = $connectDB->query($competitions);
+					while ($dataRows = $competition_query->fetch()) {
+						$competition_name = $dataRows["name"];
+						echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
+					}
+				?>	
+				</select>
 				<br>
 				<label for="stage">Stage:</label>
 				<input type="text" name="stage" placeholder="Stage" id="stage">

@@ -84,6 +84,7 @@
 	
 				<?php
 					$lineups = "SELECT 
+								people.active AS hall_member,
 								people.name AS name,
 								people.nationality AS nationality,
 								people_matches.shirt AS shirt,
@@ -105,6 +106,7 @@
 					while ($dataRows = $lineup_query->fetch()) {
 
 						$nationality = $dataRows["nationality"];
+						$hall_member = $dataRows["hall_member"];
 						$person = $dataRows["name"];
 						$shirt = $dataRows["shirt"];
 						$team = $dataRows["team"];
