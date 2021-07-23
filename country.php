@@ -22,6 +22,7 @@
 		$display_name = $dataRows["display_name"];
 		$abbreviation = $dataRows["abbreviation"];
 		$continent = $dataRows["continent"];
+		$defunct = $dataRows["defunct"];
 		
 	}
 	

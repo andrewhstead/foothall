@@ -7,7 +7,7 @@
 				
 	$connectDB;
 
-	$stories = "SELECT * FROM stories ORDER BY datetime desc";
+	$stories = "SELECT * FROM stories WHERE on_site = true ORDER BY datetime desc";
 	$story_query = $connectDB->query($stories);
 	
 	$story_list = array();
@@ -26,25 +26,26 @@
 	
 ?>
 
-	<div class="heading-only">
+	<?php
 		
-		<h1>
-			FootHall Stories
-		</h1>
+		if (!$story_list) {
+			echo '<div class="page-template">';
+		} else {
+			echo '<div class="heading-only">';
+		}
 		
-		<?php
-		
-			if (!$story_list) {
-				echo "<h2>New stories will appear here.</h2>";
-			}
-		
-		?>
-		
-	</div>	
+	?>
 	
-	<div class="article-feed">
+	<h1>FootHall Stories</h1>
 	
-	<?php		
+	<?php
+		
+		if (!$story_list) {
+			echo '<h2>New stories will appear here.</h2>';
+		} else {
+			echo '</div>';
+			echo '<div class="article-feed">';
+		}		
 	
 		foreach ($story_list as $story) {
 					

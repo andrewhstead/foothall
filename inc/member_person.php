@@ -4,7 +4,9 @@
 		<div class="sub-heading">
 			<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
 				.png" alt="<?php echo htmlentities($nationality); ?>">
-			<?php echo htmlentities($country_name); ?>
+			<a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>">
+				<?php echo htmlentities($country_name); ?>
+			</a>
 		</div>
 		
 		<div class="person-stats">

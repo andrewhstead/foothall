@@ -5,9 +5,14 @@
 				.png" alt="<?php echo htmlentities($display_name); ?>">
 			<?php echo htmlentities($display_name); ?>
 		</h1>
-		<strong>Continent:</strong> <?php echo htmlentities($continent); ?>
-	
-		<?php
+		
+		<strong>Continent:</strong> 
+		<?php 
+			echo htmlentities($continent);
+			
+			if ($defunct) {
+				echo ' <em>(Defunct)</em>';
+			}
 
 			/* Checking for Hall members and then displaying them. */
 			$members = "SELECT 

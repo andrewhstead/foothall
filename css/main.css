@@ -84,6 +84,8 @@ li.menu-link:hover {
 
 .article-feed {
 	border-top: 5px solid #321c20;
+	min-height: 500px;
+	background-color: #ffffff;
 }
 
 .feed-post:hover {
