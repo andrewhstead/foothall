@@ -115,9 +115,7 @@
 					WHERE people_teams.person = '$name'
 					";
 				$tag_query = $connectDB->query($tags);
-				
-				$tag_list = array();
-				
+								
 				while ($dataRows = $tag_query->fetch()) {
 
 					if ($dataRows["position_name"]) {
@@ -139,5 +137,11 @@
 				}
 				
 			?>
+			
+			<a class="tag-link" href="country.php?id=<?php echo htmlentities($country_id); ?>">
+				<div class="tag">
+					<?php echo htmlentities($country_name); ?>
+				</div>
+			</a>
 			
 		</div>

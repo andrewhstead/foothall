@@ -57,6 +57,7 @@
 		while ($dataRows = $country_query->fetch()) {
 
 			$country_name = $dataRows["display_name"];
+			$country_id = $dataRows["id"];
 			
 		}
 		
