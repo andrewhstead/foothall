@@ -503,6 +503,14 @@ h1.info-page:first-of-type {
 	display: inline-block;
 	border-radius: 10px;
 }
+.tag:hover {
+	background-color: #321c20;
+	color: #cfb53b;
+}
+.tag-link {
+	text-decoration: none;
+	color: #321c20;
+}
 
 .honour-details {
 	display: inline-block;
@@ -703,3 +711,4 @@ div.admin-link-box:last-of-type {
 .player-summary {
 	margin: 5px 0;
 }
+
