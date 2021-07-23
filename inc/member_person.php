@@ -95,25 +95,34 @@
 			<?php 
 	
 				$tags = "
-					SELECT people_positions.position AS position_name, 
-					people_positions.person AS position_person, 
-					people_positions.type AS tag_type, 
-					people_positions.id AS position_tag_id
+					SELECT 
+						people_positions.position AS position_name, 
+						people_positions.person AS position_person, 
+						people_positions.type AS tag_type, 
+						positions.id AS position_id
 					FROM people_positions
+					INNER JOIN positions 
+						ON positions.name = people_positions.position
 					WHERE people_positions.person = '$name'
 					UNION ALL 
-					SELECT people_matches.match_title AS match_title, 
-					people_matches.person AS match_person, 
-					people_matches.type AS tag_type, 
-					people_matches.id AS match_tag_id
+					SELECT 
+						people_matches.match_title AS match_title, 
+						people_matches.person AS match_person, 
+						people_matches.type AS tag_type, 
+						matches.id AS match_id
 					FROM people_matches
+					INNER JOIN matches 
+						ON matches.title = people_matches.match_title
 					WHERE people_matches.person = '$name'
 					UNION ALL 
-					SELECT people_teams.hall_team AS hall_team, 
-					people_teams.person AS team_person, 
-					people_teams.type AS tag_type,
-					people_teams.id AS team_tag_id
+					SELECT 
+						people_teams.hall_team AS hall_team, 
+						people_teams.person AS team_person, 
+						people_teams.type AS tag_type,
+						hall_teams.id AS team_id
 					FROM people_teams
+					INNER JOIN hall_teams 
+						ON hall_teams.title = people_teams.hall_team
 					WHERE people_teams.person = '$name'
 					";
 				$tag_query = $connectDB->query($tags);
@@ -123,15 +132,15 @@
 					if ($dataRows["position_name"]) {
 						$tag_type = $dataRows["tag_type"];
 						$tag_name = $dataRows["position_name"];
-						$tag_id = $dataRows["position_tag_id"];
+						$tag_id = $dataRows["position_id"];
 					} elseif ($dataRows["match_title"]) {
 						$tag_type = $dataRows["tag_type"];
 						$tag_name = $dataRows["match_title"];
-						$tag_id = $dataRows["match_tag_id"];
+						$tag_id = $dataRows["match_id"];
 					} elseif ($dataRows["hall_team"]) {
 						$tag_type = $dataRows["tag_type"];
 						$tag_name = $dataRows["hall_team"];
-						$tag_id = $dataRows["team_tag_id"];
+						$tag_id = $dataRows["team_id"];
 					}
 						
 					echo '<a class="tag-link" href="'.str_replace('person_','',$tag_type).'.php?id='.$tag_id.'"><div class="tag">'.htmlentities($tag_name).'</div></a>';

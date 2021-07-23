@@ -66,18 +66,18 @@
 		</h1>
 		
 		<p>
-			<strong>Hosts:</strong> <img class="poll-icon" src="img/flags/<?php echo strtolower($host_abbreviation) ?>.png" alt="<?php echo strtolower($host_name) ?>"> <?php echo htmlentities($host_name) ?>
+			<strong>Hosts:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($host_abbreviation) ?>.png" alt="<?php echo strtolower($host_name) ?>"> <?php echo htmlentities($host_name) ?>
 			<?php
 				if ($host_2) {
-					echo '/<img class="poll-icon" src="img/flags/'.strtolower($host_2).'.png" alt="'.strtolower($host_2_name).'">  '.$host_2_name;
+					echo '/<img class="table-icon" src="img/flags/'.strtolower($host_2).'.png" alt="'.strtolower($host_2_name).'">  '.$host_2_name;
 				}
 				if ($host_3) {
-					echo '/<img class="poll-icon" src="img/flags/'.strtolower($host_3).'.png" alt="'.strtolower($host_3_name).'">  '.$host_3_name;
+					echo '/<img class="table-icon" src="img/flags/'.strtolower($host_3).'.png" alt="'.strtolower($host_3_name).'">  '.$host_3_name;
 				}
 			?>
 			<br>
-			<strong>Winners:</strong> <img class="poll-icon" src="img/flags/<?php echo strtolower($winner) ?>.png" alt="<?php echo strtolower($winner_name) ?>"> <?php echo htmlentities($winner_name) ?><br>
-			<strong>Runners-Up:</strong> <img class="poll-icon" src="img/flags/<?php echo strtolower($runner_up) ?>.png" alt="<?php echo strtolower($runner_up_name) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
+			<strong>Winners:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($winner) ?>.png" alt="<?php echo strtolower($winner_name) ?>"> <?php echo htmlentities($winner_name) ?><br>
+			<strong>Runners-Up:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($runner_up) ?>.png" alt="<?php echo strtolower($runner_up_name) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
 		</p>
 		
 		<div class="profile-content">
