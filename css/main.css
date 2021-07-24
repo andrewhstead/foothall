@@ -323,6 +323,7 @@ h1.info-page:first-of-type {
 .flex-wrapper {
 	display: flex;
 	flex-wrap: wrap;
+	clear: both;
 }
 
 .flex-item {
@@ -714,3 +715,43 @@ div.admin-link-box:last-of-type {
 	margin: 5px 0;
 }
 
+.position-diagram {
+	float: left;
+	margin: 0 10px 10px 0;
+	height: 200px;
+}
+
+/* Styles for displaying lightbox images. */
+.lights-down {
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	background-color: rgba(0,0,0,0.9);
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.full-image {
+	max-width: 75%;
+	max-height: 90%;
+}
+.full-image img {
+	max-width: 75%;
+	max-height: 90%;
+	border: 5px solid white;
+	box-shadow: 0px 0px 5px 5px #999999;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+}
+#box-closer {
+	position: absolute;
+	right: 20px;
+	font-weight: bold;
+	font-size: 3.5em;
+	color: #999999;
+	cursor: pointer;
+}

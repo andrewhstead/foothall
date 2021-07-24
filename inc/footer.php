@@ -1,6 +1,7 @@
 
 		</main>
 		
+		<script src="js/lightbox.js"></script>
 		<script src="js/default.js"></script>
 		
 		<footer>

@@ -17,8 +17,6 @@
 
 	<div class="page-template">
 		
-		<h1>Position Menu</h1>
-		
 		<?php 
 			$position = "SELECT * FROM positions WHERE id = $position_id";
 			$page_category = $connectDB->query($position);
@@ -26,9 +24,20 @@
 			while ($dataRows = $page_category->fetch()) {
 
 				$position_name = $dataRows["name"];
-				echo '<h2>'.htmlentities($position_name).'</h2>';
-				
+				$intro_text = $dataRows["intro_text"];
+								
 			}
+			
+		?>
+		
+		<h1>Position: <?php echo htmlentities($position_name); ?></h1>
+		
+		<?php
+		
+			echo '<div class="position-header">';
+			echo '<img class="position-diagram" alt="'.$position_name.'" src="img/positions/generic/'.strtolower(str_replace(' ','_',$position_name)).'.png" onclick="openBox()">';
+			echo html_entity_decode($intro_text);
+			echo '</div>';
 
 			$people = "
 			SELECT 
@@ -44,6 +53,8 @@
 			WHERE positions.id = $position_id 
 				AND active = true";
 			$page_content = $connectDB->query($people);
+			
+			echo '<div class="flex-wrapper">';
 
 			while ($dataRows = $page_content->fetch()) {
 
@@ -57,7 +68,9 @@
 				echo '</div>';
 				
 			}
-	
+			
+			echo '</div>';
+			
 		?>
 		
 	</div>
@@ -65,6 +78,7 @@
 	
 <?php
 
+	include 'inc/lightbox.php';
 	include 'inc/footer.php';
 	
 ?>
