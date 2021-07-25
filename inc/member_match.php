@@ -30,7 +30,7 @@
 			
 			<div class="match-details">
 				<?php echo htmlentities($competition).' '.htmlentities($stage).', '.date_format($date, "j F Y"); ?><br>
-				<?php echo htmlentities($stadium).', <img class="poll-icon" src="img/flags/'.$country.'.png" alt="'.$country.'"> '.htmlentities($city); ?>
+				<?php echo htmlentities($stadium).', <img class="table-icon" src="img/flags/'.$country.'.png" alt="'.$country.'"> '.htmlentities($city); ?>
 				<br>
 				Attendance: <?php echo number_format($attendance); ?>
 			</div>
