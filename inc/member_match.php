@@ -129,7 +129,7 @@
 						}
 							
 					}
-						
+										
 				?>
 				
 				<table class="line-ups">
@@ -146,10 +146,26 @@
 					<tbody>
 						<tr>
 							<td class="team-shirt">
-								<img src="img/kits/teams/<?php echo strtolower($team_1_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
+								<img src="img/kits/teams/
+								<?php 
+									if ($match_type == 'national') {
+										echo strtolower($team_1_nat);
+									} elseif ($match_type == 'club') {
+										echo strtolower($team_1_abb);
+									}
+								?>
+								_<?php echo $year;?>/front.png" alt="<?php echo $team_1;?>">
 							</td>
 							<td class="team-shirt">
-								<img src="img/kits/teams/<?php echo strtolower($team_2_nat);?>_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
+								<img src="img/kits/teams/
+								<?php 
+									if ($match_type == 'national') {
+										echo strtolower($team_2_nat);
+									} elseif ($match_type == 'club') {
+										echo strtolower($team_2_abb);
+									}
+								?>
+								_<?php echo $year;?>/front.png" alt="<?php echo $team_2;?>">
 							</td>
 						</tr>
 						
@@ -158,7 +174,13 @@
 								<?php
 									foreach($team_1_lineup as $shirt => $person) {
 										echo $person;
-										echo '<img class="line-up-shirt" src="img/kits/teams/'.strtolower($team_1_nat).'_'.$year.'/'.$shirt.'.png" alt="'.$team_1.'">';
+										echo '<img class="line-up-shirt" src="img/kits/teams/';
+										if ($match_type == 'national') {
+											echo strtolower($team_1_nat);
+										} elseif ($match_type == 'club') {
+											echo strtolower($team_1_abb);
+										}										
+										echo '_'.$year.'/'.$shirt.'.png" alt="'.$team_1.'">';
 										echo '<br>';
 									}
 								?>
@@ -166,7 +188,13 @@
 							<td class="team-2">
 								<?php
 									foreach($team_2_lineup as $shirt => $person) {
-										echo '<img class="line-up-shirt" src="img/kits/teams/'.strtolower($team_2_nat).'_'.$year.'/'.$shirt.'.png" alt="'.$team_2.'">';
+										echo '<img class="line-up-shirt" src="img/kits/teams/';
+										if ($match_type == 'national') {
+											echo strtolower($team_2_nat);
+										} elseif ($match_type == 'club') {
+											echo strtolower($team_2_abb);
+										}	
+										echo '_'.$year.'/'.$shirt.'.png" alt="'.$team_2.'">';
 										echo $person;
 										echo '<br>';
 									}
@@ -250,13 +278,26 @@
 				while ($dataRows = $tag_query->fetch()) {
 
 					$tag_1_name = $dataRows["team_1_name"];
-					$tag_1_id = $dataRows["team_1_country"];
 					$tag_2_name = $dataRows["team_2_name"];
-					$tag_2_id = $dataRows["team_2_country"];
-						
-					echo '<a class="tag-link" href="country.php?id='.$tag_1_id.'"><div class="tag">'.htmlentities($tag_1_name).'</div></a>';
-					echo '<a class="tag-link" href="country.php?id='.$tag_2_id.'"><div class="tag">'.htmlentities($tag_2_name).'</div></a>';
 					
+					if ($match_type == 'national') {
+						
+						$tag_1_id = $dataRows["team_1_country"];
+						$tag_2_id = $dataRows["team_2_country"];
+						
+						echo '<a class="tag-link" href="country.php?id='.$tag_1_id.'"><div class="tag">'.htmlentities($tag_1_name).'</div></a>';
+						echo '<a class="tag-link" href="country.php?id='.$tag_2_id.'"><div class="tag">'.htmlentities($tag_2_name).'</div></a>';
+						
+					} elseif ($match_type == 'club') {
+						
+						$tag_1_id = $dataRows["team_1_id"];
+						$tag_2_id = $dataRows["team_2_id"];
+						
+						echo '<a class="tag-link" href="club.php?id='.$tag_1_id.'"><div class="tag">'.htmlentities($tag_1_name).'</div></a>';
+						echo '<a class="tag-link" href="club.php?id='.$tag_2_id.'"><div class="tag">'.htmlentities($tag_2_name).'</div></a>';
+						
+					}
+									
 				}
 				
 			?>

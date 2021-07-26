@@ -13,7 +13,7 @@
 						
 	$connectDB;
 
-	$club = "SELECT clubs.on_site AS on_site, clubs.display_name AS club_name, clubs.country as nationality, countries.display_name as country, countries.id AS country_id FROM clubs INNER JOIN countries on clubs.country = countries.abbreviation WHERE clubs.id = $club_id ";
+	$club = "SELECT teams.on_site AS on_site, teams.display_name AS club_name, teams.country as nationality, countries.display_name as country, countries.id AS country_id FROM teams INNER JOIN countries on teams.country = countries.abbreviation WHERE teams.id = $club_id ";
 	$club_query = $connectDB->query($club);
 	
 	while ($dataRows = $club_query->fetch()) {
