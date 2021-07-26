@@ -13,12 +13,12 @@
 						
 	$connectDB;
 
-	$club = "SELECT teams.on_site AS on_site, teams.display_name AS club_name, teams.country as nationality, countries.display_name as country, countries.id AS country_id FROM teams INNER JOIN countries on teams.country = countries.abbreviation WHERE teams.id = $club_id ";
+	$club = "SELECT teams.active AS active, teams.display_name AS club_name, teams.country as nationality, countries.display_name as country, countries.id AS country_id FROM teams INNER JOIN countries on teams.country = countries.abbreviation WHERE teams.id = $club_id ";
 	$club_query = $connectDB->query($club);
 	
 	while ($dataRows = $club_query->fetch()) {
 
-		$on_site = $dataRows["on_site"];
+		$active = $dataRows["active"];
 		$display_name = $dataRows["club_name"];
 		$nationality = $dataRows["nationality"];
 		$country = $dataRows["country"];
@@ -29,13 +29,20 @@
 ?>
 
 	<div class="page-template">
+
+		<?php
 		
-		<h1 class="info-page">
-			<img class="header-icon" src="img/flags/<?php echo strtolower($nationality); ?>
-				.png" alt="<?php echo htmlentities($display_name); ?>">
-			<?php echo htmlentities($display_name); ?>
-		</h1>
-		<strong>Country:</strong> <a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>"><?php echo htmlentities($country); ?></a>
+			if ($active) {
+				
+				include 'inc/club_profile.php';
+			
+			} else {
+				
+				echo '<h1>Sorry<br>Page Does Not Exist</h1>';
+			
+			}
+			
+		?>
 		
 	</div>
 	
