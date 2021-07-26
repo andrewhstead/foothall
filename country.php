@@ -38,6 +38,10 @@
 			
 		}
 		
+	} else {
+	
+		$includes = 'none';
+		
 	}
 	
 ?>
