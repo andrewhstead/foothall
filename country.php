@@ -13,7 +13,7 @@
 						
 	$connectDB;
 
-	$country = "SELECT * FROM countries A WHERE id = '$country_id'";
+	$country = "SELECT * FROM countries WHERE id = '$country_id'";
 	$country_query = $connectDB->query($country);
 	
 	while ($dataRows = $country_query->fetch()) {
@@ -24,6 +24,19 @@
 		$successor_to = $dataRows["successor_to"];
 		$continent = $dataRows["continent"];
 		$defunct = $dataRows["defunct"];
+		
+	}
+
+	if ($successor_to) {
+		
+		$successor = "SELECT * FROM countries WHERE abbreviation = '$successor_to'";
+		$successor_query = $connectDB->query($successor);
+		
+		while ($dataRows = $successor_query->fetch()) {
+
+			$includes = $dataRows["display_name"];
+			
+		}
 		
 	}
 	

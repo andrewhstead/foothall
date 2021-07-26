@@ -10,7 +10,7 @@
 		
 			if ($successor_to) {
 				
-				echo '<strong>Includes:</strong> '.$successor_to.'<br>';
+				echo '<strong>Includes:</strong> '.$includes.'<br>';
 				
 			}
 			
