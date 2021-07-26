@@ -225,6 +225,40 @@
 		
 		<div class="tags">
 			
-			<strong>Tags:</strong><br>
+			<strong>Tags:</strong>
+			
+			<?php 
+	
+				$tags = " 
+					SELECT 
+					team_1.id AS team_1_id,
+					team_1.display_name AS team_1_name,
+					team_1.country AS team_1_nat,
+					country_1.id AS team_1_country,
+					team_2.id AS team_2_id,
+					team_2.display_name AS team_2_name,
+					team_2.country AS team_2_nat,
+					country_2.id AS team_2_country
+					FROM matches 
+					INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
+					INNER JOIN teams team_2 ON matches.team_2 = team_2.name 
+					INNER JOIN countries country_1 ON team_1.country = country_1.abbreviation 
+					INNER JOIN countries country_2 ON team_2.country = country_2.abbreviation 
+					WHERE matches.id = '$match_id'";
+				$tag_query = $connectDB->query($tags);
+								
+				while ($dataRows = $tag_query->fetch()) {
+
+					$tag_1_name = $dataRows["team_1_name"];
+					$tag_1_id = $dataRows["team_1_country"];
+					$tag_2_name = $dataRows["team_2_name"];
+					$tag_2_id = $dataRows["team_2_country"];
+						
+					echo '<a class="tag-link" href="country.php?id='.$tag_1_id.'"><div class="tag">'.htmlentities($tag_1_name).'</div></a>';
+					echo '<a class="tag-link" href="country.php?id='.$tag_2_id.'"><div class="tag">'.htmlentities($tag_2_name).'</div></a>';
+					
+				}
+				
+			?>
 						
 		</div>

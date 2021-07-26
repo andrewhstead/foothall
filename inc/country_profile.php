@@ -58,7 +58,7 @@
 				tournaments.runner_up AS tournament_runner_up
 				FROM tournaments 
 				INNER JOIN competitions ON tournaments.competition = competitions.id
-				WHERE winner = '$abbreviation' OR runner_up = '$abbreviation'";
+				WHERE winner = '$abbreviation' OR runner_up = '$abbreviation' OR winner = '$successor_to' OR runner_up = '$successor_to'";
 			$honour_check = $connectDB->query($honours);
 			
 			$has_honours = $honour_check->fetch();

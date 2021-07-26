@@ -21,11 +21,13 @@
 		$active = $dataRows["on_site"];
 		$display_name = $dataRows["display_name"];
 		$abbreviation = $dataRows["abbreviation"];
+		$successor_to = $dataRows["successor_to"];
 		$continent = $dataRows["continent"];
 		$defunct = $dataRows["defunct"];
 		
 	}
-	
+	echo $successor_to;
+	echo $abbreviation;
 ?>
 
 	<div class="page-template">

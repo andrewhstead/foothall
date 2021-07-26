@@ -27,6 +27,7 @@
 	}
 	
 	$match = "SELECT 
+		matches.teams AS match_type,
 		matches.active AS admitted,
 		matches.file_code AS file_code,
 		matches.title AS title,
@@ -67,6 +68,7 @@
 		$file_code = $dataRows["file_code"];
 		$title = $dataRows["title"];
 		$admitted = $dataRows["admitted"];
+		$match_type = $dataRows["match_type"];
 		$admission_date = new DateTime($dataRows["admission_date"]);
 		$admission_poll = $dataRows["admission_poll"];
 		$votes = $dataRows["votes"];

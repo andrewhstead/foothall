@@ -78,7 +78,7 @@
 	
 <?php
 
-	include 'inc/lightbox.php';
+	include 'inc/lightbox.html';
 	include 'inc/footer.php';
 	
 ?>
