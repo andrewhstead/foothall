@@ -6,6 +6,16 @@
 			<?php echo htmlentities($display_name); ?>
 		</h1>
 		
+		<?php
+		
+			if ($successor_to) {
+				
+				echo '<strong>Includes:</strong> '.$successor_to.'<br>';
+				
+			}
+			
+		?>
+		
 		<strong>Continent:</strong> 
 		<?php 
 			echo htmlentities($continent);
@@ -102,7 +112,21 @@
 							echo $honour["tournament_year"];
 							echo '</span>';
 									
-						} elseif (($honour["tournament_name"] == $honour_list) && ($honour["tournament_runner_up"] ==$abbreviation )) {
+						} elseif (($honour["tournament_name"] == $honour_list) && ($honour["tournament_runner_up"] == $abbreviation )) {
+								
+							echo '<span class="honour-details">';
+							echo '<img class="medal" alt="Silver Medal" src="img/awards/silver_world.png"> ';
+							echo $honour["tournament_year"];
+							echo '</span>';
+									
+						} elseif (($honour["tournament_name"] == $honour_list) && ($honour["tournament_winner"] ==$successor_to )) {
+							
+							echo '<span class="honour-details">';
+							echo '<img class="medal" alt="Gold Medal" src="img/awards/gold_world.png"> ';
+							echo $honour["tournament_year"];
+							echo '</span>';
+									
+						} elseif (($honour["tournament_name"] == $honour_list) && ($honour["tournament_runner_up"] == $successor_to )) {
 								
 							echo '<span class="honour-details">';
 							echo '<img class="medal" alt="Silver Medal" src="img/awards/silver_world.png"> ';

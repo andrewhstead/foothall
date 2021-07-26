@@ -13,7 +13,7 @@
 						
 	$connectDB;
 
-	$country = "SELECT * FROM countries WHERE id = '$country_id'";
+	$country = "SELECT * FROM countries A WHERE id = '$country_id'";
 	$country_query = $connectDB->query($country);
 	
 	while ($dataRows = $country_query->fetch()) {
@@ -26,8 +26,7 @@
 		$defunct = $dataRows["defunct"];
 		
 	}
-	echo $successor_to;
-	echo $abbreviation;
+	
 ?>
 
 	<div class="page-template">
