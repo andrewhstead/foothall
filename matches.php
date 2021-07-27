@@ -21,7 +21,7 @@
 		FROM matches 
 		INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
 		INNER JOIN teams team_2 ON matches.team_2 = team_2.name
-		WHERE active = true ORDER BY date";
+		WHERE matches.active = true ORDER BY date";
 	$match_query = $connectDB->query($matches);
 	
 	$match_list = array();

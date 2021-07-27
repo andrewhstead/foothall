@@ -266,12 +266,15 @@
 					team_2.id AS team_2_id,
 					team_2.display_name AS team_2_name,
 					team_2.country AS team_2_nat,
-					country_2.id AS team_2_country
+					country_2.id AS team_2_country,
+					competitions.id AS competition_id,
+					competitions.name AS competition
 					FROM matches 
 					INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
 					INNER JOIN teams team_2 ON matches.team_2 = team_2.name 
 					INNER JOIN countries country_1 ON team_1.country = country_1.abbreviation 
 					INNER JOIN countries country_2 ON team_2.country = country_2.abbreviation 
+					INNER JOIN competitions on competitions.name = matches.competition
 					WHERE matches.id = '$match_id'";
 				$tag_query = $connectDB->query($tags);
 								
@@ -297,6 +300,10 @@
 						echo '<a class="tag-link" href="club.php?id='.$tag_2_id.'"><div class="tag">'.htmlentities($tag_2_name).'</div></a>';
 						
 					}
+					
+					$competition_id = $dataRows["competition_id"];
+					$competition_tag = $dataRows["competition"];
+					echo '<a class="tag-link" href="competition.php?id='.$competition_id.'"><div class="tag">'.htmlentities($competition_tag).'</div></a>';
 									
 				}
 				
