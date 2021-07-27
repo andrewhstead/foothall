@@ -7,7 +7,7 @@
 				
 	$connectDB;
 
-	$dream = "SELECT * FROM dream_teams WHERE on_site = true ORDER BY type, name";
+	$dream = "SELECT * FROM dream_teams WHERE active = true ORDER BY type, name";
 	$dream_query = $connectDB->query($dream);
 	
 	$dream_list = array();
@@ -53,7 +53,7 @@
 				foreach ($dream_list as $dream_menu) if ($dream_menu["type"] == $type_head) {
 						
 					echo '<div class="flex-item">';
-					echo '&#9654; <a class="standard-link" href="dream.php?id='.$dream_menu["id"].'">'.$dream_menu["name"].'</a>';
+					echo '&#9654; <a class="standard-link" href="dream_team.php?id='.$dream_menu["id"].'">'.$dream_menu["name"].'</a>';
 					echo '</div>';
 						
 				}
