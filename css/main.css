@@ -721,6 +721,13 @@ div.admin-link-box:last-of-type {
 	height: 200px;
 }
 
+.formation-diagram {
+	display: block;
+	width: 100%;
+	float: left;
+	margin: 10px 0;
+}
+
 /* Styles for displaying lightbox images. */
 .lights-down {
 	width: 100%;
@@ -754,4 +761,21 @@ div.admin-link-box:last-of-type {
 	font-size: 3.5em;
 	color: #999999;
 	cursor: pointer;
+}
+
+.dream-team-member {
+	margin: 0 0 20px 0;
+}
+
+.dream-team-member p {
+	margin: 0;
+}
+
+.dream-team-member h3 {
+	padding-top: 0;
+}
+
+.dream-team-position {
+	font-size: 1.25em;
+	font-weight: bold;
 }
