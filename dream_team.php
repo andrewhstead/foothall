@@ -42,6 +42,7 @@
 		$lineup = "
 			SELECT 
 				people_dream.person AS player,
+				people_dream.number AS number,
 				people_dream.position AS position,
 				people.id AS person_id,
 				people.nationality AS nationality,
@@ -56,7 +57,8 @@
 				ON dream_teams.name = people_dream.dream_team
 			INNER JOIN people
 				ON people.name = people_dream.person
-			WHERE dream_teams.id = '$team_id'";
+			WHERE dream_teams.id = '$team_id'
+			ORDER BY number";
 		$lineup_query = $connectDB->query($lineup);
 		
 		while ($dataRows = $lineup_query->fetch()) {
@@ -64,6 +66,7 @@
 			$person_id = $dataRows["person_id"];
 			$name = $dataRows["player"];
 			$nationality = $dataRows["nationality"];
+			$number = $dataRows["number"];
 			$position = $dataRows["position"];
 			$file_code = $dataRows["file_code"];
 			$intro_text = $dataRows["intro_text"];
@@ -73,7 +76,7 @@
 			
 			echo '<div class="dream-team-member">';
 			
-			echo '<div class="dream-team-position">'.htmlentities($position).'</div>';
+			echo '<div class="dream-team-position">'.htmlentities($number).' - '.htmlentities($position).'</div>';
 			
 			echo '<div class="small-frame"><img class="small-portrait" src="img/portraits/';
 			echo $file_code;
