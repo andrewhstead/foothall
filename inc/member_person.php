@@ -124,6 +124,16 @@
 					INNER JOIN hall_teams 
 						ON hall_teams.title = people_teams.hall_team
 					WHERE people_teams.person = '$name'
+					UNION ALL 
+					SELECT 
+						people_dream.dream_team AS dream_team, 
+						people_dream.person AS dream_person, 
+						people_dream.type AS tag_type,
+						dream_teams.id AS dream_id
+					FROM people_dream
+					INNER JOIN dream_teams 
+						ON dream_teams.name = people_dream.dream_team
+					WHERE people_dream.person = '$name'
 					";
 				$tag_query = $connectDB->query($tags);
 								
@@ -141,18 +151,20 @@
 						$tag_type = $dataRows["tag_type"];
 						$tag_name = $dataRows["hall_team"];
 						$tag_id = $dataRows["team_id"];
+					} elseif ($dataRows["dream_team"]) {
+						$tag_type = $dataRows["tag_type"];
+						$tag_name = $dataRows["dream_team"];
+						$tag_id = $dataRows["dream_id"];
 					}
 						
-					echo '<a class="tag-link" href="'.str_replace('person_','',$tag_type).'.php?id='.$tag_id.'"><div class="tag">'.htmlentities($tag_name).'</div></a>';
+					echo '<a class="tag-link" href="'.str_replace('person_','',$tag_type).'.php?id='.$tag_id.'"><div class="tag">'.htmlentities($tag_name);
+					if ($tag_type == "person_dream_team") {
+						echo ' Dream Team';
+					}
+					echo '</div></a>';
 					
 				}
 				
 			?>
-			
-			<a class="tag-link" href="country.php?id=<?php echo htmlentities($country_id); ?>">
-				<div class="tag">
-					<?php echo htmlentities($country_name); ?>
-				</div>
-			</a>
 			
 		</div>
