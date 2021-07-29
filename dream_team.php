@@ -43,7 +43,9 @@
 			SELECT 
 				people_dream.person AS player,
 				people_dream.position AS position,
+				people.id AS person_id,
 				people.nationality AS nationality,
+				people.active AS active,
 				people.file_code AS file_code,
 				people.intro_text AS intro_text,
 				people.picture_credit AS person_picture,
@@ -59,11 +61,13 @@
 		
 		while ($dataRows = $lineup_query->fetch()) {
 
+			$person_id = $dataRows["person_id"];
 			$name = $dataRows["player"];
 			$nationality = $dataRows["nationality"];
 			$position = $dataRows["position"];
 			$file_code = $dataRows["file_code"];
 			$intro_text = $dataRows["intro_text"];
+			$active = $dataRows["active"];
 			$person_picture = $dataRows["person_picture"];
 			$person_license = $dataRows["person_license"];
 			
@@ -84,7 +88,15 @@
 			}
 			echo '</div></div>';
 						
-			echo '<h3><img class="table-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.htmlentities($nationality).'"> '.htmlentities($name).' ('.htmlentities($nationality).')</h3>';
+			echo '<h3><img class="table-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.htmlentities($nationality).'"> ';
+			if ($active) {
+				echo '<a class="standard-link" href="person.php?id='.$person_id.'">';
+				echo htmlentities($name);
+				echo '</a>';
+			} else {
+				echo htmlentities($name);
+			}
+			echo ' ('.htmlentities($nationality).')</h3>';
 			
 			echo html_entity_decode($intro_text); 
 			
