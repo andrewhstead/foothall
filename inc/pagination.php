@@ -4,10 +4,18 @@
 	<table>
 
 		<tr>
+			
+			<td>
+				<a class="pagination-link" href="<?php echo $pagination_page; ?>.php?id=1">
+					&lt;&lt;
+				</a>
+			</td>
 		
 			<?php
 			
-				for ($page_number = 1; $page_number <= ceil($total_items / $page_items); $page_number++) {
+				$total_pages = ceil($total_items / $page_items);
+			
+				for ($page_number = 1; $page_number <= $total_pages; $page_number++) {
 					
 					if ($page_number == $page_id) {
 						
@@ -22,6 +30,12 @@
 				}
 			
 			?>
+			
+			<td>
+				<a class="pagination-link" href="<?php echo $pagination_page; ?>.php?id=<?php echo $total_pages; ?>">
+					&gt;&gt;
+				</a>
+			</td>
 			
 		</tr>
 

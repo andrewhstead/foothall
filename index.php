@@ -93,7 +93,7 @@
 	if ($content) {
 		
 		$total_items = count($content);
-		$page_items = 10;
+		$page_items = 1;
 		$pagination_formula = $page_id * $page_items - $page_items;
 		$pagination_page = "index";
 				
