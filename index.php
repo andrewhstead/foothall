@@ -13,11 +13,20 @@
 	
 	$polls = "SELECT * FROM polls WHERE expiry > CURDATE()";
 	$poll_content = $connectDB->query($polls);
+	while ($dataRows = $poll_content->fetch()) {
+		$content[] = $dataRows;
+	}
+	
 	$people = "SELECT * FROM people WHERE active = true";
 	$people_content = $connectDB->query($people);
+	while ($dataRows = $people_content->fetch()) {
+		$content[] = $dataRows;
+	}
+	
 	$matches = "SELECT
 		matches.id AS id,
 		matches.type AS type,
+		matches.published AS published,
 		year(matches.date) AS year,
 		team_1.display_name AS team_1_name,
 		matches.score_1 AS score_1,
@@ -28,13 +37,18 @@
 		FROM matches 
 		INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
 		INNER JOIN teams team_2 ON matches.team_2 = team_2.name
-		WHERE active = true";
+		WHERE matches.active = true";
 	$match_content = $connectDB->query($matches);
+	while ($dataRows = $match_content->fetch()) {
+		$content[] = $dataRows;
+	}	
+	
 	$teams = "
 		SELECT 
 		hall_teams.id AS id,
 		hall_teams.file_code AS file_code,
 		hall_teams.type AS type,
+		hall_teams.published AS published,
 		hall_teams.display_name AS name,
 		hall_teams.era AS era,
 		hall_teams.biography AS biography,
@@ -44,60 +58,68 @@
 		teams.type AS team_type
 		FROM hall_teams 
 		INNER JOIN teams on hall_teams.display_name = teams.display_name
-		WHERE active = true ORDER BY type desc, hall_teams.admission_date";
+		WHERE hall_teams.active = true ORDER BY type desc, hall_teams.admission_date";
 	$team_content = $connectDB->query($teams);
-
-	while ($dataRows = $poll_content->fetch()) {
-
-		$content[] = $dataRows;
-		
-	}
-	
-	while ($dataRows = $people_content->fetch()) {
-
-		$content[] = $dataRows;
-			
-	}
-	
-	while ($dataRows = $match_content->fetch()) {
-
-		$content[] = $dataRows;
-			
-	}
-	
 	while ($dataRows = $team_content->fetch()) {
-
 		$content[] = $dataRows;
-			
+	}	
+	
+	$stories = "
+		SELECT * FROM stories 
+		WHERE stories.active = true 
+		ORDER BY published";
+	$story_content = $connectDB->query($stories);
+	while ($dataRows = $story_content->fetch()) {
+		$content[] = $dataRows;
+	}	
+	
+	$dream = "
+		SELECT * FROM dream_teams 
+		WHERE dream_teams.active = true 
+		ORDER BY published";
+	$dream_content = $connectDB->query($dream);
+	while ($dataRows = $dream_content->fetch()) {
+		$content[] = $dataRows;
 	}
 	
 	echo '<div class="feed-template">';
 		
 	if ($content) {
 		
+		array_multisort(array_column($content, 'published'), SORT_DESC, $content);
+		
 		foreach ($content as $item) {
 		
 			echo '<div class="feed-post">';
-			
+						
 			echo '<div class="feed-heading">';
 			if ($item['type'] == 'poll') {
 				echo 'Hall of Fame Voting';
-			} else {
+			} elseif ($item['type'] == 'story') {
+				echo 'Football Stories';
+			} elseif ($item['type'] == 'dream') {
+				echo 'Dream Teams';
+			}  else {
 				echo 'Hall of Fame Admission';
 			}
 			echo '</div>';
 			
 			echo '<div class="feed-body">';
-			echo '<span class="post-title">'
-				.'<a class="post-link" href="'
-				.$item['type']
-				.'.php?id='
-				.$item['id']
-				.'">';
+			echo '<span class="post-title"><a class="post-link" href="'.$item['type'];
+			if ($item['type'] == 'dream') {
+				echo '_team';
+			}
+			echo '.php?id='.$item['id'].'">';
 			
 			if ($item['type'] == 'poll') {
 				echo $item['title'];
 				echo '</a>';
+			} else if ($item['type'] == 'story') {
+				echo $item['title'];
+				echo '</a>';
+			} else if ($item['type'] == 'dream') {
+				echo $item['name'];
+				echo ' Dream Team</a>';
 			} else if ($item['type'] == 'person') {
 				echo $item['name'];
 				echo '</a>';
@@ -119,17 +141,19 @@
 			
 			echo '<br>';
 					
-			echo '<div class="formatted-text">'.html_entity_decode($item['intro_text']).'</div>';
-					
+			echo '<div class="formatted-text">'.html_entity_decode($item['intro_text']);
 			if ($item['type'] == 'poll') {
 				$display_date = new DateTime($item['expiry']);
-				echo '<strong>Expires:</strong> ';
-				echo date_format($display_date, "d/m/Y, H:i");
-			} else {
-				$display_date = new DateTime($item['admission_date']);
-				echo '<strong>Admitted:</strong> ';
-				echo date_format($display_date, "d F Y");
+				echo ' Expires at ';
+				echo date_format($display_date, "H:i, d M Y.");
 			}
+			echo '</div>';
+			
+			$published = new DateTime($item['published']);
+			
+			echo '<div class="right-text"><strong>Published:</strong> ';
+			echo date_format($published, "d/m/Y, H:i");
+			echo '</div>';
 			
 			echo '</div>';
 				

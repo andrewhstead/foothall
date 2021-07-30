@@ -779,3 +779,7 @@ div.admin-link-box:last-of-type {
 	font-size: 1.25em;
 	font-weight: bold;
 }
+
+.right-text {
+	text-align: right;
+}

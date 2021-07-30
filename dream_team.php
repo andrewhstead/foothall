@@ -35,7 +35,7 @@
 			echo '<img class="formation-diagram" alt="'.$name.'" src="img/dream/formation/'.strtolower($name).'.png" onclick="openBox(\'dream\', \'formation\', \''.strtolower($name).'\', \'png\')">';
 		?>
 	
-		<h2>Players</h2>
+		<h2>Line-Up</h2>
 		
 	<?php
 		

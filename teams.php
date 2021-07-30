@@ -17,7 +17,7 @@
 		teams.type AS type
 		FROM hall_teams 
 		INNER JOIN teams on hall_teams.display_name = teams.display_name
-		WHERE active = true ORDER BY type desc, hall_teams.admission_date";
+		WHERE hall_teams.active = true ORDER BY type desc, hall_teams.admission_date";
 	$team_query = $connectDB->query($teams);
 	
 	$team_list = array();

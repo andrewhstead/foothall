@@ -7,7 +7,7 @@
 				
 	$connectDB;
 
-	$stories = "SELECT * FROM stories WHERE on_site = true ORDER BY datetime desc";
+	$stories = "SELECT * FROM stories WHERE active = true ORDER BY published desc";
 	$story_query = $connectDB->query($stories);
 	
 	$story_list = array();
@@ -15,7 +15,7 @@
 	while ($dataRows = $story_query->fetch()) {
 
 		$id = $dataRows["id"];
-		$story_date = new DateTime($dataRows["datetime"]);
+		$story_date = new DateTime($dataRows["published"]);
 		$title = $dataRows["title"];
 		$content = $dataRows["content"];
 		$category = $dataRows["category"];

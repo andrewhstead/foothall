@@ -11,19 +11,19 @@
 	$dream_query = $connectDB->query($dream);
 	
 	$dream_list = array();
-	$type_list = array();
+	$scope_list = array();
 	
 	while ($dataRows = $dream_query->fetch()) {
 
 		$id = $dataRows["id"];
 		$name = $dataRows["name"];
-		$type = $dataRows["type"];
+		$scope = $dataRows["scope"];
 		$profile = $dataRows["profile"];
 		
 		$dream_list[] = $dataRows;
 		
-		if (!in_array($type, $type_list)) {
-			$type_list[] = $type;
+		if (!in_array($scope, $scope_list)) {
+			$scope_list[] = $scope;
 		}
 		
 	}
@@ -42,15 +42,15 @@
 				echo "<h2>Dream Teams will appear here when added to the site.</h2>";
 			}
 					
-			foreach ($type_list as $type_head) {
+			foreach ($scope_list as $scope_head) {
 					
 				echo '<div class="sub-menu">';
 					
-				echo '<h2>'.ucfirst($type_head).' Teams</h2>';
+				echo '<h2>'.ucfirst($scope_head).' Teams</h2>';
 					
 				echo '<div class="flex-wrapper">';
 			
-				foreach ($dream_list as $dream_menu) if ($dream_menu["type"] == $type_head) {
+				foreach ($dream_list as $dream_menu) if ($dream_menu["scope"] == $scope_head) {
 						
 					echo '<div class="flex-item">';
 					echo '&#9654; <a class="standard-link" href="dream_team.php?id='.$dream_menu["id"].'">'.$dream_menu["name"].'</a>';

@@ -18,7 +18,7 @@
 
 	while ($dataRows = $page_content->fetch()) {
 
-		$published = new DateTime($dataRows["datetime"]);
+		$published = new DateTime($dataRows["published"]);
 		$title = $dataRows["title"];
 		$intro_text = $dataRows["intro_text"];
 		$content = $dataRows["content"];
