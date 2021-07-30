@@ -15,7 +15,7 @@
 					
 					} else {
 						
-						echo '<td><a class="pagination-link" href="index.php?id='.$page_number.'">'.$page_number.'</a></td>';
+						echo '<td><a class="pagination-link" href="'.$pagination_page.'.php?id='.$page_number.'">'.$page_number.'</a></td>';
 					
 					}
 					

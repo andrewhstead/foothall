@@ -93,8 +93,9 @@
 	if ($content) {
 		
 		$total_items = count($content);
-		$page_items = 5;
+		$page_items = 10;
 		$pagination_formula = $page_id * $page_items - $page_items;
+		$pagination_page = "index";
 				
 		array_multisort(array_column($content, 'published'), SORT_DESC, $content);
 		

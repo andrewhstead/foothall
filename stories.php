@@ -6,6 +6,12 @@
 	include 'inc/header.php';
 				
 	$connectDB;
+	
+	if (isset($_GET["id"])) {
+		$page_id = $_GET["id"];
+	} else {
+		$page_id = 1;
+	}
 
 	$stories = "SELECT * FROM stories WHERE active = true ORDER BY published desc";
 	$story_query = $connectDB->query($stories);
@@ -45,9 +51,14 @@
 		} else {
 			echo '</div>';
 			echo '<div class="article-feed">';
-		}		
-	
-		foreach ($story_list as $story) {
+		}	
+		
+		$total_items = count($story_list);
+		$page_items = 10;
+		$pagination_formula = $page_id * $page_items - $page_items;	
+		$pagination_page = "stories";
+
+		foreach (array_slice($story_list, $pagination_formula, $page_items)  as $story) {
 					
 			echo '<div class="story-post">';
 		
@@ -70,7 +81,7 @@
 			
 			echo '<br>';
 			
-			$display_date = new DateTime($story['datetime']);							
+			$display_date = new DateTime($story['published']);							
 			echo '<strong>Added:</strong> ';
 			echo date_format($display_date, "d/m/Y, H:i");
 				
@@ -78,6 +89,10 @@
 						
 			echo '</div>';
 					
+		}
+
+		if (count($story_list) > $page_items) {
+			include 'inc/pagination.php';
 		}
 
 	?>
