@@ -7,6 +7,12 @@
 	
 	$connectDB;
 	
+	if (isset($_GET["id"])) {
+		$page_id = $_GET["id"];
+	} else {
+		$page_id = 1;
+	}
+	
 	$content = array();
 	
 	$date = date('Y-m-d H:i:s');
@@ -86,9 +92,13 @@
 		
 	if ($content) {
 		
+		$total_items = count($content);
+		$page_items = 5;
+		$pagination_formula = $page_id * $page_items - $page_items;
+				
 		array_multisort(array_column($content, 'published'), SORT_DESC, $content);
 		
-		foreach ($content as $item) {
+		foreach (array_slice($content, $pagination_formula, $page_items)  as $item) {
 		
 			echo '<div class="feed-post">';
 						
@@ -165,6 +175,10 @@
 		
 		echo '<div class="page-template"><h2>Sorry, no content is currently available.</h2></div>';
 
+	}
+
+	if (count($content) > $page_items) {
+		include 'inc/pagination.php';
 	}
 	
 	echo '</div>';

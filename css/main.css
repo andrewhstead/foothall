@@ -783,3 +783,45 @@ div.admin-link-box:last-of-type {
 .right-text {
 	text-align: right;
 }
+
+.pagination {
+	width: 100%;
+}
+
+.pagination table {
+	margin: auto;
+	padding: 10px;
+}
+
+.pagination td {
+	margin: 10px auto;
+	background-color: #3366ff;
+	color: white;
+	text-align: center;
+	padding: 10px;
+	margin: 0 0 3px 0;
+	font-size: 1.5em;
+	border: 1px solid #0033cc;
+}
+
+.pagination td:first-of-type {
+	border-radius: 10px 0 0 10px;
+}
+.pagination td:last-of-type {
+	border-radius: 0 10px 10px 0;
+}
+
+.pagination-link {
+	color: white;
+	text-decoration: none;
+}
+
+.pagination-link:hover {
+	text-decoration: underline;
+}
+
+td.current-page {
+	background-color: #ccddff;
+	color: #0033cc;
+	font-weight: bold;
+}
