@@ -115,14 +115,8 @@
 					WHERE tournaments.id = $tournament_id
 					ORDER BY date ASC";
 				$matches_query = $connectDB->query($matches);
-		
-				if ($matches) {
-					
-					echo '<h2>Results</h2>';
-					
-				}
 				
-				echo '<table class="results-table">';
+				$iteration = 1;
 				
 				while ($dataRows = $matches_query->fetch()) {
 
@@ -138,7 +132,10 @@
 					$score_2 = $dataRows["score_2"];
 					$team_2_name = $dataRows["team_2_name"];
 					
-					$tournament_list[] = $dataRows;
+					if ($iteration == 1) {
+						echo '<h2>Results</h2>';
+						echo '<table class="results-table">';
+					}
 					
 					echo '<tr>';
 					echo '<td>'.date_format($date, "d/m/y").'</td>';
@@ -153,6 +150,8 @@
 					echo '</td>';
 					echo '<td>'.htmlentities($team_2_name).'</td>';
 					echo '</tr>';
+					
+					$iteration++;
 					
 				}
 				
