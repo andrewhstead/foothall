@@ -14,7 +14,8 @@
 	$connectDB;
 
 	$tournament = "SELECT 
-		competitions.name AS name,
+		competitions.name AS competition,
+		tournaments.name AS tournament,
 		tournaments.year AS year,
 		tournaments.host AS host,
 		host.display_name AS host_name,
@@ -39,7 +40,8 @@
 	
 	while ($dataRows = $tournament_query->fetch()) {
 
-		$competition = $dataRows["name"];
+		$competition = $dataRows["competition"];
+		$tournament = $dataRows["tournament"];
 		$year = $dataRows["year"];
 		$host_abbreviation = $dataRows["host"];
 		$host_name = $dataRows["host_name"];
@@ -62,7 +64,7 @@
 	<div class="page-template">
 		
 		<h1 class="info-page">
-			<?php echo htmlentities($year).' '.htmlentities($competition); ?>
+			<?php echo htmlentities($tournament); ?>
 		</h1>
 		
 		<p>
@@ -81,12 +83,80 @@
 		</p>
 		
 		<div class="profile-content">
+			
+			<?php
+
+				$matches = "
+					SELECT 
+						matches.id AS match_id,
+						matches.active AS active,
+						matches.competition AS competition,
+						tournaments.id AS tournament_id,
+						tournaments.year AS year,
+						tournaments.name AS tournament,
+						matches.stage AS stage,
+						matches.date AS date,
+						team_1.display_name AS team_1_name,
+						matches.score_1 AS score_1,
+						matches.score_2 AS score_2,
+						team_2.display_name AS team_2_name
+					FROM matches
+					INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
+					INNER JOIN teams team_2 ON matches.team_2 = team_2.name
+					INNER JOIN tournaments on tournaments.name = matches.tournament
+					WHERE tournaments.id = $tournament_id
+					ORDER BY date ASC";
+				$matches_query = $connectDB->query($matches);
+		
+				if ($matches) {
+					
+					echo '<h2>Results</h2>';
+					
+					
+				}
+				
+				echo '<table class="results-table">';
+				
+				while ($dataRows = $matches_query->fetch()) {
+
+					$match_id = $dataRows["match_id"];
+					$active = $dataRows["active"];
+					$date = new DateTime($dataRows["date"]);
+					$year = $dataRows["year"];
+					$competition = $dataRows["competition"];
+					$tournament = $dataRows["tournament"];
+					$stage = $dataRows["stage"];
+					$team_1_name = $dataRows["team_1_name"];
+					$score_1 = $dataRows["score_1"];
+					$score_2 = $dataRows["score_2"];
+					$team_2_name = $dataRows["team_2_name"];
+					
+					$tournament_list[] = $dataRows;
+					
+					echo '<tr>';
+					echo '<td>'.date_format($date, "d/m/y").'</td>';
+					echo '<td>'.htmlentities($team_1_name).'</td>';
+					if ($active) {
+						echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
+						echo htmlentities($score_1).'-'.htmlentities($score_2);
+						echo '</a>';
+					} else {
+						echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
+					}
+					echo '</td>';
+					echo '<td>'.htmlentities($team_2_name).'</td>';
+					echo '</tr>';
+					
+				}
+				
+				echo '</table>';
+				
+			?>
 		
 			<?php 
 				
-				if (!$review) {
-					echo 'Tournament review will appear here.';
-				} else {
+				if ($review) {
+					echo '<h2>Tournament Review</h2>';
 					echo htmlentities($review);
 				}
 			?>

@@ -825,3 +825,7 @@ td.current-page {
 	background-color: #f4e6a5;
 	font-weight: bold;
 }
+
+.results-table {
+	border-collapse: collapse;
+}

@@ -36,7 +36,7 @@
 		$stage = $dataRows["stage"];
 		$team_1_name = $dataRows["team_1_name"];
 		$score_1 = $dataRows["score_1"];
-		$score_1 = $dataRows["score_2"];
+		$score_2 = $dataRows["score_2"];
 		$team_2_name = $dataRows["team_2_name"];
 		
 		$match_list[] = $dataRows;
