@@ -27,6 +27,7 @@
 		winner.display_name AS winner_name,
 		tournaments.runner_up AS runner_up,
 		runner_up.display_name AS runner_up_name,
+		tournaments.intro_text AS intro_text,
 		tournaments.review AS review
 		FROM tournaments 
 		INNER JOIN competitions ON tournaments.competition = competitions.id 
@@ -53,6 +54,7 @@
 		$winner_name = $dataRows["winner_name"];
 		$runner_up = $dataRows["runner_up"];
 		$runner_up_name = $dataRows["runner_up_name"];
+		$intro_text = $dataRows["intro_text"];
 		$review = $dataRows["review"];
 		
 		$tournament_list[] = $dataRows;
@@ -66,6 +68,12 @@
 		<h1 class="info-page">
 			<?php echo htmlentities($tournament); ?>
 		</h1>
+		
+		<?php
+			if ($intro_text) {
+				echo '<div class="formatted-text">'.html_entity_decode($intro_text).'</div>';	
+			}
+		?>
 		
 		<p>
 			<strong>Hosts:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($host_abbreviation) ?>.png" alt="<?php echo strtolower($host_name) ?>"> <?php echo htmlentities($host_name) ?>
@@ -111,7 +119,6 @@
 				if ($matches) {
 					
 					echo '<h2>Results</h2>';
-					
 					
 				}
 				

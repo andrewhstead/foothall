@@ -829,3 +829,17 @@ td.current-page {
 .results-table {
 	border-collapse: collapse;
 }
+.table-member {
+	background-color: #321c20;
+	color: #f4e6a5;
+}
+.table-link {
+	color: #f4e6a5;
+	text-decoration: none;
+}
+.table-link:hover {
+	text-decoration: underline;
+}
+.table-link:visited {
+	color: #f4e6a5;
+}
