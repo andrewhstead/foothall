@@ -100,7 +100,9 @@
 			$appearances = "
 				SELECT 
 					tournaments.year AS year,
+					tournaments.on_site AS active,
 					tournaments.name AS tournament,
+					tournaments.id AS tournament_id,
 					competitions.name AS competition,
 					countries.display_name AS country_name, 
 					countries.abbreviation AS abbreviation, 
@@ -128,7 +130,9 @@
 				
 				while ($dataRows = $appearance_query->fetch()) {
 
+					$active = $dataRows["active"];
 					$tournament_year = $dataRows["year"];
+					$tournament_id = $dataRows["tournament_id"];
 					$competition_name = $dataRows["competition"];
 					
 					if (!in_array($competition_name, $appearance_competition)) {
@@ -151,30 +155,43 @@
 								
 								echo '<span class="tournament-winner">';
 								echo '<img class="medal" alt="Gold Medal" src="img/awards/gold_world.png"> ';
-								echo $appearance["year"];
-								echo '</span>';
+								if ($appearance["active"]) {
+									echo '<a class="winner-link" ';
+								}
 										
 							} elseif ($appearance["reached"] == "RU") {
 									
 								echo '<span class="tournament-runner-up">';
 								echo '<img class="medal" alt="Silver Medal" src="img/awards/silver_world.png"> ';
-								echo $appearance["year"];
-								echo '</span>';
+								if ($appearance["active"]) {
+									echo '<a class="runner-up-link" ';
+								}
 										
 							} elseif ($appearance["reached"] == "3RD") {
 									
 								echo '<span class="tournament-third">';
 								echo '<img class="medal" alt="Bronze Medal" src="img/awards/bronze_world.png"> ';
-								echo $appearance["year"];
-								echo '</span>';
+								if ($appearance["active"]) {
+									echo '<a class="third-link" ';
+								}
 										
 							} else {
 									
 								echo '<span class="honour-details">';
-								echo $appearance["year"];
-								echo '</span>';
+								if ($appearance["active"]) {
+									echo '<a class="appearance-link" ';
+								}
 										
 							}
+							
+							echo 'href="tournament.php?id='.$appearance["tournament_id"].'">';
+							echo $appearance["year"];
+							
+							if ($appearance["active"]) {
+								echo'</a>';
+							}
+							
+							echo '</span>';
 									
 						}
 						

@@ -519,32 +519,6 @@ h1.info-page:first-of-type {
 	padding: 0 5px 0 0;
 	white-space: nowrap;
 }
-.tournament-appearance {
-	display: inline-block;
-	padding: 0 5px 0 0;
-	white-space: nowrap;
-}
-.tournament-winner {
-	display: inline-block;
-	padding: 0 5px 0 0;
-	white-space: nowrap;
-	font-weight: bold;
-	color: #cc9900;
-}
-.tournament-runner-up {
-	display: inline-block;
-	padding: 0 5px 0 0;
-	white-space: nowrap;
-	font-weight: bold;
-	color: #a2a2a2;
-}
-.tournament-third {
-	display: inline-block;
-	padding: 0 5px 0 0;
-	white-space: nowrap;
-	font-weight: bold;
-	color: #b54500;
-}
 
 .medal {
 	width: 15px;
@@ -868,4 +842,64 @@ td.current-page {
 }
 .table-link:visited {
 	color: #f4e6a5;
+}
+
+.tournament-appearance {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+}
+.tournament-winner {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #cc9900;
+}
+.tournament-runner-up {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #a2a2a2;
+}
+.tournament-third {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #b54500;
+}
+
+.winner-link {
+	font-weight: bold;
+	color: #cc9900;
+	text-decoration: none;
+}
+.runner-up-link {
+	font-weight: bold;
+	color: #a2a2a2;
+	text-decoration: none;
+}
+.third-link {
+	font-weight: bold;
+	color: #b54500;
+	text-decoration: none;
+}
+.appearance-link {
+	font-weight: bold;
+	color: #1e90ff;
+	text-decoration: none;
+}
+.winner-link:hover {
+	text-decoration: underline;
+}
+.runner-up-link:hover {
+	text-decoration: underline;
+}
+.third-link:hover {
+	text-decoration: underline;
+}
+.appearance-link:hover {
+	text-decoration: underline;
 }
