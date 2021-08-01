@@ -65,10 +65,11 @@
 				FROM matches
 				INNER JOIN teams team_1 ON team_1.name = matches.team_1
 				INNER JOIN teams team_2 ON team_2.name = matches.team_2
-				WHERE team_1.display_name = '$display_name'
+				WHERE (team_1.display_name = '$display_name'
 					OR team_2.display_name = '$display_name'
 					OR team_1.display_name = '$includes'
-					OR team_2.display_name = '$includes'";
+					OR team_2.display_name = '$includes')
+					AND matches.active = true";
 				
 			$match_check = $connectDB->query($matches);
 			
@@ -77,23 +78,115 @@
 			if ($has_matches) {
 				
 				echo '<h2 class="info-page">FootHall Matches</h2>';
-			
+				
+				$match_query = $connectDB->query($matches);
+				
+				
+				while ($dataRows = $match_query->fetch()) {
+					
+					$match_id = $dataRows["match_id"];
+					$match_title = $dataRows["match_title"];
+					
+					echo '&#9654; <a class="standard-link" href="match.php?id='.$match_id.'">';
+					echo $match_title;
+					echo '</a><br>';
+					
+				}
+				
 			}
 			
-			$match_query = $connectDB->query($matches);
 			
-			while ($dataRows = $match_query->fetch()) {
+			/* Checking for international tournament appearances and displaying them. */
+			$appearances = "
+				SELECT 
+					tournaments.year AS year,
+					tournaments.name AS tournament,
+					competitions.name AS competition,
+					countries.display_name AS country_name, 
+					countries.abbreviation AS abbreviation, 
+					teams.country AS nationality,
+					tournament_teams.reached AS reached
+				FROM tournament_teams 
+				INNER JOIN teams ON teams.name = tournament_teams.team_name
+				INNER JOIN countries ON countries.abbreviation = teams.country
+				INNER JOIN tournaments ON tournaments.name = tournament_teams.tournament_name
+				INNER JOIN competitions ON competitions.id = tournaments.competition
+				WHERE countries.abbreviation = '$abbreviation' OR countries.abbreviation = '$successor_to'";
+			
+			$appearance_check = $connectDB->query($appearances);
+			$has_appearances = $appearance_check->fetch();
+			
+			if ($has_appearances) {
+				
+				echo '<div class="competition-honours">';
+				
+				echo '<h2 class="info-page">Tournament Appearances</h2>';
+			
+				$appearance_query = $connectDB->query($appearances);
+				$appearance_competition = array();
+				$competition_appearances = array();
+				
+				while ($dataRows = $appearance_query->fetch()) {
 
-				$match_id = $dataRows["match_id"];
-				$match_title = $dataRows["match_title"];
+					$tournament_year = $dataRows["year"];
+					$competition_name = $dataRows["competition"];
+					
+					if (!in_array($competition_name, $appearance_competition)) {
+						$appearance_competition[] = $competition_name;
+					}
+					
+					$competition_appearances[] = $dataRows;
+					
+				}
 				
-				echo '&#9654; <a class="standard-link" href="match.php?id='.$match_id.'">';
-				echo $match_title;
-				echo '</a><br>';
+				foreach ($appearance_competition as $appearance_list) {
+						
+					echo '<div><strong>'.$appearance_list.'</strong></div>';
+					
+					foreach ($competition_appearances as $appearance) {
+						
+						if (($appearance["competition"] == $appearance_list) && ($appearance["abbreviation"] ==$abbreviation )) {
+						
+							if ($appearance["reached"] == "W") {
+								
+								echo '<span class="tournament-winner">';
+								echo '<img class="medal" alt="Gold Medal" src="img/awards/gold_world.png"> ';
+								echo $appearance["year"];
+								echo '</span>';
+										
+							} elseif ($appearance["reached"] == "RU") {
+									
+								echo '<span class="tournament-runner-up">';
+								echo '<img class="medal" alt="Silver Medal" src="img/awards/silver_world.png"> ';
+								echo $appearance["year"];
+								echo '</span>';
+										
+							} elseif ($appearance["reached"] == "3RD") {
+									
+								echo '<span class="tournament-third">';
+								echo '<img class="medal" alt="Bronze Medal" src="img/awards/bronze_world.png"> ';
+								echo $appearance["year"];
+								echo '</span>';
+										
+							} else {
+									
+								echo '<span class="honour-details">';
+								echo $appearance["year"];
+								echo '</span>';
+										
+							}
+									
+						}
+						
+					}
+						
+				}
 				
+				echo '</span>';
+			
 			}
 			
-			/* Checking for international tournament honours and displaying them. */
+			/* Checking for international tournament honours and displaying them.
 			
 			$honours = "SELECT 
 				tournaments.id AS tournament_id,
@@ -176,6 +269,6 @@
 				
 				echo '</span>';
 			
-			}
+			} */
 			
 		?>

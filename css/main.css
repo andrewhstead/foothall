@@ -519,6 +519,32 @@ h1.info-page:first-of-type {
 	padding: 0 5px 0 0;
 	white-space: nowrap;
 }
+.tournament-appearance {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+}
+.tournament-winner {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #cc9900;
+}
+.tournament-runner-up {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #a2a2a2;
+}
+.tournament-third {
+	display: inline-block;
+	padding: 0 5px 0 0;
+	white-space: nowrap;
+	font-weight: bold;
+	color: #b54500;
+}
 
 .medal {
 	width: 15px;
