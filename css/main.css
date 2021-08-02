@@ -887,7 +887,6 @@ td.current-page {
 	text-decoration: none;
 }
 .appearance-link {
-	font-weight: bold;
 	color: #1e90ff;
 	text-decoration: none;
 }
@@ -901,5 +900,35 @@ td.current-page {
 	text-decoration: underline;
 }
 .appearance-link:hover {
+	text-decoration: underline;
+}
+
+.navbox {
+	border: 5px solid #321c20;
+	margin: 20px 0;
+	text-align: center;
+}
+
+.navbox-head {
+	color: #321c20;
+	background-color: #cfb53b;
+	padding: 5px;
+	font-weight: bold;
+	border-bottom: 2px solid #321c20;
+}
+.this-page {
+	font-weight: bold;
+}
+
+.navbox-body {
+	padding: 10px;
+}
+
+.header-link {
+	color: #321c20;
+	text-decoration: none;
+}
+
+.header-link:hover {
 	text-decoration: underline;
 }

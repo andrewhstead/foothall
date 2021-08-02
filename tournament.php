@@ -1,5 +1,6 @@
 <?php
-	$thispage = "Tournament Profile";
+	$thispage = "tournaments";
+	$primary_table = "tournaments";
 	
 	require_once 'inc/db.php';
 
@@ -15,6 +16,7 @@
 
 	$tournament = "SELECT 
 		competitions.name AS competition,
+		competitions.id AS competition_id,
 		tournaments.name AS tournament,
 		tournaments.year AS year,
 		tournaments.host AS host,
@@ -42,6 +44,7 @@
 	while ($dataRows = $tournament_query->fetch()) {
 
 		$competition = $dataRows["competition"];
+		$competition_id = $dataRows["competition_id"];
 		$tournament = $dataRows["tournament"];
 		$year = $dataRows["year"];
 		$host_abbreviation = $dataRows["host"];
@@ -169,10 +172,54 @@
 		
 		</div>
 		
+		<div class="navbox">
+			
+			<div class="navbox-head">
+				<a class="header-link" href="competition.php?id=<?php echo $competition_id; ?>">
+					<?php echo $competition; ?>
+				</a>
+			</div>
+			
+			<div class="navbox-body">
+				
+				<?php
+				
+					$entries = "SELECT * FROM tournaments WHERE completed = true AND competition = $competition_id";
+					$entries_query = $connectDB->query($entries);
+					
+					$i = 0;
+					
+					while ($dataRows = $entries_query->fetch()) {
+						
+						$tournament_year = $dataRows["year"];
+						
+						if ($dataRows["id"] == $tournament_id) {
+							echo '<span class="this-page">';
+						} elseif ($dataRows["active"]) {
+							echo '<a class="standard-link" href="tournament.php?id='.$dataRows["id"].'">';
+						}
+						echo $tournament_year;
+						if ($dataRows["id"] == $tournament_id) {
+							echo '</span>';
+						} elseif ($dataRows["active"]) {
+							echo '</a>';
+						}
+						echo ' | ';
+						
+					}
+					
+				?>
+			
+			</div>
+				
+		</div>
+		
+		
 	</div>
 	
 <?php
 
+	include 'inc/navbox.php';
 	include 'inc/footer.php';
 	
 ?>

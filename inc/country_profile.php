@@ -156,7 +156,7 @@
 								echo '<span class="tournament-winner">';
 								echo '<img class="medal" alt="Gold Medal" src="img/awards/gold_world.png"> ';
 								if ($appearance["active"]) {
-									echo '<a class="winner-link" ';
+									echo '<a class="winner-link" href="tournament.php?id='.$appearance["tournament_id"].'">';
 								}
 										
 							} elseif ($appearance["reached"] == "RU") {
@@ -164,7 +164,7 @@
 								echo '<span class="tournament-runner-up">';
 								echo '<img class="medal" alt="Silver Medal" src="img/awards/silver_world.png"> ';
 								if ($appearance["active"]) {
-									echo '<a class="runner-up-link" ';
+									echo '<a class="runner-up-link" href="tournament.php?id='.$appearance["tournament_id"].'">';
 								}
 										
 							} elseif ($appearance["reached"] == "3RD") {
@@ -172,19 +172,18 @@
 								echo '<span class="tournament-third">';
 								echo '<img class="medal" alt="Bronze Medal" src="img/awards/bronze_world.png"> ';
 								if ($appearance["active"]) {
-									echo '<a class="third-link" ';
+									echo '<a class="third-link" href="tournament.php?id='.$appearance["tournament_id"].'">';
 								}
 										
 							} else {
 									
 								echo '<span class="honour-details">';
 								if ($appearance["active"]) {
-									echo '<a class="appearance-link" ';
+									echo '<a class="appearance-link" href="tournament.php?id='.$appearance["tournament_id"].'">';
 								}
 										
 							}
 							
-							echo 'href="tournament.php?id='.$appearance["tournament_id"].'">';
 							echo $appearance["year"];
 							
 							if ($appearance["active"]) {

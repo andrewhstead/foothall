@@ -38,7 +38,7 @@
 		$host_3 = $dataRows["host_3"];
 		$winner = $dataRows["winner"];
 		$runner_up = $dataRows["runner_up"];
-		$on_site = $dataRows["on_site"];
+		$active = $dataRows["active"];
 		
 		$tournament_list[] = $dataRows;
 		
@@ -86,7 +86,7 @@
 									
 					echo '<tr>';
 					echo '<td>';
-					if ($tournament_menu["on_site"] == true) {
+					if ($tournament_menu["active"] == true) {
 						echo '<a class="standard-link" href="tournament.php?id='.$tournament_menu["id"].'">'.$tournament_menu["year"].'</a>';
 					} else {
 						echo $tournament_menu["year"];
