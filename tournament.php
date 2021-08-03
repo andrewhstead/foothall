@@ -172,64 +172,29 @@
 		
 		</div>
 		
-		<div class="navbox">
+		<?php
 			
-			<div class="navbox-head">
-				<a class="header-link" href="competition.php?id=<?php echo $competition_id; ?>">
-					<?php echo $competition; ?>
-				</a>
-			</div>
+			$navhead_page = "competition";
+			$navhead_parameter = $competition_id;
+			$navhead_text = $competition;
 			
-			<div class="navbox-body">
-				
-				<?php
-				
-					$entries = "SELECT * FROM tournaments WHERE completed = true AND competition = $competition_id";
-					$entries_query = $connectDB->query($entries);
-					
-					$result_count = "SELECT COUNT(*) FROM tournaments WHERE completed = true AND competition = $competition_id";
-					$results = $connectDB->query($result_count);
-					$total_results = $results->fetchColumn();
-					
-					$iteration = 0;
-						
-					while ($dataRows = $entries_query->fetch()) {
-						
-						$count = $entries_query->rowCount();
-						$tournament_year = $dataRows["year"];
-						
-						if ($dataRows["id"] == $tournament_id) {
-							echo '<span class="this-page">';
-						} elseif ($dataRows["active"]) {
-							echo '<a class="standard-link" href="tournament.php?id='.$dataRows["id"].'">';
-						}
-						echo $tournament_year;
-						if ($dataRows["id"] == $tournament_id) {
-							echo '</span>';
-						} elseif ($dataRows["active"]) {
-							echo '</a>';
-						}
-						
-						$iteration++;
-						
-						if ($iteration < $total_results) {
-							echo ' | ';
-						}
-						
-					}
-					
-				?>
+			$navbox_sql = "SELECT * FROM tournaments WHERE completed = true AND competition = $competition_id";
+			$result_count = "SELECT COUNT(*) FROM tournaments WHERE completed = true AND competition = $competition_id";
 			
-			</div>
-				
-		</div>
+			$navbox_column = "year";
+			$navbox_page = "tournament";
+			$navbox_current = $tournament_id;
+			
+			$navlink_parameter = "id";
+
+			include 'inc/navbox.php';
 		
+		?>
 		
 	</div>
 	
 <?php
 
-	include 'inc/navbox.php';
 	include 'inc/footer.php';
 	
 ?>

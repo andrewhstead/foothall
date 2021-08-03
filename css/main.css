@@ -84,7 +84,6 @@ li.menu-link:hover {
 
 .article-feed {
 	border-top: 5px solid #321c20;
-	min-height: 500px;
 	background-color: #ffffff;
 }
 
@@ -178,7 +177,6 @@ li.menu-link:hover {
 	margin: 0;
 	padding: 10px 5%;
 	font-size: 1.2em;
-	min-height: 600px;
 }
 
 .feed-template {
