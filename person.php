@@ -78,7 +78,22 @@
 				echo '<h1>Sorry<br>Page Does Not Exist</h1>';
 			
 			}
-				
+			
+			$navhead_page = "players";
+			$navhead_parameter = false;
+			$navhead_text = "FootHall Members";
+			
+			$navbox_sql = "SELECT * FROM people WHERE active = true AND as_player = true";
+			$result_count = "SELECT COUNT(*) FROM people WHERE active = true AND as_player = true";
+			
+			$navbox_column = "name";
+			$navbox_page = "person";
+			$navbox_current = $person_id;
+			
+			$navlink_parameter = "id";
+
+			include 'inc/navbox.php';
+		
 		?>
 		
 	</div>

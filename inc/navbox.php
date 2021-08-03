@@ -2,9 +2,15 @@
 		<div class="navbox">
 			
 			<div class="navbox-head">
-				<a class="header-link" href="<?php echo $navhead_page; ?>.php?id=<?php echo $navhead_parameter; ?>">
-					<?php echo $navhead_text; ?>
-				</a>
+				
+					<?php 
+						if ($navhead_parameter) {
+							echo '<a class="header-link" href="'.$navhead_page.'.php?id='.$navhead_parameter.'">'.$navhead_text.'</a>';
+						} else {
+							echo $navhead_text;
+						}
+					?>
+				
 			</div>
 			
 			<div class="navbox-body">
