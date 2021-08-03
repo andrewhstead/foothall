@@ -187,10 +187,15 @@
 					$entries = "SELECT * FROM tournaments WHERE completed = true AND competition = $competition_id";
 					$entries_query = $connectDB->query($entries);
 					
-					$i = 0;
+					$result_count = "SELECT COUNT(*) FROM tournaments WHERE completed = true AND competition = $competition_id";
+					$results = $connectDB->query($result_count);
+					$total_results = $results->fetchColumn();
 					
+					$iteration = 0;
+						
 					while ($dataRows = $entries_query->fetch()) {
 						
+						$count = $entries_query->rowCount();
 						$tournament_year = $dataRows["year"];
 						
 						if ($dataRows["id"] == $tournament_id) {
@@ -204,7 +209,12 @@
 						} elseif ($dataRows["active"]) {
 							echo '</a>';
 						}
-						echo ' | ';
+						
+						$iteration++;
+						
+						if ($iteration < $total_results) {
+							echo ' | ';
+						}
 						
 					}
 					

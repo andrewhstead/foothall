@@ -100,7 +100,7 @@
 			$appearances = "
 				SELECT 
 					tournaments.year AS year,
-					tournaments.on_site AS active,
+					tournaments.active AS active,
 					tournaments.name AS tournament,
 					tournaments.id AS tournament_id,
 					competitions.name AS competition,
