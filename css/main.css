@@ -43,6 +43,7 @@ main {
 .menu-toggle {
 	text-align: right;
 	padding: 0 10px 5px 0;
+	display: block;
 }
 
 ul.toggle-items {
@@ -929,4 +930,30 @@ td.current-page {
 
 .header-link:hover {
 	text-decoration: underline;
+}
+
+@media only screen and (min-width: 551px) {
+
+	.menu-toggle {
+		display: none;
+	}
+
+	ul.menu-items {
+		border-top: 2px solid #cfb53b;
+		padding: 1px 0 3px 0; 
+	}
+
+	ul.menu-items li {
+		display: inline-block;
+	}
+
+	ul.toggle-items li {
+		border-top: none;
+		padding: 0 0 0 10px;
+	}
+
+	ul.nest-menu {
+		display: none;
+	}
+  
 }

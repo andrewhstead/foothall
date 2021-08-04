@@ -14,6 +14,7 @@
 		
 		<link rel="icon" href="/favicon.ico">
 		<link rel="stylesheet" href="css/main.css">
+		
 	</head>
 	
 	<!-- The visible content of the page. -->
