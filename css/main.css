@@ -932,6 +932,10 @@ td.current-page {
 	text-decoration: underline;
 }
 
+.sidebar {
+	display: none;
+}
+
 @media only screen and (min-width: 551px) {
 
 	.menu-toggle {
@@ -939,8 +943,8 @@ td.current-page {
 	}
 
 	ul.menu-items {
-		border-top: 2px solid #cfb53b;
 		padding: 1px 0 3px 0; 
+		margin: 0 auto;
 	}
 
 	ul.menu-items li {
@@ -954,6 +958,26 @@ td.current-page {
 
 	ul.nest-menu {
 		display: none;
+	}
+  
+}
+
+@media only screen and (min-width: 801px) {
+
+	.sidebar {
+		display: block;
+		width: 180px;
+		float: right;
+		background-color: white;
+		padding: 10px;
+	}
+	
+	.main-page {
+		margin-right: 200px;
+	}
+
+	ul.menu-items {
+		max-width: 1200px; 
 	}
   
 }

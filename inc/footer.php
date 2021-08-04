@@ -1,4 +1,5 @@
-
+		</div>
+		
 		</main>
 		
 		<script src="js/lightbox.js"></script>
