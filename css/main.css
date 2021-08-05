@@ -936,11 +936,10 @@ td.current-page {
 
 .sidebar {
 	display: none;
-    border-top: 5px solid #321c20;
-    border-bottom: 5px solid #321c20;
     border-left: 2px solid #321c20;
     flex-basis: 200px;
     background-color: #eadd9f;
+    min-width: 180px;
 }
 
 @media only screen and (min-width: 551px) {
