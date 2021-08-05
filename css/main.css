@@ -10,6 +10,7 @@ body {
 	font-family: Economica, Arial, sans-serif;
 }
 
+
 header {
 	background-color: #321c20;
 	color: #cfb53b;
@@ -31,6 +32,7 @@ main {
 	max-width: 1200px;
 	margin-left: auto;
 	margin-right: auto;
+	display: flex;
 }
 
 .main-menu {
@@ -934,6 +936,11 @@ td.current-page {
 
 .sidebar {
 	display: none;
+    border-top: 5px solid #321c20;
+    border-bottom: 5px solid #321c20;
+    border-left: 2px solid #321c20;
+    flex-basis: 200px;
+    background-color: #eadd9f;
 }
 
 @media only screen and (min-width: 551px) {
@@ -959,21 +966,18 @@ td.current-page {
 	ul.nest-menu {
 		display: none;
 	}
-  
+
+	.rating-block {
+		width: 25px;
+	}
+	
 }
 
 @media only screen and (min-width: 801px) {
 
 	.sidebar {
 		display: block;
-		width: 180px;
-		float: right;
-		background-color: white;
 		padding: 10px;
-	}
-	
-	.main-page {
-		margin-right: 200px;
 	}
 
 	ul.menu-items {

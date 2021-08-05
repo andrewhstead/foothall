@@ -71,8 +71,4 @@
 		
 		<main>
 			
-			<div class="sidebar">
-				
-			</div>
-			
 			<div class="main-page">
