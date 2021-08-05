@@ -978,9 +978,28 @@ td.current-page {
 		display: block;
 		padding: 10px;
 	}
+	
+	.sidebar-link {
+		color: #321c20;
+		text-decoration: none;
+	}
+	
+	.sidebar-link:hover {
+		text-decoration: underline;
+	}
 
 	ul.menu-items {
 		max-width: 1200px; 
+	}
+	
+	.template-width {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.sidebar h3{
+		text-align: center;
 	}
   
 }
