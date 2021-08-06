@@ -55,35 +55,39 @@
 			FootHall Matches
 		</h1>
 		
-		<?php
+		<div class="flex-wrapper">
 		
-			if (!$match_list) {
-				echo "<h2>Matches elected to The FootHall will appear here.</h2>";
-			}
-					
-			foreach ($year_list as $year_head) {
-					
-				echo '<div class="sub-menu">';
-					
-				echo '<h2>'.$year_head.'</h2>';
-					
-				echo '<div class="flex-wrapper">';
+			<?php
 			
-				foreach ($match_list as $match_menu) if ($match_menu["year"] == $year_head) {
-						
-					echo '<div class="flex-item">';
-					echo '&#9654; <strong>'.$match_menu["competition"].' '.$match_menu["stage"].'</strong><br>';		
-					echo '<a class="standard-link" href="match.php?id='.$match_menu["match_id"].'">'.
-					$match_menu["team_1_name"].' '.$match_menu["score_1"].
-					'-'.$match_menu["score_2"].' '.$match_menu["team_2_name"].'</a>';
-					echo '</div>';			
+				if (!$match_list) {
+					echo "<h2>Matches elected to The FootHall will appear here.</h2>";
 				}
-					
-				echo '</div>';
-				echo '</div>';
-					
-			}
-		?>
+						
+				foreach ($year_list as $year_head) {
+						
+					echo '<div class="sub-menu">';
+						
+					echo '<h2>'.$year_head.'</h2>';
+						
+					echo '<div class="flex-wrapper">';
+				
+					foreach ($match_list as $match_menu) if ($match_menu["year"] == $year_head) {
+							
+						echo '<div class="flex-item">';
+						echo '&#9654; <strong>'.$match_menu["competition"].' '.$match_menu["stage"].'</strong><br>';		
+						echo '<a class="standard-link" href="match.php?id='.$match_menu["match_id"].'">'.
+						$match_menu["team_1_name"].' '.$match_menu["score_1"].
+						'-'.$match_menu["score_2"].' '.$match_menu["team_2_name"].'</a>';
+						echo '</div>';			
+					}
+						
+					echo '</div>';
+					echo '</div>';
+						
+				}
+			?>
+			
+		</div>
 		
 	</div>
 

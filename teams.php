@@ -47,33 +47,37 @@
 			FootHall Teams
 		</h1>
 		
-		<?php
-				
-			if (!$team_list) {
-				echo "<h2>Teams elected to The FootHall will appear here.</h2>";
-			}
-									
-			foreach ($type_list as $type_head) {
-					
-				echo '<div class="sub-menu">';
-					
-				echo '<h2>'.ucfirst($type_head).' Teams</h2>';
-					
-				echo '<div class="flex-wrapper">';
+			<div class="flex-wrapper">
 			
-				foreach ($team_list as $team_menu) if ($team_menu["type"] == $type_head) {
+			<?php
+					
+				if (!$team_list) {
+					echo "<h2>Teams elected to The FootHall will appear here.</h2>";
+				}
+										
+				foreach ($type_list as $type_head) {
 						
-					echo '<div class="flex-item">';
-					echo '&#9654; <a class="standard-link" href="team.php?id='.$team_menu["team_id"].'">'.$team_menu["name"].' '.$team_menu["era"].'</a>';
+					echo '<div class="sub-menu hall-teams-menu">';
+						
+					echo '<h2>'.ucfirst($type_head).' Teams</h2>';
+						
+					echo '<div class="flex-wrapper">';
+				
+					foreach ($team_list as $team_menu) if ($team_menu["type"] == $type_head) {
+							
+						echo '<div class="flex-item">';
+						echo '&#9654; <a class="standard-link" href="team.php?id='.$team_menu["team_id"].'">'.$team_menu["name"].' '.$team_menu["era"].'</a>';
+						echo '</div>';
+							
+					}
+						
+					echo '</div>';
 					echo '</div>';
 						
 				}
-					
-				echo '</div>';
-				echo '</div>';
-					
-			}
-		?>
+			?>
+			
+		</div>
 		
 	</div>
 

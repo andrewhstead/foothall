@@ -1076,8 +1076,8 @@ hr {
 		border-top: 2px solid #321c20;
 	}
 	
-	.flex-wrapper {
-	
+	.hall-teams-menu {
+		flex-basis: 45%;
 	}
   
 }
