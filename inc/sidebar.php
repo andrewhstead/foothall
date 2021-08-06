@@ -4,8 +4,6 @@
 			
 			<h2>Rating Leaders: Players</h2>
 			
-			<table>
-			
 				<?php
 					$leaders = "
 					SELECT 
@@ -20,33 +18,43 @@
 					INNER JOIN countries ON people.nationality = countries.abbreviation
 					WHERE active = true AND as_player = true  
 					ORDER BY rating DESC, votes DESC, file_code
-					LIMIT 5";
+					LIMIT 10";
 					$leader_query = $connectDB->query($leaders);
+					
+					$result_count = "SELECT COUNT(*) FROM people WHERE active = true AND as_player = true";
+					$results = $connectDB->query($result_count);
+					$total_results = $results->fetchColumn();
 					
 					$position = 0;
 					
-					while ($dataRows = $leader_query->fetch()) {
+					if ($total_results == 0) {
+						echo '<div class="centre-text">No players elected yet.</div>';
+					} else {
 						
-						$position++;
-
-						$player_id = $dataRows["player_id"];
-						$player_name = $dataRows["player_name"];
-						$nationality = $dataRows["nationality"];
-						$rating = $dataRows["rating"];
-						$country = $dataRows["country"];
+						echo '<table class="sidebar-table">';
+						while ($dataRows = $leader_query->fetch()) {
 						
-						echo '<tr>';
-						echo '<td><strong>'.$position.'.</strong></td>';
-						echo '<td><img class="table-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.strtolower($country).'"> ';
-						echo '<a class="sidebar-link" href="person.php?id='.$player_id.'">'.$player_name.'</a></td>';
-						echo '<td>'.$rating.'</td>';
-						echo '</tr>';
+							$position++;
 
+							$player_id = $dataRows["player_id"];
+							$player_name = $dataRows["player_name"];
+							$nationality = $dataRows["nationality"];
+							$rating = $dataRows["rating"];
+							$country = $dataRows["country"];
+							
+							echo '<tr>';
+							echo '<td><strong>'.$position.'.</strong></td>';
+							echo '<td><img class="table-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.strtolower($country).'"> ';
+							echo '<a class="sidebar-link" href="person.php?id='.$player_id.'">'.$player_name.'</a></td>';
+							echo '<td>'.$rating.'</td>';
+							echo '</tr>';
+
+						}
+						echo '</table>';
+						
 					}
-					
+
 				?>
-				
-			</table>
 			
 			<hr>
 			
@@ -54,19 +62,21 @@
 			
 			<?php
 			
-				$polls = "SELECT * FROM polls ORDER BY expiry desc";
+				$polls = "SELECT * FROM polls ORDER BY expiry desc LIMIT 1";
 				$poll_content = $connectDB->query($polls);
 
 				$current = array();
 				$expired = array();
 
 				while ($dataRows = $poll_content->fetch()) {
-
+					
+					echo '<h3>'.htmlentities($dataRows["title"]).'</h3>';
+					
 					echo html_entity_decode($dataRows["intro_text"]);
 					
-					echo '<h3><a class="sidebar-link" href="poll.php?id=';
+					echo '<p class="sidebar-button"><a class="sidebar-poll button-link" href="poll.php?id=';
 					echo $dataRows["id"];
-					echo '">View Poll</a></h3>';
+					echo '">View Poll</a></p>';
 					
 				}
 	

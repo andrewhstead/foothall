@@ -118,7 +118,6 @@ li.menu-link:hover {
 }
 .poll-icon {
 	height: 15px;
-	vertical-align: text-bottom;
 }
 .table-icon {
 	height: 15px;
@@ -942,6 +941,23 @@ td.current-page {
     min-width: 180px;
 }
 
+hr {
+    border: 0;
+    border-top: 2px solid #321c20;
+    height: 2px;
+}
+
+.sidebar-poll {
+	background-color: #3366ff;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+	padding: 0 5px;
+	margin: 0 0 3px 0;
+	border: 1px solid #0033cc;
+	font-size: 1.2em;
+}
+
 @media only screen and (min-width: 551px) {
 
 	.menu-toggle {
@@ -979,6 +995,14 @@ td.current-page {
 		padding: 10px;
 	}
 	
+	.sidebar-table {
+		margin: 10px auto;
+	}
+	
+	.sidebar-table td {
+		padding: 0 3px;
+	}
+	
 	.sidebar-link {
 		color: #321c20;
 		text-decoration: none;
@@ -997,8 +1021,8 @@ td.current-page {
 		max-width: 1200px;
 		margin: 0 auto;
 	}
-
-	.sidebar h3{
+	
+	.sidebar-button {
 		text-align: center;
 	}
   
