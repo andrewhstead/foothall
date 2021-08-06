@@ -72,7 +72,7 @@
 					
 					echo '<h3>'.htmlentities($dataRows["title"]).'</h3>';
 					
-					echo html_entity_decode($dataRows["intro_text"]);
+					echo '<p>'.html_entity_decode($dataRows["intro_text"]).'</p>';
 					
 					echo '<p class="sidebar-button"><a class="sidebar-poll button-link" href="poll.php?id=';
 					echo $dataRows["id"];

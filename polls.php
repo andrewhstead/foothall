@@ -23,7 +23,7 @@
 		
 	}
 	
-	echo '<div class="feed-heading">Open Polls</div>';	
+	echo '<div class="feed-heading">Open Polls</div>';
 	
 	if (!$current) {
 		
@@ -60,7 +60,7 @@
 		
 	}
 	
-	echo '<div class="feed-heading">Completed Polls</div>';	
+	echo '<div class="feed-heading">No Completed Polls Yet</div>';
 	
 	if (!$expired) {
 		

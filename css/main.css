@@ -35,6 +35,11 @@ main {
 	display: flex;
 }
 
+.main-page {
+	width: 100%;
+	background-color: white;
+}
+
 .main-menu {
 	background-color: #321c20;
 	color: #cfb53b;
@@ -81,7 +86,6 @@ li.menu-link:hover {
 .feed-post, .story-post {
 	margin: auto;
 	background-color: white;
-	font-size: 1.2em;
 	border-bottom: 5px solid #321c20;
 }
 
@@ -95,7 +99,7 @@ li.menu-link:hover {
 }
 
 .feed-heading {
-	font-size: 1.5em;
+	font-size: 1.75em;
 	background-color: #cfb53b;
 	color: #321c20;
 	padding: 0 0 0 10px;
@@ -104,6 +108,7 @@ li.menu-link:hover {
 
 .feed-body {
 	padding: 5px 10px;
+	font-size: 1.2em;
 }
 
 .feed-icon {
@@ -995,12 +1000,18 @@ hr {
 		padding: 10px;
 	}
 	
+	.sidebar p {
+		margin: 5px 0;
+		font-size: 1.1em;
+	}
+	
 	.sidebar-table {
 		margin: 10px auto;
+		font-size: 1.1em;
 	}
 	
 	.sidebar-table td {
-		padding: 0 3px;
+		padding: 0 2px;
 	}
 	
 	.sidebar-link {
