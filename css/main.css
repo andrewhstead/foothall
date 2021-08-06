@@ -226,7 +226,7 @@ p {
 	text-align: justify;
 }
 
-.contender-wrapper {
+.contender-wrapper, .flex-wrapper {
 	display: flex;
 	flex-direction: column;
 }
@@ -996,6 +996,15 @@ hr {
 		width: 25px;
 	}
 	
+	.flex-wrapper {
+		flex-direction: row;
+	}
+	
+	.sub-menu {
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	
 }
 
 @media only screen and (min-width: 801px) {
@@ -1031,6 +1040,10 @@ hr {
 	ul.menu-items {
 		max-width: 1200px; 
 	}
+
+	ul.menu-items li {
+		margin: 0 10px; 
+	}
 	
 	.template-width {
 		width: 100%;
@@ -1061,6 +1074,10 @@ hr {
 
 	.poll-contender:first-of-type {
 		border-top: 2px solid #321c20;
+	}
+	
+	.flex-wrapper {
+	
 	}
   
 }

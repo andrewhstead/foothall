@@ -63,39 +63,43 @@
 			FootHall Players
 		</h1>
 		
-		<?php
+		<div class="flex-wrapper">
 		
-			if (!$player_list) {
-				echo "<h2>Players elected to The FootHall will appear here.</h2>";
-			}
-					
-			foreach ($countries as $country_menu) {
-				
-				echo '<div class="sub-menu">';
-				echo '<h2>';
-				echo '<img class="feed-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["display_name"]).'"> ';
-				echo $country_menu["display_name"].'</h2>';
-							
-				echo '<div class="flex-wrapper">';
+			<?php
 			
-					foreach ($player_list as $player_menu) {
-							
-						if ($player_menu["nationality"] == $country_menu["abbreviation"]) {
-							
-							echo '<div class="flex-item">';	
-							echo '&#9654; <a class="standard-link" href="person.php?id='.$player_menu["player_id"].'">'.$player_menu["player_name"].'</a>';
-							echo '</div>';
+				if (!$player_list) {
+					echo "<h2>Players elected to The FootHall will appear here.</h2>";
+				}
+						
+				foreach ($countries as $country_menu) {
+					
+					echo '<div class="sub-menu">';
+					echo '<h2>';
+					echo '<img class="feed-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["display_name"]).'"> ';
+					echo $country_menu["display_name"].'</h2>';
+								
+					echo '<div class="flex-wrapper">';
+				
+						foreach ($player_list as $player_menu) {
+								
+							if ($player_menu["nationality"] == $country_menu["abbreviation"]) {
+								
+								echo '<div class="flex-item">';	
+								echo '&#9654; <a class="standard-link" href="person.php?id='.$player_menu["player_id"].'">'.$player_menu["player_name"].'</a>';
+								echo '</div>';
+								
+							}
 							
 						}
 						
-					}
-					
-				echo '</div>';
-				echo '</div>';
-			
-			}
-			
-		?>
+					echo '</div>';
+					echo '</div>';
+				
+				}
+				
+			?>
+		
+		</div>
 		
 	</div>
 
