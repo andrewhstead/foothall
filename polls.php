@@ -51,10 +51,10 @@
 				.'<br>';
 			
 			$display_date = new DateTime($item['expiry']);
-			echo '<strong>Expires:</strong> ';
+			echo '<div class="right-text"><strong>Expires:</strong> ';
 			echo date_format($display_date, "d/m/Y, H:i");
 
-			echo '</div></div>';
+			echo '</div></div></div>';
 			
 		}
 		

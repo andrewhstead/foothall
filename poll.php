@@ -104,6 +104,8 @@
 			The Contenders
 		</h2>
 		
+		<div class="contender-wrapper">
+		
 		<?php
 		
 			while ($dataRows = $contender_list->fetch()) {
@@ -118,28 +120,30 @@
 				
 		?>
 		
-		<div class="poll-contender">
-			<span class="contender-head">
-				<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
-				.png" alt="<?php echo htmlentities($nationality); ?>">
-				<?php 
-					if ($admitted) {
-						echo '<a class="standard-link" href="person.php?id='.$person_id.'">'.htmlentities($name).'</a>';
-						} else {
-						echo htmlentities($name); 
-					}
-				?> 
-				(<a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>"><?php echo htmlentities($nationality); ?></a>)
-			</span>
-			<br>
-			<strong>Position:</strong> <?php echo htmlentities($position); ?>
-			<br>
-			<div class="formatted-text">
-				<?php echo html_entity_decode($intro_text); ?>
+			<div class="poll-contender">
+				<span class="contender-head">
+					<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
+					.png" alt="<?php echo htmlentities($nationality); ?>">
+					<?php 
+						if ($admitted) {
+							echo '<a class="standard-link" href="person.php?id='.$person_id.'">'.htmlentities($name).'</a>';
+							} else {
+							echo htmlentities($name); 
+						}
+					?> 
+					(<a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>"><?php echo htmlentities($nationality); ?></a>)
+				</span>
+				<br>
+				<strong>Position:</strong> <?php echo htmlentities($position); ?>
+				<br>
+				<div class="formatted-text">
+					<?php echo html_entity_decode($intro_text); ?>
+				</div>
 			</div>
-		</div>
 		
 		<?php } ?>
+		
+		</div>
 		
 		<h2>
 			The Standings

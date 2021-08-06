@@ -226,9 +226,14 @@ p {
 	text-align: justify;
 }
 
+.contender-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
 .poll-contender {
-	margin: 5px 0;
-	padding: 5px 0;
+	margin: 0;
+	padding: 10px 0;
 	border-top: 2px solid #321c20;
 	text-align: justify;
 }
@@ -1001,7 +1006,7 @@ hr {
 	}
 	
 	.sidebar p {
-		margin: 5px 0;
+		margin: 0;
 		font-size: 1.1em;
 	}
 	
@@ -1035,6 +1040,27 @@ hr {
 	
 	.sidebar-button {
 		text-align: center;
+		padding: 5px;
+	}
+	
+	.sidebar h3 {
+		padding: 0;
+	}
+
+	.contender-wrapper {
+		flex-direction: row;
+		flex-wrap: wrap;
+		margin-top: 20px;
+	}
+
+	.poll-contender {
+		flex-basis: 45%;
+		margin: 0;
+		padding: 20px 2.5%;
+	}
+
+	.poll-contender:first-of-type {
+		border-top: 2px solid #321c20;
 	}
   
 }
