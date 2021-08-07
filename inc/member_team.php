@@ -54,10 +54,16 @@
 			<div class="formatted-text">
 				<?php echo html_entity_decode($intro_text); ?>
 			</div>
+			
+			<div>				
+				<?php echo html_entity_decode($biography); ?>
+			</div>
 				
 			<h2>Key Players</h2>
 			
-			<?php
+				<div class="flex-wrapper">
+			
+				<?php
 					$players = "SELECT 
 								people.id AS person_id,
 								people.name AS name,
@@ -125,10 +131,10 @@
 					}
 						
 				?>
-			
-			<div class="formatted-text">				
-				<?php echo html_entity_decode($biography); ?>
+				
 			</div>
+				
+			<h2>Key Matches</h2>
 			
 		</div>
 		

@@ -1091,5 +1091,10 @@ hr {
 	.scoreboard {
 		font-size: 1.75em;
 	}
+	
+	.player-details {
+		flex-basis: 45%;
+		padding: 20px 2.5%;
+	}
   
 }
