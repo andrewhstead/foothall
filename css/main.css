@@ -1004,6 +1004,14 @@ hr {
 		margin-left: 20px;
 		margin-right: 20px;
 	}
+
+	.scoreboard {
+		font-size: 1.5em;
+	}
+	.line-ups {
+		max-width: 400px;
+		margin: 0 auto;
+	}
 	
 }
 
@@ -1025,7 +1033,7 @@ hr {
 	}
 	
 	.sidebar-table td {
-		padding: 0 2px;
+		padding: 0 1px;
 	}
 	
 	.sidebar-link {
@@ -1078,6 +1086,10 @@ hr {
 	
 	.hall-teams-menu {
 		flex-basis: 45%;
+	}
+
+	.scoreboard {
+		font-size: 1.75em;
 	}
   
 }
