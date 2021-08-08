@@ -136,6 +136,72 @@
 				
 			<h2>Key Matches</h2>
 			
+				<div class="flex-wrapper">
+			
+				<?php
+					$matches = "SELECT 
+								teams_matches.hall_team AS hall_team,
+								matches.date AS date,
+								matches.competition AS competition,
+								matches.stage AS stage,
+								team_1.country AS team_1_nat,
+								team_1.display_name AS team_1_name,
+								matches.score_1 AS score_1,
+								matches.score_2 AS score_2,
+								team_2.display_name AS team_2_name,
+								team_2.country AS team_2_nat,
+								matches.id AS match_id,
+								teams_matches.team_text AS team_text,
+								matches.active AS admitted
+								FROM teams_matches
+								INNER JOIN hall_teams ON teams_matches.hall_team = hall_teams.title
+								INNER JOIN matches ON teams_matches.match_id = matches.id 
+								INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
+								INNER JOIN teams team_2 ON matches.team_2 = team_2.name 
+								WHERE hall_team = '$title' 
+								ORDER BY date";
+					$matches_query = $connectDB->query($matches);
+														
+					while ($dataRows = $matches_query->fetch()) {
+
+						$date = new DateTime($dataRows["date"]);
+						$team_1_nat = $dataRows["team_1_nat"];
+						$team_1 = $dataRows["team_1_name"];
+						$score_1 = $dataRows["score_1"];
+						$team_2 = $dataRows["team_2_name"];
+						$score_2 = $dataRows["score_2"];
+						$team_2_nat = $dataRows["team_2_nat"];
+						$competition = $dataRows["competition"];
+						$stage = $dataRows["stage"];
+						$admitted = $dataRows["admitted"];
+						$team_text = $dataRows["team_text"];
+						$match_id = $dataRows["match_id"];
+						
+						echo '<div class="team-match-details">';
+						
+						echo '<h3 class="inline-heading">';
+						echo '<img class="table-icon" src="img/flags/'.$team_1_nat.'.png" alt="'.$team_1_nat.'"> ';
+						if ($admitted) {
+							echo '<a class="standard-link" href="match.php?id='.$match_id.'">';
+							echo $team_1.' '.$score_1.'-'.$score_2.' '.$team_2;
+							echo '</a>';
+						} else {
+							echo $team_1.' '.$score_1.'-'.$score_2.' '.$team_2;
+						}
+						echo ' <img class="table-icon" src="img/flags/'.$team_2_nat.'.png" alt="'.$team_2_nat.'">';
+						echo '</h3>';
+						echo $competition.' '.$stage.'<br>';
+						echo date_format($date, "j F Y").'<br>';
+						echo '<div class="team-text">'.$team_text.'</div>';
+						
+						echo '</div>';
+							
+					}
+						
+				?>
+				
+			</div>
+			
 		</div>
 		
 		<div class="tags">

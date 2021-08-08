@@ -720,7 +720,7 @@ div.admin-link-box:last-of-type {
 	display: none;
 }
 
-.player-summary {
+.player-summary, .team-text {
 	margin: 5px 0;
 }
 
@@ -1093,6 +1093,11 @@ hr {
 	}
 	
 	.player-details {
+		flex-basis: 45%;
+		padding: 20px 2.5%;
+	}
+	
+	.team-match-details {
 		flex-basis: 45%;
 		padding: 20px 2.5%;
 	}
