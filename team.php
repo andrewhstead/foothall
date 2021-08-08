@@ -22,7 +22,7 @@
 		$stmt = $connectDB->prepare($sql);
 		$execute = $stmt->execute();
 		
-		header("Location:match.php?id=$match_id");
+		header("Location:team.php?id=$team_id");
 					
 	}
 	
