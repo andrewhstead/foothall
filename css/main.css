@@ -538,12 +538,23 @@ h1.info-page:first-of-type {
 	text-align: left;
 }
 
+.admin-flex {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+
 .admin-wrapper {
-	margin: 5px 0;
+	margin: 5px auto;
 	overflow: auto;
 	background-color: #cfb53b;
 	border: 2px solid #321c20;
 	border-radius: 10px;
+	flex: 1;
+	min-width: none;
+	max-width: none;
+	width: 100%;
 }
 
 .left-section h3{
@@ -969,6 +980,15 @@ hr {
 }
 
 @media only screen and (min-width: 551px) {
+
+	.admin-flex {
+		flex-direction: row;
+	}
+
+	.admin-wrapper {
+		margin: 5px;
+		min-width: 250px;
+	}
 
 	.menu-toggle {
 		display: none;

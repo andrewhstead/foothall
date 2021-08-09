@@ -53,3 +53,5 @@
 		</nav>
 		
 		<main>
+			
+			<div class="main-page">
