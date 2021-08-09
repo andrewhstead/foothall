@@ -11,6 +11,7 @@
 			break;
 		case "hall_teams":
 			$identifier = "hall_team";
+			$list_column = "title";
 			break;
 		case "continents":
 			$identifier = "continent";

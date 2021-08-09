@@ -599,10 +599,11 @@ div.admin-link-box:last-of-type {
 }
 
 .data-table {
-	margin: 10px 0;
+	margin: 20px auto;
 	width: 100%;
 	background-color: #cfb53b;
 	border-collapse: collapse;
+	max-width: 600px;
 }
 
 .data-table th {
