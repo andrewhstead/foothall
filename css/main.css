@@ -980,6 +980,14 @@ hr {
 	font-size: 1.2em;
 }
 
+.anniversaries {
+	margin: 10px 0 20px 0;
+}
+
+.centre-text p {
+	text-align: center;
+}
+
 @media only screen and (min-width: 551px) {
 
 	.admin-flex {

@@ -108,30 +108,49 @@
 					$death_year = $date_of_death->format('Y');
 					$death_month = $date_of_death->format('m');
 					$death_day = $date_of_death->format('d');
-				
-					$person_name = $dataRows["name"];
 					
 					if ($birth_month == $month AND $birth_day == $day) {
-						$births_list[$birth_year] = $person_name;
+						$births_list[] = $dataRows;
 					} else if ($death_month == $month AND $death_day == $day) {
-						$deaths_list[$death_year] = $person_name;
+						$deaths_list[] = $dataRows;
 					}
 									
+				}
+				
+				if (empty($births_list) AND empty($deaths_list)) {
+					
+					echo '<div class="anniversaries">';
+					echo '<div class="centre-text"><p>None on this date.</p></div>';
+					echo '</div>';
+					
+				} else {
+					
+					if (!empty($births_list)) {
+						echo '<div class="anniversaries">';
+						echo '<h3>Born on This Day</h3><p>';
+						foreach ($births_list as $birth_person) {
+							echo '<td><img class="table-icon" src="img/flags/'.strtolower($birth_person["nationality"]).'.png" alt="'.strtolower($birth_person["nationality"]).'"> ';
+							echo '<a class="sidebar-link" href="person.php?id='.$birth_person["id"].'">'.$birth_person["name"].'</a>';
+							$display_year = (int)$birth_person["date_of_birth"];
+							echo ' ('.$display_year.')';	
+						}
+						echo '</p></div>';
+					}
+						
+					if (!empty($deaths_list)) {
+						echo '<div class="anniversaries">';
+						echo '<h3>Died on This Day</h3><p>';
+						foreach ($deaths_list as $death_person) {
+							echo '<td><img class="table-icon" src="img/flags/'.strtolower($death_person["nationality"]).'.png" alt="'.strtolower($death_person["nationality"]).'"> ';
+							echo '<a class="sidebar-link" href="person.php?id='.$death_person["id"].'">'.$death_person["name"].'</a>';
+							$display_year = (int)$death_person["date_of_death"];
+							echo ' ('.$display_year.')';	
+						}
+						echo '</p></div>';
+					}
+					
 				}	
 				
-				if (!empty($births_list)) {
-					echo '<h3>Born on This Day</h3>';
-					foreach ($births_list as $birth_year => $person_name) {
-						echo $person_name.' ('.$birth_year.')';	
-					}
-				}
-					
-				if (!empty($deaths_list)) {
-					echo '<h3>Died on This Day</h3>';
-					foreach ($deaths_list as $death_year => $person_name) {
-						echo $person_name.' ('.$death_year.')';	
-					}
-				}
 			
 			?>
 			
