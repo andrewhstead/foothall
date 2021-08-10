@@ -84,4 +84,57 @@
 			
 			<hr>
 			
+			<h2>Anniversaries</h2>
+			
+			<?php
+			
+				$month = date('m');
+				$day = date('d');
+			
+				$anniversaries = "SELECT * FROM people WHERE ((MONTH(date_of_birth) = $month AND DAY(date_of_birth) = $day) OR (MONTH(date_of_death) = $month AND DAY(date_of_death) = $day) AND active = true)";
+				$anniversary_content = $connectDB->query($anniversaries);
+
+				$births_list = array();
+				$deaths_list = array();
+
+				while ($dataRows = $anniversary_content->fetch()) {
+					
+					$date_of_birth = new DateTime($dataRows["date_of_birth"]);
+					$birth_year = $date_of_birth->format('Y');
+					$birth_month = $date_of_birth->format('m');
+					$birth_day = $date_of_birth->format('d');
+					
+					$date_of_death = new DateTime($dataRows["date_of_death"]);
+					$death_year = $date_of_death->format('Y');
+					$death_month = $date_of_death->format('m');
+					$death_day = $date_of_death->format('d');
+				
+					$person_name = $dataRows["name"];
+					
+					if ($birth_month == $month AND $birth_day == $day) {
+						$births_list[$birth_year] = $person_name;
+					} else if ($death_month == $month AND $death_day == $day) {
+						$deaths_list[$death_year] = $person_name;
+					}
+									
+				}	
+				
+				if (!empty($births_list)) {
+					echo '<h3>Born on This Day</h3>';
+					foreach ($births_list as $birth_year => $person_name) {
+						echo $person_name.' ('.$birth_year.')';	
+					}
+				}
+					
+				if (!empty($deaths_list)) {
+					echo '<h3>Died on This Day</h3>';
+					foreach ($deaths_list as $death_year => $person_name) {
+						echo $person_name.' ('.$death_year.')';	
+					}
+				}
+			
+			?>
+			
+			<hr>
+			
 		</div>
