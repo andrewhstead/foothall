@@ -267,12 +267,14 @@
 					
 					echo '<strong>Goalscorers: </strong>';	
 					
-					if (empty($goal_list)) {
+					if ($score_1 + $score_2 == 0) {
 						echo 'None';
+					} else if (empty($goal_list)) {
+						echo 'Not Available';
 					} else {
 						foreach ($goal_list as $goal) {
-							echo '<img class="table-icon" src="img/icons/ball.png" alt="Football">';
-							echo ' '.$goal['scorer'].' ('.$goal["minute"].'\', '.$goal["score"].') ';
+							echo '<span class="goalscorer"><img class="table-icon" src="img/icons/ball.png" alt="Football">';
+							echo ' '.$goal['scorer'].' ('.$goal["minute"].'\', '.$goal["score"].')</span> ';
 						}			
 					}
 					
