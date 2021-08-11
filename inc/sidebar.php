@@ -5,7 +5,7 @@
 			<h2>Rating Leaders: Players</h2>
 			
 				<?php
-					$leaders = "
+					$player_leaders = "
 					SELECT 
 						people.id AS player_id,
 						people.name AS player_name,
@@ -19,7 +19,7 @@
 					WHERE active = true AND as_player = true  
 					ORDER BY rating DESC, votes DESC, file_code
 					LIMIT 10";
-					$leader_query = $connectDB->query($leaders);
+					$player_leader_query = $connectDB->query($player_leaders);
 					
 					$result_count = "SELECT COUNT(*) FROM people WHERE active = true AND as_player = true";
 					$results = $connectDB->query($result_count);
@@ -32,7 +32,7 @@
 					} else {
 						
 						echo '<table class="sidebar-table">';
-						while ($dataRows = $leader_query->fetch()) {
+						while ($dataRows = $player_leader_query->fetch()) {
 						
 							$position++;
 

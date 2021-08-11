@@ -33,6 +33,8 @@
 				<?php echo htmlentities($stadium).', <img class="table-icon" src="img/flags/'.$country.'.png" alt="'.$country.'"> '.htmlentities($city); ?>
 				<br>
 				Attendance: <?php echo number_format($attendance); ?>
+				<br>
+				Referee: <?php echo '<img class="table-icon" src="img/flags/'.$ref_nat.'.png" alt="'.$ref_nat.'"> '.$referee; ?>
 			</div>
 			
 			<div class="hall-status">

@@ -55,6 +55,8 @@
 		matches.penalties_1 AS penalties_1,
 		matches.penalties_2 AS penalties_2,
 		matches.attendance AS attendance,
+		matches.referee AS referee,
+		matches.ref_nat AS ref_nat,
 		matches.intro_text AS intro_text,
 		matches.match_report AS match_report
 		FROM matches 
@@ -93,6 +95,8 @@
 		$penalties_1 = $dataRows["penalties_1"];
 		$penalties_2 = $dataRows["penalties_2"];
 		$attendance = $dataRows["attendance"];
+		$referee = $dataRows["referee"];
+		$ref_nat = $dataRows["ref_nat"];
 		$intro_text = $dataRows["intro_text"];
 		$match_report = $dataRows["match_report"];
 		
