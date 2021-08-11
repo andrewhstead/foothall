@@ -271,7 +271,8 @@
 						echo 'None';
 					} else {
 						foreach ($goal_list as $goal) {
-							echo $goal['scorer'].' ('.$goal["minute"].'\', '.$goal["score"].') ';
+							echo '<img class="table-icon" src="img/icons/ball.png" alt="Football">';
+							echo ' '.$goal['scorer'].' ('.$goal["minute"].'\', '.$goal["score"].') ';
 						}			
 					}
 					
