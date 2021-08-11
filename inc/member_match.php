@@ -95,7 +95,7 @@
 								people_matches.sub_appeared AS sub_appeared,
 								people_matches.captain AS captain
 								FROM people_matches
-								INNER JOIN people ON people_matches.person = people.name 
+								INNER JOIN people ON people_matches.person = people.name
 								WHERE match_title = '$title' 
 								ORDER BY goalkeeper desc, shirt";
 					$lineup_query = $connectDB->query($lineups);
@@ -249,6 +249,34 @@
 				<h2>Match Report</h2>
 				
 				<?php echo html_entity_decode($match_report); ?>
+				
+				<?php 
+	
+					$goals = " 
+						SELECT * FROM goals
+						WHERE match_name = '$title'
+						ORDER BY minute, stoppage_time";
+					$goal_query = $connectDB->query($goals);
+					
+					$goal_list = array();
+								
+					while ($dataRows = $goal_query->fetch()) {
+						
+						$goal_list[] = $dataRows;
+					}
+					
+					echo '<strong>Goalscorers: </strong>';	
+					
+					if (empty($goal_list)) {
+						echo 'None';
+					} else {
+						foreach ($goal_list as $goal) {
+							echo $goal['scorer'].' ('.$goal["minute"].'\', '.$goal["score"].') ';
+						}			
+					}
+					
+				?>
+				
 			</div>
 			
 		</div>
