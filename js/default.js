@@ -48,27 +48,52 @@ function menuToggle(section) {
 	
 }
 
-function showMenu() {
+function showMenu(section) {
 	
 	if (window.innerWidth > 800) {
 		
-		var sections = document.getElementsByClassName("nested");
+		if (section === 'hall') {
+			
+			var sections = document.getElementsByClassName("hall-nested");
 		
-		for (var i = 0; i < sections.length; i++) {
-			sections[i].classList.remove("hidden");
+			for (var i = 0; i < sections.length; i++) {
+				sections[i].classList.remove("hall-item");
+			}
+		
+		} else if (section === 'history') {
+			
+			var sections = document.getElementsByClassName("history-nested");
+		
+			for (var i = 0; i < sections.length; i++) {
+				sections[i].classList.remove("history-item");
+			}
+			
 		}
+		
 	}
 	
 }
 
-function removeMenu() {
+function removeMenu(section) {
 	
 	if (window.innerWidth > 800) {
 	
-		var sections = document.getElementsByClassName("nested");
-	
-		for (var i = 0; i < sections.length; i++) {
-			sections[i].classList.add("hidden");
+		if (section === 'hall') {
+			
+			var sections = document.getElementsByClassName("hall-nested");
+		
+			for (var i = 0; i < sections.length; i++) {
+				sections[i].classList.add("hall-item");
+			}
+		
+		} else if (section === 'history') {
+			
+			var sections = document.getElementsByClassName("history-nested");
+		
+			for (var i = 0; i < sections.length; i++) {
+				sections[i].classList.add("history-item");
+			}
+			
 		}
 	
 	}

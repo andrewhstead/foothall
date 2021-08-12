@@ -31,7 +31,7 @@
 			
 			<ul class="menu-items toggle-items">
 				<li class="header-link-text"><a class="menu-link" href="index.php">Home Page</a></li>
-				<li class="nest-heading header-link-text" onmouseover="showMenu()" onmouseleave="removeMenu()">
+				<li class="nest-heading header-link-text" onmouseover="showMenu('hall')" onmouseleave="removeMenu('hall')">
 					<span class="nest-head">
 						<span class="open-nest" onclick="menuToggle('hall')">
 							<span id="hall-icon">+</span> The Hall of Fame
@@ -45,7 +45,7 @@
 						<li class="hall-nested hall-item"><a class="menu-link" href="teams.php">Teams</a></li>
 					</ul>
 				</li>
-				<li class="nest-heading header-link-text" onmouseover="showMenu()" onmouseleave="removeMenu()">
+				<li class="nest-heading header-link-text" onmouseover="showMenu('history')" onmouseleave="removeMenu('history')">
 					<span class="nest-head">
 						<span class="open-nest" onclick="menuToggle('history')">
 							<span id="history-icon">+</span> The History of Football

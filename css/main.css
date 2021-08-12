@@ -1019,6 +1019,17 @@ hr {
 	.menu-items {
 		display: flex;
 	}
+	.nest-heading {
+		position: relative;
+	}
+	.nest-menu {
+		position: absolute;
+		background-color: #321c20;
+		top: 100%;
+		left: 0%;
+		width: 100%;
+		z-index: 1;
+	}
 	
 	.header-link-text {
 		margin: 0 5px;
@@ -1026,6 +1037,14 @@ hr {
 	
 	.hall-item, .history-item {
 		display: none;
+	}
+	
+	.hall-nested, .history-nested {
+		background-color: #321c20;
+	}
+
+	ul.nest-menu {
+		margin: 0;
 	}
 
 	ul.toggle-items li {
