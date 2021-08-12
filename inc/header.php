@@ -30,8 +30,8 @@
 			<div class="menu-toggle" onclick="menuToggle('menu')">MENU &#9776;</div>
 			
 			<ul class="menu-items toggle-items">
-				<li><a class="menu-link" href="index.php">Home Page</a></li>
-				<li class="nest-heading" onmouseover="showMenu()" onmouseleave="removeMenu()">
+				<li class="header-link-text"><a class="menu-link" href="index.php">Home Page</a></li>
+				<li class="nest-heading header-link-text" onmouseover="showMenu()" onmouseleave="removeMenu()">
 					<span class="nest-head">
 						<span class="open-nest" onclick="menuToggle('hall')">
 							<span id="hall-icon">+</span> The Hall of Fame
@@ -45,7 +45,7 @@
 						<li class="hall-nested hall-item"><a class="menu-link" href="teams.php">Teams</a></li>
 					</ul>
 				</li>
-				<li class="nest-heading" onmouseover="showMenu()" onmouseleave="removeMenu()">
+				<li class="nest-heading header-link-text" onmouseover="showMenu()" onmouseleave="removeMenu()">
 					<span class="nest-head">
 						<span class="open-nest" onclick="menuToggle('history')">
 							<span id="history-icon">+</span> The History of Football
@@ -62,7 +62,7 @@
 				<?php
 					session_start();				
 					if(isset($_SESSION["user_id"])) {
-						echo '<li><a class="menu-link" href="admin/index.php">Admin Home</a></li>';
+						echo '<li class="header-link-text"><a class="menu-link" href="admin/index.php">Admin Home</a></li>';
 					}
 				?>
 			</ul>

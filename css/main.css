@@ -70,7 +70,7 @@ ul.toggle-items li {
 	padding: 0 0 0 10px;
 }
 
-ul.menu-items li {
+.menu-items {
 	display: none;
 }
 
@@ -1002,6 +1002,10 @@ hr {
 		margin: 5px;
 		min-width: 250px;
 	}
+	
+	#hall-icon, #history-icon {
+		display: none;
+	}
 
 	.menu-toggle {
 		display: none;
@@ -1012,17 +1016,21 @@ hr {
 		margin: 0 auto;
 	}
 
-	ul.menu-items li {
-		display: inline-block;
+	.menu-items {
+		display: flex;
+	}
+	
+	.header-link-text {
+		margin: 0 5px;
+	}
+	
+	.hall-item, .history-item {
+		display: none;
 	}
 
 	ul.toggle-items li {
 		border-top: none;
 		padding: 0 0 0 10px;
-	}
-
-	ul.nest-menu {
-		display: none;
 	}
 
 	.rating-block {
@@ -1081,9 +1089,9 @@ hr {
 	ul.menu-items {
 		max-width: 1200px; 
 	}
-
-	ul.menu-items li {
-		margin: 0 10px; 
+	
+	.header-link-text {
+		margin: 0 10px;
 	}
 	
 	.template-width {
