@@ -101,10 +101,16 @@
 			</tr>
 			
 			<?php
+				$row_count = 1;
 					
 				foreach ($tournament_list as $tournament_menu) {
-									
-					echo '<tr>';
+					
+					if($row_count % 2 == 0){
+						echo '<tr class="tournament-summary-even">';
+					} else {
+						echo '<tr class="tournament-summary-odd">';
+					}
+					
 					echo '<td>';
 					if ($tournament_menu["active"] == true) {
 						echo '<a class="standard-link" href="tournament.php?id='.$tournament_menu["id"].'">'.$tournament_menu["year"].'</a>';
@@ -112,7 +118,7 @@
 						echo $tournament_menu["year"];
 					}
 					echo '</td>';
-					echo '<td>';
+					echo '<td class="host-cell">';
 					if ($tournament_menu["host"] != "N/A") {
 						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_abbreviation"]).'">  ';
 					}
@@ -162,6 +168,8 @@
 							}
 						</script></td>';
 					echo '</tr>';
+					
+					$row_count++;
 								
 				}
 				
