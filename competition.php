@@ -125,7 +125,16 @@
 					echo '<script>if (window.innerWidth > 550) {document.write("'.$tournament_menu["host"].'");} else {document.write("'.$tournament_menu["host_abbreviation"].'");}</script>
 					';
 					if ($tournament_menu["host_2"]) {
-						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_2_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_2_abbreviation"]).'">  ';
+						echo '
+							<script>
+								if (window.innerWidth > 550) {
+									document.write("/");
+								} else {
+									document.write("<br>");
+								}
+							</script>
+						';
+						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_2_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_2_abbreviation"]).'">  ';
 						echo '
 							<script>
 								if (window.innerWidth > 550) {
@@ -137,7 +146,16 @@
 						';
 					}
 					if ($tournament_menu["host_3"]) {
-						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_3_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_3_abbreviation"]).'">  ';
+												echo '
+							<script>
+								if (window.innerWidth > 550) {
+									document.write("/");
+								} else {
+									document.write("<br>");
+								}
+							</script>
+						';
+						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_3_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_3_abbreviation"]).'">  ';
 						echo '
 							<script>
 								if (window.innerWidth > 550) {
