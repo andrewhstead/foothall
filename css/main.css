@@ -223,7 +223,7 @@ h3 {
 }
 
 p {
-	text-align: justify;
+	text-align: left;
 }
 
 .contender-wrapper, .flex-wrapper {
@@ -330,15 +330,18 @@ h1.info-page:first-of-type {
 }
 
 .flex-wrapper {
-	display: flex;
 	flex-wrap: wrap;
 	clear: both;
 }
 
 .flex-item {
 	flex: 1;
-	flex-basis: 50%;
+	flex-basis: 45%;
 	text-align: left;
+}
+
+.dream-flex {
+	padding: 10px;
 }
 
 .person-stats {
