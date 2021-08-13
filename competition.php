@@ -24,7 +24,27 @@
 	}
 	
 	$tournaments = "
-		SELECT * FROM tournaments WHERE competition = $competition_id AND completed = true";
+		SELECT 
+			tournaments.id AS id, 
+			tournaments.year AS year, 
+			host.display_name AS host,
+			host.abbreviation AS host_abbreviation, 
+			host_2.display_name AS host_2,
+			host_2.abbreviation AS host_2_abbreviation,  
+			host_3.display_name AS host_3, 
+			host_3.abbreviation AS host_3_abbreviation, 
+			winner.display_name AS winner, 
+			winner.abbreviation AS winner_abbreviation, 
+			runner_up.display_name AS runner_up, 
+			runner_up.abbreviation AS runner_up_abbreviation, 
+			tournaments.active AS active
+		FROM tournaments 
+		INNER JOIN countries host ON tournaments.host = host.abbreviation 
+		LEFT JOIN countries host_2 ON tournaments.host_2 = host_2.abbreviation
+		LEFT JOIN countries host_3 ON tournaments.host_3 = host_3.abbreviation
+		INNER JOIN countries winner ON tournaments.winner = winner.abbreviation 
+		INNER JOIN countries runner_up ON tournaments.runner_up = runner_up.abbreviation 
+		WHERE competition = $competition_id AND completed = true";
 	$tournament_query = $connectDB->query($tournaments);
 	
 	$tournament_list = array();
@@ -67,7 +87,7 @@
 			if (!$tournament_list) {
 				echo '<h2>Editions of this competition will appear here when added to the site.</h2>';
 			} else {
-				echo '<div class="sub-menu"><h2>Competition History</h2><div>';
+				echo '<div class="sub-menu"><h2>Competition History</h2></div>';
 			}
 		
 		?>	
@@ -94,18 +114,53 @@
 					echo '</td>';
 					echo '<td>';
 					if ($tournament_menu["host"] != "N/A") {
-						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host"]).'.png" alt="'.strtolower($tournament_menu["host"]).'">  ';
+						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_abbreviation"]).'">  ';
 					}
-					echo $tournament_menu["host"];
+					echo '<script>if (window.innerWidth > 550) {document.write("'.$tournament_menu["host"].'");} else {document.write("'.$tournament_menu["host_abbreviation"].'");}</script>
+					';
 					if ($tournament_menu["host_2"]) {
-						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_2"]).'.png" alt="'.strtolower($tournament_menu["host_2"]).'">  '.$tournament_menu["host_2"];
+						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_2_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_2_abbreviation"]).'">  ';
+						echo '
+							<script>
+								if (window.innerWidth > 550) {
+									document.write("'.$tournament_menu["host_2"].'");
+								} else {
+									document.write("'.$tournament_menu["host_2_abbreviation"].'");
+								}
+							</script>
+						';
 					}
 					if ($tournament_menu["host_3"]) {
-						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_3"]).'.png" alt="'.strtolower($tournament_menu["host_3"]).'">  '.$tournament_menu["host_3"];
+						echo '<br><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_3_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_3_abbreviation"]).'">  ';
+						echo '
+							<script>
+								if (window.innerWidth > 550) {
+									document.write("'.$tournament_menu["host_3"].'");
+								} else {
+									document.write("'.$tournament_menu["host_3_abbreviation"].'");
+								}
+							</script>
+						';
 					}
 					echo '</td>';
-					echo '<td class="winner-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["winner"]).'.png" alt="'.strtolower($tournament_menu["winner"]).'">  '.$tournament_menu["winner"].'</td>';
-					echo '<td class="runner-up-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["runner_up"]).'.png" alt="'.strtolower($tournament_menu["runner_up"]).'">  '.$tournament_menu["runner_up"].'</td>';
+					echo '<td class="winner-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["winner_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["winner_abbreviation"]).'">  ';
+					echo '
+						<script>
+							if (window.innerWidth > 550) {
+								document.write("'.$tournament_menu["winner"].'");
+							} else {
+								document.write("'.$tournament_menu["winner_abbreviation"].'");
+							}
+						</script></td>';
+					echo '<td class="runner-up-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["runner_up_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["runner_up_abbreviation"]).'">  ';
+					echo '
+						<script>
+							if (window.innerWidth > 550) {
+								document.write("'.$tournament_menu["runner_up"].'");
+							} else {
+								document.write("'.$tournament_menu["runner_up_abbreviation"].'");
+							}
+						</script></td>';
 					echo '</tr>';
 								
 				}

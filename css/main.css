@@ -456,6 +456,7 @@ h1.info-page:first-of-type {
 .tournament-list {
 	border-collapse: collapse;
 	margin: 10px auto;
+	width: 100%;
 }
 
 .tournament-list td, th {
@@ -992,6 +993,10 @@ hr {
 	white-space: pre;
 }
 
+.table-entry {
+	white-space: pre;
+}
+
 @media only screen and (min-width: 551px) {
 
 	.admin-flex {
@@ -1009,6 +1014,11 @@ hr {
 
 	.menu-toggle {
 		display: none;
+	}
+
+	ul.toggle-items li {
+		border-top: 0;
+		padding: 0 5px;
 	}
 
 	ul.menu-items {
@@ -1041,15 +1051,12 @@ hr {
 	
 	.hall-nested, .history-nested {
 		background-color: #321c20;
+		border-top: 1px solid #cfb53b;
+		padding: 20px 0;
 	}
 
 	ul.nest-menu {
 		margin: 0;
-	}
-
-	ul.toggle-items li {
-		border-top: none;
-		padding: 0 0 0 10px;
 	}
 
 	.rating-block {
@@ -1103,6 +1110,10 @@ hr {
 	
 	.sidebar-link:hover {
 		text-decoration: underline;
+	}
+
+	ul.toggle-items li {
+		padding: 0 10px;
 	}
 
 	ul.menu-items {
