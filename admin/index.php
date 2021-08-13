@@ -56,43 +56,43 @@
 						
 							if ($table_menu["table_type"] == "hall") {
 								
-								echo '<div class="admin-link-box">';
 								echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=active">';
-								echo 'View Active';
-								echo '</a>';
-								echo '</div>';
-							
 								echo '<div class="admin-link-box">';
-								echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=contenders">';
-								echo 'View Contenders';
-								echo '</a>';
+								echo 'View Active';
 								echo '</div>';
+								echo '</a>';
+							
+								echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=contenders">';
+								echo '<div class="admin-link-box">';
+								echo 'View Contenders';
+								echo '</div>';
+								echo '</a>';
 							
 								if ($table_menu["table_name"] != "hall-teams") {
 									
-									echo '<div class="admin-link-box">';
 									echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'&status=inactive">';
+									echo '<div class="admin-link-box">';
 									echo 'View Inactive';
-									echo '</a>';
 									echo '</div>';
+									echo '</a>';
 									
 								}
 							
 							} else {
 								
-								echo '<div class="admin-link-box">';
 								echo '<a class="admin-link" href="view_list.php?type='.$table_menu["table_name"].'">';
+								echo '<div class="admin-link-box">';
 								echo 'View List';
-								echo '</a>';
 								echo '</div>';
+								echo '</a>';
 								
 							}
 											
-							echo '<div class="admin-link-box">';
 							echo '<a class="admin-link" href="add_new.php?type='.$table_menu["table_name"].'">';
+							echo '<div class="admin-link-box">';
 							echo 'Add New';
-							echo '</a>';
 							echo '</div>';
+							echo '</a>';
 					
 						echo '</div>';
 						

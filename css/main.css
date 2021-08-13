@@ -583,17 +583,11 @@ h1.info-page:first-of-type {
 
 .admin-link-box {
 	padding: 5px 0;
-	border-bottom: 1px solid #321c20;
 }
 
 .admin-link-box:hover {
 	background-color: #321c20;
 	color: #cfb53b;
-	border-bottom: 1px solid #cfb53b;
-}
-
-div.admin-link-box:last-of-type {
-	border-bottom: none;
 }
 
 .admin-head {
