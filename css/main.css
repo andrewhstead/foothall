@@ -319,6 +319,7 @@ td.progress-bar {
 
 .sub-menu {
 	margin-bottom: 10px;
+	flex: 1 1 40%;
 }
 
 .sub-menu h2 {

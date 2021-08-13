@@ -52,39 +52,40 @@
 			Clubs
 		</h1>
 		
-		<?php
+		<div class="flex-wrapper">
 		
-			if (!$club_list) {
-				echo "<h2>Club profiles will appear here when added to the site.</h2>";
-			}
-					
-			foreach ($countries as $country_menu) {
-				
-				echo '<div class="sub-menu">';
-				echo '<h2>';
-				echo '<img class="feed-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["display_name"]).'"> ';
-				echo $country_menu["display_name"].'</h2>';
-							
-				echo '<div class="flex-wrapper">';
+			<?php
 			
-					foreach ($club_list as $club_menu) {
-							
-						if ($club_menu["country"] == $country_menu["abbreviation"]) {
-							
-							echo '<div class="flex-item">';	
-							echo '&#9654; <a class="standard-link" href="club.php?id='.$club_menu["id"].'">'.$club_menu["display_name"].'</a>';
-							echo '</div>';
+				if (!$club_list) {
+					echo "<h2>Club profiles will appear here when added to the site.</h2>";
+				}
+						
+				foreach ($countries as $country_menu) {
+					
+					echo '<div class="sub-menu">';
+					echo '<h2>';
+					echo '<img class="feed-icon" src="img/flags/'.strtolower($country_menu["abbreviation"]).'.png" alt="'.htmlentities($country_menu["display_name"]).'"> ';
+					echo $country_menu["display_name"].'</h2>';
+								
+				
+						foreach ($club_list as $club_menu) {
+								
+							if ($club_menu["country"] == $country_menu["abbreviation"]) {
+								
+								echo '&#9654; <a class="standard-link" href="club.php?id='.$club_menu["id"].'">'.$club_menu["display_name"].'</a>';
+								echo '<br>';
+								
+							}
 							
 						}
 						
-					}
-					
-				echo '</div>';
-				echo '</div>';
-			
-			}
-			
-		?>
+					echo '</div>';
+				
+				}
+				
+			?>
+		
+		</div>
 		
 	</div>
 
