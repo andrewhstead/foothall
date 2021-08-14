@@ -1113,7 +1113,7 @@ hr {
 	}
 	
 	.sidebar-table td {
-		padding: 0 1px;
+		padding: 0 2px;
 	}
 	
 	.sidebar-table tr:first-of-type {
@@ -1127,7 +1127,7 @@ hr {
 	}
 	
 	.sidebar-table tr:nth-of-type(3) {
-		background-color: #bb7448;
+		background-color: #bc7f58;
 		font-weight: bold;
 	}
 	

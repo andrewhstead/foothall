@@ -58,6 +58,62 @@
 			
 			<hr>
 			
+			<h2>Rating Leaders: Coaches</h2>
+			
+				<?php
+					$coach_leaders = "
+					SELECT 
+						people.id AS coach_id,
+						people.name AS coach_name,
+						people.file_code AS file_code,
+						people.nationality AS nationality,
+						people.votes AS votes,
+						people.rating AS rating,
+						countries.display_name AS country 
+					FROM people 
+					INNER JOIN countries ON people.nationality = countries.abbreviation
+					WHERE active = true AND as_coach = true  
+					ORDER BY rating DESC, votes DESC, file_code
+					LIMIT 10";
+					$coach_leader_query = $connectDB->query($coach_leaders);
+					
+					$coach_result_count = "SELECT COUNT(*) FROM people WHERE active = true AND as_coach = true";
+					$coach_results = $connectDB->query($coach_result_count);
+					$total_coaches = $coach_results->fetchColumn();
+					
+					$coach_position = 0;
+					
+					if ($total_coaches == 0) {
+						echo '<div class="centre-text">No coaches elected yet.</div>';
+					} else {
+						
+						echo '<table class="sidebar-table">';
+						while ($dataRows = $coach_leader_query->fetch()) {
+						
+							$coach_position++;
+
+							$coach_id = $dataRows["coach_id"];
+							$coach_name = $dataRows["coach_name"];
+							$nationality = $dataRows["nationality"];
+							$rating = $dataRows["rating"];
+							$country = $dataRows["country"];
+							
+							echo '<tr>';
+							echo '<td><strong>'.$coach_position.'.</strong></td>';
+							echo '<td><img class="table-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.strtolower($country).'"> ';
+							echo '<a class="sidebar-link" href="person.php?id='.$coach_id.'">'.$coach_name.'</a></td>';
+							echo '<td>'.$rating.'</td>';
+							echo '</tr>';
+
+						}
+						echo '</table>';
+						
+					}
+
+				?>
+			
+			<hr>
+			
 			<h2>Rating Leaders: Matches</h2>
 			
 				<?php
@@ -87,7 +143,7 @@
 					$match_position = 0;
 					
 					if ($total_matches == 0) {
-						echo '<div class="centre-text">No players elected yet.</div>';
+						echo '<div class="centre-text">No matches elected yet.</div>';
 					} else {
 						
 						echo '<table class="sidebar-table">';

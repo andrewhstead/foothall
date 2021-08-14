@@ -16,9 +16,9 @@
 	if(isset($_POST["vote"])) {
 		
 		$chosen_score = $_POST["chosen"];		
-		$sql = "UPDATE hall_teams 
+		$sql = "UPDATE matches 
 			SET score = score + $chosen_score, votes = votes + 1, rating = score / votes
-			WHERE id = $team_id";
+			WHERE id = $match_id";
 		$stmt = $connectDB->prepare($sql);
 		$execute = $stmt->execute();
 		
