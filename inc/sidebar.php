@@ -74,7 +74,7 @@
 					INNER JOIN countries ON people.nationality = countries.abbreviation
 					WHERE active = true AND as_coach = true  
 					ORDER BY rating DESC, votes DESC, file_code
-					LIMIT 10";
+					LIMIT 5";
 					$coach_leader_query = $connectDB->query($coach_leaders);
 					
 					$coach_result_count = "SELECT COUNT(*) FROM people WHERE active = true AND as_coach = true";
@@ -133,7 +133,7 @@
 					INNER JOIN teams team_2 on matches.team_2 = team_2.name
 					WHERE matches.active = true  
 					ORDER BY rating DESC, votes DESC, file_code
-					LIMIT 10";
+					LIMIT 5";
 					$match_leader_query = $connectDB->query($match_leaders);
 					
 					$match_result_count = "SELECT COUNT(*) FROM matches WHERE active = true";
@@ -165,6 +165,56 @@
 							echo '<td>';
 							echo '<a class="sidebar-link" href="match.php?id='.$match_id.'">'.$team_1.' '.$score_1.'-'.$score_2.' '.$team_2.' ('.$date->format('Y').')</a></td>';
 							echo '<td>'.$match_rating.'</td>';
+							echo '</tr>';
+
+						}
+						echo '</table>';
+						
+					}
+
+				?>
+			
+			<hr>
+			
+			<h2>Rating Leaders: Teams</h2>
+			
+				<?php
+					$team_leaders = "
+					SELECT
+						hall_teams.id AS team_id,
+						hall_teams.title AS team_title,
+						hall_teams.votes AS team_votes,
+						hall_teams.rating AS team_rating
+					FROM hall_teams
+					WHERE hall_teams.active = true  
+					ORDER BY rating DESC, votes DESC, file_code
+					LIMIT 5";
+					$team_leader_query = $connectDB->query($team_leaders);
+					
+					$team_result_count = "SELECT COUNT(*) FROM hall_teams WHERE active = true";
+					$team_results = $connectDB->query($team_result_count);
+					$total_teams = $team_results->fetchColumn();
+					
+					$team_position = 0;
+					
+					if ($total_teams == 0) {
+						echo '<div class="centre-text">No teams elected yet.</div>';
+					} else {
+						
+						echo '<table class="sidebar-table">';
+						while ($dataRows = $team_leader_query->fetch()) {
+						
+							$team_position++;
+
+							$team_id = $dataRows["team_id"];
+							$team_title = $dataRows["team_title"];
+							$team_rating = $dataRows["team_rating"];
+							
+							echo '<tr>';
+							echo '<td><strong>'.$team_position.'.</strong></td>';
+							echo '<td>';
+							echo '<a class="sidebar-link" href="team.php?id='.$team_id.'">'.$team_title.'</a></td>';
+							echo '<td>'.$team_rating.'</td>';
 							echo '</tr>';
 
 						}
