@@ -274,7 +274,13 @@
 					} else {
 						foreach ($goal_list as $goal) {
 							echo '<span class="goalscorer"><img class="table-icon" src="img/icons/ball.png" alt="Football">';
-							echo ' '.$goal['scorer'].' ('.$goal["minute"].'\', '.$goal["score"].')</span> ';
+							echo ' '.$goal["scorer"].' (';
+							if ($goal["penalty"]) {
+								echo 'pen ';
+							} else if ($goal["own_goal"]) {
+								echo 'o.g. ';
+							}
+							echo $goal["minute"].'\', '.$goal["score"].')</span> ';
 						}			
 					}
 					
