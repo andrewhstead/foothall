@@ -1096,18 +1096,39 @@ hr {
 		padding: 10px;
 	}
 	
+	.sidebar h2{
+		padding-top: 0;
+	}
+	
 	.sidebar p {
 		margin: 0;
 		font-size: 1.1em;
 	}
 	
 	.sidebar-table {
+		width: 100%;
 		margin: 10px auto;
 		font-size: 1.1em;
+		border-collapse: collapse;
 	}
 	
 	.sidebar-table td {
 		padding: 0 1px;
+	}
+	
+	.sidebar-table tr:first-of-type {
+		background-color: #cc9900;
+		font-weight: bold;
+	}
+	
+	.sidebar-table tr:nth-of-type(2) {
+		background-color: #a2a2a2;
+		font-weight: bold;
+	}
+	
+	.sidebar-table tr:nth-of-type(3) {
+		background-color: #bb7448;
+		font-weight: bold;
 	}
 	
 	.sidebar-link {
