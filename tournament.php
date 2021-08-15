@@ -29,6 +29,9 @@
 		winner.display_name AS winner_name,
 		tournaments.runner_up AS runner_up,
 		runner_up.display_name AS runner_up_name,
+		tournaments.top_scorer AS top_scorer,
+		tournaments.nationality AS scorer_nation,
+		tournaments.scored AS scored,
 		tournaments.intro_text AS intro_text,
 		tournaments.review AS review
 		FROM tournaments 
@@ -57,6 +60,9 @@
 		$winner_name = $dataRows["winner_name"];
 		$runner_up = $dataRows["runner_up"];
 		$runner_up_name = $dataRows["runner_up_name"];
+		$top_scorer = $dataRows["top_scorer"];
+		$scorer_nation = $dataRows["scorer_nation"];
+		$scored = $dataRows["scored"];
 		$intro_text = $dataRows["intro_text"];
 		$review = $dataRows["review"];
 		
@@ -91,6 +97,12 @@
 			<br>
 			<strong>Winners:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($winner) ?>.png" alt="<?php echo strtolower($winner_name) ?>"> <?php echo htmlentities($winner_name) ?><br>
 			<strong>Runners-Up:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($runner_up) ?>.png" alt="<?php echo strtolower($runner_up_name) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
+			<?php
+				if ($top_scorer) {
+					echo '<strong>Top Goalscorer:</strong> <img class="table-icon" src="img/flags/'.strtolower($scorer_nation).'.png" alt="'.strtolower($scorer_nation).'"> '.htmlentities($top_scorer).' ('.htmlentities($scored).')';
+				}
+			?>
+			
 		</p>
 		
 		<div class="profile-content">

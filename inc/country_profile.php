@@ -54,7 +54,7 @@
 				
 				echo '&#9654; <a class="standard-link" href="person.php?id='.$person_id.'">';
 				echo $person_name;
-				echo '</a>';
+				echo '</a><br>';
 				
 			}
 						
