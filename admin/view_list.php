@@ -14,7 +14,7 @@
 	if (isset($_GET["type"])) {
 		$table_id = $_GET["type"];
 	} else {
-		$table_id = "person";
+		$table_id = "people";
 	}
 	
 	include 'inc/switch.php';
