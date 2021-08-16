@@ -891,7 +891,7 @@ td.current-page {
 	padding: 0 5px 0 0;
 	white-space: nowrap;
 	font-weight: bold;
-	color: #a2a2a2;
+	color: #999999;
 }
 .tournament-third {
 	display: inline-block;
@@ -1002,6 +1002,16 @@ hr {
 
 .table-entry {
 	white-space: pre;
+}
+
+.social-media {
+	display: flex;
+	justify-content: center;
+}
+
+.social-icon {
+	width: 50px;
+	margin: 5px;
 }
 
 @media only screen and (min-width: 551px) {
@@ -1127,7 +1137,7 @@ hr {
 	}
 	
 	.sidebar-table tr:nth-of-type(3) {
-		background-color: #bc7f58;
+		background-color: #bc7f58ft;
 		font-weight: bold;
 	}
 	

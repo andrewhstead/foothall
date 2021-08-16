@@ -198,6 +198,8 @@
 						
 				}
 				
+				echo '</div>';
+				
 				echo '</span>';
 			
 			}

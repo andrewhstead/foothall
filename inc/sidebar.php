@@ -324,4 +324,12 @@
 			
 			<hr>
 			
+			<h2>Social Media</h2>
+			
+			<div class="social-media">
+				<a href=""><img class="social-icon" src="img/icons/facebook.png" alt="Facebook"></a>
+				<a href=""><img class="social-icon" src="img/icons/twitter.png" alt="Twitter"></a>
+				<a href=""><img class="social-icon" src="img/icons/instagram.png" alt="Instagram"></a>
+			</div>
+			
 		</div>
