@@ -10,7 +10,7 @@
 			$list_column = "file_code";
 			break;
 		case "hall_teams":
-			$identifier = "hall_team";
+			$identifier = "team";
 			$list_column = "title";
 			break;
 		case "continents":
