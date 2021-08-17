@@ -40,6 +40,10 @@ main {
 	background-color: white;
 }
 
+.admin-page {
+	min-height: 650px;
+}
+
 .main-menu {
 	background-color: #321c20;
 	color: #cfb53b;

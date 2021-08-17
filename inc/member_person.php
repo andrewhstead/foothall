@@ -93,6 +93,8 @@
 			<strong>Tags:</strong>
 			
 			<?php 
+				
+				echo '<a class="tag-link" href="country.php?id='.$country_id.'"><div class="tag">'.htmlentities($country_name).'</div></a>';
 	
 				$tags = "
 					SELECT 
@@ -166,5 +168,5 @@
 				}
 				
 			?>
-			
+						
 		</div>

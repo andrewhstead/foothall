@@ -54,4 +54,4 @@
 		
 		<main>
 			
-			<div class="main-page">
+			<div class="main-page admin-page">
