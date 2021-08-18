@@ -2,8 +2,35 @@
 
 	if(isset($_POST["submit"])) {
 		
-		$new_file_code = $_POST["file-code"];
+		$new_team_1 = $_POST["team-1"];
+		$new_team_2 = $_POST["team-2"];
 		$new_teams = $_POST["teams-type"];
+		$new_score_1 = $_POST["score-1"];
+		$new_score_2 = $_POST["score-2"];
+		if (isset($_POST["extra-time"])) {
+			$new_extra_time = true;
+		} else {
+			$new_extra_time = false;
+		}
+		if (isset($_POST["penalties"])) {
+			$new_penalties = true;
+		} else {
+			$new_penalties = false;
+		}
+		$new_penalties_1 = $_POST["penalties-1"];
+		$new_penalties_2 = $_POST["penalties-2"];
+		$new_date = $_POST["match-date"];
+		$new_competition = $_POST["competition"];
+		$new_stage = $_POST["stage"];
+		$new_section = $_POST["section"];
+		$new_file_code = $_POST["file-code"];
+		$new_title = $_POST["title"];
+		$new_attendance = $_POST["attendance"];
+		$new_stadium = $_POST["stadium"];
+		$new_city = $_POST["city"];
+		$new_country = $_POST["country"];
+		$new_referee = $_POST["referee"];
+		$new_nationality = $_POST["nationality"];
 		if ($_POST["status"] == "admitted") {
 			$new_admitted = true;
 			$new_contender = false;
@@ -27,39 +54,43 @@
 		$new_score = $_POST["score"];
 		$new_votes = $_POST["votes"];
 		$new_rating= $_POST["rating"];
-		$new_date = $_POST["match-date"];
-		$new_competition = $_POST["competition"];
-		$new_stage = $_POST["stage"];
-		$new_team_1 = $_POST["team-1"];
-		$new_score_1 = $_POST["score-1"];
-		$new_team_2 = $_POST["team-2"];
-		$new_score_2 = $_POST["score-2"];
 		$new_intro_text = $_POST["intro-text"];
 		$new_match_report = $_POST["match-report"];
-
-		$sql = "UPDATE matches SET file_code=:NewFileCode, teams=:NewTeams, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, date=:NewDate, competition=:NewCompetition, stage=:NewStage, team_1=:NewTeam1, score_1=:NewScore1, team_2=:NewTeam2, score_2=:NewScore2, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
+		
+		$sql = "UPDATE matches SET team_1=:NewTeam1, team_2=:NewTeam2, teams=:NewTeams, score_1=:NewScore1, score_2=:NewScore2, extra_time=:NewExtraTime, penalties=:NewPenalties, penalties_1=:NewPenalties1, penalties_2=:NewPenalties2, date=:NewDate, competition=:NewCompetition, stage=:NewStage, section=:NewSection, file_code=:NewFileCode, title=:NewTitle, attendance=:NewAttendance, stadium=:NewStadium, city=:NewCity, country=:NewCountry, referee=:NewReferee, ref_nat=:NewRefNat, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
-		$stmt->bindValue(':NewFileCode', $new_file_code);
+		$stmt->bindValue(':NewTeam1', $new_team_1);
+		$stmt->bindValue(':NewTeam2', $new_team_2);
 		$stmt->bindValue(':NewTeams', $new_teams);
-		$stmt->bindValue(':NewContender', $new_contender);
+		$stmt->bindValue(':NewScore1', $new_score_1);
+		$stmt->bindValue(':NewScore2', $new_score_2);
+		$stmt->bindValue(':NewExtraTime', $new_extra_time);
+		$stmt->bindValue(':NewPenalties', $new_penalties);
+		$stmt->bindValue(':NewPenalties1', $new_penalties_1);
+		$stmt->bindValue(':NewPenalties2', $new_penalties_2);
+		$stmt->bindValue(':NewDate', $new_date);
+		$stmt->bindValue(':NewCompetition', $new_competition);
+		$stmt->bindValue(':NewStage', $new_stage);
+		$stmt->bindValue(':NewSection', $new_section);
+		$stmt->bindValue(':NewFileCode', $new_file_code);
+		$stmt->bindValue(':NewTitle', $new_title);
+		$stmt->bindValue(':NewAttendance', $new_attendance);
+		$stmt->bindValue(':NewStadium', $new_stadium);
+		$stmt->bindValue(':NewCity', $new_city);
+		$stmt->bindValue(':NewCountry', $new_country);
+		$stmt->bindValue(':NewReferee', $new_referee);
+		$stmt->bindValue(':NewRefNat', $new_nationality);
 		$stmt->bindValue(':NewAdmitted', $new_admitted);
+		$stmt->bindValue(':NewContender', $new_contender);
 		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
 		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
 		$stmt->bindValue(':NewScore', $new_score);
 		$stmt->bindValue(':NewVotes', $new_votes);
 		$stmt->bindValue(':NewRating', $new_rating);
-		$stmt->bindValue(':NewDate', $new_date);
-		$stmt->bindValue(':NewCompetition', $new_competition);
-		$stmt->bindValue(':NewStage', $new_stage);
-		$stmt->bindValue(':NewTeam1', $new_team_1);
-		$stmt->bindValue(':NewScore1', $new_score_1);
-		$stmt->bindValue(':NewTeam2', $new_team_2);
-		$stmt->bindValue(':NewScore2', $new_score_2);
 		$stmt->bindValue(':NewIntroText', $new_intro_text);
 		$stmt->bindValue(':NewMatchReport', $new_match_report);
-
 		$execute = $stmt->execute();
 		
 		if($execute) {
@@ -87,10 +118,29 @@
 	$match_query = $connectDB->query($match);
 		
 	while ($dataRows = $match_query->fetch()) {
-
+		
 		$database_id = $dataRows["id"];
-		$file_code = $dataRows["file_code"];
+		$team_1 = $dataRows["team_1"];
+		$team_2 = $dataRows["team_2"];
 		$teams = $dataRows["teams"];
+		$score_1 = $dataRows["score_1"];
+		$score_2 = $dataRows["score_2"];
+		$extra_time = $dataRows["extra_time"];
+		$penalties = $dataRows["penalties"];
+		$penalties_1 = $dataRows["penalties_1"];
+		$penalties_2 = $dataRows["penalties_2"];
+		$date = $dataRows["date"];
+		$competition = $dataRows["competition"];
+		$stage = $dataRows["stage"];
+		$section = $dataRows["section"];
+		$file_code = $dataRows["file_code"];
+		$title = $dataRows["title"];
+		$attendance = $dataRows["attendance"];
+		$stadium = $dataRows["stadium"];
+		$city = $dataRows["city"];
+		$country = $dataRows["country"];
+		$referee = $dataRows["referee"];
+		$nationality = $dataRows["ref_nat"];
 		$contender = $dataRows["contender"];
 		$admitted = $dataRows["active"];
 		if (($contender == true) or ($admitted == true)) {
@@ -103,13 +153,6 @@
 		$score = $dataRows["score"];
 		$votes = $dataRows["votes"];
 		$rating = $dataRows["rating"];
-		$date = $dataRows["date"];
-		$competition = $dataRows["competition"];
-		$stage = $dataRows["stage"];
-		$team_1 = $dataRows["team_1"];
-		$score_1 = $dataRows["score_1"];
-		$team_2 = $dataRows["team_2"];
-		$score_2 = $dataRows["score_2"];
 		$intro_text = $dataRows["intro_text"];
 		$match_report = $dataRows["match_report"];
 		
