@@ -1,14 +1,40 @@
 		<form class="edit-form" method="post" action="edit_record.php?type=matches&code=<?php echo $record_id; ?>">
-				
+		
 			<div class="flex-wrapper">
 					
 				<div class="flex-item form-section">
 
 					<label for="team-1">Team 1:</label>
-					<input type="text" name="team-1" placeholder="Team Name" id="team-1" value="<?php echo $team_1; ?>">
+					<select id="team-1" name="team-1">
+					<?php
+						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
+						$teams_query = $connectDB->query($teams_sql);
+						while ($dataRows = $teams_query->fetch()) {
+							$team_name = $dataRows["name"];
+							echo '<option value="'.$dataRows["name"].'"';
+							if ($dataRows["name"] == $team_1_full) {
+								echo ' selected ';
+							}	
+							echo '>'.$dataRows["name"].'</option>';
+						}
+					?>	
+					</select>
 					<br>
 					<label for="team-2">Team 2:</label>
-					<input type="text" name="team-2" placeholder="Team Name" id="team-2" value="<?php echo $team_2; ?>">
+					<select id="team-2" name="team-2">
+					<?php
+						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
+						$teams_query = $connectDB->query($teams_sql);
+						while ($dataRows = $teams_query->fetch()) {
+							$team_name = $dataRows["name"];
+							echo '<option value="'.$dataRows["name"].'"';
+							if ($dataRows["name"] == $team_2_full) {
+								echo ' selected ';
+							}	
+							echo '>'.$dataRows["name"].'</option>';
+						}
+					?>	
+					</select>
 					<br>
 					<label for="teams-type">Club/National:</label>
 					<input type="text" name="teams-type" placeholder="Club or National?" id="teams-type" value="<?php echo $teams; ?>">

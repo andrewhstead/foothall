@@ -114,7 +114,10 @@
 
 	}
 		
-	$match = "SELECT * FROM matches WHERE file_code = '$record_id'";
+	$match = "SELECT matches.*, team_1.name AS team_1_full, team_2.name AS team_2_full FROM matches  
+		INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
+		INNER JOIN teams team_2 ON matches.team_2 = team_2.name
+		WHERE file_code = '$record_id'";
 	$match_query = $connectDB->query($match);
 		
 	while ($dataRows = $match_query->fetch()) {
@@ -122,6 +125,8 @@
 		$database_id = $dataRows["id"];
 		$team_1 = $dataRows["team_1"];
 		$team_2 = $dataRows["team_2"];
+		$team_1_full = $dataRows["team_1_full"];
+		$team_2_full = $dataRows["team_2_full"];
 		$teams = $dataRows["teams"];
 		$score_1 = $dataRows["score_1"];
 		$score_2 = $dataRows["score_2"];
