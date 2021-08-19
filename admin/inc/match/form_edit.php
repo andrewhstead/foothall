@@ -177,6 +177,8 @@
 			<label for="match-report">Match Report:</label>
 			<textarea class="editable-area" rows="10" cols="35" name="match-report"><?php echo $match_report; ?></textarea>
 			<br>
-			<input class="submit-button" type="submit" name="submit" value="Save Changes">
+			<input class="submit-button" type="submit" name="submit" value="Save and Finish">
+			<input class="submit-button" type="submit" name="submit" value="Save and Add Lineups">
+			<input class="submit-button" type="submit" name="submit" value="Save and Add Goals">
 			
 		</form>

@@ -97,12 +97,18 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_admitted == true) {
+			if ($_POST['submit'] == 'Save and Add Lineups') {
+				redirect_to("edit_record.php?type=people_teams");
+			} else if ($_POST['submit'] == 'Save and Add Goals') {
+				redirect_to("edit_record.php?type=goals");
+			} else if ($_POST['submit'] == 'Save and Finish') {
+				if ($new_admitted == true) {
 				redirect_to("view_list.php?type=matches&status=active");
-			} else if (($new_contender == true) && ($new_admitted == false)) {
-				redirect_to("view_list.php?type=matches&status=contenders");
-			} else if ($new_admitted == 0) {
-				redirect_to("view_list.php?type=matches&status=inactive");
+				} else if (($new_contender == true) && ($new_admitted == false)) {
+					redirect_to("view_list.php?type=matches&status=contenders");
+				} else if ($new_admitted == 0) {
+					redirect_to("view_list.php?type=matches&status=inactive");
+				}
 			}
 			
 		} else {

@@ -52,6 +52,9 @@
 		case "people_tags":
 			$identifier = "person_tag";
 			break;
+		case "goals":
+			$identifier = "goal";
+			break;
 		default:
 			$identifier = "person";
 	}
