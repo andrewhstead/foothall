@@ -51,9 +51,9 @@
 					<br>
 					Penalties Score (if applicable): 
 					<label for="score-1">T1</label>
-					<input type="text" name="score-1" placeholder="0" id="penalties-1" size="1">
+					<input type="text" name="penalties-1" placeholder="0" id="penalties-1" size="1">
 					<label for="score-2">T2</label>
-					<input type="text" name="score-2" placeholder="0" id="penalties-2" size="1">
+					<input type="text" name="penalties-2" placeholder="0" id="penalties-2" size="1">
 					
 					<br><br>					
 					<label for="match-date">Date:</label>

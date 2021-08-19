@@ -98,7 +98,7 @@
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
 			if ($_POST['submit'] == 'Save and Add Lineups') {
-				redirect_to("edit_record.php?type=people_teams");
+				redirect_to("edit_record.php?type=people_matches");
 			} else if ($_POST['submit'] == 'Save and Add Goals') {
 				redirect_to("edit_record.php?type=goals");
 			} else if ($_POST['submit'] == 'Save and Finish') {

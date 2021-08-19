@@ -7,8 +7,16 @@
 		$new_teams = $_POST["teams-type"];
 		$new_score_1 = $_POST["score-1"];
 		$new_score_2 = $_POST["score-2"];
-		$new_extra_time = $_POST["extra-time"];
-		$new_penalties = $_POST["penalties"];
+		if (isset($_POST["extra-time"])) {
+			$new_extra_time = true;
+		} else {
+			$new_extra_time = false;
+		}
+		if (isset($_POST["penalties"])) {
+			$new_penalties = true;
+		} else {
+			$new_penalties = false;
+		}
 		$new_penalties_1 = $_POST["penalties-1"];
 		$new_penalties_2 = $_POST["penalties-2"];
 		$new_date = $_POST["match-date"];
@@ -49,7 +57,7 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_match_report = $_POST["match-report"];
 
-		$sql = "INSERT INTO people (team_1, team_2, teams, score_1, score_2, extra_time, penalties, penalties_1, penalties_2, date, competition, stage, section, file_code, title, attendance, stadium, city, country, referee, ref_nat, admitted, contender, admission_date, admission_poll, score, votes, rating, intro_text, match_report)";
+		$sql = "INSERT INTO matches (team_1, team_2, teams, score_1, score_2, extra_time, penalties, penalties_1, penalties_2, date, competition, stage, section, file_code, title, attendance, stadium, city, country, referee, ref_nat, active, contender, admission_date, admission_poll, score, votes, rating, intro_text, match_report)";
 		$sql .= "VALUES (:NewTeam1, :NewTeam2, :NewTeams, :NewScore1, :NewScore2, :NewExtraTime, :NewPenalties, :NewPenalties1, :NewPenalties2, :NewDate, :NewCompetition, :NewStage, :NewSection, :NewFileCode, :NewTitle, :NewAttendance, :NewStadium, :NewCity, :NewCountry, :NewReferee, :NewRefNat, :NewAdmitted, :NewContender, :NewAdmissionDate, :NewAdmissionPoll, :NewScore, :NewVotes, :NewRating, :NewIntroText, :NewMatchReport)";
 					
 		$stmt = $connectDB->prepare($sql);
@@ -89,18 +97,26 @@
 		
 		if($execute) {
 
-			$_SESSION["success_message"] = "Your edits have been saved successfully.";
+			$_SESSION["success_message"] = "Your match has been saved successfully.";
 			
-			if ($new_admitted == 1) {
-				redirect_to("view_list.php?id=$table_id&status=active");
-			} else if ($new_admitted == 0) {
-				redirect_to("view_list.php?id=$table_id&status=inactive");
+			if ($_POST['submit'] == 'Save and Add Lineups') {
+				redirect_to("edit_record.php?type=people_matches");
+			} else if ($_POST['submit'] == 'Save and Add Goals') {
+				redirect_to("edit_record.php?type=goals");
+			} else if ($_POST['submit'] == 'Save and Finish') {
+				if ($new_admitted == true) {
+				redirect_to("view_list.php?type=matches&status=active");
+				} else if (($new_contender == true) && ($new_admitted == false)) {
+					redirect_to("view_list.php?type=matches&status=contenders");
+				} else if ($new_admitted == 0) {
+					redirect_to("view_list.php?type=matches&status=inactive");
+				}
 			}
 			
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("add_new.php?id=$table_id");
+			redirect_to("add_new.php?type=$table_id");
 			
 		}
 
