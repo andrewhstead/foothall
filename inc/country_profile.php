@@ -20,6 +20,8 @@
 		<?php 
 			echo htmlentities($continent);
 			
+			echo html_entity_decode($profile);
+			
 			if ($defunct) {
 				echo ' <em>(Defunct)</em>';
 			}

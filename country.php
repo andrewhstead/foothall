@@ -24,6 +24,7 @@
 		$successor_to = $dataRows["successor_to"];
 		$continent = $dataRows["continent"];
 		$defunct = $dataRows["defunct"];
+		$profile = $dataRows["profile"];
 		
 	}
 
