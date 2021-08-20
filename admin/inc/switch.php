@@ -48,6 +48,8 @@
 			break;
 		case "tables":
 			$identifier = "table";
+			$list_column = "table_name";
+			$url_column = "id";
 			break;
 		case "news":
 			$identifier = "news";

@@ -2,14 +2,18 @@
 
 	if(isset($_POST["submit"])) {
 		
-		$new_name = $_POST["name"];
+		$new_table_name = $_POST["table-name"];
+		$new_table_type = $_POST["table-type"];
+		$new_importance = $_POST["importance"];
 		
-		$sql = "INSERT INTO continents (name)";
-		$sql .= "VALUES (:NewName)";
+		$sql = "INSERT INTO tables (table_name, table_type, importance)";
+		$sql .= "VALUES (:NewTableName, :NewTableType, :NewImportance)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
-		$stmt->bindValue(':NewName', $new_name);
+		$stmt->bindValue(':NewTableName', $new_table_name);
+		$stmt->bindValue(':NewTableType', $new_table_type);
+		$stmt->bindValue(':NewImportance', $new_importance);
 
 		$execute = $stmt->execute();
 		

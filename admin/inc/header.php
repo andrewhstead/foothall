@@ -12,7 +12,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Economica&display=swap" rel="stylesheet">
 		
-		<link rel="icon" href="/favicon.ico">
+		<link rel="icon" href="../img/icons/favicon.ico">
 		<link rel="stylesheet" href="../css/main.css">
 		
 		<script src="https://cdn.tiny.cloud/1/ieqk4j4wlawj4pytvzxzoriw0craruuiqvpwgior1svdk9cm/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

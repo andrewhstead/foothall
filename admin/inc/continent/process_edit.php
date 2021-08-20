@@ -16,11 +16,8 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
-				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
-				redirect_to("view_list.php?type=$table_id&status=inactive");
-			}
+			redirect_to("view_list.php?type=$table_id&status=active");
+			
 			
 		} else {
 
