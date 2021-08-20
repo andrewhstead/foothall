@@ -49,15 +49,15 @@
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
 			if ($new_active == true) {
-				redirect_to("view_list.php?type=countries&status=active");
+				redirect_to("view_list.php?type=$table_id&status=active");
 			} else if ($new_active == false) {
-				redirect_to("view_list.php?type=countries&status=inactive");
+				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("edit_record.php?type=countries&code=$database_id");
+			redirect_to("edit_record.php?type=$table_id&code=$database_id");
 			
 		}
 
