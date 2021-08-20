@@ -17,6 +17,8 @@
 			break;
 		case "continents":
 			$identifier = "continent";
+			$list_column = "name";
+			$url_column = "id";
 			break;
 		case "countries":
 			$identifier = "country";
