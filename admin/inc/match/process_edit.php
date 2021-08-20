@@ -21,6 +21,7 @@
 		$new_penalties_2 = $_POST["penalties-2"];
 		$new_date = $_POST["match-date"];
 		$new_competition = $_POST["competition"];
+		$new_tournament = $_POST["tournament"];
 		$new_stage = $_POST["stage"];
 		$new_section = $_POST["section"];
 		$new_file_code = $_POST["file-code"];
@@ -57,7 +58,7 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_match_report = $_POST["match-report"];
 		
-		$sql = "UPDATE matches SET team_1=:NewTeam1, team_2=:NewTeam2, teams=:NewTeams, score_1=:NewScore1, score_2=:NewScore2, extra_time=:NewExtraTime, penalties=:NewPenalties, penalties_1=:NewPenalties1, penalties_2=:NewPenalties2, date=:NewDate, competition=:NewCompetition, stage=:NewStage, section=:NewSection, file_code=:NewFileCode, title=:NewTitle, attendance=:NewAttendance, stadium=:NewStadium, city=:NewCity, country=:NewCountry, referee=:NewReferee, ref_nat=:NewRefNat, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
+		$sql = "UPDATE matches SET team_1=:NewTeam1, team_2=:NewTeam2, teams=:NewTeams, score_1=:NewScore1, score_2=:NewScore2, extra_time=:NewExtraTime, penalties=:NewPenalties, penalties_1=:NewPenalties1, penalties_2=:NewPenalties2, date=:NewDate, competition=:NewCompetition, tournament=:NewTournament, stage=:NewStage, section=:NewSection, file_code=:NewFileCode, title=:NewTitle, attendance=:NewAttendance, stadium=:NewStadium, city=:NewCity, country=:NewCountry, referee=:NewReferee, ref_nat=:NewRefNat, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -72,6 +73,7 @@
 		$stmt->bindValue(':NewPenalties2', $new_penalties_2);
 		$stmt->bindValue(':NewDate', $new_date);
 		$stmt->bindValue(':NewCompetition', $new_competition);
+		$stmt->bindValue(':NewTournament', $new_tournament);
 		$stmt->bindValue(':NewStage', $new_stage);
 		$stmt->bindValue(':NewSection', $new_section);
 		$stmt->bindValue(':NewFileCode', $new_file_code);
@@ -142,6 +144,7 @@
 		$penalties_2 = $dataRows["penalties_2"];
 		$date = $dataRows["date"];
 		$competition = $dataRows["competition"];
+		$tournament = $dataRows["tournament"];
 		$stage = $dataRows["stage"];
 		$section = $dataRows["section"];
 		$file_code = $dataRows["file_code"];

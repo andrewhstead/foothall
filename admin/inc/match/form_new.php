@@ -71,6 +71,18 @@
 					?>	
 					</select>
 					<br>
+					<label for="tournament">Tournament:</label>
+					<select id="tournament" name="tournament">
+					<?php
+						$tournaments = "SELECT * FROM tournaments ORDER BY competition, year";
+						$tournament_query = $connectDB->query($tournaments);
+						while ($dataRows = $tournament_query->fetch()) {
+							$tournament_name = $dataRows["name"];
+							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
+						}
+					?>
+					</select>
+					<br>
 					<label for="stage">Stage:</label>
 					<input type="text" name="stage" placeholder="Stage" id="stage">
 					<br>
