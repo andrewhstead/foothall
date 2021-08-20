@@ -4,10 +4,12 @@
 		case "people":
 			$identifier = "person";
 			$list_column = "name";
+			$url_column = "file_code";
 			break;
 		case "matches":
 			$identifier = "match";
 			$list_column = "file_code";
+			$url_column = "file_code";
 			break;
 		case "hall_teams":
 			$identifier = "team";
@@ -18,6 +20,8 @@
 			break;
 		case "countries":
 			$identifier = "country";
+			$list_column = "display_name";
+			$url_column = "id";
 			break;
 		case "teams":
 			$identifier = "team";

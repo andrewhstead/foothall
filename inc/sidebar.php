@@ -16,7 +16,7 @@
 						countries.display_name AS country 
 					FROM people 
 					INNER JOIN countries ON people.nationality = countries.abbreviation
-					WHERE active = true AND as_player = true  
+					WHERE people.active = true AND as_player = true  
 					ORDER BY rating DESC, votes DESC, file_code
 					LIMIT 10";
 					$player_leader_query = $connectDB->query($player_leaders);
@@ -72,7 +72,7 @@
 						countries.display_name AS country 
 					FROM people 
 					INNER JOIN countries ON people.nationality = countries.abbreviation
-					WHERE active = true AND as_coach = true  
+					WHERE people.active = true AND as_coach = true  
 					ORDER BY rating DESC, votes DESC, file_code
 					LIMIT 5";
 					$coach_leader_query = $connectDB->query($coach_leaders);

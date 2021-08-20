@@ -18,7 +18,7 @@
 	
 	while ($dataRows = $country_query->fetch()) {
 
-		$active = $dataRows["on_site"];
+		$active = $dataRows["active"];
 		$display_name = $dataRows["display_name"];
 		$abbreviation = $dataRows["abbreviation"];
 		$successor_to = $dataRows["successor_to"];

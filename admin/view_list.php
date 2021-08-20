@@ -54,13 +54,14 @@
 			?>
 			 | 
 			<?php
-				if ($status == "contenders") {
-					echo '<strong>Contenders</strong>';
-				} else {
-					echo '<a class="cms-link" href="view_list.php?type='.$table_name.'&status=contenders">Contenders</a>';
-				}
+				if ($table_type == 'hall') {
+					if ($status == "contenders") {
+						echo '<strong>Contenders</strong>';
+					} else {
+						echo '<a class="cms-link" href="view_list.php?type='.$table_name.'&status=contenders">Contenders</a>';
+					}
+					echo ' | ';				}
 			?>
-			 | 
 			<?php
 				if ($status == "inactive") {
 					echo '<strong>Inactive</strong>';
@@ -75,11 +76,15 @@
 		<?php
 		
 			if ($status == 'active') {
-				$table_data = "SELECT * FROM $table_name WHERE active = true ORDER BY file_code";
-			} elseif ($status == 'contenders') {
-				$table_data = "SELECT * FROM $table_name WHERE contender = true ORDER BY file_code";
+				$table_data = "SELECT * FROM $table_name WHERE active = true ORDER BY $list_column";
+			} elseif ($table_type == 'hall') {
+				if ($status == 'contenders') {
+					$table_data = "SELECT * FROM $table_name WHERE contender = true ORDER BY $list_column";
+				} else {
+					$table_data = "SELECT * FROM $table_name WHERE active = false AND contender = false ORDER BY $list_column";
+				}
 			} else {
-				$table_data = "SELECT * FROM $table_name WHERE active = false AND contender = false ORDER BY file_code";
+				$table_data = "SELECT * FROM $table_name WHERE active = false ORDER BY $list_column";
 			}
 					
 			$data_query = $connectDB->query($table_data);
@@ -112,7 +117,7 @@
 					}
 					
 					echo '<td class="button-cell"><span class="admin-button">';
-					echo '<a class="button-link" href="edit_record.php?type='.$table_name.'&code='.$dataRows["file_code"].'">';
+					echo '<a class="button-link" href="edit_record.php?type='.$table_name.'&code='.$dataRows["$url_column"].'">';
 					echo 'Edit</a></span></td>';
 					echo '<td class="button-cell"><span class="admin-button">';
 					echo '<a class="button-link" href="delete.php?id='.$dataRows["id"].'">';
