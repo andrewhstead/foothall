@@ -60,6 +60,11 @@
 		case "people_tags":
 			$identifier = "person_tag";
 			break;
+		case "positions":
+			$identifier = "position";
+			$list_column = "name";
+			$url_column = "id";
+			break;
 		case "goals":
 			$identifier = "goal";
 			break;
