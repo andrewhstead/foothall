@@ -65,6 +65,11 @@
 			$list_column = "name";
 			$url_column = "id";
 			break;
+		case "users":
+			$identifier = "user";
+			$list_column = "username";
+			$url_column = "id";
+			break;
 		case "goals":
 			$identifier = "goal";
 			break;
