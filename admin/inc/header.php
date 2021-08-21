@@ -55,3 +55,11 @@
 		<main>
 			
 			<div class="main-page admin-page">
+				
+				<?php
+				
+					if (isset($_SESSION["username"])) {
+						echo '<p class="breadcrumb">Logged in as: '.$_SESSION["username"].'</p>';
+					}
+					
+				?>

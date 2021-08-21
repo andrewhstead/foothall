@@ -82,6 +82,11 @@ li.menu-link:hover {
 	color: #321c20;
 }
 
+.breadcrumb {
+	margin: 10px 0 0 20px;
+	font-weight: bold;
+}
+
 .hall-item, .history-item {
 	display: none;
 }
