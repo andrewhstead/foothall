@@ -87,15 +87,15 @@
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
 			if ($new_admitted == 1) {
-				redirect_to("view_list.php?id=$table_id&status=active");
+				redirect_to("view_list.php?type=$table_id&status=active");
 			} else if ($new_admitted == 0) {
-				redirect_to("view_list.php?id=$table_id&status=inactive");
+				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("add_new.php?id=$table_id");
+			redirect_to("add_new.php?type=$table_id");
 			
 		}
 

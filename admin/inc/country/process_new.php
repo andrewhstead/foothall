@@ -58,7 +58,7 @@
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("add_new.php?id=$table_id");
+			redirect_to("add_new.php?type=$table_id");
 			
 		}
 
