@@ -53,6 +53,8 @@
 			break;
 		case "news":
 			$identifier = "news";
+			$list_column = "headline";
+			$url_column = "id";
 			break;
 		case "tags":
 			$identifier = "tag";
