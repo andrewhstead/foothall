@@ -17,10 +17,10 @@
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewHeadline', $new_headline);
-		$stmt->bindValue(':NewPublished', $published);
-		$stmt->bindValue(':NewIntroText', $intro_text);
-		$stmt->bindValue(':NewText', $text);
-		$stmt->bindValue(':NewActive', $active);
+		$stmt->bindValue(':NewPublished', $new_published);
+		$stmt->bindValue(':NewIntroText', $new_intro_text);
+		$stmt->bindValue(':NewText', $new_text);
+		$stmt->bindValue(':NewActive', $new_active);
 
 		$execute = $stmt->execute();
 		
@@ -29,9 +29,9 @@
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
 			if ($new_active == true) {
-				redirect_to("view_list.php?type=$table_id&status=active");
+				redirect_to("view_list.php?type=news&status=active");
 			} else if ($new_active == false) {
-				redirect_to("view_list.php?type=$table_id&status=inactive");
+				redirect_to("view_list.php?type=news&status=inactive");
 			}
 			
 		} else {
@@ -48,7 +48,7 @@
 		
 	while ($dataRows = $news_query->fetch()) {
 
-		$database_id  = $dataRows["id"];
+		$database_id = $dataRows["id"];
 		$headline = $dataRows["headline"];
 		$published = strftime('%Y-%m-%dT%H:%M:%S', strtotime($dataRows['published']));
 		$intro_text = $dataRows["intro_text"];
