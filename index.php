@@ -86,6 +86,15 @@
 	$dream_content = $connectDB->query($dream);
 	while ($dataRows = $dream_content->fetch()) {
 		$content[] = $dataRows;
+	}	
+	
+	$news = "
+		SELECT * FROM news 
+		WHERE news.active = true 
+		ORDER BY published";
+	$news_content = $connectDB->query($news);
+	while ($dataRows = $news_content->fetch()) {
+		$content[] = $dataRows;
 	}
 	
 	echo '<div class="feed-template">';
@@ -108,6 +117,8 @@
 				echo 'Hall of Fame Voting';
 			} elseif ($item['type'] == 'story') {
 				echo 'Football Stories';
+			} elseif ($item['type'] == 'news') {
+				echo 'Site News';
 			} elseif ($item['type'] == 'dream') {
 				echo 'Dream Teams';
 			}  else {
@@ -131,6 +142,9 @@
 			} else if ($item['type'] == 'dream') {
 				echo $item['name'];
 				echo ' Dream Team</a>';
+			} else if ($item['type'] == 'news') {
+				echo $item['headline'];
+				echo '</a>';
 			} else if ($item['type'] == 'person') {
 				echo $item['name'];
 				echo '</a>';
