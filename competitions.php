@@ -9,7 +9,7 @@
 	
 	$competitions = "
 		SELECT * FROM competitions 
-		WHERE on_site = true
+		WHERE active = true
 		ORDER BY type desc, continent, area desc, country, gender desc";
 	$competition_query = $connectDB->query($competitions);
 	

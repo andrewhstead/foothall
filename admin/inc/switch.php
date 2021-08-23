@@ -30,6 +30,8 @@
 			break;
 		case "competitions":
 			$identifier = "competition";
+			$list_column = "name";
+			$url_column = "id";
 			break;
 		case "tournaments":
 			$identifier = "tournament";

@@ -38,7 +38,7 @@
 		</p>
 		
 		<p>
-			<?php echo htmlentities($intro_text); ?>
+			<?php echo nl2br($intro_text); ?>
 		</p>
 		
 		<p>
