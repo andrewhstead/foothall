@@ -13,11 +13,19 @@
 		$new_area = $_POST["area"];
 		$new_continent = $_POST["continent"];
 		$new_country = $_POST["country"];
-		$new_active = $_POST["active"];
-		$new_current = $_POST["current"];
+		if (isset($_POST["active"])) {
+			$new_active = true;
+		} else {
+			$new_active = false;
+		}
+		if (isset($_POST["current"])) {
+			$new_current = true;
+		} else {
+			$new_current = false;
+		}
 
 		$sql = "INSERT INTO competitions (name, abbreviation, type, gender, area, continent, country, active, current)";
-		$sql .= "VALUES (:NewFullName, :NewDisplayName, :NewAbbreviation, :NewSuccessorTo, :NewContinent, :NewActive, :NewDefunct, :NewAffiliated, :NewProfile)";
+		$sql .= "VALUES (:NewName, :NewAbbreviation, :NewType, :NewGender, :NewArea, :NewContinent, :NewCountry, :NewActive, :NewCurrent)";
 					
 		$stmt = $connectDB->prepare($sql);
 		

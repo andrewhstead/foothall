@@ -28,6 +28,7 @@
 						<label for="continent">Continent:</label>
 						<select id="continent" name="continent">
 						<?php
+							echo'<option label=" "></option>';
 							$continents = "SELECT * FROM continents";
 							$continent_query = $connectDB->query($continents);
 							while ($dataRows = $continent_query->fetch()) {
@@ -40,12 +41,13 @@
 						<label for="country">Country:</label>
 						<select id="country" name="country">
 						<?php
+							echo'<option label=" "></option>';
 							$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
 							$country_query = $connectDB->query($countries);
 							while ($dataRows = $country_query->fetch()) {
 								$country_name = $dataRows["display_name"];
-								$country_abbreviation = $dataRows["abbreviation"];
-								echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+								$country_abbreviation = $dataRows["display_name"];
+								echo '<option value="'.$dataRows["display_name"].'">'.$dataRows["display_name"].'</option>';
 							}
 						?>	
 						</select>

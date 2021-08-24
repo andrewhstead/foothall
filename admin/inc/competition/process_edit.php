@@ -13,10 +13,18 @@
 		$new_area = $_POST["area"];
 		$new_continent = $_POST["continent"];
 		$new_country = $_POST["country"];
-		$new_active = $_POST["active"];
-		$new_current = $_POST["current"];
+		if (isset($_POST["active"])) {
+			$new_active = true;
+		} else {
+			$new_active = false;
+		}
+		if (isset($_POST["current"])) {
+			$new_current = true;
+		} else {
+			$new_current = false;
+		}
 
-		$sql = "UPDATE competitions SET name=:NewName, abbreviation=:NewAbbreviation, type=:new_type, gender=:NewGender, area=:NewArea, continent=:NewContinent, new_country=:NewCountry, new_active=:NewActive, new_current=:NewCurrent WHERE id = '$record_id'";
+		$sql = "UPDATE competitions SET name=:NewName, abbreviation=:NewAbbreviation, type=:NewType, gender=:NewGender, area=:NewArea, continent=:NewContinent, country=:NewCountry, active=:NewActive, current=:NewCurrent WHERE id = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
