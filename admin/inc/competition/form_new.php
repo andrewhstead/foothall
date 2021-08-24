@@ -11,7 +11,10 @@
 						<input type="text" name="abbreviation" placeholder="Abbreviation" id="abbreviation">
 						<br>
 						<label for="type">Type:</label>
-						<input type="text" name="type" placeholder="international/club" id="type">
+						<select id="type" name="type">
+							<option value="club">Club</option>
+							<option value="international">International</option>
+						</select>
 						<br>
 						<label for="male">Male:</label>
 						<input type="radio" name="gender" id="male" value="male">
@@ -23,7 +26,11 @@
 					<div class="flex-item form-section">
 						
 						<label for="area">Area:</label>
-						<input type="text" name="area" placeholder="world/regional/national" id="area">
+						<select id="area" name="area">
+							<option value="global">Global</option>
+							<option value="regional">Regional</option>
+							<option value="national">National</option>
+						</select>
 						<br>
 						<label for="continent">Continent:</label>
 						<select id="continent" name="continent">

@@ -11,7 +11,10 @@
 						<input type="text" name="abbreviation" placeholder="Abbreviation" id="abbreviation" value="<?php echo $abbreviation; ?>">
 						<br>
 						<label for="type">Type:</label>
-						<input type="text" name="type" placeholder="international/club" id="type" value="<?php echo $type; ?>">
+						<select id="type" name="type">
+							<option value="club" <?php if ($type == 'club') { echo 'selected'; } ?>>Club</option>
+							<option value="international" <?php if ($type == 'international') { echo 'selected'; } ?>>International</option>
+						</select>
 						<br>
 						<label for="male">Male:</label>
 						<input type="radio" name="gender" id="male" value="male" <?php if ($gender == 'm') { echo 'checked'; } ?>>
@@ -23,7 +26,11 @@
 					<div class="flex-item form-section">
 						
 						<label for="area">Area:</label>
-						<input type="text" name="area" placeholder="world/regional/national" id="area" value="<?php echo $area; ?>">
+						<select id="area" name="area">
+							<option value="global" <?php if ($area == 'global') { echo 'selected'; } ?>>Global</option>
+							<option value="regional" <?php if ($area == 'regional') { echo 'selected'; } ?>>Regional</option>
+							<option value="national" <?php if ($area == 'national') { echo 'selected'; } ?>>National</option>
+						</select>
 						<br>
 						<label for="continent">Continent:</label>
 						<select id="continent" name="continent">
