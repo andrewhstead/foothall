@@ -14,6 +14,7 @@
 		case "hall_teams":
 			$identifier = "team";
 			$list_column = "title";
+			$url_column = "file_code";
 			break;
 		case "continents":
 			$identifier = "continent";
@@ -27,6 +28,8 @@
 			break;
 		case "teams":
 			$identifier = "team";
+			$list_column = "name";
+			$url_column = "id";
 			break;
 		case "competitions":
 			$identifier = "competition";
@@ -35,12 +38,18 @@
 			break;
 		case "tournaments":
 			$identifier = "tournament";
+			$list_column = "name";
+			$url_column = "id";
 			break;
 		case "stories":
 			$identifier = "story";
+			$list_column = "title";
+			$url_column = "id";
 			break;
 		case "dream_teams":
 			$identifier = "dream_team";
+			$list_column = "name";
+			$url_column = "id";
 			break;
 		case "polls":
 			$identifier = "poll";
