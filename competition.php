@@ -32,7 +32,9 @@
 			host_2.display_name AS host_2,
 			host_2.abbreviation AS host_2_abbreviation,  
 			host_3.display_name AS host_3, 
-			host_3.abbreviation AS host_3_abbreviation, 
+			host_3.abbreviation AS host_3_abbreviation,  
+			host_4.display_name AS host_4, 
+			host_4.abbreviation AS host_4_abbreviation, 
 			winner.display_name AS winner, 
 			winner.abbreviation AS winner_abbreviation, 
 			runner_up.display_name AS runner_up, 
@@ -42,6 +44,7 @@
 		INNER JOIN countries host ON tournaments.host = host.abbreviation 
 		LEFT JOIN countries host_2 ON tournaments.host_2 = host_2.abbreviation
 		LEFT JOIN countries host_3 ON tournaments.host_3 = host_3.abbreviation
+		LEFT JOIN countries host_4 ON tournaments.host_4 = host_4.abbreviation
 		INNER JOIN countries winner ON tournaments.winner = winner.abbreviation 
 		INNER JOIN countries runner_up ON tournaments.runner_up = runner_up.abbreviation 
 		WHERE competition = $competition_id AND completed = true";
@@ -146,7 +149,7 @@
 						';
 					}
 					if ($tournament_menu["host_3"]) {
-												echo '
+						echo '
 							<script>
 								if (window.innerWidth > 550) {
 									document.write("/");
@@ -162,6 +165,27 @@
 									document.write("'.$tournament_menu["host_3"].'");
 								} else {
 									document.write("'.$tournament_menu["host_3_abbreviation"].'");
+								}
+							</script>
+						';
+					}
+					if ($tournament_menu["host_4"]) {
+						echo '
+							<script>
+								if (window.innerWidth > 550) {
+									document.write("/");
+								} else {
+									document.write("<br>");
+								}
+							</script>
+						';
+						echo '<img class="table-icon" src="img/flags/'.strtolower($tournament_menu["host_4_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["host_3_abbreviation"]).'">  ';
+						echo '
+							<script>
+								if (window.innerWidth > 550) {
+									document.write("'.$tournament_menu["host_4"].'");
+								} else {
+									document.write("'.$tournament_menu["host_4_abbreviation"].'");
 								}
 							</script>
 						';

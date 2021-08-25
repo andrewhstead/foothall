@@ -4,39 +4,84 @@
 					
 				<div class="flex-item form-section">
 
-					<strong>NB: If either team is not listed, go to <a class="standard-link" href="add_new.php?type=teams">Add New Teams</a> before continuing.</strong>
-					<br>
-					<label for="team-1">Team 1:</label>
-					<select id="team-1" name="team-1">
+					<label for="competition">Competition:</label>
+					<select id="competition" name="competition">
 					<?php
-						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
-						$teams_query = $connectDB->query($teams_sql);
-						while ($dataRows = $teams_query->fetch()) {
-							$team_name = $dataRows["name"];
+						$competitions_sql = "SELECT * FROM competitions ORDER BY type desc, area, gender desc, name";
+						$competitions_query = $connectDB->query($competitions_sql);
+						while ($dataRows = $competitions_query->fetch()) {
+							$competition_name = $dataRows["name"];
 							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
 					<br>
-					<label for="team-2">Team 2:</label>
-					<select id="team-2" name="team-2">
-					<?php
-						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
-						$teams_query = $connectDB->query($teams_sql);
-						while ($dataRows = $teams_query->fetch()) {
-							$team_name = $dataRows["name"];
-							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
-						}
-					?>	
-					</select>
+					<label for="year">Year:</label>
+					<input type="text" name="year" placeholder="YYYY" id="year">
 					<br>
-					<label for="teams-type">Club/National:</label>
-					<input type="text" name="teams-type" placeholder="club/national" id="teams-type">
+					<label for="name">Name:</label>
+					<input type="text" name="name" placeholder="Unique Tournament Name" id="name">
 					
 					<br><br>
-					Score: 
-					<label for="score-1">T1</label>
-					<input type="text" name="score-1" placeholder="0" id="score-1" size="1">
+					Hosts (select up to four):
+					<br>
+					<label for="host">H1</label>
+					<select id="host" name="host">
+					<?php
+						echo'<option label=" "></option>';
+						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+						$country_query = $connectDB->query($countries);
+						while ($dataRows = $country_query->fetch()) {
+							$country_name = $dataRows["display_name"];
+							$country_abbreviation = $dataRows["abbreviation"];
+							echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						}
+					?>	
+					</select>
+					<br>
+					<label for="host-2">H2</label>
+					<select id="host-2" name="host-2">
+					<?php
+						echo'<option label=" "></option>';
+						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+						$country_query = $connectDB->query($countries);
+						while ($dataRows = $country_query->fetch()) {
+							$country_name = $dataRows["display_name"];
+							$country_abbreviation = $dataRows["abbreviation"];
+							echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						}
+					?>	
+					</select>
+					<br>
+					<label for="host-3">H3</label>
+					<select id="host-3" name="host-3">
+					<?php
+						echo'<option label=" "></option>';
+						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+						$country_query = $connectDB->query($countries);
+						while ($dataRows = $country_query->fetch()) {
+							$country_name = $dataRows["display_name"];
+							$country_abbreviation = $dataRows["abbreviation"];
+							echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						}
+					?>	
+					</select>
+					<br>
+					<label for="host-4">H4</label>
+					<select id="host-4" name="host-4">
+					<?php
+						echo'<option label=" "></option>';
+						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+						$country_query = $connectDB->query($countries);
+						while ($dataRows = $country_query->fetch()) {
+							$country_name = $dataRows["display_name"];
+							$country_abbreviation = $dataRows["abbreviation"];
+							echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						}
+					?>	
+					</select>
+					<br>
+					<br>
 					<label for="score-2">T2</label>
 					<input type="text" name="score-2" placeholder="0" id="score-2" size="1">
 					<br>
