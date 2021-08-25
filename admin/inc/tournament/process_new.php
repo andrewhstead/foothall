@@ -2,98 +2,54 @@
 
 	if(isset($_POST["submit"])) {
 		
-		$new_team_1 = $_POST["team-1"];
-		$new_team_2 = $_POST["team-2"];
-		$new_teams = $_POST["teams-type"];
-		$new_score_1 = $_POST["score-1"];
-		$new_score_2 = $_POST["score-2"];
-		if (isset($_POST["extra-time"])) {
-			$new_extra_time = true;
-		} else {
-			$new_extra_time = false;
-		}
-		if (isset($_POST["penalties"])) {
-			$new_penalties = true;
-		} else {
-			$new_penalties = false;
-		}
-		$new_penalties_1 = $_POST["penalties-1"];
-		$new_penalties_2 = $_POST["penalties-2"];
-		$new_date = $_POST["match-date"];
 		$new_competition = $_POST["competition"];
-		$new_tournament = $_POST["tournament"];
-		$new_stage = $_POST["stage"];
-		$new_section = $_POST["section"];
-		$new_file_code = $_POST["file-code"];
-		$new_title = $_POST["title"];
-		$new_attendance = $_POST["attendance"];
-		$new_stadium = $_POST["stadium"];
-		$new_city = $_POST["city"];
-		$new_country = $_POST["country"];
-		$new_referee = $_POST["referee"];
-		$new_nationality = $_POST["nationality"];
-		if ($_POST["status"] == "admitted") {
-			$new_admitted = true;
-			$new_contender = false;
-		} elseif ($_POST["status"] == "contender") {
-			$new_admitted = false;
-			$new_contender = true;
+		$new_year = $_POST["year"];
+		$new_name = $_POST["name"];
+		if (isset($_POST["active"])) {
+			$new_active = true;
 		} else {
-			$new_admitted = false;
-			$new_contender = false;
+			$new_active = false;
 		}
-		if (empty($_POST["admission-date"])) {
-			$new_admission_date = NULL;
+		if (isset($_POST["completed"])) {
+			$new_completed = true;
 		} else {
-			$new_admission_date = $_POST["admission-date"];
+			$new_completed = false;
 		}
-		if (empty($_POST["admission-poll"])) {
-			$new_admission_poll = NULL;
-		} else {
-			$new_admission_poll = $_POST["admission-poll"];
-		}
-		$new_score = $_POST["score"];
-		$new_votes = $_POST["votes"];
-		$new_rating= $_POST["rating"];
+		$new_host = $_POST["host"];
+		$new_host_2 = $_POST["host-2"];
+		$new_host_3 = $_POST["host-3"];
+		$new_host_4 = $_POST["host-4"];
+		$new_games = $_POST["games"];
+		$new_goals = $_POST["goals"];
+		$new_winner = $_POST["winner"];
+		$new_runner_up = $_POST["runner-up"];
+		$new_top_scorer = $_POST["top-scorer"];
+		$new_goals_top = $_POST["goals-top"];
 		$new_intro_text = $_POST["intro-text"];
-		$new_match_report = $_POST["match-report"];
+		$new_review = $_POST["review"];
 
-		$sql = "INSERT INTO matches (team_1, team_2, teams, score_1, score_2, extra_time, penalties, penalties_1, penalties_2, date, competition, tournament, stage, section, file_code, title, attendance, stadium, city, country, referee, ref_nat, active, contender, admission_date, admission_poll, score, votes, rating, intro_text, match_report)";
-		$sql .= "VALUES (:NewTeam1, :NewTeam2, :NewTeams, :NewScore1, :NewScore2, :NewExtraTime, :NewPenalties, :NewPenalties1, :NewPenalties2, :NewDate, :NewCompetition, :NewTournament, :NewStage, :NewSection, :NewFileCode, :NewTitle, :NewAttendance, :NewStadium, :NewCity, :NewCountry, :NewReferee, :NewRefNat, :NewAdmitted, :NewContender, :NewAdmissionDate, :NewAdmissionPoll, :NewScore, :NewVotes, :NewRating, :NewIntroText, :NewMatchReport)";
+		$sql = "INSERT INTO tournaments (competition, year, name, active, completed, host, host_2, host_3, host_4, games, goals, winner, runner_up, top_scorer, scored, intro_text, review)";
+		$sql .= "VALUES (:NewCompetition, :NewYear, :NewName, :NewActive, :NewCompleted, :NewHost, :NewHost2, :NewHost3, :NewHost4, :NewGames, :NewGoals, :NewWinner, :NewRunnerUp, :NewTopScorer, :NewNationality, :NewGoalsTop, :NewIntroText, :NewReview)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
-		$stmt->bindValue(':NewTeam1', $new_team_1);
-		$stmt->bindValue(':NewTeam2', $new_team_2);
-		$stmt->bindValue(':NewTeams', $new_teams);
-		$stmt->bindValue(':NewScore1', $new_score_1);
-		$stmt->bindValue(':NewScore2', $new_score_2);
-		$stmt->bindValue(':NewExtraTime', $new_extra_time);
-		$stmt->bindValue(':NewPenalties', $new_penalties);
-		$stmt->bindValue(':NewPenalties1', $new_penalties_1);
-		$stmt->bindValue(':NewPenalties2', $new_penalties_2);
-		$stmt->bindValue(':NewDate', $new_date);
 		$stmt->bindValue(':NewCompetition', $new_competition);
-		$stmt->bindValue(':NewTournament', $new_tournament);
-		$stmt->bindValue(':NewStage', $new_stage);
-		$stmt->bindValue(':NewSection', $new_section);
-		$stmt->bindValue(':NewFileCode', $new_file_code);
-		$stmt->bindValue(':NewTitle', $new_title);
-		$stmt->bindValue(':NewAttendance', $new_attendance);
-		$stmt->bindValue(':NewStadium', $new_stadium);
-		$stmt->bindValue(':NewCity', $new_city);
-		$stmt->bindValue(':NewCountry', $new_country);
-		$stmt->bindValue(':NewReferee', $new_referee);
-		$stmt->bindValue(':NewRefNat', $new_nationality);
-		$stmt->bindValue(':NewAdmitted', $new_admitted);
-		$stmt->bindValue(':NewContender', $new_contender);
-		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
-		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
-		$stmt->bindValue(':NewScore', $new_score);
-		$stmt->bindValue(':NewVotes', $new_votes);
-		$stmt->bindValue(':NewRating', $new_rating);
+		$stmt->bindValue(':NewYear', $new_year);
+		$stmt->bindValue(':NewName', $new_name);
+		$stmt->bindValue(':NewActive', $new_active);
+		$stmt->bindValue(':NewCompleted', $new_completed);
+		$stmt->bindValue(':NewHost', $new_host);
+		$stmt->bindValue(':NewHost2', $new_host_2);
+		$stmt->bindValue(':NewHost3', $new_host_3);
+		$stmt->bindValue(':NewHost4', $new_host_4);
+		$stmt->bindValue(':NewGames', $new_games);
+		$stmt->bindValue(':NewGoals', $new_goals);
+		$stmt->bindValue(':NewWinner', $new_winner);
+		$stmt->bindValue(':NewRunnerUp', $new_runner_up);
+		$stmt->bindValue(':NewTopScorer', $new_top_scorer);
+		$stmt->bindValue(':NewGoalsTop', $new_goals_top);
 		$stmt->bindValue(':NewIntroText', $new_intro_text);
-		$stmt->bindValue(':NewMatchReport', $new_match_report);
+		$stmt->bindValue(':NewReview', $new_review);
 
 		$execute = $stmt->execute();
 		
