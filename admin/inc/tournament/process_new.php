@@ -31,6 +31,7 @@
 		} else {
 			$new_host_4 = NULL;
 		}
+		$new_teams = $_POST["teams"];
 		$new_games = $_POST["games"];
 		$new_goals = $_POST["goals"];
 		$new_winner = $_POST["winner"];
@@ -40,8 +41,8 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_review = $_POST["review"];
 
-		$sql = "INSERT INTO tournaments (competition, year, name, active, completed, host, host_2, host_3, host_4, games, goals, winner, runner_up, top_scorer, scored, intro_text, review)";
-		$sql .= "VALUES (:NewCompetition, :NewYear, :NewName, :NewActive, :NewCompleted, :NewHost, :NewHost2, :NewHost3, :NewHost4, :NewGames, :NewGoals, :NewWinner, :NewRunnerUp, :NewTopScorer, :NewNationality, :NewGoalsTop, :NewIntroText, :NewReview)";
+		$sql = "INSERT INTO tournaments (competition, year, name, active, completed, host, host_2, host_3, host_4, teams, games, goals, winner, runner_up, top_scorer, scored, intro_text, review)";
+		$sql .= "VALUES (:NewCompetition, :NewYear, :NewName, :NewActive, :NewCompleted, :NewHost, :NewHost2, :NewHost3, :NewHost4, :NewTeams, :NewGames, :NewGoals, :NewWinner, :NewRunnerUp, :NewTopScorer, :NewNationality, :NewGoalsTop, :NewIntroText, :NewReview)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -54,6 +55,7 @@
 		$stmt->bindValue(':NewHost2', $new_host_2);
 		$stmt->bindValue(':NewHost3', $new_host_3);
 		$stmt->bindValue(':NewHost4', $new_host_4);
+		$stmt->bindValue(':NewTeams', $new_teams);
 		$stmt->bindValue(':NewGames', $new_games);
 		$stmt->bindValue(':NewGoals', $new_goals);
 		$stmt->bindValue(':NewWinner', $new_winner);

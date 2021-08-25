@@ -31,6 +31,7 @@
 		} else {
 			$new_host_4 = NULL;
 		}
+		$new_teams = $_POST["teams"];
 		$new_games = $_POST["games"];
 		$new_goals = $_POST["goals"];
 		$new_winner = $_POST["winner"];
@@ -40,7 +41,7 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_review = $_POST["review"];
 		
-		$sql = "UPDATE tournaments SET competition=:NewCompetition, year=:NewYear, name=:NewName, active=:NewActive, completed=:NewCompleted, host=:NewHost, host_2=:NewHost2, host_3=:NewHost3,  host_4=:NewHost4, games=:NewGames, goals=:NewGoals, winner=:NewWinner, runner_up=:NewRunnerUp, top_scorer=:NewTopScorer, scored=:NewGoalsTop, intro_text=:NewIntroText, review=:NewReview WHERE id = '$record_id'";
+		$sql = "UPDATE tournaments SET competition=:NewCompetition, year=:NewYear, name=:NewName, active=:NewActive, completed=:NewCompleted, host=:NewHost, host_2=:NewHost2, host_3=:NewHost3,  host_4=:NewHost4, teams=:NewTeams, games=:NewGames, goals=:NewGoals, winner=:NewWinner, runner_up=:NewRunnerUp, top_scorer=:NewTopScorer, scored=:NewGoalsTop, intro_text=:NewIntroText, review=:NewReview WHERE id = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -53,6 +54,7 @@
 		$stmt->bindValue(':NewHost2', $new_host_2);
 		$stmt->bindValue(':NewHost3', $new_host_3);
 		$stmt->bindValue(':NewHost4', $new_host_4);
+		$stmt->bindValue(':NewTeams', $new_teams);
 		$stmt->bindValue(':NewGames', $new_games);
 		$stmt->bindValue(':NewGoals', $new_goals);
 		$stmt->bindValue(':NewWinner', $new_winner);
@@ -99,6 +101,7 @@
 		$host_2 = $dataRows["host_2"];
 		$host_3 = $dataRows["host_3"];
 		$host_4 = $dataRows["host_4"];
+		$teams = $dataRows["teams"];
 		$games = $dataRows["games"];
 		$goals = $dataRows["goals"];
 		$winner = $dataRows["winner"];

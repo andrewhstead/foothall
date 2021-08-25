@@ -31,6 +31,9 @@
 		winner.display_name AS winner_name,
 		tournaments.runner_up AS runner_up,
 		runner_up.display_name AS runner_up_name,
+		tournaments.teams AS teams,
+		tournaments.games AS games,
+		tournaments.goals AS goals,
 		tournaments.top_scorer AS top_scorer,
 		tournaments.nationality AS scorer_nation,
 		tournaments.scored AS scored,
@@ -65,6 +68,9 @@
 		$winner_name = $dataRows["winner_name"];
 		$runner_up = $dataRows["runner_up"];
 		$runner_up_name = $dataRows["runner_up_name"];
+		$teams = $dataRows["teams"];
+		$games = $dataRows["games"];
+		$goals = $dataRows["goals"];
 		$top_scorer = $dataRows["top_scorer"];
 		$scorer_nation = $dataRows["scorer_nation"];
 		$scored = $dataRows["scored"];
@@ -105,9 +111,13 @@
 			<br>
 			<strong>Winners:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($winner) ?>.png" alt="<?php echo strtolower($winner_name) ?>"> <?php echo htmlentities($winner_name) ?><br>
 			<strong>Runners-Up:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($runner_up) ?>.png" alt="<?php echo strtolower($runner_up_name) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
+			<br>
+			<strong>Games:</strong> <?php if ($games != 0) { echo htmlentities($games); } ?><br>
+			<strong>Goals:</strong> <?php if ($goals != 0) { echo htmlentities($goals); } ?><br>
+			<strong>Average:</strong> <?php if ($games != 0) { echo number_format($goals/$games, 2); } ?>
 			<?php
 				if ($top_scorer) {
-					echo '<strong>Top Goalscorer:</strong> <img class="table-icon" src="img/flags/'.strtolower($scorer_nation).'.png" alt="'.strtolower($scorer_nation).'"> '.htmlentities($top_scorer).' ('.htmlentities($scored).')';
+					echo '<br><strong>Top Goalscorer:</strong> <img class="table-icon" src="img/flags/'.strtolower($scorer_nation).'.png" alt="'.strtolower($scorer_nation).'"> '.htmlentities($top_scorer).' ('.htmlentities($scored).')';
 				}
 			?>
 			

@@ -111,6 +111,9 @@
 					
 				<div class="flex-item form-section">
 					
+					<label for="teams">Teams:</label>
+					<input type="text" name="teams" placeholder="Teams Competing" id="teams" value="<?php echo $teams; ?>">
+					<br>
 					<label for="games">Games:</label>
 					<input type="text" name="games" placeholder="Games Played" id="games" value="<?php echo $games; ?>">
 					<br>
