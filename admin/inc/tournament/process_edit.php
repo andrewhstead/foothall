@@ -16,9 +16,21 @@
 			$new_completed = false;
 		}
 		$new_host = $_POST["host"];
-		$new_host_2 = $_POST["host-2"];
-		$new_host_3 = $_POST["host-3"];
-		$new_host_4 = $_POST["host-4"];
+		if (!empty($_POST["host-2"])) {
+			$new_host_2 = $_POST["host-2"];
+		} else {
+			$new_host_2 = NULL;
+		}
+		if (!empty($_POST["host-3"])) {
+			$new_host_3 = $_POST["host-3"];
+		} else {
+			$new_host_3 = NULL;
+		}
+		if (!empty($_POST["host-4"])) {
+			$new_host_4 = $_POST["host-4"];
+		} else {
+			$new_host_4 = NULL;
+		}
 		$new_games = $_POST["games"];
 		$new_goals = $_POST["goals"];
 		$new_winner = $_POST["winner"];

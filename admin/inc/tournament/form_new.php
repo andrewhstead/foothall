@@ -7,11 +7,12 @@
 					<label for="competition">Competition:</label>
 					<select id="competition" name="competition">
 					<?php
+						echo'<option label=" "></option>';
 						$competitions_sql = "SELECT * FROM competitions ORDER BY type desc, area, gender desc, name";
 						$competitions_query = $connectDB->query($competitions_sql);
 						while ($dataRows = $competitions_query->fetch()) {
 							$competition_name = $dataRows["name"];
-							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
+							echo '<option value="'.$dataRows["id"].'">'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
@@ -138,6 +139,8 @@
 					?>	
 					</select>
 					<br>
+					<strong>NB: If player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before continuing.</strong>
+					<br>
 					<label for="goals-top">Goals:</label>
 					<input type="text" name="goals-top" placeholder="Goals Scored" id="goals-top">
 					
@@ -152,6 +155,6 @@
 			<label for="review">Tournament Review:</label>
 			<textarea class="editable-area" rows="10" cols="35" name="review"></textarea>
 			<br>
-			<input class="submit-button" type="submit" name="submit" value="Save and Finish">
+			<input class="submit-button" type="submit" name="submit" value="Add Record">
 			
 		</form>

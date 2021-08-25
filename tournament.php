@@ -25,6 +25,8 @@
 		host_2.display_name AS host_2_name,
 		tournaments.host_3 AS host_3,
 		host_3.display_name AS host_3_name,
+		tournaments.host_4 AS host_4,
+		host_4.display_name AS host_4_name,
 		tournaments.winner AS winner,
 		winner.display_name AS winner_name,
 		tournaments.runner_up AS runner_up,
@@ -39,6 +41,7 @@
 		INNER JOIN countries host ON tournaments.host = host.abbreviation 
 		LEFT JOIN countries host_2 ON tournaments.host_2 = host_2.abbreviation 
 		LEFT JOIN countries host_3 ON tournaments.host_3 = host_3.abbreviation 
+		LEFT JOIN countries host_4 ON tournaments.host_4 = host_4.abbreviation 
 		LEFT JOIN countries winner ON tournaments.winner = winner.abbreviation 
 		LEFT JOIN countries runner_up ON tournaments.runner_up = runner_up.abbreviation 
 		WHERE tournaments.id = $tournament_id";
@@ -56,6 +59,8 @@
 		$host_2_name = $dataRows["host_2_name"];
 		$host_3 = $dataRows["host_3"];
 		$host_3_name = $dataRows["host_3_name"];
+		$host_4 = $dataRows["host_4"];
+		$host_4_name = $dataRows["host_4_name"];
 		$winner = $dataRows["winner"];
 		$winner_name = $dataRows["winner_name"];
 		$runner_up = $dataRows["runner_up"];
@@ -92,6 +97,9 @@
 				}
 				if ($host_3) {
 					echo '/<img class="table-icon" src="img/flags/'.strtolower($host_3).'.png" alt="'.strtolower($host_3_name).'">  '.$host_3_name;
+				}
+				if ($host_4) {
+					echo '/<img class="table-icon" src="img/flags/'.strtolower($host_4).'.png" alt="'.strtolower($host_4_name).'">  '.$host_4_name;
 				}
 			?>
 			<br>

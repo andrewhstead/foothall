@@ -3,7 +3,7 @@
 			<div class="flex-wrapper">
 					
 				<div class="flex-item form-section">
-
+					
 					<label for="competition">Competition:</label>
 					<select id="competition" name="competition">
 					<?php
@@ -11,8 +11,8 @@
 						$competitions_query = $connectDB->query($competitions_sql);
 						while ($dataRows = $competitions_query->fetch()) {
 							$competition_name = $dataRows["name"];
-							echo '<option value="'.$dataRows["name"].'"';
-							if ($dataRows["name"] == $competition) {
+							echo '<option value="'.$dataRows["id"].'"';
+							if ($dataRows["id"] == $competition) {
 								echo ' selected ';
 							}	
 							echo '>'.$dataRows["name"].'</option>';
@@ -170,6 +170,8 @@
 					?>	
 					</select>
 					<br>
+					<strong>NB: If player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before continuing.</strong>
+					<br>
 					<label for="goals-top">Goals:</label>
 					<input type="text" name="goals-top" placeholder="Goals Scored" id="goals-top" value="<?php echo $scored; ?>">
 					
@@ -184,6 +186,6 @@
 			<label for="review">Tournament Review:</label>
 			<textarea class="editable-area" rows="10" cols="35" name="review"><?php echo $review; ?></textarea>
 			<br>
-			<input class="submit-button" type="submit" name="submit" value="Save and Finish">
+			<input class="submit-button" type="submit" name="submit" value="Save Changes">
 			
 		</form>
