@@ -190,7 +190,7 @@
 						}
 						echo ' <img class="table-icon" src="img/flags/'.$team_2_nat.'.png" alt="'.$team_2_nat.'">';
 						echo '</h3>';
-						echo $competition.' '.$stage.'<br>';
+						echo '<strong>'.$competition.' '.$stage.'</strong><br>';
 						echo date_format($date, "j F Y").'<br>';
 						echo '<div class="team-text">'.$team_text.'</div>';
 						

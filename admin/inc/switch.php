@@ -53,6 +53,8 @@
 			break;
 		case "polls":
 			$identifier = "poll";
+			$list_column = "title";
+			$url_column = "id";
 			break;
 		case "people_votes":
 			$identifier = "person_vote";

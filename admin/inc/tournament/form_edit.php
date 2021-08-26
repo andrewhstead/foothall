@@ -173,7 +173,7 @@
 					?>	
 					</select>
 					<br>
-					<strong>NB: If player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before continuing.</strong>
+					<strong>NB: If player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before editing tournament.</strong>
 					<br>
 					<label for="goals-top">Goals:</label>
 					<input type="text" name="goals-top" placeholder="Goals Scored" id="goals-top" value="<?php echo $scored; ?>">

@@ -37,8 +37,11 @@
 					</select>
 					<br>
 					<label for="teams-type">Club/National:</label>
-					<input type="text" name="teams-type" placeholder="Club or National?" id="teams-type" value="<?php echo $teams; ?>">
-					
+					<select id="teams-type" name="teams-type">
+						<option value="club" <?php if ($teams == 'club') { echo 'selected'; } ?>>Club</option>
+						<option value="national" <?php if ($teams == 'national') { echo 'selected'; } ?>>National</option>
+					</select>
+										
 					<br><br>
 					Score: 
 					<label for="score-1">T1</label>

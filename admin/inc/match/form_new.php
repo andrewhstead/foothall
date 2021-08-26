@@ -31,7 +31,10 @@
 					</select>
 					<br>
 					<label for="teams-type">Club/National:</label>
-					<input type="text" name="teams-type" placeholder="club/national" id="teams-type">
+					<select id="teams-type" name="teams-type">
+						<option value="club">Club</option>
+						<option value="national">National</option>
+					</select>
 					
 					<br><br>
 					Score: 
