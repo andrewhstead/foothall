@@ -58,6 +58,8 @@
 			break;
 		case "people_votes":
 			$identifier = "person_vote";
+			$list_column = "option";
+			$url_column = "id";
 			break;
 		case "tables":
 			$identifier = "table";

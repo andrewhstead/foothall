@@ -30,7 +30,7 @@
 	<div class="page-template">
 	
 		<h1>
-			Edit <?php echo ucfirst($identifier); ?>
+			Edit <?php echo ucwords(str_replace('_', ' ', $identifier)); ?>
 		</h1>		
 	
 		<h2>

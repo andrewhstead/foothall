@@ -26,7 +26,7 @@
 	<div class="page-template">
 	
 		<h1>
-			Add New <?php echo ucfirst($identifier); ?>
+			Add New <?php echo ucwords(str_replace('_', ' ', $identifier)); ?>
 		</h1>		
 		
 		<?php

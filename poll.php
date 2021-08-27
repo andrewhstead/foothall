@@ -93,7 +93,7 @@
 				FROM people_votes 
 				INNER JOIN people ON people_votes.option = people.name
 				INNER JOIN countries ON people.nationality = countries.abbreviation
-				WHERE people_votes.poll = $poll_id
+				WHERE people_votes.poll = $poll_id AND people_votes.active = true
 				ORDER BY people_votes.votes desc, people.id";
 			$contender_list = $connectDB->query($choices);
 			$option_list = $connectDB->query($choices);
