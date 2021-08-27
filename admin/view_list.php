@@ -96,7 +96,7 @@
 				echo '<h2 class="empty-list">No Records Available</h2>';
 						
 			} else {
-						
+				
 				echo '<table class="data-table">';
 				echo '<tbody>';
 						
@@ -110,7 +110,7 @@
 					}
 					echo str_replace('_', ' ', $dataRows[$list_column]).'</td>';
 					
-					if (($table_type == 'hall' OR $table_type == 'history') AND ($status == 'active')) {
+					if (($table_type == 'hall' OR $table_type == 'polls' OR $table_type == 'history') AND ($status == 'active')) {
 						echo '<td class="button-cell"><span class="admin-button">';
 						echo '<a class="button-link" href="../'.$identifier.'.php?id='.$dataRows["id"].'">';
 						echo 'View</a></span></td>';

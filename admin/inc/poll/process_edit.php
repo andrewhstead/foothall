@@ -28,7 +28,7 @@
 		while ($new_option <= $new_options) {
 			
 			${'new_option_'.$new_option} = $_POST["option-$new_option"];
-			$options = "UPDATE people_votes SET option=:NewOption$new_option WHERE poll_option = $new_option";
+			$options = "UPDATE people_votes SET option=:NewOption$new_option WHERE poll_option = $new_option AND poll = $record_id";
 						
 			$option_stmt = $connectDB->prepare($options);
 			$option_stmt->bindValue(':NewOption'.$new_option, ${'new_option_'.$new_option});
