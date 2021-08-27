@@ -71,7 +71,7 @@
 		</p>
 		
 		<p>
-			<?php echo htmlentities($intro_text); ?>
+			<?php echo html_entity_decode($intro_text); ?>
 		</p>
 		
 		<p>

@@ -45,6 +45,9 @@
 			<br>
 			Options:
 			<br>
+			<strong>NB: If a player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before editing the poll.</strong>
+					
+			<br>
 			
 			<?php
 			

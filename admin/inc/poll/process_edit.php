@@ -24,9 +24,18 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_description = $_POST["description"];
 		$new_option = 1;
+		
 		while ($new_option <= $new_options) {
+			
 			${'new_option_'.$new_option} = $_POST["option-$new_option"];
+			$options = "UPDATE people_votes SET option=:NewOption$new_option WHERE poll_option = $new_option";
+						
+			$option_stmt = $connectDB->prepare($options);
+			$option_stmt->bindValue(':NewOption'.$new_option, ${'new_option_'.$new_option});
+			$option_execute = $option_stmt->execute();
+			
 			$new_option++;
+			
 		}
 		
 		$sql = "UPDATE polls SET poll_type=:NewPollType, title=:NewTitle, category=:NewCategory, options=:NewOptions, places=:NewPlaces, active=:NewActive, locked=:NewLocked, expiry=:NewExpiry,  published=:NewPublished, modified=:NewModified,intro_text=:NewIntroText, description=:NewDescription WHERE id = '$record_id'";
@@ -47,7 +56,7 @@
 		$stmt->bindValue(':NewModified', $new_modified);
 		$execute = $stmt->execute();
 			
-		if($execute) {
+		if($execute AND $option_execute) {
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
