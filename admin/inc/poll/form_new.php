@@ -1,4 +1,4 @@
-		<form class="edit-form" method="post" action="add_new.php?type=matches">
+		<form class="edit-form" method="post" action="add_new.php?type=polls">
 				
 			<div class="flex-wrapper">
 					
@@ -23,11 +23,6 @@
 					<input type="text" name="places" placeholder="0" id="places" size="1">
 					
 					<br><br>
-					<label for="active">Active On Site:</label>
-					<input type="checkbox" name="active" id="active">
-					<label for="locked">Expired:</label>
-					<input type="checkbox" name="locked" id="locked">
-					<br>
 					<label for="expiry">Expiry:</label>
 					<input type="datetime-local" name="expiry" id="expiry">
 				

@@ -23,6 +23,11 @@
 		$new_expiry = $_POST["expiry"];
 		$new_intro_text = $_POST["intro-text"];
 		$new_description = $_POST["description"];
+		$new_option = 1;
+		while ($new_option <= $new_options) {
+			${'new_option_'.$new_option} = $_POST["option-$new_option"];
+			$new_option++;
+		}
 		
 		$sql = "UPDATE polls SET poll_type=:NewPollType, title=:NewTitle, category=:NewCategory, options=:NewOptions, places=:NewPlaces, active=:NewActive, locked=:NewLocked, expiry=:NewExpiry,  published=:NewPublished, modified=:NewModified,intro_text=:NewIntroText, description=:NewDescription WHERE id = '$record_id'";
 					
@@ -44,22 +49,18 @@
 			
 		if($execute) {
 
-			$_SESSION["success_message"] = "Your match has been saved successfully.";
+			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($_POST['submit'] == 'Save and Add Options') {
-				redirect_to("edit_record.php?type=people_votes");
-			} else if ($_POST['submit'] == 'Save and Finish') {
-				if ($new_active == true) {
+			if ($new_active == true) {
 				redirect_to("view_list.php?type=polls&status=active");
-				} else if ($new_active == false) {
-					redirect_to("view_list.php?type=polls&status=inactive");
-				}
+			} else if ($new_active == false) {
+				redirect_to("view_list.php?type=polls&status=inactive");
 			}
 			
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";
-			redirect_to("add_new.php?type=$table_id");
+			redirect_to("edit_record.php?type=$table_id&code=$database_id");
 			
 		}
 
@@ -84,6 +85,20 @@
 		$modified = strftime('%Y-%m-%dT%H:%M:%S', strtotime($dataRows['modified']));
 		$intro_text = $dataRows["intro_text"];
 		$description = $dataRows["description"];
+		
+	}
+		
+	$option_list = "SELECT * FROM people_votes 
+		WHERE poll = '$record_id'";
+	$option_query = $connectDB->query($option_list);
+	$poll_option = array();
+		
+	while ($dataRows = $option_query->fetch()) {
+		
+		$option_number = $dataRows["poll_option"];
+		$option_person = $dataRows["option"];
+			
+		$poll_option[$option_number] = $option_person;
 		
 	}
 	

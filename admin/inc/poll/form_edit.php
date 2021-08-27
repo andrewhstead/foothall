@@ -41,8 +41,35 @@
 			<br>
 			<label for="description">Description:</label>
 			<textarea class="editable-area" rows="10" cols="35" name="description"><?php echo $description; ?></textarea>
+			
 			<br>
-			<input class="submit-button" type="submit" name="submit" value="Save and Finish">
-			<input class="submit-button" type="submit" name="submit" value="Save and Add Options">
+			Options:
+			<br>
+			
+			<?php
+			
+				foreach ($poll_option AS $option_number => $option_person) {
+					
+					echo '<label for="option-'.$option_number.'">'.$option_number.': </label>';
+					echo '<select id="option-'.$option_number.'" name="option-'.$option_number.'">';
+					$options_sql = "SELECT * FROM people ORDER BY file_code";
+					$options_query = $connectDB->query($options_sql);
+					while ($dataRows = $options_query->fetch()) {
+						echo '<option value="'.$dataRows["name"].'"';
+						if ($dataRows["name"] == $option_person) {
+							echo ' selected ';
+						}	
+						echo '>'.$dataRows["name"].'</option>';
+					}
+					echo '</select>';
+					echo '<br>';
+					${'person_'.$option_number} = $option_person;
+				
+				}
+				
+			?>
+			
+			<br>
+			<input class="submit-button" type="submit" name="submit" value="Save Changes">
 			
 		</form>
