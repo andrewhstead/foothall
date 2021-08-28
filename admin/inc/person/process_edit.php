@@ -51,9 +51,10 @@
 		$new_position = $_POST["position"];
 		$new_intro_text = $_POST["intro-text"];
 		$new_picture_credit = $_POST["picture-credit"];
+		$new_license_link = $_POST["license-link"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, biography=:NewBiography WHERE file_code = '$record_id'";
+		$sql = "UPDATE people SET name=:NewName, file_code=:NewFileCode, nationality=:NewNationality, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, as_player=:NewAsPlayer, as_coach=:NewAsCoach, score=:NewScore, votes=:NewVotes, rating=:NewRating, full_name=:NewFullName, date_of_birth=:NewBirthDate, place_of_birth=:NewBirthPlace, country_of_birth=:NewBirthCountry, living=:NewIsLiving, date_of_death=:NewDeathDate, position=:NewPosition, intro_text=:NewIntroText, picture_credit=:NewPictureCredit, license_link=:NewLicenseLink, biography=:NewBiography WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -78,6 +79,7 @@
 		$stmt->bindValue(':NewPosition', $new_position);
 		$stmt->bindValue(':NewIntroText', $new_intro_text);
 		$stmt->bindValue(':NewPictureCredit', $new_picture_credit);
+		$stmt->bindValue(':NewLicenseLink', $new_license_link);
 		$stmt->bindValue(':NewBiography', $new_biography);
 
 		$execute = $stmt->execute();
@@ -113,7 +115,7 @@
 		$file_code = $dataRows["file_code"];
 		$nationality = $dataRows["nationality"];
 		$contender = $dataRows["contender"];
-		$admitted = $dataRows["active"];
+active		$admitted = $dataRows["active"];
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];
 		$as_player = $dataRows["as_player"];
@@ -130,6 +132,7 @@
 		$position = $dataRows["position"];
 		$intro_text = $dataRows["intro_text"];
 		$picture_credit = $dataRows["picture_credit"];
+		$license_link = $dataRows["license_link"];
 		$biography = $dataRows["biography"];
 		
 	}

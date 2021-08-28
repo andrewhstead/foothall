@@ -15,6 +15,9 @@
 						<br>
 						<label for="picture-credit">Picture Credit:</label>
 						<input type="text" name="picture-credit" placeholder="Picture Credit" id="picture-credit">
+						<br>
+						<label for="license-link">License Link:</label>
+						<input type="text" name="license-link" placeholder="License Link" id="license-link">
 						<br><br>
 						<label for="admitted">Admitted:</label>
 						<input type="radio" name="status" id="admitted" value="admitted">

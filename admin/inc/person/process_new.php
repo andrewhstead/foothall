@@ -51,10 +51,11 @@
 		$new_position = $_POST["position"];
 		$new_intro_text = $_POST["intro-text"];
 		$new_picture_credit = $_POST["picture-credit"];
+		$new_license_link = $_POST["license-link"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "INSERT INTO people (name, file_code, nationality, active, admission_date, admission_poll, as_player, as_coach, score, votes, rating, full_name, date_of_birth, place_of_birth, country_of_birth, living, date_of_death, position, intro_text, picture_credit, biography)";
-		$sql .= "VALUES (:NewName, :NewFileCode, :NewNationality, :NewAdmitted, :NewAdmissionDate, :NewAdmissionPoll, :NewAsPlayer, :NewAsCoach, :NewScore, :NewVotes, :NewRating, :NewFullName, :NewBirthDate, :NewBirthPlace, :NewBirthCountry, :NewIsLiving, :NewDeathDate, :NewPosition, :NewIntroText, :NewPictureCredit, :NewBiography)";
+		$sql = "INSERT INTO people (name, file_code, nationality, active, admission_date, admission_poll, as_player, as_coach, score, votes, rating, full_name, date_of_birth, place_of_birth, country_of_birth, living, date_of_death, position, intro_text, picture_credit, license_link, biography)";
+		$sql .= "VALUES (:NewName, :NewFileCode, :NewNationality, :NewAdmitted, :NewAdmissionDate, :NewAdmissionPoll, :NewAsPlayer, :NewAsCoach, :NewScore, :NewVotes, :NewRating, :NewFullName, :NewBirthDate, :NewBirthPlace, :NewBirthCountry, :NewIsLiving, :NewDeathDate, :NewPosition, :NewIntroText, :NewPictureCredit, :NewLicenseLink, :NewBiography)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -78,6 +79,7 @@
 		$stmt->bindValue(':NewPosition', $new_position);
 		$stmt->bindValue(':NewIntroText', $new_intro_text);
 		$stmt->bindValue(':NewPictureCredit', $new_picture_credit);
+		$stmt->bindValue(':NewLicenseLink', $new_license_link);
 		$stmt->bindValue(':NewBiography', $new_biography);
 
 		$execute = $stmt->execute();
