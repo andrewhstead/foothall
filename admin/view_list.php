@@ -112,7 +112,7 @@
 					}
 					echo str_replace('_', ' ', $dataRows[$list_column]).'</td>';
 					
-					if (($table_type == 'hall' OR $table_name == 'polls' OR $table_type == 'history') AND ($status == 'active')) {
+					if (($table_type == 'hall' OR $table_type == 'history' OR $table_name == 'polls') AND ($status == 'active')) {
 						echo '<td class="button-cell"><span class="admin-button">';
 						echo '<a class="button-link" href="../'.$identifier.'.php?id='.$dataRows["id"].'">';
 						echo 'View</a></span></td>';

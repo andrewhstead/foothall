@@ -7,7 +7,7 @@
 						
 	$connectDB;
 
-	$countries = "SELECT * FROM countries WHERE on_site = TRUE ORDER BY display_name";
+	$countries = "SELECT * FROM countries WHERE active = TRUE ORDER BY display_name";
 	$country_query = $connectDB->query($countries);
 	
 	$country_list = array();

@@ -27,7 +27,7 @@
 			$url_column = "id";
 			break;
 		case "teams":
-			$identifier = "team";
+			$identifier = "club";
 			$list_column = "name";
 			$url_column = "id";
 			break;
