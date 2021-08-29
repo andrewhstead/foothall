@@ -290,6 +290,7 @@ td.progress-bar {
 	background-color: #cfb53b;
 	border-radius: 5px;
 	padding: 0;
+	margin: 3px 0;
 }
 
 .percentage {
@@ -388,6 +389,20 @@ h1.info-page:first-of-type {
 	border-radius: 50%;
 	text-align: center;
 	font-size: 0.7em;
+}
+
+.chosen-rating-block {
+	display: inline-block;
+	width: 15px;
+	height: 25px;
+	background-color: #321c20;
+	color: #cfb53b;
+	border: 1px solid #9c8208;
+	border-radius: 50%;
+	text-align: center;
+	font-size: 0.7em;
+	padding: 0 5px;
+	font-weight: normal;
 }
 
 .rating-block:hover {
