@@ -13,6 +13,9 @@
 						
 	$connectDB;
 
+	$cookie_name = 'poll_'.$poll_id;
+	$cookie_value = "voted";
+		
 	if(isset($_POST["vote"])) {
 			
 		$chosen_option = $_POST["chosen"];		
@@ -23,6 +26,8 @@
 		$sql2 = "UPDATE polls SET votes = votes + 1 WHERE id = $poll_id";
 		$stmt2 = $connectDB->prepare($sql2);
 		$execute2= $stmt2->execute();
+		
+		setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
 		
 		header("Location:poll.php?id=$poll_id");
 					
@@ -173,10 +178,11 @@
 						.strtolower($nationality).'.png" alt="'
 						.$nationality.'"></td>';
 					echo '<td>'.htmlentities($name).'</td>';
-					echo '<td><form method="post" action="poll.php?id='.$poll_id.'">
-						<input type="hidden" name="chosen" value="'.$contender_id.'">
-						<input class="vote-button" type="submit" name="vote" value="&#10003;">
-						</form></td>';
+					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_id.'">';
+					if (!isset($_COOKIE[$cookie_name])) {
+						echo '<input class="vote-button" type="submit" name="vote" value="&#10003;">';
+					}
+					echo '</form></td>';
 					
 					echo '<td class="progress-bar">';
 					echo '<div class="progress-box">';
