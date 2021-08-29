@@ -12,6 +12,8 @@
 	}
 						
 	$connectDB;
+	
+	$cookie_name = 'team_'.$team_id;
 
 	if(isset($_POST["vote"])) {
 		
@@ -21,6 +23,8 @@
 			WHERE id = $team_id";
 		$stmt = $connectDB->prepare($sql);
 		$execute = $stmt->execute();
+		
+		setcookie($cookie_name, $chosen_score, time() + (86400 * 30), "/");
 		
 		header("Location:team.php?id=$team_id");
 					

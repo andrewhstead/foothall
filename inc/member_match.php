@@ -53,9 +53,10 @@
 				
 				Rating: <?php echo htmlentities($rating); ?> (<?php echo htmlentities($votes); ?> votes)
 				<div class="rating-bar">
-					Submit Your Rating: 
-					<div class="rating-buttons">
-						<?php
+					<?php
+					
+						if (!isset($_COOKIE[$cookie_name])) {
+							echo 'Submit Your Rating: <div class="rating-buttons">';
 							for ($score = 1; $score <= 10; $score++) {
 								echo '
 								<div class="rating-block">
@@ -66,8 +67,13 @@
 								</div>
 								';
 							}
-						?>						
-					</div>
+							echo '</div>';
+						} else {
+							$your_rating = $_COOKIE["match_".$match_id];
+							echo 'Your Rating: <span class="chosen-rating-block">'.$your_rating.'</span>';
+						} 
+						
+					?>
 				</div>
 				
 			</div>
