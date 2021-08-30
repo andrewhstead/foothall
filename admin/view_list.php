@@ -35,6 +35,28 @@
 		$table_type = $dataRows["table_type"];
 				
 	}
+
+	if(isset($_POST["delete"])) {
+		
+		$to_delete = $_POST["to_delete"];
+
+		$sql = "DELETE FROM $table_name WHERE id='$to_delete'";
+
+		$execute = $connectDB->query($sql);
+
+		if($execute) {
+			
+			$_SESSION["success_message"] = "Lecture deleted successfully.";
+			redirect_to("view_list.php?type=$table_name");
+
+		} else {
+
+			$_SESSION["error_message"] = "Something went wrong. Please try again.";
+			redirect_to("view_list.php?type=$table_name");
+
+		}
+
+	}
 	
 ?>
 
@@ -103,6 +125,8 @@
 				$table_details = array();
 				
 				while ($dataRows = $data_query->fetch()) {
+					
+					$record_id = $dataRows["id"];
 
 					echo '<tr><td>';
 					if ($table_name == "people") {
@@ -121,10 +145,23 @@
 					echo '<td class="button-cell"><span class="admin-button">';
 					echo '<a class="button-link" href="edit_record.php?type='.$table_name.'&code='.$dataRows["$url_column"].'">';
 					echo 'Edit</a></span></td>';
-					echo '<td class="button-cell"><span class="admin-button">';
-					echo '<a class="button-link" href="delete.php?id='.$dataRows["id"].'">';
-					echo 'Delete</a></span></td>';
+					echo '<td class="button-cell">';
+					echo '<button class="admin-button" onclick="confirmToggle('.$record_id.')">Delete</button></td>';
 					echo '</tr>';
+					echo '<div class="blackout hide record_'.$record_id.'">';
+					echo '<div class="confirm hide record_'.$record_id.'">';
+					
+					echo 'Are you sure you want to delete this record?';
+					echo '<br>';
+							
+					echo '<form class="confirmation" method="post" action="view_list.php?type='.$table_name.'">';
+					echo '<input type="hidden" name="to_delete" value="'.$dataRows["id"].'">';
+					echo '<input type="submit" name="delete" value="OK">';
+					echo '</form>';
+					echo '<button onclick="confirmToggle('.$record_id.')">Cancel</button>';
+								
+					echo '</div>';
+					echo '</div>';
 							
 				}
 				

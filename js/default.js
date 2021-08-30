@@ -99,3 +99,13 @@ function removeMenu(section) {
 	}
 	
 }
+
+function confirmToggle(id) {
+	
+	var confirmation = document.getElementsByClassName("record_"+id);
+
+	for (var i = 0; i < confirmation.length; i++) {
+		confirmation[i].classList.toggle("show");
+	}
+	
+}
