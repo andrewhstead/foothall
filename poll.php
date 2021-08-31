@@ -19,7 +19,13 @@
 	if(isset($_POST["vote"])) {
 			
 		$chosen_option = $_POST["chosen"];		
-		$sql = "UPDATE people_votes SET votes = votes + 1 WHERE id = $chosen_option";
+		if ($_POST["poll-type"] == 'people') {
+			$sql = "UPDATE people_votes SET votes = votes + 1 WHERE id = $chosen_option";
+		} else if ($_POST["poll-type"] == 'match') {
+			$sql = "UPDATE match_votes SET votes = votes + 1 WHERE id = $chosen_option";
+		} else if ($_POST["poll-type"] == 'team') {
+			$sql = "UPDATE team_votes SET votes = votes + 1 WHERE id = $chosen_option";
+		}
 		$stmt = $connectDB->prepare($sql);
 		$execute = $stmt->execute();	
 			
@@ -85,24 +91,60 @@
 		
 		<?php
 		
-			$choices = "SELECT 
-				people.id AS person_id,
-				people.name AS player_name,
-				people.nationality AS nationality,
-				people.active AS admitted,
-				people.intro_text AS intro_text,
-				people.position AS position,
-				people_votes.id AS contender_id,
-				people_votes.votes AS votes,
-				countries.id AS country_id 
-				FROM people_votes 
-				INNER JOIN people ON people_votes.option = people.name
-				INNER JOIN countries ON people.nationality = countries.abbreviation
-				WHERE people_votes.poll = $poll_id AND people_votes.active = true
-				ORDER BY people_votes.votes desc, people.id";
-			$contender_list = $connectDB->query($choices);
-			$option_list = $connectDB->query($choices);
+			if ($poll_type == 'person') {
+		
+				$choices = "SELECT 
+					people.id AS person_id,
+					people.name AS player_name,
+					people.nationality AS nationality,
+					people.active AS admitted,
+					people.intro_text AS intro_text,
+					people.position AS position,
+					people_votes.id AS contender_id,
+					people_votes.votes AS votes,
+					countries.id AS country_id 
+					FROM people_votes 
+					INNER JOIN people ON people_votes.option = people.name
+					INNER JOIN countries ON people.nationality = countries.abbreviation
+					WHERE people_votes.poll = $poll_id AND people_votes.active = true
+					ORDER BY people_votes.votes desc, people.id";
+				$contender_list = $connectDB->query($choices);
+				$option_list = $connectDB->query($choices);
 			
+			} else if ($poll_type == 'match') {
+		
+				$choices = "SELECT 
+					matches.id AS match_id,
+					matches.title AS title,
+					matches.active AS admitted,
+					matches.intro_text AS intro_text,
+					match_votes.id AS contender_id,
+					match_votes.votes AS votes
+					FROM match_votes 
+					INNER JOIN matches ON match_votes.option = matches.title
+					WHERE match_votes.poll = $poll_id AND match_votes.active = true
+					ORDER BY match_votes.votes desc, matches.id";
+				$contender_list = $connectDB->query($choices);
+				$option_list = $connectDB->query($choices);
+			
+			} else if ($poll_type == 'team') {
+		
+				$choices = "SELECT 
+					hall_teams.id AS team_id,
+					hall_teams.title AS title,
+					hall_teams.active AS admitted,
+					hall_teams.intro_text AS intro_text,
+					team_votes.id AS contender_id,
+					team_votes.votes AS votes
+					FROM team_votes 
+					INNER JOIN hall_teams ON team_votes.option = hall_teams.title
+					WHERE team_votes.poll = $poll_id AND team_votes.active = true
+					ORDER BY team_votes.votes desc, hall_teams.id";
+				$contender_list = $connectDB->query($choices);
+				$option_list = $connectDB->query($choices);
+			
+			}
+		
 		?>
 		
 		<h2>
@@ -115,32 +157,56 @@
 		
 			while ($dataRows = $contender_list->fetch()) {
 			
-				$person_id = $dataRows["person_id"];
-				$admitted = $dataRows["admitted"];
-				$name = $dataRows["player_name"];
-				$nationality = $dataRows["nationality"];
-				$intro_text = $dataRows["intro_text"];
-				$position = $dataRows["position"];
-				$country_id = $dataRows["country_id"];
+				if ($poll_type == 'person') {
+					
+					$contender_id = $dataRows["person_id"];
+					$admitted = $dataRows["admitted"];
+					$name = $dataRows["player_name"];
+					$nationality = $dataRows["nationality"];
+					$intro_text = $dataRows["intro_text"];
+					$position = $dataRows["position"];
+					$country_id = $dataRows["country_id"];
+					
+				} else if ($poll_type == 'match') {
+					
+					$contender_id = $dataRows["match_id"];
+					$admitted = $dataRows["admitted"];
+					$name = $dataRows["title"];
+					$intro_text = $dataRows["intro_text"];
+					
+				} else if ($poll_type == 'team') {
+					
+					$contender_id = $dataRows["team_id"];
+					$admitted = $dataRows["admitted"];
+					$name = $dataRows["title"];
+					$intro_text = $dataRows["intro_text"];
+					
+				}
 				
 		?>
 		
 			<div class="poll-contender">
 				<span class="contender-head">
-					<img class="text-icon" src="img/flags/<?php echo strtolower($nationality); ?>
-					.png" alt="<?php echo htmlentities($nationality); ?>">
 					<?php 
+						if ($poll_type == 'person') {
+							echo '<img class="text-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.htmlentities($nationality).'">';
+						}
 						if ($admitted) {
-							echo '<a class="standard-link" href="person.php?id='.$person_id.'">'.htmlentities($name).'</a>';
+							echo '<a class="standard-link" href="person.php?id='.$contender_id.'">'.htmlentities($name).'</a>';
 							} else {
 							echo htmlentities($name); 
+						} 
+						if ($poll_type == 'person') {
+							echo '(<a class="standard-link" href="country.php?id='.htmlentities($country_id).'">'.htmlentities($nationality).'</a>)';
 						}
-					?> 
-					(<a class="standard-link" href="country.php?id=<?php echo htmlentities($country_id); ?>"><?php echo htmlentities($nationality); ?></a>)
+					?>
 				</span>
 				<br>
-				<strong>Position:</strong> <?php echo htmlentities($position); ?>
-				<br>
+				<?php
+					if ($poll_type == 'person') {
+						echo'<strong>Position:</strong> '.htmlentities($position).'<br>';
+					}
+				?>
 				<div class="formatted-text">
 					<?php echo html_entity_decode($intro_text); ?>
 				</div>
@@ -165,20 +231,29 @@
 					$ranking ++;
 					
 					$contender_id = $dataRows["contender_id"];
-					$name = $dataRows["player_name"];
 					$votes = $dataRows["votes"];
-					$nationality = $dataRows["nationality"];
+					
+					if ($poll_type == 'person') {
+						$name = $dataRows["player_name"];
+						$nationality = $dataRows["nationality"];
+					} else if ($poll_type == 'match') {
+						$name = $dataRows["title"];
+					} else if ($poll_type == 'team') {
+						$name = $dataRows["title"];
+					}
 					
 					if ($ranking <= $places) {
 						echo '<tr class="election-place">';
 					} else {
 						echo '<tr>';
 					}
-					echo '<td><img class="poll-icon" src="img/flags/'
+					if ($poll_type == 'person') {
+						echo '<td><img class="poll-icon" src="img/flags/'
 						.strtolower($nationality).'.png" alt="'
 						.$nationality.'"></td>';
+					}
 					echo '<td>'.htmlentities($name).'</td>';
-					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_id.'">';
+					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_id.'"> <input type="hidden" name="poll-type" value="'.$poll_type.'">';
 					if (!isset($_COOKIE[$cookie_name])) {
 						echo '<input class="vote-button" type="submit" name="vote" value="&#10003;">';
 					}
