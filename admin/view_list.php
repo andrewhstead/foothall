@@ -131,7 +131,7 @@
 					echo '<tr><td>';
 					if ($table_name == "people") {
 						echo '<img class="text-icon" src="../img/flags/'.strtolower($dataRows["nationality"]).'.png" alt="'.htmlentities($dataRows["nationality"]).'"> ';
-					} elseif ($table_name == "people_votes") {
+					} elseif (($table_name == "people_votes") OR ($table_name == "match_votes") OR ($table_name == "team_votes")) {
 						echo 'Poll '.$dataRows["poll"].': ';
 					}
 					echo str_replace('_', ' ', $dataRows[$list_column]).'</td>';

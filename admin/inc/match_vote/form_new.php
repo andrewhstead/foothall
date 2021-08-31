@@ -1,4 +1,4 @@
-			<form class="edit-form" method="post" action="add_new.php?type=people_votes">
+			<form class="edit-form" method="post" action="add_new.php?type=match_votes">
 				
 				<div class="flex-wrapper">
 					
@@ -19,11 +19,11 @@
 						<label for="option">Option:</label>
 						<select id="option" name="option">
 						<?php
-							$people = "SELECT * FROM people ORDER BY file_code";
-							$people_query = $connectDB->query($people);
-							while ($dataRows = $people_query->fetch()) {
-								$person_name = $dataRows["name"];
-								echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
+							$matches = "SELECT * FROM matches ORDER BY file_code";
+							$match_query = $connectDB->query($matches);
+							while ($dataRows = $match_query->fetch()) {
+								$match_title = $dataRows["title"];
+								echo '<option value="'.$dataRows["title"].'">'.$dataRows["title"].'</option>';
 							}
 						?>	
 						</select>

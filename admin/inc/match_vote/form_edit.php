@@ -1,4 +1,4 @@
-			<form class="edit-form" method="post" action="edit_record.php?type=people_votes&code=<?php echo $record_id; ?>">
+			<form class="edit-form" method="post" action="edit_record.php?type=match_votes&code=<?php echo $record_id; ?>">
 				
 				<div class="flex-wrapper">
 					
@@ -7,15 +7,15 @@
 						<label for="option">Option:</label>
 						<select id="option" name="option">
 						<?php
-							$people = "SELECT * FROM people ORDER BY file_code";
-							$people_query = $connectDB->query($people);
-							while ($dataRows = $people_query->fetch()) {
-								$person_name = $dataRows["name"];
-								echo '<option value="'.$dataRows["name"].'"';
-							if ($dataRows["name"] == $option) {
+							$match = "SELECT * FROM matches WHERE category != 'game' ORDER BY file_code";
+							$matches_query = $connectDB->query($match);
+							while ($dataRows = $matches_query->fetch()) {
+								$match_title = $dataRows["title"];
+								echo '<option value="'.$dataRows["title"].'"';
+							if ($dataRows["title"] == $option) {
 								echo ' selected ';
 							}	
-							echo '>'.$dataRows["name"].'</option>';
+							echo '>'.$dataRows["title"].'</option>';
 							}
 						?>	
 						</select>

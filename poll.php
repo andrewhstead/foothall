@@ -189,7 +189,7 @@
 				<span class="contender-head">
 					<?php 
 						if ($poll_type == 'person') {
-							echo '<img class="text-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.htmlentities($nationality).'">';
+							echo '<img class="text-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.htmlentities($nationality).'"> ';
 						}
 						if ($admitted) {
 							echo '<a class="standard-link" href="person.php?id='.$contender_id.'">'.htmlentities($name).'</a>';
@@ -197,7 +197,7 @@
 							echo htmlentities($name); 
 						} 
 						if ($poll_type == 'person') {
-							echo '(<a class="standard-link" href="country.php?id='.htmlentities($country_id).'">'.htmlentities($nationality).'</a>)';
+							echo ' (<a class="standard-link" href="country.php?id='.htmlentities($country_id).'">'.htmlentities($nationality).'</a>)';
 						}
 					?>
 				</span>

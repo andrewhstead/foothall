@@ -61,6 +61,16 @@
 			$list_column = "option";
 			$url_column = "id";
 			break;
+		case "match_votes":
+			$identifier = "match_vote";
+			$list_column = "option";
+			$url_column = "id";
+			break;
+		case "team_votes":
+			$identifier = "team_vote";
+			$list_column = "option";
+			$url_column = "id";
+			break;
 		case "tables":
 			$identifier = "table";
 			$list_column = "table_name";
