@@ -45,29 +45,54 @@
 			<br>
 			Options:
 			<br>
-			<strong>NB: If a player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before editing the poll.</strong>
+			<?php
+				if ($type == 'person') {
+					echo '<strong>NB: If a player is not listed, go to <a class="standard-link" href="add_new.php?type=people">Add New Person</a> before editing the poll.</strong>';
+				} else if ($type == 'match') {
+					echo '<strong>NB: If a match is not listed, go to <a class="standard-link" href="add_new.php?type=matches">Add New Match</a> before editing the poll.</strong>';
+				} else if ($type == 'team') {
+					echo '<strong>NB: If a team is not listed, go to <a class="standard-link" href="add_new.php?type=hall_teams">Add New Team</a> before editing the poll.</strong>';	
+				}
+			
+			?>
 					
 			<br>
 			
 			<?php
 			
-				foreach ($poll_option AS $option_number => $option_person) {
+				foreach ($poll_option AS $option_number => $option_name) {
 					
 					echo '<label for="option-'.$option_number.'">'.$option_number.': </label>';
 					echo '<select id="option-'.$option_number.'" name="option-'.$option_number.'">';
 					echo'<option label=" "></option>';
-					$options_sql = "SELECT * FROM people ORDER BY file_code";
+					if ($type == 'person') {
+						$options_sql = "SELECT * FROM people ORDER BY file_code";
+					} else if ($type == 'match') {
+						$options_sql = "SELECT * FROM matches WHERE category != 'game' ORDER BY file_code";
+					} else if ($type == 'team') {
+						$options_sql = "SELECT * FROM hall_teams ORDER BY file_code";
+					}					
 					$options_query = $connectDB->query($options_sql);
-					while ($dataRows = $options_query->fetch()) {
-						echo '<option value="'.$dataRows["name"].'"';
-						if ($dataRows["name"] == $option_person) {
-							echo ' selected ';
-						}	
-						echo '>'.$dataRows["name"].'</option>';
-					}
+					if ($type == 'person') {
+						while ($dataRows = $options_query->fetch()) {
+							echo '<option value="'.$dataRows["name"].'"';
+							if ($dataRows["name"] == $option_name) {
+								echo ' selected ';
+							}	
+							echo '>'.$dataRows["name"].'</option>';
+						}
+					} else {
+						while ($dataRows = $options_query->fetch()) {
+							echo '<option value="'.$dataRows["title"].'"';
+							if ($dataRows["title"] == $option_name) {
+								echo ' selected ';
+							}	
+							echo '>'.$dataRows["title"].'</option>';
+						}					
+					}					
 					echo '</select>';
 					echo '<br>';
-					${'person_'.$option_number} = $option_person;
+					${'person_'.$option_number} = $option_name;
 				
 				}
 				

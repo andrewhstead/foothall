@@ -97,17 +97,22 @@
 		
 	}
 		
-	$option_list = "SELECT * FROM people_votes 
-		WHERE poll = '$record_id'";
+	if ($type == 'person') {
+		$option_list = "SELECT * FROM people_votes WHERE poll = '$record_id'";
+	} else if ($type == 'match') {
+		$option_list = "SELECT * FROM match_votes WHERE poll = '$record_id'";
+	} else if ($type == 'team') {
+		$option_list = "SELECT * FROM team_votes WHERE poll = '$record_id'";
+	}
 	$option_query = $connectDB->query($option_list);
 	$poll_option = array();
 		
 	while ($dataRows = $option_query->fetch()) {
 		
 		$option_number = $dataRows["poll_option"];
-		$option_person = $dataRows["option"];
+		$option_name = $dataRows["option"];
 			
-		$poll_option[$option_number] = $option_person;
+		$poll_option[$option_number] = $option_name;
 		
 	}
 	
