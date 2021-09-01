@@ -125,7 +125,13 @@
 		
 		<div class="profile-content">
 			
+			<h2>Results</h2>
+			<table class="results-table">
+			
 			<?php
+			
+				$stages = array();
+				$results = array();
 
 				$matches = "
 					SELECT 
@@ -135,7 +141,9 @@
 						tournaments.id AS tournament_id,
 						tournaments.year AS year,
 						tournaments.name AS tournament,
+						matches.round AS round,
 						matches.stage AS stage,
+						matches.section AS section,
 						matches.date AS date,
 						team_1.display_name AS team_1_name,
 						matches.score_1 AS score_1,
@@ -149,8 +157,6 @@
 					ORDER BY date ASC";
 				$matches_query = $connectDB->query($matches);
 				
-				$iteration = 1;
-				
 				while ($dataRows = $matches_query->fetch()) {
 
 					$match_id = $dataRows["match_id"];
@@ -159,18 +165,18 @@
 					$year = $dataRows["year"];
 					$competition = $dataRows["competition"];
 					$tournament = $dataRows["tournament"];
-					$stage = $dataRows["stage"];
+					$round = $dataRows["round"];
+					$section = $dataRows["section"];
+					$stage = $dataRows["stage"].' '.$section;
 					$team_1_name = $dataRows["team_1_name"];
 					$score_1 = $dataRows["score_1"];
 					$score_2 = $dataRows["score_2"];
 					$team_2_name = $dataRows["team_2_name"];
 					
-					if ($iteration == 1) {
-						echo '<h2>Results</h2>';
-						echo '<table class="results-table">';
-					}
+					$results[] = $dataRows;
 					
 					echo '<tr>';
+					echo '<td>'.htmlentities($stage).'</td>';
 					echo '<td>'.date_format($date, "d/m/y").'</td>';
 					echo '<td>'.htmlentities($team_1_name).'</td>';
 					if ($active) {
@@ -183,8 +189,6 @@
 					echo '</td>';
 					echo '<td>'.htmlentities($team_2_name).'</td>';
 					echo '</tr>';
-					
-					$iteration++;
 					
 				}
 				
