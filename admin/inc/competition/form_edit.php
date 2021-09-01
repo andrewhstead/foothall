@@ -81,5 +81,38 @@
 				<textarea class="editable-area" rows="10" cols="35" name="profile"><?php echo $profile; ?></textarea>
 				<br>
 				<input class="submit-button" type="submit" name="submit" value="Save Changes">
-			
+				
 		</form>
+		
+		<br>
+		Tournaments for this competition (click to edit):
+		<br>
+		<?php
+			$tournaments = "SELECT * FROM tournaments WHERE competition = '$record_id'";
+			$tournament_count = "SELECT COUNT(*) FROM tournaments WHERE competition = '$record_id'";
+					
+			$iteration = 0;
+			
+			$tournament_query = $connectDB->query($tournaments);
+			$result_count = $connectDB->query($tournament_count);
+			
+			$total_results = $result_count->fetchColumn();
+			
+			while ($dataRows = $tournament_query->fetch()) {
+				
+				$database_id = $dataRows["id"];
+				$year = $dataRows["year"];	
+				
+				echo '<a class="standard-link" href="edit_record.php?type=tournaments&code='.$database_id.'">';
+				echo $year;	
+				echo '</a>';
+				
+				$iteration++;
+						
+				if ($iteration < $total_results) {
+					echo ' | ';
+				}
+				
+			}	
+		?>	
+		
