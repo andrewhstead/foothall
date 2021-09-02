@@ -4,6 +4,12 @@
 					
 				<div class="flex-item form-section">
 
+					<label for="team-type">Team Type:</label>
+					<select id="team-type" name="team-type">
+						<option value="club">Club</option>
+						<option value="national">National</option>
+					</select>
+					<br>
 					<label for="title">Title:</label>
 					<input type="text" name="title" placeholder="Title" id="title">
 					<br>

@@ -3,6 +3,7 @@
 	if(isset($_POST["submit"])) {
 		
 		$new_title = $_POST["title"];
+		$new_team_type = $_POST["team-type"];
 		$new_display_name = $_POST["display-name"];
 		$new_team_name = $_POST["team-name"];
 		$new_era = $_POST["era"];
@@ -35,11 +36,12 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_biography = $_POST["biography"];
 		
-		$sql = "UPDATE hall_teams SET title=:NewTitle, display_name=:NewDisplayName, team_name=:NewTeamName, file_code=:NewFileCode, era=:NewEra, picture_credit=:NewPictureCredit, license_link=:NewLicenseLink, contender=:NewContender, active=:NewActive, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, intro_text=:NewIntroText, biography=:NewBiography, score=:NewScore, votes=:NewVotes, rating=:NewRating WHERE file_code = '$record_id'";
+		$sql = "UPDATE hall_teams SET title=:NewTitle, team_type=:NewTeamType, display_name=:NewDisplayName, team_name=:NewTeamName, file_code=:NewFileCode, era=:NewEra, picture_credit=:NewPictureCredit, license_link=:NewLicenseLink, contender=:NewContender, active=:NewActive, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, intro_text=:NewIntroText, biography=:NewBiography, score=:NewScore, votes=:NewVotes, rating=:NewRating WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewTitle', $new_title);
+		$stmt->bindValue(':NewTeamType', $new_team_type);
 		$stmt->bindValue(':NewDisplayName', $new_display_name);
 		$stmt->bindValue(':NewTeamName', $new_team_name);
 		$stmt->bindValue(':NewFileCode', $new_file_code);
@@ -87,6 +89,7 @@
 		
 		$database_id = $dataRows["id"];
 		$title = $dataRows["title"];
+		$team_type = $dataRows["team_type"];
 		$display_name = $dataRows["display_name"];
 		$team_name = $dataRows["team_name"];
 		$era = $dataRows["era"];

@@ -4,6 +4,12 @@
 					
 				<div class="flex-item form-section">
 
+					<label for="team-type">Team Type:</label>
+					<select id="team-type" name="team-type">
+						<option value="club" <?php if ($team_type == 'club') { echo 'selected'; } ?>>Club</option>
+						<option value="national" <?php if ($team_type == 'national') { echo 'selected'; } ?>>National</option>
+					</select>
+					<br>
 					<label for="title">Title:</label>
 					<input type="text" name="title" placeholder="Title" id="title" value="<?php echo $title; ?>">
 					<br>
@@ -16,7 +22,6 @@
 						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
 						$teams_query = $connectDB->query($teams_sql);
 						while ($dataRows = $teams_query->fetch()) {
-							$team_name = $dataRows["name"];
 							echo '<option value="'.$dataRows["name"].'"';
 							if ($dataRows["name"] == $team_name) {
 								echo ' selected ';

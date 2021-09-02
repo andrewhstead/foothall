@@ -3,6 +3,7 @@
 	if(isset($_POST["submit"])) {
 		
 		$new_title = $_POST["title"];
+		$new_team_type = $_POST["team-type"];
 		$new_display_name = $_POST["display-name"];
 		$new_team_name = $_POST["team-name"];
 		$new_era = $_POST["era"];
@@ -35,12 +36,13 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "INSERT INTO hall_teams (title, display_name, team_name, era, file_code, picture_credit, license_link, active, contender, admission_date, admission_poll, score, votes, rating, intro_text, biography)";
-		$sql .= "VALUES (:NewTitle, :NewDisplayName, :NewTeamName, :NewFileCode, :NewEra, :NewPictureCredit, :NewLicenseLink, :NewContender, :NewActive, :NewAdmissionDate, :NewAdmissionPoll, :NewIntroText, :NewBiography, :NewScore, :NewVotes, :NewRating)";
+		$sql = "INSERT INTO hall_teams (title, team_type, display_name, team_name, era, file_code, picture_credit, license_link, active, contender, admission_date, admission_poll, score, votes, rating, intro_text, biography)";
+		$sql .= "VALUES (:NewTitle, :NewTeamType, :NewDisplayName, :NewTeamName, :NewFileCode, :NewEra, :NewPictureCredit, :NewLicenseLink, :NewContender, :NewActive, :NewAdmissionDate, :NewAdmissionPoll, :NewIntroText, :NewBiography, :NewScore, :NewVotes, :NewRating)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewTitle', $new_title);
+		$stmt->bindValue(':NewTeamType', $new_team_type);
 		$stmt->bindValue(':NewDisplayName', $new_display_name);
 		$stmt->bindValue(':NewTeamName', $new_team_name);
 		$stmt->bindValue(':NewFileCode', $new_file_code);
