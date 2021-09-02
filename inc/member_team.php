@@ -212,6 +212,40 @@
 		
 		<div class="tags">
 			
-			<strong>Tags:</strong><br>
+			<strong>Tags:</strong>
+			
+			<?php 
+	
+				$tags = " 
+					SELECT 
+					hall_teams.id AS database_id, 
+					hall_teams.era AS era, 
+					hall_teams.team_type AS team_type, 
+					teams.name AS team_name, 
+					teams.display_name AS display_name
+					FROM hall_teams 
+					INNER JOIN teams ON hall_teams.team_name = teams.name
+					WHERE hall_teams.id = '$team_id'";
+				$tag_query = $connectDB->query($tags);
+								
+				while ($dataRows = $tag_query->fetch()) {
+
+					$database_id = $dataRows["database_id"];
+					$team_tag = $dataRows["display_name"];
+					$team_type = $dataRows["team_type"];
+					
+					if ($team_type == 'national') {
+						
+						echo '<a class="tag-link" href="country.php?id='.$database_id.'"><div class="tag">'.htmlentities($team_tag).'</div></a>';
+						
+					} elseif ($match_type == 'club') {
+						
+						echo '<a class="tag-link" href="club.php?id='.$database_id.'"><div class="tag">'.htmlentities($team_tag).'</div></a>';
+						
+					}
+						
+				}
+				
+			?>
 						
 		</div>
