@@ -81,8 +81,10 @@
 			$list_column = "headline";
 			$url_column = "id";
 			break;
-		case "tags":
+		case "tag_list":
 			$identifier = "tag";
+			$list_column = "table_name";
+			$url_column = "id";
 			break;
 		case "people_tags":
 			$identifier = "person_tag";

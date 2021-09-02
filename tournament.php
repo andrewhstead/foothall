@@ -166,17 +166,22 @@
 					$competition = $dataRows["competition"];
 					$tournament = $dataRows["tournament"];
 					$round = $dataRows["round"];
+					$stage = $dataRows["stage"];
 					$section = $dataRows["section"];
-					$stage = $dataRows["stage"].' '.$section;
+					if ($section) {
+						$stage_section = $stage.' '.$section;
+					}
 					$team_1_name = $dataRows["team_1_name"];
 					$score_1 = $dataRows["score_1"];
 					$score_2 = $dataRows["score_2"];
 					$team_2_name = $dataRows["team_2_name"];
-					
-					$results[] = $dataRows;
+
+					if (!in_array($stage, $stages)) {
+						$stages[] = $stage;
+					}
 					
 					echo '<tr>';
-					echo '<td>'.htmlentities($stage).'</td>';
+					echo '<td>'.$stage.'</td>';
 					echo '<td>'.date_format($date, "d/m/y").'</td>';
 					echo '<td>'.htmlentities($team_1_name).'</td>';
 					if ($active) {
