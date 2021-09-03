@@ -126,12 +126,40 @@
 		<div class="profile-content">
 			
 			<h2>Results</h2>
-			<table class="results-table">
 			
 			<?php
 			
-				$stages = array();
+				$stage_list = array();
 				$results = array();
+
+				$stages = "
+					SELECT 
+						matches.tournament AS tournament,
+						matches.stage AS stage,
+						matches.section AS section
+					FROM matches
+					INNER JOIN tournaments on tournaments.name = matches.tournament
+					WHERE tournaments.id = $tournament_id
+					ORDER BY date ASC";
+				$stage_query = $connectDB->query($stages);
+				$stage_query->execute();
+				
+				foreach ($stage_query as $match_stage) {
+					
+					$stage = $match_stage['stage'];
+					$section = $match_stage['section'];
+					
+					if ($section) {
+						$stage = $match_stage['stage'].' '.$section;
+					} else {
+						$stage = $match_stage['stage'];
+					}
+					
+					if (!in_array($stage, $stage_list)) {
+						$stage_list[] = $stage;
+					}
+			
+				}
 
 				$matches = "
 					SELECT 
@@ -156,48 +184,56 @@
 					WHERE tournaments.id = $tournament_id
 					ORDER BY date ASC";
 				$matches_query = $connectDB->query($matches);
+				$matches_query->execute();
 				
-				while ($dataRows = $matches_query->fetch()) {
-
-					$match_id = $dataRows["match_id"];
-					$active = $dataRows["active"];
-					$date = new DateTime($dataRows["date"]);
-					$year = $dataRows["year"];
-					$competition = $dataRows["competition"];
-					$tournament = $dataRows["tournament"];
-					$round = $dataRows["round"];
-					$stage = $dataRows["stage"];
-					$section = $dataRows["section"];
-					if ($section) {
-						$stage_section = $stage.' '.$section;
-					}
-					$team_1_name = $dataRows["team_1_name"];
-					$score_1 = $dataRows["score_1"];
-					$score_2 = $dataRows["score_2"];
-					$team_2_name = $dataRows["team_2_name"];
-
-					if (!in_array($stage, $stages)) {
-						$stages[] = $stage;
-					}
+				foreach ($matches_query as $tournament_match) {
 					
-					echo '<tr>';
-					echo '<td>'.$stage.'</td>';
-					echo '<td>'.date_format($date, "d/m/y").'</td>';
-					echo '<td>'.htmlentities($team_1_name).'</td>';
-					if ($active) {
-						echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
-						echo htmlentities($score_1).'-'.htmlentities($score_2);
-						echo '</a>';
-					} else {
-						echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
-					}
-					echo '</td>';
-					echo '<td>'.htmlentities($team_2_name).'</td>';
-					echo '</tr>';
-					
+					if ($tournament_match['section']) {
+						$tournament_match['stage'] .= ' '.$tournament_match['section'];
+					}					
+					$results[] = $tournament_match;
+			
 				}
 				
-				echo '</table>';
+				foreach ($stage_list as $tournament_stage) {
+					
+					echo '<h3>'.$tournament_stage.'</h3>';
+					
+					echo '<table class="results-table">';
+					
+					foreach ($results as $match_result) {
+						
+						$match_id = $match_result["match_id"];
+						$active = $match_result["active"];
+						$date = new DateTime($match_result["date"]);
+						$team_1_name = $match_result["team_1_name"];
+						$score_1 = $match_result["score_1"];
+						$score_2 = $match_result["score_2"];
+						$team_2_name = $match_result["team_2_name"];
+						
+						if ($match_result['stage'] == $tournament_stage) {
+							
+							echo '<tr>';
+							echo '<td>'.date_format($date, "d/m/y").'</td>';
+							echo '<td>'.htmlentities($team_1_name).'</td>';
+							if ($active) {
+								echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
+								echo htmlentities($score_1).'-'.htmlentities($score_2);
+								echo '</a>';
+							} else {
+								echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
+							}
+							echo '</td>';
+							echo '<td>'.htmlentities($team_2_name).'</td>';
+							echo '</tr>';
+						
+						}
+						
+					}
+					
+					echo '</table>';
+			
+				}
 				
 			?>
 		
