@@ -94,6 +94,11 @@
 			$list_column = "name";
 			$url_column = "id";
 			break;
+		case "tournament_teams":
+			$identifier = "tournament_team";
+			$list_column = "team_name";
+			$url_column = "id";
+			break;
 		case "users":
 			$identifier = "user";
 			$list_column = "username";
