@@ -128,7 +128,6 @@
 			<h2>Results</h2>
 			
 			<?php
-			
 				$stage_list = array();
 				$results = array();
 
@@ -143,23 +142,6 @@
 					ORDER BY date ASC";
 				$stage_query = $connectDB->query($stages);
 				$stage_query->execute();
-				
-				foreach ($stage_query as $match_stage) {
-					
-					$stage = $match_stage['stage'];
-					$section = $match_stage['section'];
-					
-					if ($section) {
-						$stage = $match_stage['stage'].' '.$section;
-					} else {
-						$stage = $match_stage['stage'];
-					}
-					
-					if (!in_array($stage, $stage_list)) {
-						$stage_list[] = $stage;
-					}
-			
-				}
 
 				$matches = "
 					SELECT 
@@ -188,6 +170,23 @@
 				$matches_query = $connectDB->query($matches);
 				$matches_query->execute();
 				
+				foreach ($stage_query as $match_stage) {
+					
+					$stage = $match_stage['stage'];
+					$section = $match_stage['section'];
+					
+					if ($section) {
+						$stage = $match_stage['stage'].' '.$section;
+					} else {
+						$stage = $match_stage['stage'];
+					}
+					
+					if (!in_array($stage, $stage_list)) {
+						$stage_list[] = $stage;
+					}
+			
+				}
+				
 				foreach ($matches_query as $tournament_match) {
 					
 					if ($tournament_match['section']) {
@@ -199,128 +198,170 @@
 				
 				foreach ($stage_list as $tournament_stage) {
 					
-					echo '<div class="flex-wrapper">';
-					echo '<div class="flex-item ">';
-					
-					$standings_matches = 0;
-					
-					echo '<h3>'.$tournament_stage.'</h3>';
-					
-					echo '<table class="results-table">';
-					
-					$stage_teams = array();
-					$stage_standings = array();
-					
-					foreach ($results as $match_result) {
+						echo '<div class="flex-wrapper">';
+						echo '<div class="flex-item ">';
 						
-						$match_id = $match_result["match_id"];
-						$active = $match_result["active"];
-						$note = $match_result["note"];
-						$standings = $match_result["standings"];
-						$date = new DateTime($match_result["date"]);
-						$team_1_name = $match_result["team_1_name"];
-						$team_1_code = str_replace(' ','_',strtolower($team_1_name));
-						$score_1 = $match_result["score_1"];
-						$score_2 = $match_result["score_2"];
-						$team_2_name = $match_result["team_2_name"];
-						$team_2_code = str_replace(' ','_',strtolower($team_2_name));
+						$standings_matches = 0;
 						
-						if ($match_result['stage'] == $tournament_stage) {
+						echo '<h3>'.$tournament_stage.'</h3>';
+						
+							echo '<table class="results-table">';
+					
+							$stage_results = array();
+							$stage_teams = array();
+							$stage_standings = array();
 							
-							echo '<tr>';
-							echo '<td>'.date_format($date, "d/m/y").'</td>';
-							echo '<td>'.htmlentities($team_1_name).'</td>';
-							if ($active) {
-								echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
-								echo htmlentities($score_1).'-'.htmlentities($score_2);
-								echo '</a>';
-							} else {
-								echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
-							}
-							echo '</td>';
-							echo '<td>'.htmlentities($team_2_name).'</td>';
-							if ($note) {
-								echo '<td>('.htmlentities($note).')</a>';
-							}
-							echo '</tr>';
-							
-							if ($standings == true) {
-							
-								if (!in_array($team_1_name, $stage_teams)) {
-									$stage_teams[] = $team_1_name;
-								}
-								if (!in_array($team_2_name, $stage_teams)) {
-									$stage_teams[] = $team_2_name;
-								}	
+							foreach ($results as $match_result) {
+								
+								if ($match_result['stage'] == $tournament_stage) {
 									
-								foreach ($stage_teams as $team_record) {
-									if (!in_array($team_record, $stage_standings)) {
-										$stage_standings[$team_record] = array(
-											'team' => $team_record,
-											'played' => 0,
-											'won' => 0,
-											'drawn' => 0,
-											'lost' => 0,
-											'for' => 0,
-											'against' => 0,
-											'points' => 0,
-										);
+								
+									$match_id = $match_result["match_id"];
+									$active = $match_result["active"];
+									$note = $match_result["note"];
+									$standings = $match_result["standings"];
+									$date = new DateTime($match_result["date"]);
+									$team_1_name = $match_result["team_1_name"];
+									$team_1_code = str_replace(' ','_',strtolower($team_1_name));
+									$score_1 = $match_result["score_1"];
+									$score_2 = $match_result["score_2"];
+									$team_2_name = $match_result["team_2_name"];
+									$team_2_code = str_replace(' ','_',strtolower($team_2_name));
+									
+									echo '<tr>';
+									echo '<td>'.date_format($date, "d/m/y").'</td>';
+									echo '<td>'.htmlentities($team_1_name).'</td>';
+									if ($active) {
+										echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
+										echo htmlentities($score_1).'-'.htmlentities($score_2);
+										echo '</a>';
+									} else {
+										echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
 									}
-											
+									echo '</td>';
+									echo '<td>'.htmlentities($team_2_name).'</td>';
+									if ($note) {
+										echo '<td>('.htmlentities($note).')</a>';
+									}
+									echo '</tr>';
+							
+									if ($standings == true) {
+										
+										$stage_results[] = $match_result;
+									
+										if (!in_array($team_1_name, $stage_teams)) {
+											$stage_teams[] = $team_1_name;
+										}
+										if (!in_array($team_2_name, $stage_teams)) {
+											$stage_teams[] = $team_2_name;
+										}	
+									
+										foreach ($stage_teams as $team_record) {
+											if (!in_array($team_record, $stage_standings)) {
+												$stage_standings[$team_record] = array(
+													'team' => $team_record,
+													'played' => 0,
+													'won' => 0,
+													'drawn' => 0,
+													'lost' => 0,
+													'for' => 0,
+													'against' => 0,
+													'points' => 0,
+												);
+											}
+													
+										}
+										
+										$standings_matches += 1;
+										
+									}
+									
 								}
 								
-								$standings_matches += 1;
-								
 							}
+							
+							echo '</table>';	
 						
-						}	
+						echo '</div>';					
 						
-					}
+						echo '<div class="flex-item "><br>';
 					
-					echo '</table>';
+						if ($standings_matches > 0) {
+							
+							
+							echo '<table class="standings">';
+							echo '<tr>
+								<th>Pos</th>
+								<th>Team</th>
+								<th>P</th>
+								<th>W</th>
+								<th>D</th>
+								<th>L</th>
+								<th>F</th>
+								<th>A</th>
+								<th>GD</th>
+								<th>Pts</th>
+								</tr>';
+								
+							$position = 1;
+							
+							foreach ($stage_standings as $standings_record) {
+								
+								
+								foreach ($stage_results as $standings_match) {
+									
+									if ($standings_match['team_1_name'] == $standings_record['team']) {
+										$standings_record['played'] += 1;
+										if ($standings_match['score_1'] > $standings_match['score_2']) {
+											$standings_record['won'] += 1;
+											$standings_record['points'] += 2;
+										} elseif ($standings_match['score_1'] < $standings_match['score_2']) {
+											$standings_record['lost'] += 1;
+										} else {
+											$standings_record['drawn'] += 1;
+											$standings_record['points'] += 1;
+										}
+										$standings_record['for'] += $standings_match['score_1'];
+										$standings_record['against'] += $standings_match['score_2'];
+									} elseif ($standings_match['team_2_name'] == $standings_record['team']) {
+										$standings_record['played'] += 1;
+										if ($standings_match['score_1'] < $standings_match['score_2']) {
+											$standings_record['won'] += 1;
+											$standings_record['points'] += 2;
+										} elseif ($standings_match['score_1'] > $standings_match['score_2']) {
+											$standings_record['lost'] += 1;
+										} else {
+											$standings_record['drawn'] += 1;
+											$standings_record['points'] += 1;
+										}
+										$standings_record['for'] += $standings_match['score_2'];
+										$standings_record['against'] += $standings_match['score_1'];
+									}
+									
+								}
+							
+								echo '<tr>
+								<td>'.$position.'</td>
+								<td>'.$standings_record['team'].'</td>
+								<td>'.$standings_record['played'].'</td>
+								<td>'.$standings_record['won'].'</td>
+								<td>'.$standings_record['drawn'].'</td>
+								<td>'.$standings_record['lost'].'</td>
+								<td>'.$standings_record['for'].'</td>
+								<td>'.$standings_record['against'].'</td>
+								<td>'.$standings_record['for'] - $standings_record['against'].'</td>
+								<td>'.$standings_record['points'].'</td>
+								</tr>';
+								$position++;
+							}
+							echo '</table>';
+							
+						}
+						
+						echo '</div>';
 					
 					echo '</div>';
 					
-					echo '<div class="flex-item"><br>';
-					
-					if ($standings_matches > 0) {
-						
-						echo '<table class="standings">';
-						echo '<tr>
-							<th>Pos</th>
-							<th>Team</th>
-							<th>P</th>
-							<th>W</th>
-							<th>D</th>
-							<th>L</th>
-							<th>F</th>
-							<th>A</th>
-							<th>GD</th>
-							<th>Pts</th>
-							</tr>';
-						$position = 1;
-						foreach ($stage_standings as $standings_record) {
-							echo '<tr>
-							<td>'.$position.'</td>
-							<td>'.$standings_record['team'].'</td>
-							<td>'.$standings_record['played'].'</td>
-							<td>'.$standings_record['won'].'</td>
-							<td>'.$standings_record['drawn'].'</td>
-							<td>'.$standings_record['lost'].'</td>
-							<td>'.$standings_record['for'].'</td>
-							<td>'.$standings_record['against'].'</td>
-							<td>'.$standings_record['for'] - $standings_record['against'].'</td>
-							<td>'.$standings_record['points'].'</td>
-							</tr>';
-						$position++;
-						}
-						echo '</table>';
-						
-						
-					}
-						echo '</div>';
-						echo '</div>';
-			
 				}
 				
 			?>
