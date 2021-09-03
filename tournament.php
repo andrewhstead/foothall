@@ -266,6 +266,7 @@
 													'lost' => 0,
 													'for' => 0,
 													'against' => 0,
+													'difference' => 0,
 													'points' => 0,
 												);
 											}
@@ -288,7 +289,6 @@
 					
 						if ($standings_matches > 0) {
 							
-							
 							echo '<table class="standings">';
 							echo '<tr>
 								<th>Pos</th>
@@ -305,8 +305,9 @@
 								
 							$position = 1;
 							
+							$display_standings = array();
+							
 							foreach ($stage_standings as $standings_record) {
-								
 								
 								foreach ($stage_results as $standings_match) {
 									
@@ -336,21 +337,34 @@
 										}
 										$standings_record['for'] += $standings_match['score_2'];
 										$standings_record['against'] += $standings_match['score_1'];
+										
 									}
+									$standings_record['difference'] = $standings_record['for'] - $standings_record['against'];
 									
 								}
+								
+								$display_standings[] = $standings_record;
+								
+							}
+							
+							$points = array_column($display_standings, 'points');
+							$difference = array_column($display_standings, 'difference');
+							$goals_for = array_column($display_standings, 'for');
+							array_multisort($points, SORT_DESC, $difference, SORT_DESC, $goals_for, SORT_DESC, $display_standings);
+							
+							foreach ($display_standings as $display_record) {
 							
 								echo '<tr>
 								<td>'.$position.'</td>
-								<td>'.$standings_record['team'].'</td>
-								<td>'.$standings_record['played'].'</td>
-								<td>'.$standings_record['won'].'</td>
-								<td>'.$standings_record['drawn'].'</td>
-								<td>'.$standings_record['lost'].'</td>
-								<td>'.$standings_record['for'].'</td>
-								<td>'.$standings_record['against'].'</td>
-								<td>'.$standings_record['for'] - $standings_record['against'].'</td>
-								<td>'.$standings_record['points'].'</td>
+								<td>'.$display_record['team'].'</td>
+								<td>'.$display_record['played'].'</td>
+								<td>'.$display_record['won'].'</td>
+								<td>'.$display_record['drawn'].'</td>
+								<td>'.$display_record['lost'].'</td>
+								<td>'.$display_record['for'].'</td>
+								<td>'.$display_record['against'].'</td>
+								<td>'.$display_record['difference'].'</td>
+								<td>'.$display_record['points'].'</td>
 								</tr>';
 								$position++;
 							}
