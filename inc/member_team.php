@@ -221,10 +221,14 @@
 					hall_teams.id AS database_id, 
 					hall_teams.era AS era, 
 					hall_teams.team_type AS team_type, 
+					teams.id AS database_team, 
 					teams.name AS team_name, 
-					teams.display_name AS display_name
+					teams.display_name AS display_name,
+					teams.country AS nationality,
+					countries.id AS country_id
 					FROM hall_teams 
 					INNER JOIN teams ON hall_teams.team_name = teams.name
+					INNER JOIN countries ON teams.country = countries.abbreviation
 					WHERE hall_teams.id = '$team_id'";
 				$tag_query = $connectDB->query($tags);
 								
@@ -233,14 +237,16 @@
 					$database_id = $dataRows["database_id"];
 					$team_tag = $dataRows["display_name"];
 					$team_type = $dataRows["team_type"];
+					$database_team = $dataRows["database_team"];
+					$country_id = $dataRows["country_id"];
 					
 					if ($team_type == 'national') {
 						
-						echo '<a class="tag-link" href="country.php?id='.$database_id.'"><div class="tag">'.htmlentities($team_tag).'</div></a>';
+						echo '<a class="tag-link" href="country.php?id='.$country_id.'"><div class="tag">'.htmlentities($team_tag).'</div></a>';
 						
-					} elseif ($match_type == 'club') {
+					} elseif ($team_type == 'club') {
 						
-						echo '<a class="tag-link" href="club.php?id='.$database_id.'"><div class="tag">'.htmlentities($team_tag).'</div></a>';
+						echo '<a class="tag-link" href="club.php?id='.$database_team.'"><div class="tag">'.htmlentities($team_tag).'</div></a>';
 						
 					}
 						
