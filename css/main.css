@@ -1086,6 +1086,16 @@ hr {
 	margin: 0 auto;
 }
 
+.standings th {
+	text-align: left;
+}
+.standings td {
+	text-align: center;
+}
+.standings td:nth-of-type(2) {
+	text-align: left;
+}
+
 @media only screen and (min-width: 551px) {
 
 	.admin-flex {

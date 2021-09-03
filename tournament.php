@@ -199,6 +199,9 @@
 				
 				foreach ($stage_list as $tournament_stage) {
 					
+					echo '<div class="flex-wrapper">';
+					echo '<div class="flex-item ">';
+					
 					$standings_matches = 0;
 					
 					echo '<h3>'.$tournament_stage.'</h3>';
@@ -206,7 +209,8 @@
 					echo '<table class="results-table">';
 					
 					$stage_teams = array();
-									
+					$stage_standings = array();
+					
 					foreach ($results as $match_result) {
 						
 						$match_id = $match_result["match_id"];
@@ -241,44 +245,49 @@
 							echo '</tr>';
 							
 							if ($standings == true) {
-								$standings_matches += 1;
-							}
 							
-							if (!in_array($team_1_name, $stage_teams)) {
-								$stage_teams[] = $team_1_name;
-							}
-							if (!in_array($team_2_name, $stage_teams)) {
-								$stage_teams[] = $team_2_name;
-							}
-							
-							$stage_standings = array();
-							
-							foreach ($stage_teams as $team_record) {
-								if (!in_array($team_record, $stage_standings)) {
-									$stage_standings[$team_record] = array(
-										'team' => $team_record,
-										'played' => 0,
-										'won' => 0,
-										'drawn' => 0,
-										'lost' => 0,
-										'for' => 0,
-										'against' => 0,
-										'points' => 0,
-									);
+								if (!in_array($team_1_name, $stage_teams)) {
+									$stage_teams[] = $team_1_name;
+								}
+								if (!in_array($team_2_name, $stage_teams)) {
+									$stage_teams[] = $team_2_name;
+								}	
+									
+								foreach ($stage_teams as $team_record) {
+									if (!in_array($team_record, $stage_standings)) {
+										$stage_standings[$team_record] = array(
+											'team' => $team_record,
+											'played' => 0,
+											'won' => 0,
+											'drawn' => 0,
+											'lost' => 0,
+											'for' => 0,
+											'against' => 0,
+											'points' => 0,
+										);
+									}
+											
 								}
 								
-							}					
+								$standings_matches += 1;
+								
+							}
 						
-						}		
+						}	
 						
 					}
 					
 					echo '</table>';
 					
+					echo '</div>';
+					
+					echo '<div class="flex-item"><br>';
+					
 					if ($standings_matches > 0) {
 						
-						echo '<table>';
+						echo '<table class="standings">';
 						echo '<tr>
+							<th>Pos</th>
 							<th>Team</th>
 							<th>P</th>
 							<th>W</th>
@@ -289,8 +298,10 @@
 							<th>GD</th>
 							<th>Pts</th>
 							</tr>';
+						$position = 1;
 						foreach ($stage_standings as $standings_record) {
 							echo '<tr>
+							<td>'.$position.'</td>
 							<td>'.$standings_record['team'].'</td>
 							<td>'.$standings_record['played'].'</td>
 							<td>'.$standings_record['won'].'</td>
@@ -301,10 +312,14 @@
 							<td>'.$standings_record['for'] - $standings_record['against'].'</td>
 							<td>'.$standings_record['points'].'</td>
 							</tr>';
+						$position++;
 						}
 						echo '</table>';
 						
+						
 					}
+						echo '</div>';
+						echo '</div>';
 			
 				}
 				
