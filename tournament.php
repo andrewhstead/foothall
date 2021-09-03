@@ -169,6 +169,8 @@
 						tournaments.id AS tournament_id,
 						tournaments.year AS year,
 						tournaments.name AS tournament,
+						matches.note AS note,
+						matches.standings AS standings,
 						matches.round AS round,
 						matches.stage AS stage,
 						matches.section AS section,
@@ -201,15 +203,21 @@
 					
 					echo '<table class="results-table">';
 					
+					$stage_teams = array();
+									
 					foreach ($results as $match_result) {
 						
 						$match_id = $match_result["match_id"];
 						$active = $match_result["active"];
+						$note = $match_result["note"];
+						$standings = $match_result["standings"];
 						$date = new DateTime($match_result["date"]);
 						$team_1_name = $match_result["team_1_name"];
+						$team_1_code = str_replace(' ','_',strtolower($team_1_name));
 						$score_1 = $match_result["score_1"];
 						$score_2 = $match_result["score_2"];
 						$team_2_name = $match_result["team_2_name"];
+						$team_2_code = str_replace(' ','_',strtolower($team_2_name));
 						
 						if ($match_result['stage'] == $tournament_stage) {
 							
@@ -225,12 +233,67 @@
 							}
 							echo '</td>';
 							echo '<td>'.htmlentities($team_2_name).'</td>';
+							if ($note) {
+								echo '<td>('.htmlentities($note).')</a>';
+							}
 							echo '</tr>';
 						
-						}
+							if (!in_array($team_1_name, $stage_teams)) {
+								$stage_teams[] = $team_1_name;
+							}
+							if (!in_array($team_2_name, $stage_teams)) {
+								$stage_teams[] = $team_2_name;
+							}
+							
+							$stage_standings = array();
+							
+							foreach ($stage_teams as $team_record) {
+								if (!in_array($team_record, $stage_standings)) {
+									$stage_standings[$team_record] = array(
+										'team' => $team_record,
+										'played' => 0,
+										'won' => 0,
+										'drawn' => 0,
+										'lost' => 0,
+										'for' => 0,
+										'against' => 0,
+										'points' => 0,
+									);
+								}
+								
+							}					
+						
+						}		
 						
 					}
 					
+					echo '</table>';
+					
+					echo '<table>';
+					echo '<tr>
+						<th>Team</th>
+						<th>P</th>
+						<th>W</th>
+						<th>D</th>
+						<th>L</th>
+						<th>F</th>
+						<th>A</th>
+						<th>GD</th>
+						<th>Pts</th>
+						</tr>';
+					foreach ($stage_standings as $standings_record) {
+						echo '<tr>
+						<td>'.$standings_record['team'].'</td>
+						<td>'.$standings_record['played'].'</td>
+						<td>'.$standings_record['won'].'</td>
+						<td>'.$standings_record['drawn'].'</td>
+						<td>'.$standings_record['lost'].'</td>
+						<td>'.$standings_record['for'].'</td>
+						<td>'.$standings_record['against'].'</td>
+						<td>'.$standings_record['for'] - $standings_record['against'].'</td>
+						<td>'.$standings_record['points'].'</td>
+						</tr>';
+					}
 					echo '</table>';
 			
 				}
