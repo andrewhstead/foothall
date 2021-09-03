@@ -199,6 +199,8 @@
 				
 				foreach ($stage_list as $tournament_stage) {
 					
+					$standings_matches = 0;
+					
 					echo '<h3>'.$tournament_stage.'</h3>';
 					
 					echo '<table class="results-table">';
@@ -237,7 +239,11 @@
 								echo '<td>('.htmlentities($note).')</a>';
 							}
 							echo '</tr>';
-						
+							
+							if ($standings == true) {
+								$standings_matches += 1;
+							}
+							
 							if (!in_array($team_1_name, $stage_teams)) {
 								$stage_teams[] = $team_1_name;
 							}
@@ -269,32 +275,36 @@
 					
 					echo '</table>';
 					
-					echo '<table>';
-					echo '<tr>
-						<th>Team</th>
-						<th>P</th>
-						<th>W</th>
-						<th>D</th>
-						<th>L</th>
-						<th>F</th>
-						<th>A</th>
-						<th>GD</th>
-						<th>Pts</th>
-						</tr>';
-					foreach ($stage_standings as $standings_record) {
+					if ($standings_matches > 0) {
+						
+						echo '<table>';
 						echo '<tr>
-						<td>'.$standings_record['team'].'</td>
-						<td>'.$standings_record['played'].'</td>
-						<td>'.$standings_record['won'].'</td>
-						<td>'.$standings_record['drawn'].'</td>
-						<td>'.$standings_record['lost'].'</td>
-						<td>'.$standings_record['for'].'</td>
-						<td>'.$standings_record['against'].'</td>
-						<td>'.$standings_record['for'] - $standings_record['against'].'</td>
-						<td>'.$standings_record['points'].'</td>
-						</tr>';
+							<th>Team</th>
+							<th>P</th>
+							<th>W</th>
+							<th>D</th>
+							<th>L</th>
+							<th>F</th>
+							<th>A</th>
+							<th>GD</th>
+							<th>Pts</th>
+							</tr>';
+						foreach ($stage_standings as $standings_record) {
+							echo '<tr>
+							<td>'.$standings_record['team'].'</td>
+							<td>'.$standings_record['played'].'</td>
+							<td>'.$standings_record['won'].'</td>
+							<td>'.$standings_record['drawn'].'</td>
+							<td>'.$standings_record['lost'].'</td>
+							<td>'.$standings_record['for'].'</td>
+							<td>'.$standings_record['against'].'</td>
+							<td>'.$standings_record['for'] - $standings_record['against'].'</td>
+							<td>'.$standings_record['points'].'</td>
+							</tr>';
+						}
+						echo '</table>';
+						
 					}
-					echo '</table>';
 			
 				}
 				
