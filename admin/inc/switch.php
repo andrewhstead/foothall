@@ -59,16 +59,19 @@
 		case "people_votes":
 			$identifier = "person_vote";
 			$list_column = "option";
+			$disambiguation = "poll";
 			$url_column = "id";
 			break;
 		case "match_votes":
 			$identifier = "match_vote";
 			$list_column = "option";
+			$disambiguation = "poll";
 			$url_column = "id";
 			break;
 		case "team_votes":
 			$identifier = "team_vote";
 			$list_column = "option";
+			$disambiguation = "poll";
 			$url_column = "id";
 			break;
 		case "tables":
@@ -97,6 +100,7 @@
 		case "tournament_teams":
 			$identifier = "tournament_team";
 			$list_column = "team_name";
+			$disambiguation = "tournament_name";
 			$url_column = "id";
 			break;
 		case "users":
@@ -106,6 +110,9 @@
 			break;
 		case "goals":
 			$identifier = "goal";
+			$list_column = "score";
+			$disambiguation = "match_code";
+			$url_column = "id";
 			break;
 		default:
 			$identifier = "person";

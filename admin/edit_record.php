@@ -34,7 +34,9 @@
 		</h1>		
 	
 		<h2>
-			<?php echo htmlentities(str_replace('_', ' ', $$list_column)).'<br>id: '.htmlentities($database_id); ?>
+			<?php 
+				echo htmlentities(str_replace('_', ' ', $$list_column)).'<br>id: '.htmlentities($database_id) ;
+			?>
 		</h2>		
 		
 		<?php

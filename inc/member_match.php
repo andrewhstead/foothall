@@ -260,7 +260,7 @@
 	
 					$goals = " 
 						SELECT * FROM goals
-						WHERE match_name = '$title'
+						WHERE match_code = '$file_code'
 						ORDER BY minute, stoppage_time";
 					$goal_query = $connectDB->query($goals);
 					
