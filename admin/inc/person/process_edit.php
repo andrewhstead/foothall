@@ -115,7 +115,7 @@
 		$file_code = $dataRows["file_code"];
 		$nationality = $dataRows["nationality"];
 		$contender = $dataRows["contender"];
-active		$admitted = $dataRows["active"];
+		$admitted = $dataRows["active"];
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];
 		$as_player = $dataRows["as_player"];

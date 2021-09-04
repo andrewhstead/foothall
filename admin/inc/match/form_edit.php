@@ -9,13 +9,14 @@
 					<?php
 						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
 						$teams_query = $connectDB->query($teams_sql);
+						echo'<option label=" "></option>';
 						while ($dataRows = $teams_query->fetch()) {
 							$team_name = $dataRows["name"];
-							echo '<option value="'.$dataRows["name"].'"';
+							echo '<option ';
 							if ($dataRows["name"] == $team_1_full) {
-								echo ' selected ';
+								echo 'selected ';
 							}	
-							echo '>'.$dataRows["name"].'</option>';
+							echo 'value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
@@ -25,13 +26,14 @@
 					<?php
 						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
 						$teams_query = $connectDB->query($teams_sql);
+						echo'<option label=" "></option>';
 						while ($dataRows = $teams_query->fetch()) {
 							$team_name = $dataRows["name"];
-							echo '<option value="'.$dataRows["name"].'"';
+							echo '<option ';
 							if ($dataRows["name"] == $team_2_full) {
-								echo ' selected ';
+								echo 'selected ';
 							}	
-							echo '>'.$dataRows["name"].'</option>';
+							echo 'value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
@@ -69,13 +71,14 @@
 					<?php
 						$competitions = "SELECT * FROM competitions ORDER BY type desc, area, continent, name";
 						$competition_query = $connectDB->query($competitions);
+						echo'<option label=" "></option>';
 						while ($dataRows = $competition_query->fetch()) {
 							$competition_name = $dataRows["name"];
-							echo '<option ';
+							echo '<option value="'.$dataRows["name"].'"';
 							if ($dataRows["name"] == $competition) {
-								echo 'selected ';
-							}	
-							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
+								echo ' selected';
+							}
+							echo '>'.$dataRows["name"].'</option>';
 						}
 					?>
 					</select>
@@ -85,13 +88,14 @@
 					<?php
 						$tournaments = "SELECT * FROM tournaments ORDER BY competition, year";
 						$tournament_query = $connectDB->query($tournaments);
+						echo'<option label=" "></option>';
 						while ($dataRows = $tournament_query->fetch()) {
 							$tournament_name = $dataRows["name"];
-							echo '<option ';
+							echo '<option value="'.$dataRows["name"].'"';
 							if ($dataRows["name"] == $tournament) {
-								echo 'selected ';
-							}	
-							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
+								echo ' selected';
+							}
+							echo '>'.$dataRows["name"].'</option>';
 						}
 					?>
 					</select>

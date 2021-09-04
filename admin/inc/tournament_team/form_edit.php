@@ -9,13 +9,13 @@
 						<?php
 							$tournaments = "SELECT * FROM tournaments ORDER BY competition, year";
 							$tournament_query = $connectDB->query($tournaments);
+							echo'<option label=" "></option>';
 							while ($dataRows = $tournament_query->fetch()) {
-								$tournament_name = $dataRows["name"];
-								echo '<option value="'.$dataRows["name"].'"';
+								echo '<option ';
 								if ($dataRows["name"] == $tournament_name) {
-									echo ' selected ';
-								}	
-								echo '>'.$dataRows["name"].'</option>';
+									echo 'selected ';
+								}
+								echo 'value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 							}
 						?>
 						</select>
@@ -25,13 +25,13 @@
 						<?php
 							$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
 							$teams_query = $connectDB->query($teams_sql);
+							echo'<option label=" "></option>';
 							while ($dataRows = $teams_query->fetch()) {
-								$team_name = $dataRows["name"];
-								echo '<option value="'.$dataRows["name"].'"';
+								echo '<option ';
 								if ($dataRows["name"] == $team_name) {
-									echo ' selected ';
-								}	
-								echo '>'.$dataRows["name"].'</option>';
+									echo 'selected ';
+								}
+								echo 'value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 							}
 						?>	
 						</select>
