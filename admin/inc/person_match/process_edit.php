@@ -3,19 +3,44 @@
 	if(isset($_POST["submit"])) {
 		
 		$new_person = $_POST["person"];
-		$new_dream_team = $_POST["dream-team"];
+		$new_team = $_POST["team"];
+		$new_match = $_POST["match"];
+		if ($_POST["status"] == "started") {
+			$new_started = true;
+			$new_substitute = false;
+		} elseif ($_POST["status"] == "substitute") {
+			$new_started = false;
+			$new_substitute = true;
+		}
 		$new_number = $_POST["number"];
-		$new_position = $_POST["position"];
+		$new_replaced = $_POST["replaced"];
+		$new_minute = $_POST["minute"];
+		if (isset($_POST["captain"])) {
+			$new_captain = true;
+		} else {
+			$new_captain = false;
+		}
+		if (isset($_POST["goalkeeper"])) {
+			$new_goalkeeper = true;
+		} else {
+			$new_goalkeeper = false;
+		}
 		$new_active = true;
 
-		$sql = "UPDATE people_dream SET person=:NewPerson, dream_team=:NewDream, number=:NewNumber, position=:NewPosition WHERE id = '$record_id'";
+		$sql = "UPDATE people_matches SET person=:NewPerson, team=:NewTeam, match_code=:NewMatch, started=:NewStarted, sub_appeared=:NewSubstitute, replaced=:NewReplaced, minute=:NewMinute, captain=:NewCaptain, goalkeeper=:NewGoalkeeper, shirt=:NewNumber WHERE id = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewPerson', $new_person);
-		$stmt->bindValue(':NewDream', $new_dream_team);
+		$stmt->bindValue(':NewTeam', $new_team);
+		$stmt->bindValue(':NewMatch', $new_match);
+		$stmt->bindValue(':NewStarted', $new_started);
+		$stmt->bindValue(':NewSubstitute', $new_substitute);
+		$stmt->bindValue(':NewReplaced', $new_replaced);
+		$stmt->bindValue(':NewMinute', $new_minute);
+		$stmt->bindValue(':NewCaptain', $new_captain);
+		$stmt->bindValue(':NewGoalkeeper', $new_goalkeeper);
 		$stmt->bindValue(':NewNumber', $new_number);
-		$stmt->bindValue(':NewPosition', $new_position);
 		
 		$execute = $stmt->execute();
 		
@@ -38,16 +63,22 @@
 
 	}
 		
-	$dream_person = "SELECT * FROM people_dream WHERE id = '$record_id'";
-	$dream_person_query = $connectDB->query($dream_person);
+	$match_person = "SELECT * FROM people_matches WHERE id = '$record_id'";
+	$match_person_query = $connectDB->query($match_person);
 		
-	while ($dataRows = $dream_person_query->fetch()) {
+	while ($dataRows = $match_person_query->fetch()) {
 
 		$database_id = $dataRows["id"];
 		$person = $dataRows["person"];
-		$dream_team = $dataRows["dream_team"];
-		$number = $dataRows["number"];
-		$position = $dataRows["position"];
+		$team_id = $dataRows["team"];
+		$match_code = $dataRows["match_code"];
+		$started = $dataRows["started"];
+		$substitute = $dataRows["sub_appeared"];
+		$replaced = $dataRows["replaced"];
+		$minute = $dataRows["minute"];
+		$captain = $dataRows["captain"];
+		$goalkeeper = $dataRows["goalkeeper"];
+		$number = $dataRows["shirt"];
 		
 	}
 	

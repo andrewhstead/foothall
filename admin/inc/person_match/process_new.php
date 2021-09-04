@@ -3,19 +3,45 @@
 	if(isset($_POST["submit"])) {
 		
 		$new_person = $_POST["person"];
-		$new_dream_team = $_POST["dream-team"];
+		$new_team = $_POST["team"];
+		$new_match = $_POST["match"];
+		if ($_POST["status"] == "started") {
+			$new_started = true;
+			$new_substitute = false;
+		} elseif ($_POST["status"] == "substitute") {
+			$new_started = false;
+			$new_substitute = true;
+		}
 		$new_number = $_POST["number"];
-		$new_position = $_POST["position"];
+		$new_replaced = $_POST["replaced"];
+		$new_minute = $_POST["minute"];
+		if (isset($_POST["captain"])) {
+			$new_captain = true;
+		} else {
+			$new_captain = false;
+		}
+		if (isset($_POST["goalkeeper"])) {
+			$new_goalkeeper = true;
+		} else {
+			$new_goalkeeper = false;
+		}
+		$new_active = true;
 
-		$sql = "INSERT INTO people_dream (person, dream_team, number, position)";
-		$sql .= "VALUES (:NewPerson, :NewDream, :NewNumber, :NewPosition)";
+		$sql = "INSERT INTO people_matches (person, team, match_code, started, sub_appeared, replaced, minute, captain, goalkeeper, shirt)";
+		$sql .= "VALUES (:NewPerson, :NewTeam, :NewMatch, :NewStarted, :NewSubstitute, :NewReplaced, :NewMinute, :NewCaptain, :NewGoalkeeper, :NewNumber)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewPerson', $new_person);
-		$stmt->bindValue(':NewDream', $new_dream_team);
+		$stmt->bindValue(':NewTeam', $new_team);
+		$stmt->bindValue(':NewMatch', $new_match);
+		$stmt->bindValue(':NewStarted', $new_started);
+		$stmt->bindValue(':NewSubstitute', $new_substitute);
+		$stmt->bindValue(':NewReplaced', $new_replaced);
+		$stmt->bindValue(':NewMinute', $new_minute);
+		$stmt->bindValue(':NewCaptain', $new_captain);
+		$stmt->bindValue(':NewGoalkeeper', $new_goalkeeper);
 		$stmt->bindValue(':NewNumber', $new_number);
-		$stmt->bindValue(':NewPosition', $new_position);
 
 		$execute = $stmt->execute();
 		

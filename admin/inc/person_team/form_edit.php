@@ -24,10 +24,10 @@
 						<label for="team">Team:</label>
 						<select id="team" name="team">
 						<?php
-							$dream = "SELECT * FROM teams ORDER BY name";
-							$dream_query = $connectDB->query($dream);
+							$team_name = "SELECT * FROM teams ORDER BY name";
+							$team_name_query = $connectDB->query($team_name);
 							echo'<option label=" "></option>';
-							while ($dataRows = $dream_query->fetch()) {
+							while ($dataRows = $team_name_query->fetch()) {
 								echo '<option value="'.$dataRows["name"].'"';
 								
 								if ($dataRows["name"] == $team) {
