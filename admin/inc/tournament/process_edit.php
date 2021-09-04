@@ -41,6 +41,13 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_review = $_POST["review"];
 		
+		$team_number = 1;
+		$new_team_list = array();
+		foreach ($_POST["team-list"] as $list_team) {
+			$new_team_list[$team_number] = $list_team;
+			$team_number++;
+		}
+		
 		$sql = "UPDATE tournaments SET competition=:NewCompetition, year=:NewYear, name=:NewName, active=:NewActive, completed=:NewCompleted, host=:NewHost, host_2=:NewHost2, host_3=:NewHost3,  host_4=:NewHost4, teams=:NewTeams, games=:NewGames, goals=:NewGoals, winner=:NewWinner, runner_up=:NewRunnerUp, top_scorer=:NewTopScorer, scored=:NewGoalsTop, intro_text=:NewIntroText, review=:NewReview WHERE id = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);

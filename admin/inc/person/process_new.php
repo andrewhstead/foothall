@@ -94,6 +94,16 @@
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			
+			if ($_POST['submit'] == 'Save and Add Another') {
+				redirect_to("add_new.php?type=people");
+			} else if ($_POST['submit'] == 'Save and Close') {
+				if ($new_active == true) {
+				redirect_to("view_list.php?type=people&status=active");
+				} else if ($new_active == false) {
+					redirect_to("view_list.php?type=people&status=inactive");
+				}
+			}
+			
 		} else {
 
 			$_SESSION["error_message"] = "Something went wrong. Please try again.";

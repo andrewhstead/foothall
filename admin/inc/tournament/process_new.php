@@ -92,9 +92,7 @@
 			$_SESSION["success_message"] = "Your match has been saved successfully.";
 			
 			if ($_POST['submit'] == 'Save and Add Teams') {
-				redirect_to("edit_record.php?type=tournaments&code=$new_record");
-			} else if ($_POST['submit'] == 'Save and Add Goals') {
-				redirect_to("edit_record.php?type=goals");
+				redirect_to("edit_record.php?type=tournament_teams");
 			} else if ($_POST['submit'] == 'Save and Finish') {
 				if ($new_admitted == true) {
 				redirect_to("view_list.php?type=tournaments&status=active");

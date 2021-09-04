@@ -92,6 +92,7 @@
 				<label for="biography">Biography:</label>
 				<textarea class="editable-area" rows="10" cols="35" name="biography"></textarea>
 				<br>
-				<input class="submit-button" type="submit" name="submit" value="Add Record">
+				<input class="submit-button" type="submit" name="submit" value="Save and Close">
+				<input class="submit-button" type="submit" name="submit" value="Save and Add Another">
 			
 			</form>	

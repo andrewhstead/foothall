@@ -190,7 +190,6 @@
 			<textarea class="editable-area" rows="10" cols="35" name="review"><?php echo $review; ?></textarea>
 			
 			<br>
-		
 			<input class="submit-button" type="submit" name="submit" value="Save Changes">
 			
 		</form>

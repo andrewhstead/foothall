@@ -30,6 +30,8 @@
 						?>	
 						</select>
 						<br>
+						<strong>NB: If team is not listed, go to <a class="standard-link" href="add_new.php?type=teams">Add New Teams</a> before continuing.</strong>
+						<br>
 						<label for="section">Section:</label>
 						<input type="text" name="section" placeholder="Section" id="section">
 						<br>

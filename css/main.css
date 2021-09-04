@@ -596,6 +596,11 @@ h1.info-page:first-of-type {
 	width: 100%;
 }
 
+.admin-wrapper:hover {
+	box-shadow: 0 0 5px 5px #cccccc;
+	background-color: #ffe86e;
+}
+
 .left-section h3{
 	text-align: center;
 }
@@ -612,8 +617,9 @@ h1.info-page:first-of-type {
 }
 
 .admin-link-box:hover {
-	background-color: #321c20;
-	color: #cfb53b;
+	background-color: #cfb53b;
+	color: #321c20;
+	font-weight: bold;
 }
 
 .admin-head {
