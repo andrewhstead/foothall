@@ -103,6 +103,12 @@
 			$disambiguation = "tournament_name";
 			$url_column = "id";
 			break;
+		case "teams_matches":
+			$identifier = "team_match";
+			$list_column = "match_code";
+			$disambiguation = "hall_team";
+			$url_column = "id";
+			break;
 		case "users":
 			$identifier = "user";
 			$list_column = "username";

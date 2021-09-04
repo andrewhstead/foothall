@@ -150,6 +150,7 @@
 								matches.date AS date,
 								matches.competition AS competition,
 								matches.stage AS stage,
+								matches.section AS section,
 								team_1.country AS team_1_nat,
 								team_1.display_name AS team_1_name,
 								matches.score_1 AS score_1,
@@ -179,6 +180,7 @@
 						$team_2_nat = $dataRows["team_2_nat"];
 						$competition = $dataRows["competition"];
 						$stage = $dataRows["stage"];
+						$section = $dataRows["section"];
 						$admitted = $dataRows["admitted"];
 						$team_text = $dataRows["team_text"];
 						$match_id = $dataRows["match_id"];
@@ -196,7 +198,11 @@
 						}
 						echo ' <img class="table-icon" src="img/flags/'.$team_2_nat.'.png" alt="'.$team_2_nat.'">';
 						echo '</h3>';
-						echo '<strong>'.$competition.' '.$stage.'</strong><br>';
+						echo '<strong>'.$competition.' '.$stage;
+						if ($section) {
+							echo ' '.$section;
+						}
+						echo '</strong><br>';
 						echo date_format($date, "j F Y").'<br>';
 						echo '<div class="team-text">'.$team_text.'</div>';
 						

@@ -43,10 +43,10 @@
 
 	}
 		
-	$news = "SELECT * FROM tournament_teams WHERE id = '$record_id'";
-	$news_query = $connectDB->query($news);
+	$tournament_team = "SELECT * FROM tournament_teams WHERE id = '$record_id'";
+	$tournament_team_query = $connectDB->query($tournament_team);
 		
-	while ($dataRows = $news_query->fetch()) {
+	while ($dataRows = $tournament_team_query->fetch()) {
 
 		$database_id = $dataRows["id"];
 		$team_name = $dataRows["team_name"];
