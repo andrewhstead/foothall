@@ -102,7 +102,7 @@
 								people_matches.captain AS captain
 								FROM people_matches
 								INNER JOIN people ON people_matches.person = people.name
-								WHERE match_title = '$title' 
+								WHERE match_code = '$file_code' 
 								ORDER BY goalkeeper desc, shirt";
 					$lineup_query = $connectDB->query($lineups);
 							

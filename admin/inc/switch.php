@@ -74,6 +74,18 @@
 			$disambiguation = "person";
 			$url_column = "id";
 			break;
+		case "people_matches":
+			$identifier = "person_match";
+			$list_column = "match_code";
+			$disambiguation = "person";
+			$url_column = "id";
+			break;
+		case "people_teams":
+			$identifier = "person_team";
+			$list_column = "person";
+			$disambiguation = "hall_team";
+			$url_column = "id";
+			break;
 		case "match_votes":
 			$identifier = "match_vote";
 			$list_column = "option";
@@ -100,9 +112,6 @@
 			$identifier = "tag";
 			$list_column = "table_name";
 			$url_column = "id";
-			break;
-		case "people_tags":
-			$identifier = "person_tag";
 			break;
 		case "positions":
 			$identifier = "position";
