@@ -2,19 +2,17 @@
 
 	if(isset($_POST["submit"])) {
 		
-		$new_hall_team = $_POST["hall-team"];
-		$new_match = $_POST["match"];
-		$new_team_text = $_POST["team-text"];
+		$new_person = $_POST["person"];
+		$new_position = $_POST["position"];
 		$new_active = true;
 
-		$sql = "UPDATE teams_matches SET hall_team=:NewTeam, match_code=:NewMatch, team_text=:NewText WHERE id = '$record_id'";
+		$sql = "UPDATE people_positions SET person=:NewPerson, position=:NewPosition WHERE id = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
-		$stmt->bindValue(':NewTeam', $new_hall_team);
-		$stmt->bindValue(':NewMatch', $new_match);
-		$stmt->bindValue(':NewText', $new_team_text);
-
+		$stmt->bindValue(':NewPerson', $new_person);
+		$stmt->bindValue(':NewPosition', $new_position);
+		
 		$execute = $stmt->execute();
 		
 		if($execute) {
@@ -36,15 +34,14 @@
 
 	}
 		
-	$team_match = "SELECT * FROM teams_matches WHERE id = '$record_id'";
-	$team_match_query = $connectDB->query($team_match);
+	$person_position = "SELECT * FROM people_positions WHERE id = '$record_id'";
+	$person_position_query = $connectDB->query($person_position);
 		
-	while ($dataRows = $team_match_query->fetch()) {
+	while ($dataRows = $person_position_query->fetch()) {
 
 		$database_id = $dataRows["id"];
-		$hall_team = $dataRows["hall_team"];
-		$match_code = $dataRows["match_code"];
-		$team_text = $dataRows["team_text"];
+		$person = $dataRows["person"];
+		$position = $dataRows["position"];
 		
 	}
 	

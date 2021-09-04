@@ -62,6 +62,18 @@
 			$disambiguation = "poll";
 			$url_column = "id";
 			break;
+		case "people_positions":
+			$identifier = "person_position";
+			$list_column = "position";
+			$disambiguation = "person";
+			$url_column = "id";
+			break;
+		case "people_dream":
+			$identifier = "person_dream";
+			$list_column = "dream_team";
+			$disambiguation = "person";
+			$url_column = "id";
+			break;
 		case "match_votes":
 			$identifier = "match_vote";
 			$list_column = "option";
