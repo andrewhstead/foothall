@@ -15,7 +15,11 @@
 		} else {
 			$new_completed = false;
 		}
-		$new_host = $_POST["host"];
+		if (!empty($_POST["host"])) {
+			$new_host = $_POST["host"];
+		} else {
+			$new_host = NULL;
+		}
 		if (!empty($_POST["host-2"])) {
 			$new_host_2 = $_POST["host-2"];
 		} else {
@@ -42,7 +46,7 @@
 		$new_review = $_POST["review"];
 
 		$sql = "INSERT INTO tournaments (competition, year, name, active, completed, host, host_2, host_3, host_4, teams, games, goals, winner, runner_up, top_scorer, scored, intro_text, review)";
-		$sql .= "VALUES (:NewCompetition, :NewYear, :NewName, :NewActive, :NewCompleted, :NewHost, :NewHost2, :NewHost3, :NewHost4, :NewTeams, :NewGames, :NewGoals, :NewWinner, :NewRunnerUp, :NewTopScorer, :NewNationality, :NewGoalsTop, :NewIntroText, :NewReview)";
+		$sql .= "VALUES (:NewCompetition, :NewYear, :NewName, :NewActive, :NewCompleted, :NewHost, :NewHost2, :NewHost3, :NewHost4, :NewTeams, :NewGames, :NewGoals, :NewWinner, :NewRunnerUp, :NewTopScorer, :NewGoalsTop, :NewIntroText, :NewReview)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -66,22 +70,38 @@
 		$stmt->bindValue(':NewReview', $new_review);
 
 		$execute = $stmt->execute();
+		$new_record = $connectDB->lastInsertId();
+
+		$team_number = 1;
 		
-		if($execute) {
+		while ($team_number <= $new_teams) {
+			
+			$tournament_teams = "INSERT INTO tournament_teams (tournament_name)";
+			$tournament_teams .= "VALUES (:NewTournamentName)";
+						
+			$team_stmt = $connectDB->prepare($tournament_teams);
+			$team_stmt->bindValue(':NewTournamentName', $new_name);
+			$teams_execute = $team_stmt->execute();
+			
+			$team_number++;
+			
+		}
+		
+		if($execute AND $teams_execute) {
 
 			$_SESSION["success_message"] = "Your match has been saved successfully.";
 			
-			if ($_POST['submit'] == 'Save and Add Lineups') {
-				redirect_to("edit_record.php?type=people_matches");
+			if ($_POST['submit'] == 'Save and Add Teams') {
+				redirect_to("edit_record.php?type=tournaments&code=$new_record");
 			} else if ($_POST['submit'] == 'Save and Add Goals') {
 				redirect_to("edit_record.php?type=goals");
 			} else if ($_POST['submit'] == 'Save and Finish') {
 				if ($new_admitted == true) {
-				redirect_to("view_list.php?type=matches&status=active");
+				redirect_to("view_list.php?type=tournaments&status=active");
 				} else if (($new_contender == true) && ($new_admitted == false)) {
-					redirect_to("view_list.php?type=matches&status=contenders");
+					redirect_to("view_list.php?type=tournaments&status=contenders");
 				} else if ($new_admitted == 0) {
-					redirect_to("view_list.php?type=matches&status=inactive");
+					redirect_to("view_list.php?type=tournaments&status=inactive");
 				}
 			}
 			

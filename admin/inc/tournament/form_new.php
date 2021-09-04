@@ -1,4 +1,4 @@
-		<form class="edit-form" method="post" action="add_new.php?type=matches">
+		<form class="edit-form" method="post" action="add_new.php?type=tournaments">
 				
 			<div class="flex-wrapper">
 					
@@ -158,6 +158,7 @@
 			<label for="review">Tournament Review:</label>
 			<textarea class="editable-area" rows="10" cols="35" name="review"></textarea>
 			<br>
-			<input class="submit-button" type="submit" name="submit" value="Add Record">
+			<input class="submit-button" type="submit" name="submit" value="Save and Finish">
+			<input class="submit-button" type="submit" name="submit" value="Save and Add Teams">
 			
 		</form>
