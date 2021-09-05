@@ -10,6 +10,22 @@ body {
 	font-family: Economica, Arial, sans-serif;
 }
 
+.cookie-bar {
+	min-height: 150px;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: #cfb53b;
+	color: #321c20;
+	border-top: 1px solid #321c20;
+	padding: 10px;
+	font-size: 1.5em;
+}
+
+.cookie-header {
+	font-size: 1.5em;
+}
+
 header {
 	background-color: #321c20;
 	color: #cfb53b;
@@ -316,6 +332,17 @@ td.progress-bar {
 	background-color: #ccddff;
 	color: #0033cc;
 	border: 1px solid #003399;
+}
+
+.cookie-button {
+	background-color: #3366ff;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+	padding: 0 5px;
+	margin: 0 0 3px 10px;
+	border: 1px solid #0033cc;
+	cursor: pointer;
 }
 
 .hidden {
