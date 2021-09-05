@@ -189,6 +189,7 @@
 	} else {
 		
 		echo '<div class="page-template"><h2>Sorry, no content is currently available.</h2></div>';
+		$page_items = 0;
 
 	}
 

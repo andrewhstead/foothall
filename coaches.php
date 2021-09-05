@@ -15,7 +15,7 @@
 			countries.display_name AS country 
 		FROM people 
 		INNER JOIN countries ON people.nationality = countries.abbreviation
-		WHERE active = true AND as_coach = true  
+		WHERE people.active = true AND as_coach = true  
 		ORDER BY nationality, file_code";
 	$coach_query = $connectDB->query($coaches);
 	
