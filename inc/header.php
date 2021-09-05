@@ -17,6 +17,16 @@
 		
 	</head>
 	
+	<?php
+		
+		if(isset($_POST["choice"])) {
+			if ($_POST["choice"] == 'Accept Cookies') {
+				setcookie('general', 'accepted', time() + (86400 * 30), "/");
+			}
+		}
+	
+	?>
+	
 	<!-- The visible content of the page. -->
 	<body>
 		

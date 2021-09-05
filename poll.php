@@ -254,7 +254,7 @@
 					}
 					echo '<td>'.htmlentities($name).'</td>';
 					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_id.'"> <input type="hidden" name="poll-type" value="'.$poll_type.'">';
-					if (!isset($_COOKIE[$cookie_name])) {
+					if ((isset($_COOKIE['general'])) AND (!isset($_COOKIE[$cookie_name]))) {
 						echo '<input class="vote-button" type="submit" name="vote" value="&#10003;">';
 					}
 					echo '</form></td>';
