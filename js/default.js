@@ -109,3 +109,13 @@ function confirmToggle(id) {
 	}
 	
 }
+
+function hideBar() {
+	
+	var rejected = document.getElementsByClassName("cookie-bar");
+
+	for (var i = 0; i < rejected.length; i++) {
+		rejected[i].classList.add("hidden");
+	}
+	
+}

@@ -16,9 +16,9 @@
 			echo '<br><br>';
 			echo '<span class="cookie-button">View Cookie Policy</span>';
 			echo '<form class="cookie-form" method="post" action="">';
-			echo '<input class="cookie-button" type="submit" name="choice" value="Accept Cookies">';
-			echo '<input class="cookie-button" type="submit" name="choice" value="Reject Cookies">';
+			echo '<input class="cookie-accept" type="submit" name="choice" value="Accept Cookies">';
 			echo '</form>';
+			echo '<input onclick="hideBar()" class="cookie-reject" type="submit" name="choice" value="Reject Cookies">';
 			echo '</div>';
 		?>
 			

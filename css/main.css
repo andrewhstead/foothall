@@ -347,6 +347,32 @@ td.progress-bar {
 	font-family: Economica, Arial, sans-serif;
 }
 
+.cookie-accept {
+	background-color: #00cc33;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+	padding: 0 5px;
+	margin: 0 0 3px 10px;
+	border: 1px solid #006633;
+	cursor: pointer;
+	font-size: 1.2em;
+	font-family: Economica, Arial, sans-serif;
+}
+
+.cookie-reject {
+	background-color: #cc3300;
+	color: white;
+	border-radius: 5px;
+	text-align: center;
+	padding: 0 5px;
+	margin: 0 0 3px 10px;
+	border: 1px solid #663300;
+	cursor: pointer;
+	font-size: 1.2em;
+	font-family: Economica, Arial, sans-serif;
+}
+
 input.cookie-button {
 	display: inline;
 }
