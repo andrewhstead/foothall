@@ -22,6 +22,7 @@
 		if(isset($_POST["choice"])) {
 			if ($_POST["choice"] == 'Accept Cookies') {
 				setcookie('general', 'accepted', time() + (86400 * 30), "/");
+				$_COOKIE['general'] = 'accepted';
 			}
 		}
 	

@@ -347,6 +347,10 @@ td.progress-bar {
 	font-family: Economica, Arial, sans-serif;
 }
 
+input.cookie-button {
+	display: inline;
+}
+
 .cookie-form {
 	display: inline;
 }
