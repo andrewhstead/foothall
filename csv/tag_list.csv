@@ -1,0 +1,8 @@
+"id","table_name","page_type","active"
+"1","people_positions","people","1"
+"2","people_matches","people","1"
+"3","people_teams","people","1"
+"4","people_dream","people","1"
+"5","tournament_teams","tournaments","1"
+"6","teams_matches","teams","1"
+"7","goals","matches","1"
