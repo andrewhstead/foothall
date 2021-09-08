@@ -80,7 +80,6 @@
 			<?php
 			
 				echo htmlentities($profile);
-				
 			?>
 		
 		</div>
