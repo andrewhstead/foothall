@@ -123,17 +123,14 @@
 					<label for="winner">Winner:</label>
 					<select id="winner" name="winner">
 					<?php
-						echo'<option label=" "></option>';
-						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
-						$country_query = $connectDB->query($countries);
-						while ($dataRows = $country_query->fetch()) {
-							$country_name = $dataRows["display_name"];
-							$country_abbreviation = $dataRows["abbreviation"];
-							echo '<option value="'.$dataRows["abbreviation"].'"';
-							if ($dataRows["abbreviation"] == $winner) {
+						$teams = "SELECT * FROM teams ORDER BY name";
+						$team_query = $connectDB->query($teams);
+						while ($dataRows = $team_query->fetch()) {
+							echo '<option value="'.$dataRows["name"].'"';
+							if ($dataRows["name"] == $winner) {
 								echo ' selected ';
 							}	
-							echo '>'.$dataRows["display_name"].'</option>';
+							echo '>'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
@@ -142,16 +139,14 @@
 					<select id="runner-up" name="runner-up">
 					<?php
 						echo'<option label=" "></option>';
-						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
-						$country_query = $connectDB->query($countries);
-						while ($dataRows = $country_query->fetch()) {
-							$country_name = $dataRows["display_name"];
-							$country_abbreviation = $dataRows["abbreviation"];
-							echo '<option value="'.$dataRows["abbreviation"].'"';
-							if ($dataRows["abbreviation"] == $runner_up) {
+						$teams = "SELECT * FROM teams ORDER BY name";
+						$team_query = $connectDB->query($teams);
+						while ($dataRows = $team_query->fetch()) {
+							echo '<option value="'.$dataRows["name"].'"';
+							if ($dataRows["name"] == $runner_up) {
 								echo ' selected ';
 							}	
-							echo '>'.$dataRows["display_name"].'</option>';
+							echo '>'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>

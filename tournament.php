@@ -29,13 +29,14 @@
 		host_4.display_name AS host_4_name,
 		tournaments.winner AS winner,
 		winner.display_name AS winner_name,
+		winner.country AS winner_nat,
 		tournaments.runner_up AS runner_up,
 		runner_up.display_name AS runner_up_name,
+		runner_up.country AS runner_up_nat,
 		tournaments.teams AS teams,
 		tournaments.games AS games,
 		tournaments.goals AS goals,
 		tournaments.top_scorer AS top_scorer,
-		tournaments.nationality AS scorer_nation,
 		tournaments.scored AS scored,
 		tournaments.intro_text AS intro_text,
 		tournaments.review AS review
@@ -45,8 +46,8 @@
 		LEFT JOIN countries host_2 ON tournaments.host_2 = host_2.abbreviation 
 		LEFT JOIN countries host_3 ON tournaments.host_3 = host_3.abbreviation 
 		LEFT JOIN countries host_4 ON tournaments.host_4 = host_4.abbreviation 
-		LEFT JOIN countries winner ON tournaments.winner = winner.abbreviation 
-		LEFT JOIN countries runner_up ON tournaments.runner_up = runner_up.abbreviation 
+		LEFT JOIN teams winner ON tournaments.winner = winner.name 
+		LEFT JOIN teams runner_up ON tournaments.runner_up = runner_up.name 
 		WHERE tournaments.id = $tournament_id";
 	$tournament_query = $connectDB->query($tournament);
 	
@@ -66,13 +67,14 @@
 		$host_4_name = $dataRows["host_4_name"];
 		$winner = $dataRows["winner"];
 		$winner_name = $dataRows["winner_name"];
+		$winner_nat = $dataRows["winner_nat"];
 		$runner_up = $dataRows["runner_up"];
 		$runner_up_name = $dataRows["runner_up_name"];
+		$runner_up_nat = $dataRows["runner_up_nat"];
 		$teams = $dataRows["teams"];
 		$games = $dataRows["games"];
 		$goals = $dataRows["goals"];
 		$top_scorer = $dataRows["top_scorer"];
-		$scorer_nation = $dataRows["scorer_nation"];
 		$scored = $dataRows["scored"];
 		$intro_text = $dataRows["intro_text"];
 		$review = $dataRows["review"];
@@ -109,8 +111,8 @@
 				}
 			?>
 			<br>
-			<strong>Winners:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($winner) ?>.png" alt="<?php echo strtolower($winner_name) ?>"> <?php echo htmlentities($winner_name) ?><br>
-			<strong>Runners-Up:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($runner_up) ?>.png" alt="<?php echo strtolower($runner_up_name) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
+			<strong>Winners:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($winner_nat) ?>.png" alt="<?php echo strtolower($winner_nat) ?>"> <?php echo htmlentities($winner_name) ?><br>
+			<strong>Runners-Up:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($runner_up_nat) ?>.png" alt="<?php echo strtolower($runner_up_nat) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
 			<br>
 			<strong>Games:</strong> <?php if ($games != 0) { echo htmlentities($games); } ?><br>
 			<strong>Goals:</strong> <?php if ($goals != 0) { echo htmlentities($goals); } ?><br>

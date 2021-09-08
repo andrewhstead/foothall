@@ -45,8 +45,8 @@
 		LEFT JOIN countries host_2 ON tournaments.host_2 = host_2.abbreviation
 		LEFT JOIN countries host_3 ON tournaments.host_3 = host_3.abbreviation
 		LEFT JOIN countries host_4 ON tournaments.host_4 = host_4.abbreviation
-		INNER JOIN countries winner ON tournaments.winner = winner.abbreviation 
-		INNER JOIN countries runner_up ON tournaments.runner_up = runner_up.abbreviation 
+		INNER JOIN teams winner ON tournaments.winner = winner.name 
+		INNER JOIN teams runner_up ON tournaments.runner_up = runner_up.name 
 		WHERE competition = $competition_id AND completed = true";
 	$tournament_query = $connectDB->query($tournaments);
 	

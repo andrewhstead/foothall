@@ -74,7 +74,7 @@
 
 		$team_number = 1;
 		
-		while ($team_number <= $new_teams) {
+		/*while ($team_number <= $new_teams) {
 			
 			$tournament_teams = "INSERT INTO tournament_teams (tournament_name)";
 			$tournament_teams .= "VALUES (:NewTournamentName)";
@@ -85,20 +85,20 @@
 			
 			$team_number++;
 			
-		}
+		}*/
 		
-		if($execute AND $teams_execute) {
+		if($execute/* AND $teams_execute*/) {
 
 			$_SESSION["success_message"] = "Your match has been saved successfully.";
 			
 			if ($_POST['submit'] == 'Save and Add Teams') {
 				redirect_to("edit_record.php?type=tournament_teams");
 			} else if ($_POST['submit'] == 'Save and Finish') {
-				if ($new_admitted == true) {
+				if ($new_active == true) {
 				redirect_to("view_list.php?type=tournaments&status=active");
-				} else if (($new_contender == true) && ($new_admitted == false)) {
+				} else if (($new_contender == true) && ($new_active == false)) {
 					redirect_to("view_list.php?type=tournaments&status=contenders");
-				} else if ($new_admitted == 0) {
+				} else if ($new_active == 0) {
 					redirect_to("view_list.php?type=tournaments&status=inactive");
 				}
 			}

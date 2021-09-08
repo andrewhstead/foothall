@@ -105,12 +105,10 @@
 					<select id="winner" name="winner">
 					<?php
 						echo'<option label=" "></option>';
-						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
-						$country_query = $connectDB->query($countries);
-						while ($dataRows = $country_query->fetch()) {
-							$country_name = $dataRows["display_name"];
-							$country_abbreviation = $dataRows["abbreviation"];
-							echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						$teams = "SELECT * FROM teams ORDER BY name";
+						$team_query = $connectDB->query($teams);
+						while ($dataRows = $team_query->fetch()) {
+							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
@@ -119,12 +117,10 @@
 					<select id="runner-up" name="runner-up">
 					<?php
 						echo'<option label=" "></option>';
-						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
-						$country_query = $connectDB->query($countries);
-						while ($dataRows = $country_query->fetch()) {
-							$country_name = $dataRows["display_name"];
-							$country_abbreviation = $dataRows["abbreviation"];
-							echo '<option value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						$teams = "SELECT * FROM teams ORDER BY name";
+						$team_query = $connectDB->query($teams);
+						while ($dataRows = $team_query->fetch()) {
+							echo '<option value="'.$dataRows["name"].'">'.$dataRows["name"].'</option>';
 						}
 					?>	
 					</select>
@@ -159,6 +155,6 @@
 			<textarea class="editable-area" rows="10" cols="35" name="review"></textarea>
 			<br>
 			<input class="submit-button" type="submit" name="submit" value="Save and Finish">
-			<input class="submit-button" type="submit" name="submit" value="Save and Add Teams">
+			<!--<input class="submit-button" type="submit" name="submit" value="Save and Add Teams">-->
 			
 		</form>
