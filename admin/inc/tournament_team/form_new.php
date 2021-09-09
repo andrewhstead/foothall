@@ -58,7 +58,7 @@
 				</div>
 				
 				<br>
-				<input class="submit-button" type="submit" name="submit" value="Save Changes">
+				<input class="submit-button" type="submit" name="submit" value="Save and Close">
 				<input class="submit-button" type="submit" name="submit" value="Save and Add Another">
 			
 			</form>	
