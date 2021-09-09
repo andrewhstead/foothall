@@ -41,7 +41,7 @@
 						<label for="name-in-tournament">Name in Tournament:</label>
 						<input type="text" name="name-in-tournament" placeholder="Name in Tournament" id="name-in-tournament" value="<?php echo $display_name; ?>">
 						<br>
-						<strong>NB: Only needed if a name other than the team's default was used, e.g. Dutch East Indies rather than the default Indonesia.</strong>
+						<strong>Only needed if a name other than the team's default was used, e.g. Dutch East Indies rather than the default Indonesia.</strong>
 						<br>
 						<label for="tournament-code">Tournament Code:</label>
 						<input type="text" name="tournament-code" placeholder="Tournament Code" id="tournament-code" value="<?php echo $tournament_code; ?>">

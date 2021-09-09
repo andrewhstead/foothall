@@ -1,12 +1,226 @@
-2,national,Chile (M),Chile,m,CHI,CHI,-,0,00/01/1900 00:00
-3,national,France (M),France,m,FRA,FRA,-,0,00/01/1900 00:00
-4,national,Mexico (M),Mexico,m,MEX,MEX,-,0,00/01/1900 00:00
-5,national,Brazil (M),Brazil,m,BRA,BRA,-,0,00/01/1900 00:00
-6,national,Bolivia (M),Bolivia,m,BOL,BOL,-,0,00/01/1900 00:00
-7,national,Yugoslavia (M),Yugoslavia,m,YUG,YUG,-,0,00/01/1900 00:00
-8,national,Peru (M),Peru,m,PER,PER,-,0,00/01/1900 00:00
-9,national,Romania (M),Romania,m,ROM,ROM,-,0,00/01/1900 00:00
-10,national,Uruguay (M),Uruguay,m,URU,URU,-,0,00/01/1900 00:00
-11,national,Belgium (M),Belgium,m,BEL,BEL,-,0,00/01/1900 00:00
-12,national,Paraguay (M),Paraguay,m,PAR,PAR,-,0,00/01/1900 00:00
-13,national,United States (M),United States,m,USA,USA,-,0,00/01/1900 00:00
+1,national,Afghanistan (M),Afghanistan,m,AFG,AFG,-,0,09/09/2021 23:30
+2,national,Albania (M),Albania,m,ALB,ALB,-,0,09/09/2021 23:30
+3,national,Algeria (M),Algeria,m,ALG,ALG,-,0,09/09/2021 23:30
+4,national,American Samoa (M),American Samoa,m,ASA,ASA,-,0,09/09/2021 23:30
+5,national,Andorra (M),Andorra,m,AND,AND,-,0,09/09/2021 23:30
+6,national,Angola (M),Angola,m,ANG,ANG,-,0,09/09/2021 23:30
+7,national,Anguilla (M),Anguilla,m,AGU,AGU,-,0,09/09/2021 23:30
+8,national,Antigua and Barbuda (M),Antigua and Barbuda,m,ANT,ANT,-,0,09/09/2021 23:30
+9,national,Argentina (M),Argentina,m,ARG,ARG,-,0,09/09/2021 23:30
+10,national,Armenia (M),Armenia,m,ARM,ARM,-,0,09/09/2021 23:30
+11,national,Aruba (M),Aruba,m,ARU,ARU,-,0,09/09/2021 23:30
+12,national,Australia (M),Australia,m,AUS,AUS,-,0,09/09/2021 23:30
+13,national,Austria (M),Austria,m,AUT,AUT,-,0,09/09/2021 23:30
+14,national,Azerbaijan (M),Azerbaijan,m,AZE,AZE,-,0,09/09/2021 23:30
+15,national,Bahamas (M),Bahamas,m,BAH,BAH,-,0,09/09/2021 23:30
+16,national,Bahrain (M),Bahrain,m,BHR,BHR,-,0,09/09/2021 23:30
+17,national,Bangladesh (M),Bangladesh,m,BAN,BAN,-,0,09/09/2021 23:30
+18,national,Barbados (M),Barbados,m,BAR,BAR,-,0,09/09/2021 23:30
+19,national,Belarus (M),Belarus,m,BLR,BLR,-,0,09/09/2021 23:30
+20,national,Belgium (M),Belgium,m,BEL,BEL,-,0,09/09/2021 23:30
+21,national,Belize (M),Belize,m,BIZ,BIZ,-,0,09/09/2021 23:30
+22,national,Benin (M),Benin,m,BEN,BEN,-,0,09/09/2021 23:30
+23,national,Bermuda (M),Bermuda,m,BER,BER,-,0,09/09/2021 23:30
+24,national,Bhutan (M),Bhutan,m,BHU,BHU,-,0,09/09/2021 23:30
+25,national,Bolivia (M),Bolivia,m,BOL,BOL,-,0,09/09/2021 23:30
+26,national,Bosnia and Herzegovina (M),Bosnia-Herzegovina,m,BIH,BIH,-,0,09/09/2021 23:30
+27,national,Botswana (M),Botswana,m,BOT,BOT,-,0,09/09/2021 23:30
+28,national,Brazil (M),Brazil,m,BRA,BRA,-,0,09/09/2021 23:30
+29,national,British Virgin Islands (M),British Virgin Is.,m,BVI,BVI,-,0,09/09/2021 23:30
+30,national,Brunei (M),Brunei,m,BRU,BRU,-,0,09/09/2021 23:30
+31,national,Bulgaria (M),Bulgaria,m,BUL,BUL,-,0,09/09/2021 23:30
+32,national,Burkina Faso (M),Burkina Faso,m,BFA,BFA,-,0,09/09/2021 23:30
+33,national,Burundi (M),Burundi,m,BDI,BDI,-,0,09/09/2021 23:30
+34,national,Cambodia (M),Cambodia,m,CAM,CAM,-,0,09/09/2021 23:30
+35,national,Cameroon (M),Cameroon,m,CMR,CMR,-,0,09/09/2021 23:30
+36,national,Canada (M),Canada,m,CAN,CAN,-,0,09/09/2021 23:30
+37,national,Cabo Verde (M),Cabo Verde,m,CPV,CPV,-,0,09/09/2021 23:30
+38,national,Cayman Islands (M),Cayman Islands,m,CAY,CAY,-,0,09/09/2021 23:30
+39,national,Central African Republic (M),Central African Rep.,m,CAR,CAR,-,0,09/09/2021 23:30
+40,national,Chad (M),Chad,m,CHA,CHA,-,0,09/09/2021 23:30
+41,national,Chile (M),Chile,m,CHI,CHI,-,0,09/09/2021 23:30
+42,national,People's Republic of China (M),China,m,CHN,CHN,-,0,09/09/2021 23:30
+43,national,Colombia (M),Colombia,m,COL,COL,-,0,09/09/2021 23:30
+44,national,Comoros (M),Comoros,m,COM,COM,-,0,09/09/2021 23:30
+45,national,Democratic Republic of Congo (M),DR Congo,m,DRC,DRC,-,0,09/09/2021 23:30
+46,national,Republic of Congo (M),Congo,m,CGO,CGO,-,0,09/09/2021 23:30
+47,national,Cook Islands (M),Cook Islands,m,COK,COK,-,0,09/09/2021 23:30
+48,national,Costa Rica (M),Costa Rica,m,CRC,CRC,-,0,09/09/2021 23:30
+49,national,Côte d'Ivoire (M),Côte d'Ivoire,m,CIV,CIV,-,0,09/09/2021 23:30
+50,national,Croatia (M),Croatia,m,CRO,CRO,-,0,09/09/2021 23:30
+51,national,Cuba (M),Cuba,m,CUB,CUB,-,0,09/09/2021 23:30
+52,national,Curaçao (M),Curaçao,m,CUR,CUR,-,0,09/09/2021 23:30
+53,national,Cyprus (M),Cyprus,m,CYP,CYP,-,0,09/09/2021 23:30
+54,national,Czech Republic (M),Czech Republic,m,CZE,CZE,-,0,09/09/2021 23:30
+55,national,Denmark (M),Denmark,m,DEN,DEN,-,0,09/09/2021 23:30
+56,national,Djibouti (M),Djibouti,m,DJI,DJI,-,0,09/09/2021 23:30
+57,national,Dominica (M),Dominica,m,DOM,DOM,-,0,09/09/2021 23:30
+58,national,Dominican Republic (M),Dominican Republic,m,DMR,DMR,-,0,09/09/2021 23:30
+59,national,Ecuador (M),Ecuador,m,ECU,ECU,-,0,09/09/2021 23:30
+60,national,Egypt (M),Egypt,m,EGY,EGY,-,0,09/09/2021 23:30
+61,national,El Salvador (M),El Salvador,m,ESA,ESA,-,0,09/09/2021 23:30
+62,national,England (M),England,m,ENG,ENG,-,0,09/09/2021 23:30
+63,national,Equatorial Guinea (M),Equatorial Guinea,m,EQG,EQG,-,0,09/09/2021 23:30
+64,national,Eritrea (M),Eritrea,m,ERT,ERT,-,0,09/09/2021 23:30
+65,national,Estonia (M),Estonia,m,EST,EST,-,0,09/09/2021 23:30
+66,national,Eswatini (M),Eswatini,m,ESW,ESW,-,0,09/09/2021 23:30
+67,national,Ethiopia (M),Ethiopia,m,ETH,ETH,-,0,09/09/2021 23:30
+68,national,Faroe Islands (M),Faroe Islands,m,FAR,FAR,-,0,09/09/2021 23:30
+69,national,Fiji (M),Fiji,m,FIJ,FIJ,-,0,09/09/2021 23:30
+70,national,Finland (M),Finland,m,FIN,FIN,-,0,09/09/2021 23:30
+71,national,France (M),France,m,FRA,FRA,-,0,09/09/2021 23:30
+72,national,French Guiana (M),French Guiana,m,FGU,FGU,-,0,09/09/2021 23:30
+73,national,Gabon (M),Gabon,m,GAB,GAB,-,0,09/09/2021 23:30
+74,national,The Gambia (M),Gambia,m,GAM,GAM,-,0,09/09/2021 23:30
+75,national,Georgia (M),Georgia,m,GEO,GEO,-,0,09/09/2021 23:30
+76,national,Germany (M),Germany,m,GER,GER,-,0,09/09/2021 23:30
+77,national,Ghana (M),Ghana,m,GHA,GHA,-,0,09/09/2021 23:30
+78,national,Gibraltar (M),Gibraltar,m,GIB,GIB,-,0,09/09/2021 23:30
+79,national,Greece (M),Greece,m,GRE,GRE,-,0,09/09/2021 23:30
+80,national,Grenada (M),Grenada,m,GDA,GDA,-,0,09/09/2021 23:30
+81,national,Guadeloupe (M),Guadeloupe,m,GDP,GDP,-,0,09/09/2021 23:30
+82,national,Guam (M),Guam,m,GUM,GUM,-,0,09/09/2021 23:30
+83,national,Guatemala (M),Guatemala,m,GUA,GUA,-,0,09/09/2021 23:30
+84,national,Guinea (M),Guinea,m,GUI,GUI,-,0,09/09/2021 23:30
+85,national,Guinea-Bissau (M),Guinea-Bissau,m,GBI,GBI,-,0,09/09/2021 23:30
+86,national,Guyana (M),Guyana,m,GUY,GUY,-,0,09/09/2021 23:30
+87,national,Haiti (M),Haiti,m,HAI,HAI,-,0,09/09/2021 23:30
+88,national,Honduras (M),Honduras,m,HON,HON,-,0,09/09/2021 23:30
+89,national,Hong Kong (M),Hong Kong,m,HKG,HKG,-,0,09/09/2021 23:30
+90,national,Hungary (M),Hungary,m,HUN,HUN,-,0,09/09/2021 23:30
+91,national,Iceland (M),Iceland,m,ICE,ICE,-,0,09/09/2021 23:30
+92,national,India (M),India,m,IND,IND,-,0,09/09/2021 23:30
+93,national,Indonesia (M),Indonesia,m,INO,INO,-,0,09/09/2021 23:30
+94,national,Islamic Republic of Iran (M),Iran,m,IRN,IRN,-,0,09/09/2021 23:30
+95,national,Iraq (M),Iraq,m,IRQ,IRQ,-,0,09/09/2021 23:30
+96,national,Republic of Ireland (M),Republic of Ireland,m,IRL,IRL,-,0,09/09/2021 23:30
+97,national,Israel (M),Israel,m,ISR,ISR,-,0,09/09/2021 23:30
+98,national,Italy (M),Italy,m,ITA,ITA,-,0,09/09/2021 23:30
+99,national,Jamaica (M),Jamaica,m,JAM,JAM,-,0,09/09/2021 23:30
+100,national,Japan (M),Japan,m,JPN,JPN,-,0,09/09/2021 23:30
+101,national,Jordan (M),Jordan,m,JOR,JOR,-,0,09/09/2021 23:30
+102,national,Kazakhstan (M),Kazakhstan,m,KAZ,KAZ,-,0,09/09/2021 23:30
+103,national,Kenya (M),Kenya,m,KEN,KEN,-,0,09/09/2021 23:30
+104,national,Kiribati (M),Kiribati,m,KIR,KIR,-,0,09/09/2021 23:30
+105,national,Democratic People's Republic of Korea (M),North Korea,m,PRK,PRK,-,0,09/09/2021 23:30
+106,national,Republic of Korea (M),South Korea,m,KOR,KOR,-,0,09/09/2021 23:30
+107,national,Kosovo (M),Kosovo,m,KOS,KOS,-,0,09/09/2021 23:30
+108,national,Kuwait (M),Kuwait,m,KUW,KUW,-,0,09/09/2021 23:30
+109,national,Kyrgyzstan (M),Kyrgyzstan,m,KYR,KYR,-,0,09/09/2021 23:30
+110,national,Laos (M),Laos,m,LAO,LAO,-,0,09/09/2021 23:30
+111,national,Latvia (M),Latvia,m,LAT,LAT,-,0,09/09/2021 23:30
+112,national,Lebanon (M),Lebanon,m,LEB,LEB,-,0,09/09/2021 23:30
+113,national,Lesotho (M),Lesotho,m,LES,LES,-,0,09/09/2021 23:30
+114,national,Liberia (M),Liberia,m,LBR,LBR,-,0,09/09/2021 23:30
+115,national,Libya (M),Libya,m,LIB,LIB,-,0,09/09/2021 23:30
+116,national,Liechtenstein (M),Liechtenstein,m,LIE,LIE,-,0,09/09/2021 23:30
+117,national,Lithuania (M),Lithuania,m,LIT,LIT,-,0,09/09/2021 23:30
+118,national,Luxembourg (M),Luxembourg,m,LUX,LUX,-,0,09/09/2021 23:30
+119,national,Macau (M),Macao,m,MCO,MCO,-,0,09/09/2021 23:30
+120,national,Madagascar (M),Madagascar,m,MAD,MAD,-,0,09/09/2021 23:30
+121,national,Malawi (M),Malawi,m,MWI,MWI,-,0,09/09/2021 23:30
+122,national,Malaysia (M),Malaysia,m,MAS,MAS,-,0,09/09/2021 23:30
+123,national,Maldives (M),Maldives,m,MDV,MDV,-,0,09/09/2021 23:30
+124,national,Mali (M),Mali,m,MLI,MLI,-,0,09/09/2021 23:30
+125,national,Malta (M),Malta,m,MLT,MLT,-,0,09/09/2021 23:30
+126,national,Martinique (M),Martinique,m,MTQ,MTQ,-,0,09/09/2021 23:30
+127,national,Mauritania (M),Mauritania,m,MAU,MAU,-,0,09/09/2021 23:30
+128,national,Mauritius (M),Mauritius,m,MRT,MRT,-,0,09/09/2021 23:30
+129,national,Mexico (M),Mexico,m,MEX,MEX,-,0,09/09/2021 23:30
+130,national,Moldova (M),Moldova,m,MOL,MOL,-,0,09/09/2021 23:30
+131,national,Mongolia (M),Mongolia,m,MNG,MNG,-,0,09/09/2021 23:30
+132,national,Montenegro (M),Montenegro,m,MNE,MNE,-,0,09/09/2021 23:30
+133,national,Montserrat (M),Montserrat,m,MNT,MNT,-,0,09/09/2021 23:30
+134,national,Morocco (M),Morocco,m,MOR,MOR,-,0,09/09/2021 23:30
+135,national,Mozambique (M),Mozambique,m,MOZ,MOZ,-,0,09/09/2021 23:30
+136,national,Myanmar (M),Myanmar,m,MYA,MYA,-,0,09/09/2021 23:30
+137,national,Namibia (M),Namibia,m,NAM,NAM,-,0,09/09/2021 23:30
+138,national,Nepal (M),Nepal,m,NEP,NEP,-,0,09/09/2021 23:30
+139,national,Netherlands (M),Netherlands,m,NED,NED,-,0,09/09/2021 23:30
+140,national,New Caledonia (M),New Caledonia,m,NCA,NCA,-,0,09/09/2021 23:30
+141,national,New Zealand (M),New Zealand,m,NZL,NZL,-,0,09/09/2021 23:30
+142,national,Nicaragua (M),Nicaragua,m,NIC,NIC,-,0,09/09/2021 23:30
+143,national,Niger (M),Niger,m,NIG,NIG,-,0,09/09/2021 23:30
+144,national,Nigeria (M),Nigeria,m,NGA,NGA,-,0,09/09/2021 23:30
+145,national,North Macedonia (M),North Macedonia,m,NMA,NMA,-,0,09/09/2021 23:30
+146,national,Northern Ireland (M),Northern Ireland,m,NIR,NIR,-,0,09/09/2021 23:30
+147,national,Northern Mariana Islands (M),Northern Mariana Is.,m,NMI,NMI,-,0,09/09/2021 23:30
+148,national,Norway (M),Norway,m,NOR,NOR,-,0,09/09/2021 23:30
+149,national,Oman (M),Oman,m,OMN,OMN,-,0,09/09/2021 23:30
+150,national,Pakistan (M),Pakistan,m,PAK,PAK,-,0,09/09/2021 23:30
+151,national,Palestine (M),Palestine,m,PLE,PLE,-,0,09/09/2021 23:30
+152,national,Panama (M),Panama,m,PAN,PAN,-,0,09/09/2021 23:30
+153,national,Papua New Guinea (M),Papua New Guinea,m,PNG,PNG,-,0,09/09/2021 23:30
+154,national,Paraguay (M),Paraguay,m,PAR,PAR,-,0,09/09/2021 23:30
+155,national,Peru (M),Peru,m,PER,PER,-,0,09/09/2021 23:30
+156,national,Philippines (M),Philippines,m,PHI,PHI,-,0,09/09/2021 23:30
+157,national,Poland (M),Poland,m,POL,POL,-,0,09/09/2021 23:30
+158,national,Portugal (M),Portugal,m,POR,POR,-,0,09/09/2021 23:30
+159,national,Puerto Rico (M),Puerto Rico,m,PUR,PUR,-,0,09/09/2021 23:30
+160,national,Qatar (M),Qatar,m,QAT,QAT,-,0,09/09/2021 23:30
+161,national,Romania (M),Romania,m,ROM,ROM,-,0,09/09/2021 23:30
+162,national,Russia (M),Russia,m,RUS,RUS,-,0,09/09/2021 23:30
+163,national,Rwanda (M),Rwanda,m,RWA,RWA,-,0,09/09/2021 23:30
+164,national,Saint Kitts and Nevis (M),St Kitts and Nevis,m,SKN,SKN,-,0,09/09/2021 23:30
+165,national,Saint Lucia (M),St Lucia,m,STL,STL,-,0,09/09/2021 23:30
+166,national,Saint Martin (M),St Martin,m,SMA,SMA,-,0,09/09/2021 23:30
+167,national,Saint Vincent and the Grenadines (M),St Vincent & Gren.,m,SVG,SVG,-,0,09/09/2021 23:30
+168,national,Samoa (M),Samoa,m,SAM,SAM,-,0,09/09/2021 23:30
+169,national,San Marino (M),San Marino,m,SNM,SNM,-,0,09/09/2021 23:30
+170,national,São Tomé and Príncipe (M),São Tomé & Príncipe,m,STP,STP,-,0,09/09/2021 23:30
+171,national,Saudi Arabia (M),Saudi Arabia,m,KSA,KSA,-,0,09/09/2021 23:30
+172,national,Scotland (M),Scotland,m,SCO,SCO,-,0,09/09/2021 23:30
+173,national,Senegal (M),Senegal,m,SEN,SEN,-,0,09/09/2021 23:30
+174,national,Serbia (M),Serbia,m,SER,SER,-,0,09/09/2021 23:30
+175,national,Seychelles (M),Seychelles,m,SEY,SEY,-,0,09/09/2021 23:30
+176,national,Sierra Leone (M),Sierra Leone,m,SLE,SLE,-,0,09/09/2021 23:30
+177,national,Singapore (M),Singapore,m,SNG,SNG,-,0,09/09/2021 23:30
+178,national,Sint Maarten (M),Sint Maarten,m,SIM,SIM,-,0,09/09/2021 23:30
+179,national,Slovakia (M),Slovakia,m,SVK,SVK,-,0,09/09/2021 23:30
+180,national,Slovenia (M),Slovenia,m,SLO,SLO,-,0,09/09/2021 23:30
+181,national,Solomon Islands (M),Solomon Islands,m,SOL,SOL,-,0,09/09/2021 23:30
+182,national,Somalia (M),Somalia,m,SOM,SOM,-,0,09/09/2021 23:30
+183,national,South Africa (M),South Africa,m,RSA,RSA,-,0,09/09/2021 23:30
+184,national,South Sudan (M),South Sudan,m,SSD,SSD,-,0,09/09/2021 23:30
+185,national,Spain (M),Spain,m,ESP,ESP,-,0,09/09/2021 23:30
+186,national,Sri Lanka (M),Sri Lanka,m,SRL,SRL,-,0,09/09/2021 23:30
+187,national,Sudan (M),Sudan,m,SUD,SUD,-,0,09/09/2021 23:30
+188,national,Suriname (M),Suriname,m,SUR,SUR,-,0,09/09/2021 23:30
+189,national,Sweden (M),Sweden,m,SWE,SWE,-,0,09/09/2021 23:30
+190,national,Switzerland (M),Switzerland,m,SUI,SUI,-,0,09/09/2021 23:30
+191,national,Syria (M),Syria,m,SYR,SYR,-,0,09/09/2021 23:30
+192,national,French Polynesia (M),Tahiti,m,TAH,TAH,-,0,09/09/2021 23:30
+193,national,Taiwan (M),Chinese Taipei,m,TPE,TPE,-,0,09/09/2021 23:30
+194,national,Tajikistan (M),Tajikistan,m,TJK,TJK,-,0,09/09/2021 23:30
+195,national,Tanzania (M),Tanzania,m,TAN,TAN,-,0,09/09/2021 23:30
+196,national,Thailand (M),Thailand,m,THA,THA,-,0,09/09/2021 23:30
+197,national,Timor Leste (M),Timor Leste,m,TLS,TLS,-,0,09/09/2021 23:30
+198,national,Togo (M),Togo,m,TOG,TOG,-,0,09/09/2021 23:30
+199,national,Tonga (M),Tonga,m,TON,TON,-,0,09/09/2021 23:30
+200,national,Trinidad and Tobago (M),Trinidad and Tobago,m,TRI,TRI,-,0,09/09/2021 23:30
+201,national,Tunisia (M),Tunisia,m,TUN,TUN,-,0,09/09/2021 23:30
+202,national,Turkey (M),Turkey,m,TUR,TUR,-,0,09/09/2021 23:30
+203,national,Turkmenistan (M),Turkmenistan,m,TKM,TKM,-,0,09/09/2021 23:30
+204,national,Turks and Caicos Islands (M),Turks and Caicos Is.,m,TCI,TCI,-,0,09/09/2021 23:30
+205,national,Tuvalu (M),Tuvalu,m,TUV,TUV,-,0,09/09/2021 23:30
+206,national,US Virgin Islands (M),US Virgin Islands,m,ISV,ISV,-,0,09/09/2021 23:30
+207,national,Uganda (M),Uganda,m,UGA,UGA,-,0,09/09/2021 23:30
+208,national,Ukraine (M),Ukraine,m,UKR,UKR,-,0,09/09/2021 23:30
+209,national,United Arab Emirates (M),United Arab Emirates,m,UAE,UAE,-,0,09/09/2021 23:30
+210,national,United States of America (M),United States,m,USA,USA,-,0,09/09/2021 23:30
+211,national,Uruguay (M),Uruguay,m,URU,URU,-,0,09/09/2021 23:30
+212,national,Uzbekistan (M),Uzbekistan,m,UZB,UZB,-,0,09/09/2021 23:30
+213,national,Vanuatu (M),Vanuatu,m,VAN,VAN,-,0,09/09/2021 23:30
+214,national,Venezuela (M),Venezuela,m,VEN,VEN,-,0,09/09/2021 23:30
+215,national,Vietnam (M),Vietnam,m,VIE,VIE,-,0,09/09/2021 23:30
+216,national,Wales (M),Wales,m,WAL,WAL,-,0,09/09/2021 23:30
+217,national,Yemen (M),Yemen,m,YEM,YEM,-,0,09/09/2021 23:30
+218,national,Zambia (M),Zambia,m,ZAM,ZAM,-,0,09/09/2021 23:30
+219,national,Zimbabwe (M),Zimbabwe,m,ZIM,ZIM,-,0,09/09/2021 23:30
+220,national,Czechoslovakia (M),Czechoslovakia,m,TCH,TCH,-,0,09/09/2021 23:30
+221,national,German Democratic Republic (M),East Germany,m,GDR,GDR,-,0,09/09/2021 23:30
+222,national,Netherlands Antilles (M),Netherlands Antilles,m,AHO,AHO,-,0,09/09/2021 23:30
+223,national,Saar Protectorate (M),Saar,m,SAA,SAA,-,0,09/09/2021 23:30
+224,national,Union of Soviet Socialist Republics (M),USSR,m,URS,URS,-,0,09/09/2021 23:30
+225,national,Yugoslavia (M),Yugoslavia,m,YUG,YUG,-,0,09/09/2021 23:30
+226,national,Bonaire (M),Bonaire,m,BON,BON,-,0,09/09/2021 23:30

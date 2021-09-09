@@ -59,5 +59,6 @@
 				
 				<br>
 				<input class="submit-button" type="submit" name="submit" value="Save Changes">
+				<input class="submit-button" type="submit" name="submit" value="Save and Add Another">
 			
 			</form>	
