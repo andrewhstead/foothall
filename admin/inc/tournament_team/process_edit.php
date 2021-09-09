@@ -4,6 +4,16 @@
 		
 		$new_tournament = $_POST["tournament"];
 		$new_team = $_POST["team"];
+		if (!empty($_POST["name-in-tournament"])) {
+			$new_display_name = $_POST["name-in-tournament"];
+		} else {
+			$new_display_name = NULL;
+		}
+		if (!empty($_POST["tournament-code"])) {
+			$new_tournament_code = $_POST["tournament-code"];
+		} else {
+			$new_tournament_code = NULL;
+		}
 		$new_section = $_POST["section"];
 		$new_reached = $_POST["reached"];
 		if ($_POST["status"] == "active") {
@@ -12,12 +22,14 @@
 			$new_active = false;
 		}
 
-		$sql = "UPDATE tournament_teams SET tournament_name=:NewTournament, team_name=:NewTeam, section=:NewSection, reached=:NewReached, active=:NewActive WHERE id = '$record_id'";
+		$sql = "UPDATE tournament_teams SET tournament_name=:NewTournament, team_name=:NewTeam, display_name=:NewDisplayName, tournament_code=:NewTournamentCode, section=:NewSection, reached=:NewReached, active=:NewActive WHERE id = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
 		$stmt->bindValue(':NewTournament', $new_tournament);
 		$stmt->bindValue(':NewTeam', $new_team);
+		$stmt->bindValue(':NewDisplayName', $new_display_name);
+		$stmt->bindValue(':NewTournamentCode', $new_tournament_code);
 		$stmt->bindValue(':NewSection', $new_section);
 		$stmt->bindValue(':NewReached', $new_reached);
 		$stmt->bindValue(':NewActive', $new_active);
@@ -51,6 +63,8 @@
 		$database_id = $dataRows["id"];
 		$team_name = $dataRows["team_name"];
 		$tournament_name = $dataRows["tournament_name"];
+		$display_name = $dataRows["display_name"];
+		$tournament_code = $dataRows["tournament_code"];
 		$section = $dataRows["section"];
 		$reached = $dataRows["reached"];
 		$active = $dataRows["active"];

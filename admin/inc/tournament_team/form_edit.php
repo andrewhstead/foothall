@@ -37,7 +37,17 @@
 						</select>
 						<br>
 						<strong>NB: If team is not listed, go to <a class="standard-link" href="add_new.php?type=teams">Add New Teams</a> before continuing.</strong>
+						<br><br>
+						<label for="name-in-tournament">Name in Tournament:</label>
+						<input type="text" name="name-in-tournament" placeholder="Name in Tournament" id="name-in-tournament" value="<?php echo $display_name; ?>">
 						<br>
+						<strong>NB: Only needed if a name other than the team's default was used, e.g. Dutch East Indies rather than the default Indonesia.</strong>
+						<br>
+						<label for="tournament-code">Tournament Code:</label>
+						<input type="text" name="tournament-code" placeholder="Tournament Code" id="tournament-code" value="<?php echo $tournament_code; ?>">
+						<br>
+						<strong>Used if a different abbreviation is needed to change icons, e.g. ZAI instead of DRC.</strong>
+						<br><br>
 						<label for="section">Section:</label>
 						<input type="text" name="section" placeholder="Section" id="section" value="<?php echo $section; ?>">
 						<br>
