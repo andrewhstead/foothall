@@ -1155,6 +1155,9 @@ hr {
 	margin: 0 auto;
 }
 
+.standings {
+	margin: 10px 0;
+}
 .standings th {
 	text-align: left;
 }
@@ -1246,6 +1249,10 @@ hr {
 	.line-ups {
 		max-width: 400px;
 		margin: 0 auto;
+	}
+	
+	.standings-team {
+		min-width: 100px;
 	}
 	
 }

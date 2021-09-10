@@ -17,15 +17,15 @@
 		} else {
 			$new_penalties = false;
 		}
-		if (!empty($POST["penalties-1"])) {
-			$penalties_1 = $POST["penalties-1"];
-		} else {
+		if (empty($POST["penalties-1"])) {
 			$penalties_1 = NULL;
-		}
-		if (!empty($POST["penalties-2"])) {
-			$penalties_2 = $POST["penalties-2"];
 		} else {
+			$penalties_1 = $POST["penalties-1"];
+		}
+		if (empty($POST["penalties-2"])) {
 			$penalties_2 = NULL;
+		} else {
+			$penalties_2 = $POST["penalties-2"];
 		}
 		if (empty($_POST["walkover"])) {
 			$new_walkover = NULL;
@@ -40,11 +40,10 @@
 		$new_stage = $_POST["stage"];
 		$new_section = $_POST["section"];
 		$new_file_code = $_POST["file-code"];
-		$new_title = $_POST["title"];
-		if (!empty($_POST["title"])) {
-			$title = $POST["title"];
-		} else {
+		if (empty($_POST["title"])) {
 			$title = NULL;
+		} else {
+			$title = $POST["title"];
 		}
 		$new_attendance = $_POST["attendance"];
 		$new_stadium = $_POST["stadium"];

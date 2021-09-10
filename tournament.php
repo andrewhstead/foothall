@@ -141,7 +141,7 @@
 					FROM matches
 					INNER JOIN tournaments on tournaments.name = matches.tournament
 					WHERE tournaments.id = $tournament_id
-					ORDER BY date ASC";
+					ORDER BY section, date ASC";
 				$stage_query = $connectDB->query($stages);
 				$stage_query->execute();
 
@@ -168,7 +168,7 @@
 					INNER JOIN teams team_2 ON matches.team_2 = team_2.name
 					INNER JOIN tournaments on tournaments.name = matches.tournament
 					WHERE tournaments.id = $tournament_id
-					ORDER BY date ASC";
+					ORDER BY section ASC";
 				$matches_query = $connectDB->query($matches);
 				$matches_query->execute();
 				
@@ -195,7 +195,7 @@
 						$tournament_match['stage'] .= ' '.$tournament_match['section'];
 					}					
 					$results[] = $tournament_match;
-			
+				
 				}
 				
 				foreach ($stage_list as $tournament_stage) {
@@ -287,14 +287,14 @@
 						
 						echo '</div>';					
 						
-						echo '<div class="flex-item "><br>';
+						echo '<div class="flex-item ">';
 					
 						if ($standings_matches > 0) {
 							
 							echo '<table class="standings">';
 							echo '<tr>
 								<th>Pos</th>
-								<th>Team</th>
+								<th class="standings-team">Team</th>
 								<th>P</th>
 								<th>W</th>
 								<th>D</th>
