@@ -141,7 +141,7 @@
 					FROM matches
 					INNER JOIN tournaments on tournaments.name = matches.tournament
 					WHERE tournaments.id = $tournament_id
-					ORDER BY section, date ASC";
+					ORDER BY round, section, date ASC";
 				$stage_query = $connectDB->query($stages);
 				$stage_query->execute();
 
