@@ -123,6 +123,7 @@
 					<label for="winner">Winner:</label>
 					<select id="winner" name="winner">
 					<?php
+						echo'<option label=" "></option>';
 						$teams = "SELECT * FROM teams ORDER BY name";
 						$team_query = $connectDB->query($teams);
 						while ($dataRows = $team_query->fetch()) {

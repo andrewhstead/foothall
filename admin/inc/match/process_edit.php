@@ -17,21 +17,44 @@
 		} else {
 			$new_penalties = false;
 		}
-		$new_penalties_1 = $_POST["penalties-1"];
-		$new_penalties_2 = $_POST["penalties-2"];
+		if (!empty($POST["penalties-1"])) {
+			$penalties_1 = $POST["penalties-1"];
+		} else {
+			$penalties_1 = NULL;
+		}
+		if (!empty($POST["penalties-2"])) {
+			$penalties_2 = $POST["penalties-2"];
+		} else {
+			$penalties_2 = NULL;
+		}
+		if (empty($_POST["walkover"])) {
+			$new_walkover = NULL;
+		} elseif ($_POST["walkover"] == "walkover-t1") {
+			$new_walkover = 1;
+		} elseif ($_POST["walkover"] == "walkover-t2") {
+			$new_walkover = 2;
+		}
 		$new_date = $_POST["match-date"];
 		$new_competition = $_POST["competition"];
 		$new_tournament = $_POST["tournament"];
 		$new_stage = $_POST["stage"];
 		$new_section = $_POST["section"];
 		$new_file_code = $_POST["file-code"];
-		$new_title = $_POST["title"];
+		if (!empty($_POST["title"])) {
+			$title = $POST["title"];
+		} else {
+			$title = NULL;
+		}
 		$new_attendance = $_POST["attendance"];
 		$new_stadium = $_POST["stadium"];
 		$new_city = $_POST["city"];
 		$new_country = $_POST["country"];
 		$new_referee = $_POST["referee"];
-		$new_nationality = $_POST["nationality"];
+		if (empty($_POST["nationality"])) {
+			$new_nationality = NULL;
+		} else {
+			$new_nationality = $_POST["nationality"];
+		}
 		if ($_POST["status"] == "admitted") {
 			$new_admitted = true;
 			$new_contender = false;
@@ -58,7 +81,7 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_match_report = $_POST["match-report"];
 		
-		$sql = "UPDATE matches SET team_1=:NewTeam1, team_2=:NewTeam2, teams=:NewTeams, score_1=:NewScore1, score_2=:NewScore2, extra_time=:NewExtraTime, penalties=:NewPenalties, penalties_1=:NewPenalties1, penalties_2=:NewPenalties2, date=:NewDate, competition=:NewCompetition, tournament=:NewTournament, stage=:NewStage, section=:NewSection, file_code=:NewFileCode, title=:NewTitle, attendance=:NewAttendance, stadium=:NewStadium, city=:NewCity, country=:NewCountry, referee=:NewReferee, ref_nat=:NewRefNat, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
+		$sql = "UPDATE matches SET team_1=:NewTeam1, team_2=:NewTeam2, teams=:NewTeams, score_1=:NewScore1, score_2=:NewScore2, extra_time=:NewExtraTime, penalties=:NewPenalties, penalties_1=:NewPenalties1, penalties_2=:NewPenalties2, walkover=:NewWalkover, date=:NewDate, competition=:NewCompetition, tournament=:NewTournament, stage=:NewStage, section=:NewSection, file_code=:NewFileCode, title=:NewTitle, attendance=:NewAttendance, stadium=:NewStadium, city=:NewCity, country=:NewCountry, referee=:NewReferee, ref_nat=:NewRefNat, contender=:NewContender, active=:NewAdmitted, admission_date=:NewAdmissionDate, admission_poll=:NewAdmissionPoll, score=:NewScore, votes=:NewVotes, rating=:NewRating, intro_text=:NewIntroText, match_report=:NewMatchReport WHERE file_code = '$record_id'";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -71,6 +94,7 @@
 		$stmt->bindValue(':NewPenalties', $new_penalties);
 		$stmt->bindValue(':NewPenalties1', $new_penalties_1);
 		$stmt->bindValue(':NewPenalties2', $new_penalties_2);
+		$stmt->bindValue(':NewWalkover', $new_walkover);
 		$stmt->bindValue(':NewDate', $new_date);
 		$stmt->bindValue(':NewCompetition', $new_competition);
 		$stmt->bindValue(':NewTournament', $new_tournament);
@@ -140,8 +164,21 @@
 		$score_2 = $dataRows["score_2"];
 		$extra_time = $dataRows["extra_time"];
 		$penalties = $dataRows["penalties"];
-		$penalties_1 = $dataRows["penalties_1"];
-		$penalties_2 = $dataRows["penalties_2"];
+		if (!empty($penalties_1)) {
+			$penalties_1 = $dataRows["penalties_1"];
+		} else {
+			$penalties_1 = NULL;
+		}
+		if (!empty($penalties_2)) {
+			$penalties_2 = $dataRows["penalties_2"];
+		} else {
+			$penalties_2 = NULL;
+		}
+		if (!empty($walkover)) {
+			$walkover = $dataRows["walkover"];
+		} else {
+			$walkover = NULL;
+		}
 		$date = $dataRows["date"];
 		$competition = $dataRows["competition"];
 		$tournament = $dataRows["tournament"];

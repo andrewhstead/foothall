@@ -7,6 +7,7 @@
 					<label for="team-1">Team 1:</label>
 					<select id="team-1" name="team-1">
 					<?php
+						echo'<option label=" "></option>';
 						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
 						$teams_query = $connectDB->query($teams_sql);
 						echo'<option label=" "></option>';
@@ -24,6 +25,7 @@
 					<label for="team-2">Team 2:</label>
 					<select id="team-2" name="team-2">
 					<?php
+						echo'<option label=" "></option>';
 						$teams_sql = "SELECT * FROM teams ORDER BY type, gender desc, display_name";
 						$teams_query = $connectDB->query($teams_sql);
 						echo'<option label=" "></option>';
@@ -57,10 +59,15 @@
 					<input type="checkbox" name="penalties" id="penalties" <?php if ($penalties) { echo 'checked'; } ?>>
 					<br>
 					Penalties Score (if applicable): 
-					<label for="score-1">T1</label>
-					<input type="text" name="score-1" placeholder="0" id="penalties-1" size="1" value="<?php echo $score_1; ?>">
-					<label for="score-2">T2</label>
-					<input type="text" name="score-2" placeholder="0" id="penalties-2" size="1" value="<?php echo $score_2; ?>">
+					<label for="penalties-1">T1</label>
+					<input type="text" name="penalties-1" placeholder="0" id="penalties-1" size="1" value="<?php echo $penalties_1; ?>">
+					<label for="penalties-2">T2</label>
+					<input type="text" name="penalties-2" placeholder="0" id="penalties-2" size="1" value="<?php echo $penalties_2; ?>">
+					<br>Walkover?
+					<label for="walkover-t1">T1:</label>
+					<input type="radio" name="walkover" id="walkover-t1" value="walkover-t1" <?php if ($walkover == 1) { echo 'checked'; } ?>>
+					<label for="walkover-t2">T2:</label>
+					<input type="radio" name="walkover" id="walkover-t2" value="walkover-t2" <?php if ($walkover == 2) { echo 'checked'; } ?>>
 					
 					<br><br>					
 					<label for="match-date">Date:</label>
@@ -129,18 +136,19 @@
 					<label for="country">Country:</label>
 					<select id="country" name="country">
 					<?php
-							$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
-							$country_query = $connectDB->query($countries);
-							while ($dataRows = $country_query->fetch()) {
-								$country_name = $dataRows["display_name"];
-								$country_abbreviation = $dataRows["abbreviation"];
-								echo '<option ';
-								if ($dataRows["abbreviation"] == $country) {
-									echo 'selected ';
-								}
-								echo 'value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						echo'<option label=" "></option>';
+						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+						$country_query = $connectDB->query($countries);
+						while ($dataRows = $country_query->fetch()) {
+							$country_name = $dataRows["display_name"];
+							$country_abbreviation = $dataRows["abbreviation"];
+							echo '<option ';
+							if ($dataRows["abbreviation"] == $country) {
+								echo 'selected ';
 							}
-						?>
+							echo 'value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						}
+					?>
 					</select>
 					
 					<br><br>
@@ -150,18 +158,19 @@
 					<label for="nationality">Nationality:</label>
 					<select id="nationality" name="nationality">
 					<?php
-							$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
-							$country_query = $connectDB->query($countries);
-							while ($dataRows = $country_query->fetch()) {
-								$country_name = $dataRows["display_name"];
-								$country_abbreviation = $dataRows["abbreviation"];
-								echo '<option ';
-								if ($dataRows["abbreviation"] == $nationality) {
-									echo 'selected ';
-								}
-								echo 'value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						echo'<option label=" "></option>';
+						$countries = "SELECT * FROM countries WHERE affiliated = true OR defunct = true ORDER BY display_name";
+						$country_query = $connectDB->query($countries);
+						while ($dataRows = $country_query->fetch()) {
+							$country_name = $dataRows["display_name"];
+							$country_abbreviation = $dataRows["abbreviation"];
+							echo '<option ';
+							if ($dataRows["abbreviation"] == $nationality) {
+								echo 'selected ';
 							}
-						?>
+							echo 'value="'.$dataRows["abbreviation"].'">'.$dataRows["display_name"].'</option>';
+						}
+					?>
 					</select>
 					
 					<br><br>
