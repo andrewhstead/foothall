@@ -150,6 +150,7 @@
 						matches.id AS match_id,
 						matches.active AS active,
 						matches.competition AS competition,
+						competitions.type AS competition_type,
 						tournaments.id AS tournament_id,
 						tournaments.year AS year,
 						tournaments.name AS tournament,
@@ -160,13 +161,16 @@
 						matches.section AS section,
 						matches.date AS date,
 						team_1.display_name AS team_1_name,
+						team_1.country AS team_1_nat,
 						matches.score_1 AS score_1,
 						matches.score_2 AS score_2,
-						team_2.display_name AS team_2_name
+						team_2.display_name AS team_2_name,
+						team_2.country AS team_2_nat
 					FROM matches
 					INNER JOIN teams team_1 ON matches.team_1 = team_1.name 
 					INNER JOIN teams team_2 ON matches.team_2 = team_2.name
 					INNER JOIN tournaments on tournaments.name = matches.tournament
+					INNER JOIN competitions on tournaments.competition = competitions.id
 					WHERE tournaments.id = $tournament_id
 					ORDER BY section ASC";
 				$matches_query = $connectDB->query($matches);
@@ -224,15 +228,21 @@
 									$standings = $match_result["standings"];
 									$date = new DateTime($match_result["date"]);
 									$team_1_name = $match_result["team_1_name"];
+									$team_1_nat = $match_result["team_1_nat"];
 									$team_1_code = str_replace(' ','_',strtolower($team_1_name));
 									$score_1 = $match_result["score_1"];
 									$score_2 = $match_result["score_2"];
 									$team_2_name = $match_result["team_2_name"];
+									$team_2_nat = $match_result["team_2_nat"];
 									$team_2_code = str_replace(' ','_',strtolower($team_2_name));
 									
 									echo '<tr>';
 									echo '<td>'.date_format($date, "d/m/y").'</td>';
-									echo '<td>'.htmlentities($team_1_name).'</td>';
+									if ($score_1 > $score_2) {
+										echo '<td class="match-team"><strong>'.htmlentities($team_1_name).'</strong></td>';
+									} else { 
+										echo '<td class="match-team">'.htmlentities($team_1_name).'</td>';
+									}
 									if ($active) {
 										echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
 										echo htmlentities($score_1).'-'.htmlentities($score_2);
@@ -241,7 +251,11 @@
 										echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
 									}
 									echo '</td>';
-									echo '<td>'.htmlentities($team_2_name).'</td>';
+									if ($score_1 < $score_2) {
+										echo '<td class="match-team"><strong>'.htmlentities($team_2_name).'</strong></td>';
+									} else { 
+										echo '<td class="match-team">'.htmlentities($team_2_name).'</td>';
+									}
 									if ($note) {
 										echo '<td>('.htmlentities($note).')</a>';
 									}
