@@ -1157,19 +1157,27 @@ hr {
 
 .standings {
 	margin: 10px 0;
+	width: 100%;
 }
-.standings th {
-	text-align: left;
-}
-.standings td {
+.standings th, td {
 	text-align: center;
 }
 .standings td:nth-of-type(2) {
 	text-align: left;
 }
-.match-team {
-	text-align: center;
+.standings th:nth-of-type(2) {
+	text-align: left;
+}
+.match-team-1 {
+	text-align: right;
 	min-width: 80px;
+}
+.match-team-2 {
+	text-align: left;
+	min-width: 80px;
+}
+.standings-icon {
+	display: none;
 }
 
 @media only screen and (min-width: 551px) {
@@ -1371,6 +1379,10 @@ hr {
 	.team-match-details {
 		flex-basis: 45%;
 		padding: 20px 2.5%;
+	}
+	.standings-icon {
+		display: inline-block;
+		height: 15px;
 	}
   
 }

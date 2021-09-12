@@ -239,10 +239,12 @@
 									echo '<tr>';
 									echo '<td>'.date_format($date, "d/m/y").'</td>';
 									if ($score_1 > $score_2) {
-										echo '<td class="match-team"><strong>'.htmlentities($team_1_name).'</strong></td>';
+										echo '<td class="match-team-1"><strong>'.htmlentities($team_1_name).'</strong>';
 									} else { 
-										echo '<td class="match-team">'.htmlentities($team_1_name).'</td>';
+										echo '<td class="match-team-1">'.htmlentities($team_1_name);
 									}
+									echo ' <img class="standings-icon" src="img/flags/'.strtolower($team_1_nat).'.png" alt="'.htmlentities($team_1_name).'">';
+									echo '</td>';
 									if ($active) {
 										echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
 										echo htmlentities($score_1).'-'.htmlentities($score_2);
@@ -251,10 +253,11 @@
 										echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
 									}
 									echo '</td>';
+									echo '<td class="match-team-2"><img class="standings-icon" src="img/flags/'.strtolower($team_2_nat).'.png" alt="'.htmlentities($team_2_name).'"> ';
 									if ($score_1 < $score_2) {
-										echo '<td class="match-team"><strong>'.htmlentities($team_2_name).'</strong></td>';
+										echo '<strong>'.htmlentities($team_2_name).'</strong></td>';
 									} else { 
-										echo '<td class="match-team">'.htmlentities($team_2_name).'</td>';
+										echo htmlentities($team_2_name).'</td>';
 									}
 									if ($note) {
 										echo '<td>('.htmlentities($note).')</a>';
@@ -266,15 +269,16 @@
 										$stage_results[] = $match_result;
 									
 										if (!in_array($team_1_name, $stage_teams)) {
-											$stage_teams[] = $team_1_name;
+											$stage_teams[$team_1_nat] = $team_1_name;
 										}
 										if (!in_array($team_2_name, $stage_teams)) {
-											$stage_teams[] = $team_2_name;
+											$stage_teams[$team_2_nat] = $team_2_name;
 										}	
 									
-										foreach ($stage_teams as $team_record) {
+										foreach ($stage_teams as $team_abbreviation => $team_record) {
 											if (!in_array($team_record, $stage_standings)) {
 												$stage_standings[$team_record] = array(
+													'abbr' => $team_abbreviation,
 													'team' => $team_record,
 													'played' => 0,
 													'won' => 0,
@@ -372,7 +376,9 @@
 							
 								echo '<tr>
 								<td>'.$position.'</td>
-								<td>'.$display_record['team'].'</td>
+								<td>';
+								echo '<img class="standings-icon" src="img/flags/'.strtolower($display_record["abbr"]).'.png" alt="'.htmlentities($display_record["team"]).'"> '.$display_record['team'];
+								echo '</td>
 								<td>'.$display_record['played'].'</td>
 								<td>'.$display_record['won'].'</td>
 								<td>'.$display_record['drawn'].'</td>
