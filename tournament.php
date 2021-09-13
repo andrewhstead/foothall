@@ -36,6 +36,8 @@
 		tournaments.teams AS teams,
 		tournaments.games AS games,
 		tournaments.goals AS goals,
+		tournaments.win_points AS win_points,
+		tournaments.draw_points AS draw_points,
 		tournaments.top_scorer AS top_scorer,
 		tournaments.scored AS scored,
 		tournaments.intro_text AS intro_text,
@@ -74,6 +76,8 @@
 		$teams = $dataRows["teams"];
 		$games = $dataRows["games"];
 		$goals = $dataRows["goals"];
+		$win_points = $dataRows["win_points"];
+		$draw_points = $dataRows["draw_points"];
 		$top_scorer = $dataRows["top_scorer"];
 		$scored = $dataRows["scored"];
 		$intro_text = $dataRows["intro_text"];
@@ -302,12 +306,12 @@
 							}
 							
 							echo '</table>';	
-						
-						echo '</div>';					
-						
-						echo '<div class="flex-item ">';
 					
 						if ($standings_matches > 0) {
+						
+							echo '</div>';					
+						
+							echo '<div class="flex-item ">';
 							
 							echo '<table class="standings">';
 							echo '<tr>
@@ -335,12 +339,12 @@
 										$standings_record['played'] += 1;
 										if ($standings_match['score_1'] > $standings_match['score_2']) {
 											$standings_record['won'] += 1;
-											$standings_record['points'] += 2;
+											$standings_record['points'] += $win_points;
 										} elseif ($standings_match['score_1'] < $standings_match['score_2']) {
 											$standings_record['lost'] += 1;
 										} else {
 											$standings_record['drawn'] += 1;
-											$standings_record['points'] += 1;
+											$standings_record['points'] += $draw_points;
 										}
 										$standings_record['for'] += $standings_match['score_1'];
 										$standings_record['against'] += $standings_match['score_2'];
@@ -348,12 +352,12 @@
 										$standings_record['played'] += 1;
 										if ($standings_match['score_1'] < $standings_match['score_2']) {
 											$standings_record['won'] += 1;
-											$standings_record['points'] += 2;
+											$standings_record['points'] += $win_points;
 										} elseif ($standings_match['score_1'] > $standings_match['score_2']) {
 											$standings_record['lost'] += 1;
 										} else {
 											$standings_record['drawn'] += 1;
-											$standings_record['points'] += 1;
+											$standings_record['points'] += $draw_points;
 										}
 										$standings_record['for'] += $standings_match['score_2'];
 										$standings_record['against'] += $standings_match['score_1'];
