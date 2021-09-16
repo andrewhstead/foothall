@@ -1158,6 +1158,7 @@ hr {
 .standings {
 	margin: 10px 0;
 	width: 100%;
+	border-collapse: collapse;
 }
 .standings th, td {
 	text-align: center;
@@ -1178,6 +1179,22 @@ hr {
 }
 .standings-icon {
 	display: none;
+}
+
+.standings-head {
+	background-color: #666666;
+	color: white;
+}
+.primary-top {
+	background-color: #ccffcc;
+	font-weight: bold;
+}
+.secondary-top, .secondary-bottom {
+	background-color: #ffffcc;
+}
+.primary-bottom {
+	background-color: #ffcccc;
+	font-weight: bold;
 }
 
 @media only screen and (min-width: 551px) {

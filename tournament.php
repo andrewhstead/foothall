@@ -38,6 +38,12 @@
 		tournaments.goals AS goals,
 		tournaments.win_points AS win_points,
 		tournaments.draw_points AS draw_points,
+		tournaments.tiebreaker_1 AS tiebreaker_1,
+		tournaments.tiebreaker_2 AS tiebreaker_2,
+		tournaments.primary_top AS primary_top,
+		tournaments.secondary_top AS secondary_top,
+		tournaments.primary_bottom AS primary_bottom,
+		tournaments.secondary_bottom AS secondary_bottom,
 		tournaments.top_scorer AS top_scorer,
 		tournaments.scored AS scored,
 		tournaments.intro_text AS intro_text,
@@ -78,6 +84,12 @@
 		$goals = $dataRows["goals"];
 		$win_points = $dataRows["win_points"];
 		$draw_points = $dataRows["draw_points"];
+		$tiebreaker_1 = $dataRows["tiebreaker_1"];
+		$tiebreaker_2 = $dataRows["tiebreaker_2"];
+		$primary_top = $dataRows["primary_top"];
+		$secondary_top = $dataRows["secondary_top"];
+		$primary_bottom = $dataRows["primary_bottom"];
+		$secondary_bottom = $dataRows["secondary_bottom"];
 		$top_scorer = $dataRows["top_scorer"];
 		$scored = $dataRows["scored"];
 		$intro_text = $dataRows["intro_text"];
@@ -311,10 +323,12 @@
 						
 							echo '</div>';					
 						
+							$total_teams = count($stage_teams);
+							
 							echo '<div class="flex-item ">';
 							
 							echo '<table class="standings">';
-							echo '<tr>
+							echo '<tr class="standings-head">
 								<th>Pos</th>
 								<th class="standings-team">Team</th>
 								<th>P</th>
@@ -378,8 +392,19 @@
 							
 							foreach ($display_standings as $display_record) {
 							
-								echo '<tr>
-								<td>'.$position.'</td>
+								if ($position <= $primary_top) {
+									echo '<tr class="primary-top">';
+								} elseif (($position > $primary_top) && ($position <= ($primary_top + $secondary_top))) {
+									echo '<tr class="secondary-top">';
+								} elseif (($position <= $total_teams) && ($position > ($total_teams - $primary_bottom))) {
+									echo '<tr class="primary-bottom">';
+								} elseif (($position <= ($total_teams - $primary_bottom)) && ($position > ($total_teams - $primary_bottom - $secondary_bottom))) {
+									echo '<tr class="secondary-bottom">';
+								} else {
+									echo '<tr>';
+								}
+								
+								echo '<td>'.$position.'</td>
 								<td>';
 								echo '<img class="standings-icon" src="img/flags/'.strtolower($display_record["abbr"]).'.png" alt="'.htmlentities($display_record["team"]).'"> '.$display_record['team'];
 								echo '</td>
