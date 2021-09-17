@@ -1186,15 +1186,18 @@ hr {
 	color: white;
 }
 .primary-top {
-	background-color: #ccffcc;
+	background-color: #99cc99;
 	font-weight: bold;
 }
-.secondary-top, .secondary-bottom {
-	background-color: #ffffcc;
+.secondary-top {
+	background-color: #ccffcc;
 }
 .primary-bottom {
-	background-color: #ffcccc;
+	background-color: #ff9999;
 	font-weight: bold;
+}
+.secondary-bottom {
+	background-color: #ffcccc;
 }
 
 @media only screen and (min-width: 551px) {

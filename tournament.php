@@ -401,7 +401,7 @@
 								} elseif (($position <= ($total_teams - $primary_bottom)) && ($position > ($total_teams - $primary_bottom - $secondary_bottom))) {
 									echo '<tr class="secondary-bottom">';
 								} else {
-									echo '<tr>';
+									echo '<tr class="standings-row">';
 								}
 								
 								echo '<td>'.$position.'</td>
