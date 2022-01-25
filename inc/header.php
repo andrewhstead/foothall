@@ -19,10 +19,13 @@
 	
 	<?php
 		
+		session_start();
 		if(isset($_POST["choice"])) {
 			if ($_POST["choice"] == 'Accept Cookies') {
 				setcookie('general', 'accepted', time() + (86400 * 30), "/");
 				$_COOKIE['general'] = 'accepted';
+			} else if ($_POST["choice"] == 'Reject Cookies') {
+				$_SESSION["choice"] = $_POST["choice"];
 			}
 		}
 	
@@ -70,8 +73,7 @@
 						<li class="history-nested history-item"><a class="menu-link" href="dream.php">Dream Teams</a></li>
 					</ul>
 				</li>
-				<?php
-					session_start();				
+				<?php				
 					if(isset($_SESSION["user_id"])) {
 						echo '<li class="header-link-text"><a class="menu-link" href="admin/index.php">Admin Home</a></li>';
 					}

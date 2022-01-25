@@ -192,6 +192,21 @@
 				$matches_query = $connectDB->query($matches);
 				$matches_query->execute();
 				
+				$teams = "
+					SELECT 
+						tournament_teams.team_name AS name,
+						tournament_teams.display_name AS display_name,
+						teams.abbreviation AS abbreviation,
+						tournament_teams.tournament_code AS display_code,
+						tournament_teams.section AS section
+					FROM tournament_teams
+					INNER JOIN tournaments on tournaments.name = tournament_teams.team_name
+					INNER JOIN teams on teams.name = tournament_teams.team_name
+					WHERE tournaments.id = $tournament_id
+					ORDER BY display_name, team_name ASC";
+				$teams_query = $connectDB->query($teams);
+				$teams_query->execute();
+				
 				foreach ($stage_query as $match_stage) {
 					
 					$stage = $match_stage['stage'];
@@ -215,6 +230,24 @@
 						$tournament_match['stage'] .= ' '.$tournament_match['section'];
 					}					
 					$results[] = $tournament_match;
+				
+				}
+				
+				foreach ($teams_query as $tournament_team_list) {
+					
+					if ($tournament_team_list['display_name']){
+						$tournament_team_name = $tournament_team_list['display_name'];
+					} else {
+						$tournament_team_name = $tournament_team_list['name'];
+					}
+					
+					if ($tournament_team_list['display_code']){
+						$tournament_team_code = $tournament_team_list['display_code'];						
+					} else {
+						$tournament_team_code = $tournament_team_list['abbreviation'];	
+					}
+					
+					$team_list[$tournament_team_code] = $tournament_team_name;
 				
 				}
 				
