@@ -286,8 +286,8 @@ table.poll-choices tr:last-of-type {
 
 table.poll-choices td {
 	padding: 0 0 0 5px;
-	max-width:100%;
-	white-space:nowrap;
+	max-width: 100%;
+	white-space: nowrap;
 }
 
 td.progress-bar {
@@ -1172,10 +1172,15 @@ hr {
 .match-team-1 {
 	text-align: right;
 	min-width: 80px;
+	white-space: nowrap;
 }
 .match-team-2 {
 	text-align: left;
 	min-width: 80px;
+	white-space: nowrap;
+}
+.match-score {
+	white-space: nowrap;
 }
 .standings-icon {
 	display: none;
@@ -1285,6 +1290,14 @@ hr {
 	
 	.standings-team {
 		min-width: 100px;
+	}
+	
+	.match-team-1 {
+		min-width: 115px;
+	}
+
+	.match-team-2 {
+		min-width: 115px;
 	}
 	
 }

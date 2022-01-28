@@ -295,11 +295,11 @@
 									echo ' <img class="standings-icon" src="img/flags/'.strtolower($team_1_nat).'.png" alt="'.htmlentities($team_1_name).'">';
 									echo '</td>';
 									if ($active) {
-										echo '<td class="table-member"><a class="table-link" href="match.php?id='.$match_id.'">';
+										echo '<td class="table-member match-score"><a class="table-link" href="match.php?id='.$match_id.'">';
 										echo htmlentities($score_1).'-'.htmlentities($score_2);
 										echo '</a>';
 									} else {
-										echo '<td>'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
+										echo '<td class="match-score">'.htmlentities($score_1).'-'.htmlentities($score_2).'</a>';
 									}
 									echo '</td>';
 									echo '<td class="match-team-2"><img class="standings-icon" src="img/flags/'.strtolower($team_2_nat).'.png" alt="'.htmlentities($team_2_name).'"> ';
