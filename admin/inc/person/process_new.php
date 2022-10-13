@@ -54,8 +54,8 @@
 		$new_license_link = $_POST["license-link"];
 		$new_biography = $_POST["biography"];
 
-		$sql = "INSERT INTO people (name, file_code, nationality, active, admission_date, admission_poll, as_player, as_coach, score, votes, rating, full_name, date_of_birth, place_of_birth, country_of_birth, living, date_of_death, position, intro_text, picture_credit, license_link, biography)";
-		$sql .= "VALUES (:NewName, :NewFileCode, :NewNationality, :NewAdmitted, :NewAdmissionDate, :NewAdmissionPoll, :NewAsPlayer, :NewAsCoach, :NewScore, :NewVotes, :NewRating, :NewFullName, :NewBirthDate, :NewBirthPlace, :NewBirthCountry, :NewIsLiving, :NewDeathDate, :NewPosition, :NewIntroText, :NewPictureCredit, :NewLicenseLink, :NewBiography)";
+		$sql = "INSERT INTO people (name, file_code, nationality, active, contender, admission_date, admission_poll, as_player, as_coach, score, votes, rating, full_name, date_of_birth, place_of_birth, country_of_birth, living, date_of_death, position, intro_text, picture_credit, license_link, biography)";
+		$sql .= "VALUES (:NewName, :NewFileCode, :NewNationality, :NewAdmitted, :NewContender, :NewAdmissionDate, :NewAdmissionPoll, :NewAsPlayer, :NewAsCoach, :NewScore, :NewVotes, :NewRating, :NewFullName, :NewBirthDate, :NewBirthPlace, :NewBirthCountry, :NewIsLiving, :NewDeathDate, :NewPosition, :NewIntroText, :NewPictureCredit, :NewLicenseLink, :NewBiography)";
 					
 		$stmt = $connectDB->prepare($sql);
 		
@@ -63,6 +63,7 @@
 		$stmt->bindValue(':NewFileCode', $new_file_code);
 		$stmt->bindValue(':NewNationality', $new_nationality);
 		$stmt->bindValue(':NewAdmitted', $new_admitted);
+		$stmt->bindValue(':NewContender', $new_contender);
 		$stmt->bindValue(':NewAdmissionDate', $new_admission_date);
 		$stmt->bindValue(':NewAdmissionPoll', $new_admission_poll);
 		$stmt->bindValue(':NewAsPlayer', $new_as_player);
@@ -99,7 +100,9 @@
 			} else if ($_POST['submit'] == 'Save and Close') {
 				if ($new_active == true) {
 				redirect_to("view_list.php?type=people&status=active");
-				} else if ($new_active == false) {
+				} else if ($new_contender == true) {
+					redirect_to("view_list.php?type=people&status=contenders");
+				} else {
 					redirect_to("view_list.php?type=people&status=inactive");
 				}
 			}

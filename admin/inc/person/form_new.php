@@ -23,7 +23,7 @@
 						<input type="radio" name="status" id="admitted" value="admitted">
 						<label for="contender">Contender:</label>
 						<input type="radio" name="status" id="contender" value="contender">
-						<label for="admitted">Inactive:</label>
+						<label for="inactive">Inactive:</label>
 						<input type="radio" name="status" id="inactive" value="inactive">
 						<br>
 						<label for="admission-date">Admission Date:</label>

@@ -230,24 +230,30 @@
 			
 			<?php
 			
-				$polls = "SELECT * FROM polls ORDER BY expiry desc LIMIT 1";
+				$polls = "SELECT * FROM polls ORDER BY expiry desc";
 				$poll_content = $connectDB->query($polls);
 
 				$current = array();
-				$expired = array();
 
 				while ($dataRows = $poll_content->fetch()) {
+
+					$poll_title = $dataRows["title"];
+					$poll_intro = $dataRows["intro_text"];
+					$poll_id = $dataRows["id"];
 					
-					echo '<h3>'.htmlentities($dataRows["title"]).'</h3>';
-					
-					echo '<p>'.html_entity_decode($dataRows["intro_text"]).'</p>';
-					
-					echo '<p class="sidebar-button"><a class="sidebar-poll button-link" href="poll.php?id=';
-					echo $dataRows["id"];
-					echo '">View Poll</a></p>';
+					$current[] = $dataRows;
 					
 				}
-	
+				
+				$selected = array_rand($current, 1);
+				
+				echo '<h3>'.htmlentities($current[$selected]["title"]).'</h3>';
+				echo '<p>'.html_entity_decode($current[$selected]["intro_text"]).'</p>';
+					
+				echo '<p class="sidebar-button"><a class="sidebar-poll button-link" href="poll.php?id=';
+				echo $current[$selected]["id"];
+				echo '">View Poll</a></p>';
+				
 			?>
 			
 			<hr>
