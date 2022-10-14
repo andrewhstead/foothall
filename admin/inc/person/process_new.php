@@ -89,18 +89,12 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_admitted == 1) {
-				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_admitted == 0) {
-				redirect_to("view_list.php?type=$table_id&status=inactive");
-			}
-			
 			if ($_POST['submit'] == 'Save and Add Another') {
 				redirect_to("add_new.php?type=people");
 			} else if ($_POST['submit'] == 'Save and Close') {
-				if ($new_active == true) {
+				if ($new_admitted == 1) {
 				redirect_to("view_list.php?type=people&status=active");
-				} else if ($new_contender == true) {
+				} else if (($new_contender == 1) && ($new_admitted == 0)) {
 					redirect_to("view_list.php?type=people&status=contenders");
 				} else {
 					redirect_to("view_list.php?type=people&status=inactive");

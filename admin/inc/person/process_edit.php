@@ -88,9 +88,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_admitted == true) {
+			if ($new_admitted == 1) {
 				redirect_to("view_list.php?type=people&status=active");
-			} else if (($new_contender == true) && ($new_admitted == false)) {
+			} else if (($new_contender == 1) && ($new_admitted == 0)) {
 				redirect_to("view_list.php?type=people&status=contenders");
 			} else if ($new_admitted == 0) {
 				redirect_to("view_list.php?type=people&status=inactive");

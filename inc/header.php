@@ -12,7 +12,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Economica&display=swap" rel="stylesheet">
 		
-		<link rel="icon" href="/img/icons/favicon.ico">
+		<link rel="icon" href="img/icons/favicon.ico">
 		<link rel="stylesheet" href="css/main.css">
 		
 	</head>

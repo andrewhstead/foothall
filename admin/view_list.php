@@ -98,15 +98,15 @@
 		<?php
 		
 			if ($status == 'active') {
-				$table_data = "SELECT * FROM $table_name WHERE active = true ORDER BY $list_column";
+				$table_data = "SELECT * FROM $table_name WHERE active = true ORDER BY $sort_column";
 			} elseif ($table_type == 'hall') {
 				if ($status == 'contenders') {
-					$table_data = "SELECT * FROM $table_name WHERE contender = true ORDER BY $list_column";
+					$table_data = "SELECT * FROM $table_name WHERE contender = true ORDER BY $sort_column";
 				} else {
 					$table_data = "SELECT * FROM $table_name WHERE active = false AND contender = false ORDER BY $list_column";
 				}
 			} else {
-				$table_data = "SELECT * FROM $table_name WHERE active = false ORDER BY $list_column";
+				$table_data = "SELECT * FROM $table_name WHERE active = false ORDER BY $sort_column";
 			}
 					
 			$data_query = $connectDB->query($table_data);
