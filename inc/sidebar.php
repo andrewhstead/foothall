@@ -2,6 +2,8 @@
 		
 		<div class="sidebar">
 			
+			<img class="sidebar-logo" src="img/shield_nb.png" alt="The FootHall Logo">
+			
 			<h2>Rating Leaders: Players</h2>
 			
 				<?php

@@ -10,6 +10,13 @@ body {
 	font-family: Economica, Arial, sans-serif;
 }
 
+img.holder {
+	max-height: 500px;
+	margin: auto;
+	text-align: center;
+	display: block;
+}
+
 .cookie-bar {
 	min-height: 150px;
 	width: 100%;
@@ -1066,6 +1073,13 @@ td.current-page {
     flex-basis: 200px;
     background-color: #eadd9f;
     min-width: 180px;
+}
+
+.sidebar-logo {
+	width: 50%;
+	margin: 0 auto 10px auto;
+	text-align: center;
+	display: block;
 }
 
 hr {
