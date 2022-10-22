@@ -64,7 +64,7 @@
 			$identifier = "poll";
 			$list_column = "title";
 			$url_column = "id";
-			$sort_column = "name";
+			$sort_column = "id";
 			break;
 		case "people_votes":
 			$identifier = "person_vote";

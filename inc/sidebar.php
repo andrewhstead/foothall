@@ -267,7 +267,7 @@
 				$month = date('m');
 				$day = date('d');
 			
-				$anniversaries = "SELECT * FROM people WHERE ((MONTH(date_of_birth) = $month AND DAY(date_of_birth) = $day) OR (MONTH(date_of_death) = $month AND DAY(date_of_death) = $day) AND active = true)";
+				$anniversaries = "SELECT * FROM people WHERE (((MONTH(date_of_birth) = $month AND DAY(date_of_birth) = $day) OR (MONTH(date_of_death) = $month AND DAY(date_of_death) = $day)) AND active = true)";
 				$anniversary_content = $connectDB->query($anniversaries);
 
 				$births_list = array();
