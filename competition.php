@@ -23,6 +23,25 @@
 		
 	}
 	
+	$alternatives = "
+		SELECT 
+			alternative_names.team AS team, 
+			alternative_names.alternative AS alternative, 
+			alternative_names.abbreviation AS abbreviation, 
+			alternative_names.start AS start_date, 
+			alternative_names.end AS end_date
+		FROM alternative_names 
+		INNER JOIN teams ON teams.name = alternative_names.team";
+	$alternatives_query = $connectDB->query($alternatives);
+	
+	$alternative_list = array();
+	
+	while ($dataRows = $alternatives_query->fetch()) {
+		
+		$alternative_list[] = $dataRows;
+		
+	}
+	
 	$tournaments = "
 		SELECT 
 			tournaments.id AS id, 
@@ -35,9 +54,11 @@
 			host_3.abbreviation AS host_3_abbreviation,  
 			host_4.display_name AS host_4, 
 			host_4.abbreviation AS host_4_abbreviation, 
-			winner.display_name AS winner, 
+			winner.name AS winner, 
+			winner.display_name AS winner_display, 
 			winner.abbreviation AS winner_abbreviation, 
-			runner_up.display_name AS runner_up, 
+			runner_up.name AS runner_up, 
+			runner_up.display_name AS runner_up_display, 
 			runner_up.abbreviation AS runner_up_abbreviation, 
 			tournaments.active AS active
 		FROM tournaments 
@@ -53,15 +74,6 @@
 	$tournament_list = array();
 	
 	while ($dataRows = $tournament_query->fetch()) {
-
-		$id = $dataRows["id"];
-		$year = $dataRows["year"];
-		$host = $dataRows["host"];
-		$host_2 = $dataRows["host_2"];
-		$host_3 = $dataRows["host_3"];
-		$winner = $dataRows["winner"];
-		$runner_up = $dataRows["runner_up"];
-		$active = $dataRows["active"];
 		
 		$tournament_list[] = $dataRows;
 		
@@ -191,23 +203,57 @@
 					}
 					echo '</td>';
 					echo '<td class="winner-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["winner_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["winner_abbreviation"]).'">  ';
-					echo '
-						<script>
-							if (window.innerWidth > 550) {
-								document.write("'.$tournament_menu["winner"].'");
-							} else {
-								document.write("'.$tournament_menu["winner_abbreviation"].'");
-							}
-						</script></td>';
+					
+					foreach ($alternative_list as $alternative) {
+						if ($alternative["team"] == $tournament_menu["winner"] && 
+							$alternative["start_date"] <= $tournament_menu["year"] && 
+							$alternative["end_date"] >= $tournament_menu["year"]) {
+							echo '
+								<script>
+									if (window.innerWidth > 550) {
+										document.write("'.$alternative["alternative"].'");
+									} else {
+										document.write("'.$alternative["abbreviation"].'");
+									}
+								</script></td>';
+						} else {
+							echo '
+								<script>
+									if (window.innerWidth > 550) {
+										document.write("'.$tournament_menu["winner_display"].'");
+									} else {
+										document.write("'.$tournament_menu["winner_abbreviation"].'");
+									}
+								</script></td>';
+						}
+					}
+					
 					echo '<td class="runner-up-cell"><img class="table-icon" src="img/flags/'.strtolower($tournament_menu["runner_up_abbreviation"]).'.png" alt="'.strtolower($tournament_menu["runner_up_abbreviation"]).'">  ';
-					echo '
-						<script>
-							if (window.innerWidth > 550) {
-								document.write("'.$tournament_menu["runner_up"].'");
-							} else {
-								document.write("'.$tournament_menu["runner_up_abbreviation"].'");
-							}
-						</script></td>';
+
+					foreach ($alternative_list as $alternative) {
+						if ($alternative["team"] == $tournament_menu["runner_up"] && 
+							$alternative["start_date"] <= $tournament_menu["year"] && 
+							$alternative["end_date"] >= $tournament_menu["year"]) {
+							echo '
+								<script>
+									if (window.innerWidth > 550) {
+										document.write("'.$alternative["alternative"].'");
+									} else {
+										document.write("'.$alternative["abbreviation"].'");
+									}
+								</script></td>';
+						} else {
+							echo '
+								<script>
+									if (window.innerWidth > 550) {
+										document.write("'.$tournament_menu["runner_up_display"].'");
+									} else {
+										document.write("'.$tournament_menu["runner_up_abbreviation"].'");
+									}
+								</script></td>';
+						}
+					}
+					
 					echo '</tr>';
 					
 					$row_count++;

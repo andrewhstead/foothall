@@ -47,6 +47,7 @@
 			$identifier = "tournament";
 			$list_column = "name";
 			$url_column = "id";
+			$sort_column = "name";
 			break;
 		case "stories":
 			$identifier = "story";
@@ -71,12 +72,14 @@
 			$list_column = "option";
 			$disambiguation = "poll";
 			$url_column = "id";
+			$sort_column = "id";
 			break;
 		case "people_positions":
 			$identifier = "person_position";
 			$list_column = "position";
 			$disambiguation = "person";
 			$url_column = "id";
+			$sort_column = "id";
 			break;
 		case "people_dream":
 			$identifier = "person_dream";
@@ -163,6 +166,12 @@
 			$disambiguation = "match_code";
 			$url_column = "id";
 			$sort_column = "id";
+			break;
+		case "alternative_names":
+			$identifier = "alternative";
+			$list_column = "alternative";
+			$url_column = "id";
+			$sort_column = "alternative";
 			break;
 		default:
 			$identifier = "person";

@@ -13,6 +13,25 @@
 	}
 						
 	$connectDB;
+	
+	$alternatives = "
+		SELECT 
+			alternative_names.team AS team, 
+			alternative_names.alternative AS alternative, 
+			alternative_names.abbreviation AS abbreviation, 
+			alternative_names.start AS start_date, 
+			alternative_names.end AS end_date
+		FROM alternative_names 
+		INNER JOIN teams ON teams.name = alternative_names.team";
+	$alternatives_query = $connectDB->query($alternatives);
+	
+	$alternative_list = array();
+	
+	while ($dataRows = $alternatives_query->fetch()) {
+		
+		$alternative_list[] = $dataRows;
+		
+	}
 
 	$tournament = "SELECT 
 		competitions.name AS competition,
@@ -127,8 +146,34 @@
 				}
 			?>
 			<br>
-			<strong>Winners:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($winner_nat) ?>.png" alt="<?php echo strtolower($winner_nat) ?>"> <?php echo htmlentities($winner_name) ?><br>
-			<strong>Runners-Up:</strong> <img class="table-icon" src="img/flags/<?php echo strtolower($runner_up_nat) ?>.png" alt="<?php echo strtolower($runner_up_nat) ?>"> <?php echo htmlentities($runner_up_name) ?><br>
+			<strong>Winners:</strong> 
+			<img class="table-icon" src="img/flags/<?php echo strtolower($winner_nat) ?>.png" alt="<?php echo strtolower($winner_nat) ?>"> 
+			<?php 
+				foreach ($alternative_list as $alternative) {
+					if ($alternative["team"] == $winner && 
+						$alternative["start_date"] <= $year && 
+						$alternative["end_date"] >= $year) {
+						echo htmlentities($alternative["alternative"]);
+					} else {
+						echo htmlentities($winner_name);
+					}
+				}
+			?>
+			<br>
+			<strong>Runners-Up:</strong> 
+			<img class="table-icon" src="img/flags/<?php echo strtolower($runner_up_nat) ?>.png" alt="<?php echo strtolower($runner_up_nat) ?>"> 
+			<?php 
+				foreach ($alternative_list as $alternative) {
+					if ($alternative["team"] == $runner_up && 
+						$alternative["start_date"] <= $year && 
+						$alternative["end_date"] >= $year) {
+						echo htmlentities($alternative["alternative"]);
+					} else {
+						echo htmlentities($runner_up_name);
+					}
+				}
+			?>
+			<br>
 			<br>
 			<strong>Games:</strong> <?php if ($games != 0) { echo htmlentities($games); } ?><br>
 			<strong>Goals:</strong> <?php if ($goals != 0) { echo htmlentities($goals); } ?><br>
