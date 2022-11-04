@@ -142,9 +142,13 @@ li.menu-link:hover {
 	font-size: 1.2em;
 }
 
+.feed-picture {
+	display: none;
+}
 .feed-icon {
 	height: 30px;
 	vertical-align: text-bottom;
+	margin-right: 5px;
 }
 .header-icon {
 	height: 30px;
@@ -1281,12 +1285,26 @@ hr {
 		margin: 0;
 	}
 
+	.feed-picture {
+		display: inline-block;
+		float:left;
+		margin: 5px;
+		height: 85px;
+		border: 2px solid #321c20;
+	}
+
 	.rating-block {
 		width: 25px;
 	}
 	
 	.flex-wrapper {
 		flex-direction: row;
+	}
+	.feed-picture {
+		float:left;
+		margin: 5px;
+		height: 85px;
+		border: 3px solid #321c20;
 	}
 	
 	.sub-menu {

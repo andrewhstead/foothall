@@ -113,13 +113,13 @@
 					WHERE people_positions.person = '$name'
 					UNION ALL 
 					SELECT 
-						people_matches.match_title AS match_title, 
+						people_matches.match_code AS match_code, 
 						people_matches.person AS match_person, 
 						people_matches.type AS tag_type, 
 						matches.id AS match_id
 					FROM people_matches
 					INNER JOIN matches 
-						ON matches.title = people_matches.match_title
+						ON matches.file_code = people_matches.match_code
 					WHERE people_matches.person = '$name'
 					UNION ALL 
 					SELECT 

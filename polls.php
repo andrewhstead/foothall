@@ -39,6 +39,7 @@
 			echo '<div class="feed-post">';
 			
 			echo '<div class="feed-body">';
+			echo ' <img class="feed-picture" src="img/icons/poll.png" alt="Poll">';
 			echo '<span class="post-title">'
 				.'<a class="post-link" href="poll.php?id='
 				.$item['id']
@@ -46,9 +47,7 @@
 				.$item['title']
 				.'</a></span>';
 			
-			echo '<br>'
-				.$item['intro_text']
-				.'<br>';
+			echo $item['intro_text'];
 			
 			$display_date = new DateTime($item['expiry']);
 			echo '<div class="right-text"><strong>Expires:</strong> ';
@@ -60,22 +59,24 @@
 		
 	}
 	
-	echo '<div class="feed-heading">No Completed Polls Yet</div>';
-	
 	if (!$expired) {
 		
+		echo '<div class="feed-heading">No Completed Polls Yet</div>';
 		echo '<div class="feed-post">';
 		echo '<div class="feed-body">';
 		echo 'Completed polls will appear here soon.';
 		echo '</div></div>';
 		
 	} else {
+		
+		echo '<div class="feed-heading">Completed Polls</div>';
 	
 		foreach ($expired as $item) if ($item['locked'] == true) {
 			
 			echo '<div class="feed-post">';
 			
 			echo '<div class="feed-body">';
+			echo ' <img class="feed-picture" src="img/icons/poll.png" alt="Poll">';
 			echo '<span class="post-title">'
 				.'<a class="post-link" href="poll.php?id='
 				.$item['id']
@@ -83,9 +84,7 @@
 				.$item['title']
 				.'</a></span>';
 			
-			echo '<br>'
-				.$item['intro_text']
-				.'<br>';
+			echo $item['intro_text'];
 			
 			$display_date = new DateTime($item['expiry']);
 			echo '<strong>Expired:</strong> ';

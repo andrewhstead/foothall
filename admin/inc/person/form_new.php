@@ -27,7 +27,7 @@
 						<input type="radio" name="status" id="inactive" value="inactive">
 						<br>
 						<label for="admission-date">Admission Date:</label>
-						<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date">
+						<input type="datetime-local" type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date">
 						<br>
 						<label for="admission-poll">Admission Poll:</label>
 						<input type="text" name="admission-poll" placeholder="Admitted in Poll..." id="admission-poll">

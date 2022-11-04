@@ -145,7 +145,7 @@
 			$list_column = "team_name";
 			$disambiguation = "tournament_name";
 			$url_column = "id";
-			$sort_column = "id";
+			$sort_column = "team_name";
 			break;
 		case "teams_matches":
 			$identifier = "team_match";

@@ -23,7 +23,9 @@
 		$content[] = $dataRows;
 	}
 	
-	$people = "SELECT * FROM people WHERE active = true";
+	$people = "SELECT
+		id, type, name, file_code, nationality, admission_date AS published, intro_text
+		FROM people WHERE active = true";
 	$people_content = $connectDB->query($people);
 	while ($dataRows = $people_content->fetch()) {
 		$content[] = $dataRows;
@@ -32,7 +34,7 @@
 	$matches = "SELECT
 		matches.id AS id,
 		matches.type AS type,
-		matches.published AS published,
+		matches.admission_date AS published,
 		year(matches.date) AS year,
 		team_1.display_name AS team_1_name,
 		matches.score_1 AS score_1,
@@ -134,6 +136,7 @@
 			echo '.php?id='.$item['id'].'">';
 			
 			if ($item['type'] == 'poll') {
+				echo ' <img class="feed-picture" src="img/icons/poll.png" alt="Poll">';
 				echo $item['title'];
 				echo '</a>';
 			} else if ($item['type'] == 'story') {
@@ -146,11 +149,14 @@
 				echo $item['headline'];
 				echo '</a>';
 			} else if ($item['type'] == 'person') {
-				echo $item['name'];
-				echo '</a>';
 				echo ' <img class="feed-icon" src="img/flags/'
 				.strtolower($item['nationality']).'.png" alt="'
 				.$item['nationality'].'">';
+				echo $item['name'];
+				echo '</a>';
+				echo ' <img class="feed-picture" src="img/portraits/'
+				.$item['file_code'].'.jpg" alt="'
+				.$item['name'].'">';
 			} else if ($item['type'] == 'match') {
 				echo $item['team_1_name'].' '.$item['score_1'].'-'.$item['score_2'].' '.$item['team_2_name'].' ('.$item['year'].')';
 				echo '</a>';

@@ -27,7 +27,7 @@
 						<input type="radio" name="status" id="inactive" value="inactive" <?php if (!$admitted and !$contender) { echo 'checked'; } ?>>
 						<br>
 						<label for="admission-date">Admission Date:</label>
-						<input type="date" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date" value="<?php echo $admission_date; ?>">
+						<input type="datetime-local" name="admission-date" placeholder="DD-MM-YYYY" id="admission-date" value="<?php echo $admission_date; ?>">
 						<br>
 						<label for="admission-poll">Admission Poll:</label>
 						<input type="text" name="admission-poll" placeholder="Admitted in Poll..." id="admission-poll" value="<?php echo $admission_poll; ?>">

@@ -19,7 +19,7 @@
 	if(isset($_POST["vote"])) {
 			
 		$chosen_option = $_POST["chosen"];		
-		if ($_POST["poll-type"] == 'people') {
+		if ($_POST["poll-type"] == 'person') {
 			$sql = "UPDATE people_votes SET votes = votes + 1 WHERE id = $chosen_option";
 		} else if ($_POST["poll-type"] == 'match') {
 			$sql = "UPDATE match_votes SET votes = votes + 1 WHERE id = $chosen_option";
