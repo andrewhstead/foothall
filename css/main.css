@@ -349,6 +349,18 @@ td.progress-bar {
 	border: 1px solid #003399;
 }
 
+.poll-navigation {
+	margin-bottom: 10px;
+	overflow: auto;
+}
+.previous-poll {
+	float: left;
+}
+.next-poll {
+	float: right;
+	text-align: right;
+}
+
 .cookie-button {
 	background-color: #3366ff;
 	color: white;

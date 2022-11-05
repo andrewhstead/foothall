@@ -290,10 +290,48 @@
 		<p>
 			<strong>Total Votes:</strong> <?php echo htmlentities($total_votes); ?>
 		</p>
+	
+		<div class="poll-navigation">
+			
+			<?php
+
+				$adjacent = "SELECT id, title FROM polls WHERE id = $poll_id + 1 OR id = $poll_id - 1";
+				$adjacent_polls = $connectDB->query($adjacent);
+
+				while ($dataRows = $adjacent_polls->fetch()) {
+				
+					if ($dataRows["id"] == $poll_id - 1) {
+						$previous_id = $dataRows["id"];
+						$previous_title = $dataRows["title"];
+						echo '<div class="previous-poll">';
+						echo '&larr; Previous Poll<br>';
+						echo '<a class="post-link" href="poll.php?id='
+							.$previous_id
+							.'">'
+							.$previous_title
+							.'</a>';
+						echo '</div>';
+					} elseif ($dataRows["id"] == $poll_id + 1) {
+						$next_id = $dataRows["id"];
+						$next_title = $dataRows["title"];
+						echo '<div class="next-poll">';
+						echo 'Next Poll &rarr;<br>';
+						echo '<a class="post-link" href="poll.php?id='
+							.$next_id
+							.'">'
+							.$next_title
+							.'</a>';
+						echo '</div>';
+					}
+				}
+
+			?>
+			
+		</div>
 		
 	</div>
 
-	
+
 <?php
 
 	include 'inc/footer.php';
