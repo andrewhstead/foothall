@@ -17,7 +17,7 @@
 	
 	$date = date('Y-m-d H:i:s');
 	
-	$polls = "SELECT * FROM polls WHERE expiry > CURDATE() ORDER BY id desc";
+	$polls = "SELECT * FROM polls WHERE expiry > NOW() AND published <= NOW() ORDER BY id desc";
 	$poll_content = $connectDB->query($polls);
 	while ($dataRows = $poll_content->fetch()) {
 		$content[] = $dataRows;

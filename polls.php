@@ -7,7 +7,7 @@
 	
 	$connectDB;
 	
-	$polls = "SELECT * FROM polls ORDER BY expiry desc, id desc";
+	$polls = "SELECT * FROM polls WHERE published <= NOW() ORDER BY expiry desc, id desc";
 	$poll_content = $connectDB->query($polls);
 
 	$current = array();
@@ -23,10 +23,10 @@
 		
 	}
 	
-	echo '<div class="feed-heading">Open Polls</div>';
 	
 	if (!$current) {
 		
+		echo '<div class="feed-heading">No Open Polls Currently</div>';
 		echo '<div class="feed-post">';
 		echo '<div class="feed-body">';
 		echo 'New polls will appear here soon.';
@@ -34,6 +34,8 @@
 		
 	} else {
 	
+		echo '<div class="feed-heading">Open Polls</div>';
+		
 		foreach ($current as $item) if ($item['locked'] == false) {
 			
 			echo '<div class="feed-post">';
