@@ -7,7 +7,7 @@
 	
 	$connectDB;
 	
-	$polls = "SELECT * FROM polls ORDER BY expiry desc";
+	$polls = "SELECT * FROM polls ORDER BY expiry desc, id desc";
 	$poll_content = $connectDB->query($polls);
 
 	$current = array();

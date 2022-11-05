@@ -37,13 +37,11 @@
 			<?php echo date_format($published, "d/m/Y, H:i"); ?>
 		</p>
 		
-		<p>
-			<?php echo nl2br($intro_text); ?>
-		</p>
+		<?php echo nl2br($intro_text); ?>
 		
-		<p>
+		<div class="news-story">
 			<?php echo nl2br($text); ?>
-		</p>
+		</div>
 		
 	</div>
 

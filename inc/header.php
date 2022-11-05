@@ -59,6 +59,7 @@
 						<li class="hall-nested hall-item"><a class="menu-link" href="teams.php">Teams</a></li>
 					</ul>
 				</li>
+				<!--
 				<li class="nest-heading header-link-text" onmouseover="showMenu('history')" onmouseleave="removeMenu('history')">
 					<span class="nest-head">
 						<span class="open-nest" onclick="menuToggle('history')">
@@ -73,6 +74,7 @@
 						<li class="history-nested history-item"><a class="menu-link" href="dream.php">Dream Teams</a></li>
 					</ul>
 				</li>
+				-->
 				<?php				
 					if(isset($_SESSION["user_id"])) {
 						echo '<li class="header-link-text"><a class="menu-link" href="admin/index.php">Admin Home</a></li>';

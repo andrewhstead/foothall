@@ -182,13 +182,13 @@ li.menu-link:hover {
 	color: #cfb53b;
 }
 
-.post-link {
+.post-link, .news-story a {
 	color: #9c8208;
 }
-.post-link:hover {
+.post-link, .news-story a:hover {
 	font-weight: bold;
 }
-.post-link:visited {
+.post-link, .news-story a:visited {
 	color: #cfb53b;
 }
 
@@ -251,6 +251,10 @@ h3 {
 	margin: 0;
 	padding: 5px 0;
 	text-align: left;
+}
+
+.news-story p{
+	margin: 0;
 }
 
 .inline-heading {

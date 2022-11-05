@@ -17,7 +17,7 @@
 	
 	$date = date('Y-m-d H:i:s');
 	
-	$polls = "SELECT * FROM polls WHERE expiry > CURDATE()";
+	$polls = "SELECT * FROM polls WHERE expiry > CURDATE() ORDER BY id desc";
 	$poll_content = $connectDB->query($polls);
 	while ($dataRows = $poll_content->fetch()) {
 		$content[] = $dataRows;
@@ -146,6 +146,7 @@
 				echo $item['name'];
 				echo ' Dream Team</a>';
 			} else if ($item['type'] == 'news') {
+				echo ' <img class="feed-picture" src="img/icons/feed_logo.png" alt="Site News">';
 				echo $item['headline'];
 				echo '</a>';
 			} else if ($item['type'] == 'person') {
