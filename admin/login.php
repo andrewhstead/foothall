@@ -1,8 +1,9 @@
 <?php
 	
+	session_start();
+	
 	$thispage = "Login Page";
 
-	session_start();
 	
 	require_once '../inc/db.php';
 	require_once '../inc/functions.php';

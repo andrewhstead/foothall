@@ -1,5 +1,18 @@
-<!DOCTYPE html>
+<?php
+		
+	if(isset($_POST["choice"])) {
+		if ($_POST["choice"] == 'Accept Cookies') {
+			setcookie('general', 'accepted', time() + (86400 * 30), "/");
+			$_COOKIE['general'] = 'accepted';
+		} else if ($_POST["choice"] == 'Reject Cookies') {
+			$_SESSION['choice'] = $_POST["choice"];
+		}
+	}
+	
+?>
 
+<!DOCTYPE html>
+	
 <html lang="en-GB">
 
 	<!-- Header information for the page. -->
@@ -17,19 +30,6 @@
 		
 	</head>
 	
-	<?php
-		
-		session_start();
-		if(isset($_POST["choice"])) {
-			if ($_POST["choice"] == 'Accept Cookies') {
-				setcookie('general', 'accepted', time() + (86400 * 30), "/");
-				$_COOKIE['general'] = 'accepted';
-			} else if ($_POST["choice"] == 'Reject Cookies') {
-				$_SESSION["choice"] = $_POST["choice"];
-			}
-		}
-	
-	?>
 	
 	<!-- The visible content of the page. -->
 	<body>

@@ -1,4 +1,7 @@
 <?php
+	
+	session_start();
+	
 	$thispage = "Home Page";
 	
 	require_once 'inc/db.php';
@@ -92,7 +95,7 @@
 	
 	$news = "
 		SELECT * FROM news 
-		WHERE news.active = true 
+		WHERE news.active = true AND published <= NOW()
 		ORDER BY published";
 	$news_content = $connectDB->query($news);
 	while ($dataRows = $news_content->fetch()) {

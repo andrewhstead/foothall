@@ -232,7 +232,7 @@
 			
 			<?php
 			
-				$polls = "SELECT * FROM polls ORDER BY expiry desc";
+				$polls = "SELECT * FROM polls WHERE expiry > NOW() AND published <= NOW() ORDER BY expiry desc";
 				$poll_content = $connectDB->query($polls);
 
 				$current = array();
@@ -247,14 +247,20 @@
 					
 				}
 				
-				$selected = array_rand($current, 1);
+				if ($current) {
+					$selected = array_rand($current, 1);
 				
-				echo '<h3>'.htmlentities($current[$selected]["title"]).'</h3>';
-				echo '<p>'.html_entity_decode($current[$selected]["intro_text"]).'</p>';
+					echo '<h3>'.htmlentities($current[$selected]["title"]).'</h3>';
+					echo '<p>'.html_entity_decode($current[$selected]["intro_text"]).'</p>';
+						
+					echo '<p class="sidebar-button"><a class="sidebar-poll button-link" href="poll.php?id=';
+					echo $current[$selected]["id"];
+					echo '">View Poll</a></p>';
+				} else {
 					
-				echo '<p class="sidebar-button"><a class="sidebar-poll button-link" href="poll.php?id=';
-				echo $current[$selected]["id"];
-				echo '">View Poll</a></p>';
+					echo '<div class="centre-text"><p>None available at the moment.</p></div>';
+					
+				}
 				
 			?>
 			

@@ -1,12 +1,12 @@
 <?php
 	
-	$thispage = "Home Page";
-
 	session_start();
 	
+	$thispage = "Home Page";
+	
 	require_once '../inc/db.php';
-	require_once '../inc/functions.php';
 	include 'inc/header.php';
+	require_once '../inc/functions.php';
 	
 	confirm_login();
 	
