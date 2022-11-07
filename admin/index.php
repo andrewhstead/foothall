@@ -4,10 +4,9 @@
 	require_once '../inc/functions.php';
 	confirm_login();	
 	require_once '../inc/db.php';
+	include 'inc/header.php';
 	$connectDB;
 	
-	include 'inc/header.php';
-
 	$thispage = "Home Page";
 	
 	$tables = "SELECT *	FROM tables ORDER BY table_type, importance, table_name";

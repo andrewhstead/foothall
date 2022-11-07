@@ -4,9 +4,8 @@
 	require_once '../inc/functions.php';
 	confirm_login();	
 	require_once '../inc/db.php';
-	$connectDB;
-
 	include 'inc/header.php';
+	$connectDB;
 	
 	$thispage = "Edit Record";
 					

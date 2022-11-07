@@ -1,7 +1,5 @@
 <?php
 	
-	session_start();
-	
 	$thispage = "Home Page";
 	
 	require_once 'inc/db.php';
