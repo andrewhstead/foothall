@@ -771,6 +771,12 @@ h1.info-page:first-of-type {
 	color: white;
 	text-decoration: none;
 }
+@font-face {
+    font-family: DotMatrix;
+    src: url('../fonts/Dot Matrix 1.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .button-link:hover {
 	text-decoration: underline;

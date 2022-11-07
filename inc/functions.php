@@ -35,13 +35,13 @@
 	
 	function confirm_login() {
 
-		if(isset($_SESSION["user_id"])) {
+		if(isset($_SESSION['user_id'])) {
 
 			return true;
 
 		} else {
 
-			$_SESSION["error_message"] = "Login Required to View Page";
+			$_SESSION['error_message'] = "Login Required to View Page";
 			redirect_to("login.php");
 
 		}
@@ -50,11 +50,11 @@
 
 	function success_message() {
 
-		if(isset($_SESSION["success_message"])) {
+		if(isset($_SESSION['success_message'])) {
 
-			$output = "<div class='message success-message'>" . htmlentities($_SESSION["success_message"]) . "</div>";
+			$output = "<div class='message success-message'>" . htmlentities($_SESSION['success_message']) . "</div>";
 
-			$_SESSION["success_message"] = null;
+			$_SESSION['success_message'] = null;
 
 			return $output;
 
@@ -64,11 +64,11 @@
 
 	function error_message() {
 
-		if(isset($_SESSION["error_message"])) {
+		if(isset($_SESSION['error_message'])) {
 
-			$output = "<div class='message error-message'>" . htmlentities($_SESSION["error_message"]) . "</div>";
+			$output = "<div class='message error-message'>" . htmlentities($_SESSION['error_message']) . "</div>";
 
-			$_SESSION["error_message"] = null;
+			$_SESSION['error_message'] = null;
 
 			return $output;
 

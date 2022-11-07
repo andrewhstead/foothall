@@ -1,17 +1,20 @@
 <?php
-	$thispage = "View Table Entries";
 	
+	session_start();
+	require_once '../inc/functions.php';
+	confirm_login();	
 	require_once '../inc/db.php';
+	$connectDB;
 
 	include 'inc/header.html';
+	
+	$thispage = "View Table Entries";
 					
 	if (isset($_GET["id"])) {
 		$table_id = $_GET["id"];
 	} else {
 		$table_id = 8;
 	}
-						
-	$connectDB;
 	
 	$table = "SELECT * FROM tables WHERE id = $table_id";
 	$table_query = $connectDB->query($table);

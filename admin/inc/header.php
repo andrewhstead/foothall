@@ -8,7 +8,8 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Gabriela&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Economica&display=swap" rel="stylesheet">
 		
@@ -43,7 +44,7 @@
 				<li><a class="menu-link" href="../index.php">Website Home</a></li>
 			
 			<?php
-				if(isset($_SESSION["user_id"])) {
+				if(isset($_SESSION['user_id'])) {
 					echo '<li><a class="menu-link" href="logout.php">Log Out</a></li>';
 				}
 			?>
@@ -58,7 +59,7 @@
 				
 				<?php
 				
-					if (isset($_SESSION["username"])) {
+					if (isset($_SESSION['username'])) {
 						echo '<p class="breadcrumb">Logged in as: '.$_SESSION["username"].'</p>';
 					}
 					

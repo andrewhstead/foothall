@@ -1,15 +1,14 @@
 <?php
-	$thispage = "Add New Record";
-
-	session_start();
 	
-	require_once '../inc/db.php';
+	session_start();
 	require_once '../inc/functions.php';
+	confirm_login();	
+	require_once '../inc/db.php';
+	$connectDB;
+
 	include 'inc/header.php';
 	
-	confirm_login();
-	
-	$connectDB;
+	$thispage = "Add New Record";
 					
 	if (isset($_GET["type"])) {
 		$table_id = $_GET["type"];

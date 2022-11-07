@@ -1,16 +1,14 @@
 <?php
-	
+
 	session_start();
-	
-	$thispage = "Home Page";
-	
-	require_once '../inc/db.php';
-	include 'inc/header.php';
 	require_once '../inc/functions.php';
-	
-	confirm_login();
-	
+	confirm_login();	
+	require_once '../inc/db.php';
 	$connectDB;
+	
+	include 'inc/header.php';
+
+	$thispage = "Home Page";
 	
 	$tables = "SELECT *	FROM tables ORDER BY table_type, importance, table_name";
 	$table_query = $connectDB->query($tables);
