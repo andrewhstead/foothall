@@ -29,7 +29,7 @@
 			$identifier = "country";
 			$list_column = "display_name";
 			$url_column = "id";
-			$sort_column = "name";
+			$sort_column = "full_name";
 			break;
 		case "teams":
 			$identifier = "club";
