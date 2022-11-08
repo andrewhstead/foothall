@@ -237,6 +237,32 @@ li.menu-link:hover {
 	text-decoration: underline;
 }
 
+.cookie-setting {
+	font-size: 3em;
+	font-weight: bold;
+}
+.accepted-mark {
+	background-color: #00cc33;
+	color: #ffffff;
+	padding: 0 10px;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+.rejected-mark {
+	background-color: #cc3300;
+	color: #ffffff;
+	padding: 0 10px;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+.accepted-text {
+	color: #00cc33;
+}
+.rejected-text {
+	color: #cc3300;
+}
+
+
 .page-template {
 	background-color: white;
 	margin: 0;
