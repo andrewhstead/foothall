@@ -1,4 +1,5 @@
 <?php
+	ob_start();
 	$thispage = "Person Profile";
 	
 	require_once 'inc/db.php';

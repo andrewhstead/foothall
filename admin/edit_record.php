@@ -1,5 +1,5 @@
 <?php
-	
+	ob_start();
 	session_start();
 	require_once '../inc/functions.php';
 	confirm_login();	

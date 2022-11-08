@@ -1,4 +1,5 @@
 <?php
+	ob_start();
 	$thispage = "Hall of Fame Voting";
 	
 	require_once 'inc/db.php';

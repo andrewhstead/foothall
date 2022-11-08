@@ -21,7 +21,7 @@ img.holder {
 	min-height: 150px;
 	width: 100%;
 	position: fixed;
-	top: 0;
+	bottom: 0;
 	background-color: #cfb53b;
 	color: #321c20;
 	border-top: 1px solid #321c20;
