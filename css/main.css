@@ -214,6 +214,29 @@ li.menu-link:hover {
 	color: #987f86;
 }
 
+
+.footer-link {
+	font-size: 0.5em;
+}
+.footer-link a{
+	color: #9c8208;
+	text-decoration: none;
+}
+.footer-link a:hover {
+	text-decoration: underline;
+}
+.footer-link a:visited {
+	color: #cfb53b;
+}
+
+.cookie-link {
+	color: #ffffff;
+	text-decoration: none;
+}
+.cookie-link:hover {
+	text-decoration: underline;
+}
+
 .page-template {
 	background-color: white;
 	margin: 0;
