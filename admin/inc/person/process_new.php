@@ -5,15 +5,16 @@
 		$new_name = $_POST["person-name"];
 		$new_file_code = $_POST["file-code"];
 		$new_nationality = $_POST["nationality"];
+		
 		if ($_POST["status"] == "admitted") {
-			$new_admitted = true;
-			$new_contender = false;
+			$new_admitted = 1;
+			$new_contender = 0;
 		} elseif ($_POST["status"] == "contender") {
-			$new_admitted = false;
-			$new_contender = true;
+			$new_admitted = 0;
+			$new_contender = 1;
 		} else {
-			$new_admitted = false;
-			$new_contender = false;
+			$new_admitted = 0;
+			$new_contender = 0;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -25,16 +26,17 @@
 		} else {
 			$new_admission_poll = $_POST["admission-poll"];
 		}
-		if (isset($_POST["as-player"])) {
-			$new_as_player = true;
+		if (empty($_POST["as-player"])) {
+			$new_as_player = 0;
 		} else {
-			$new_as_player = false;
+			$new_as_player = 1;
 		}
-		if (isset($_POST["as-coach"])) {
-			$new_as_coach = true;
+		if (empty($_POST["as-coach"])) {
+			$new_as_coach = 0;
 		} else {
-			$new_as_coach = false;
+			$new_as_coach = 1;
 		}
+		
 		$new_score = $_POST["score"];
 		$new_votes = $_POST["votes"];
 		$new_rating= $_POST["rating"];
@@ -42,12 +44,17 @@
 		$new_birth_date = $_POST["birth-date"];
 		$new_birth_place = $_POST["birth-place"];
 		$new_birth_country = $_POST["birth-country"];
-		if (isset($_POST["is-living"])) {
-			$new_is_living = true;
+		if (empty($_POST["is-living"])) {
+			$new_is_living = 0;
 		} else {
-			$new_is_living = false;
+			$new_is_living = 1;
 		}
-		$new_death_date = $_POST["death-date"];
+		if (empty($_POST["death-date"])) {
+			$new_death_date = '0000-00-00';
+		} else {
+			$new_death_date = $_POST["death-date"];
+		}
+		
 		$new_position = $_POST["position"];
 		$new_intro_text = $_POST["intro-text"];
 		$new_picture_credit = $_POST["picture-credit"];

@@ -22,6 +22,8 @@
 ?>
 
 	<div class="page-template">
+		
+		<?php include 'inc/messages.php'; ?>
 	
 		<h1>
 			Add New <?php echo ucwords(str_replace('_', ' ', $identifier)); ?>

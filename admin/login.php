@@ -47,6 +47,8 @@
 					redirect_to("login.php");
 					
 				}
+				
+				exit();
 
 			} else {
 

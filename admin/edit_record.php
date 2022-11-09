@@ -22,10 +22,11 @@
 	}
 		
 	include 'inc/'.$identifier.'/process_edit.php';
-	
 ?>
 
 	<div class="page-template">
+		
+		<?php include 'inc/messages.php'; ?>
 	
 		<h1>
 			Edit <?php echo ucwords(str_replace('_', ' ', $identifier)); ?>

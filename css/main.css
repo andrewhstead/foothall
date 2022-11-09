@@ -777,6 +777,25 @@ h1.info-page:first-of-type {
 	text-decoration: underline;
 }
 
+.success-message {
+	background-color: #33cc00;
+	border: 1px solid #009900;
+}
+.error-message {
+	background-color: #cc3300;
+	border: 1px solid #990000;
+}
+.message {
+	text-align: center;
+	border-radius: 10px;
+	color: #ffffff;
+	margin-right: auto;
+	margin-left: auto;
+	padding: 2px 10px;
+	font-size: 1.5em;
+	width: max-content;
+}
+
 .data-table {
 	margin: 20px auto;
 	width: 100%;
