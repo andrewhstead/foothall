@@ -8,16 +8,16 @@
 		$new_options = $_POST["options"];
 		$new_places = $_POST["places"];
 		if (isset($_POST["active"])) {
-			$new_active = true;
+			$new_active = 1;
 			$new_published = date('Y-m-d H:i:s');
 		} else {
-			$new_active = false;
+			$new_active = 0;
 			$new_published = NULL;			
 		}
 		if (isset($_POST["locked"])) {
-			$new_locked = true;
+			$new_locked = 1;
 		} else {
-			$new_locked = false;
+			$new_locked = 0;
 		}
 		$new_modified = date('Y-m-d H:i:s');
 		$new_expiry = $_POST["expiry"];
@@ -98,11 +98,11 @@
 	}
 		
 	if ($type == 'person') {
-		$option_list = "SELECT * FROM people_votes WHERE poll = '$record_id'";
+		$option_list = "SELECT * FROM people_votes WHERE poll = '$database_id'";
 	} else if ($type == 'match') {
-		$option_list = "SELECT * FROM match_votes WHERE poll = '$record_id'";
+		$option_list = "SELECT * FROM match_votes WHERE poll = '$database_id'";
 	} else if ($type == 'team') {
-		$option_list = "SELECT * FROM team_votes WHERE poll = '$record_id'";
+		$option_list = "SELECT * FROM team_votes WHERE poll = '$database_id'";
 	}
 	$option_query = $connectDB->query($option_list);
 	$poll_option = array();
