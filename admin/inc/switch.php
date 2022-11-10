@@ -53,7 +53,7 @@
 			$identifier = "story";
 			$list_column = "title";
 			$url_column = "id";
-			$sort_column = "name";
+			$sort_column = "title";
 			break;
 		case "dream_teams":
 			$identifier = "dream_team";
@@ -120,7 +120,7 @@
 			$identifier = "table";
 			$list_column = "table_name";
 			$url_column = "id";
-			$sort_column = "id";
+			$sort_column = "table_name";
 			break;
 		case "news":
 			$identifier = "news";
@@ -168,7 +168,7 @@
 			$sort_column = "id";
 			break;
 		case "alternative_names":
-			$identifier = "alternative";
+			$identifier = "alternative_name";
 			$list_column = "alternative";
 			$url_column = "id";
 			$sort_column = "alternative";
