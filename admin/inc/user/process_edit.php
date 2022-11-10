@@ -18,7 +18,7 @@
 		
 		$password_test = password_verify($_POST["current-password"], $current_password);
 		
-		if (($password_test == true) AND ($_POST["new-password"] == $_POST["confirm-password"])) {
+		if (($password_test == 1) AND ($_POST["new-password"] == $_POST["confirm-password"])) {
 			
 			$new_password = password_hash($_POST["new-password"], PASSWORD_DEFAULT);
 			

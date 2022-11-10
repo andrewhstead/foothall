@@ -5,7 +5,7 @@
 		$new_hall_team = $_POST["hall-team"];
 		$new_match = $_POST["match"];
 		$new_team_text = $_POST["team-text"];
-		$new_active = true;
+		$new_active = 1;
 
 		$sql = "UPDATE teams_matches SET hall_team=:NewTeam, match_code=:NewMatch, team_text=:NewText WHERE id = '$record_id'";
 					
@@ -21,9 +21,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

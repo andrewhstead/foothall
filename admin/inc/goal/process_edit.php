@@ -11,14 +11,14 @@
 			$new_assist = NULL;
 		}
 		if (isset($_POST["own-goal"])) {
-			$new_own_goal = true;
+			$new_own_goal = 1;
 		} else {
-			$new_own_goal = false;
+			$new_own_goal = 0;
 		}
 		if (isset($_POST["penalty"])) {
-			$new_penalty = true;
+			$new_penalty = 1;
 		} else {
-			$new_penalty = false;
+			$new_penalty = 0;
 		}
 		$new_minute = $_POST["minute"];
 		if (isset($_POST["stoppage"])) {
@@ -52,9 +52,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

@@ -8,9 +8,9 @@
 		$new_intro_text = $_POST["intro-text"];
 		$new_profile = $_POST["profile"];
 		if ($_POST["status"] == "active") {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 		$new_df = $_POST["df"];
 		$new_mf = $_POST["mf"];
@@ -38,9 +38,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

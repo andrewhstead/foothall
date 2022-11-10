@@ -10,7 +10,7 @@
 		$new_appearances = $_POST["appearances"];
 		$new_goals = $_POST["goals"];
 		$new_summary = $_POST["summary"];
-		$new_active = true;
+		$new_active = 1;
 
 		$sql = "INSERT INTO people_teams (person, team, hall_team, first, last, appearances, goals, summary)";
 		$sql .= "VALUES (:NewPerson, :NewTeam, :NewHallTeam, :NewFirst, :NewLast, :NewAppearances, :NewGoals, :NewSummary)";
@@ -35,9 +35,9 @@
 			if ($_POST['submit'] == 'Save and Add Another') {
 				redirect_to("add_new.php?type=$table_id");
 			} else if ($_POST['submit'] == 'Save and Close') {
-				if ($new_active == true) {
+				if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-				} else if ($new_active == false) {
+				} else if ($new_active == 0) {
 					redirect_to("view_list.php?type=$table_id&status=inactive");
 				}
 			}

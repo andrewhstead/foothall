@@ -14,14 +14,14 @@
 		$new_continent = $_POST["continent"];
 		$new_country = $_POST["country"];
 		if (isset($_POST["active"])) {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 		if (isset($_POST["current"])) {
-			$new_current = true;
+			$new_current = 1;
 		} else {
-			$new_current = false;
+			$new_current = 0;
 		}
 
 		$sql = "INSERT INTO competitions (name, abbreviation, type, gender, area, continent, country, active, current)";
@@ -45,9 +45,9 @@
 
 			$_SESSION["success_message"] = "Your record has been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

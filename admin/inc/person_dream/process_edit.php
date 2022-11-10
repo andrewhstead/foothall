@@ -6,7 +6,7 @@
 		$new_dream_team = $_POST["dream-team"];
 		$new_number = $_POST["number"];
 		$new_position = $_POST["position"];
-		$new_active = true;
+		$new_active = 1;
 
 		$sql = "UPDATE people_dream SET person=:NewPerson, dream_team=:NewDream, number=:NewNumber, position=:NewPosition WHERE id = '$record_id'";
 					
@@ -23,9 +23,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

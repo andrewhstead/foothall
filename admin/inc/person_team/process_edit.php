@@ -10,7 +10,7 @@
 		$new_appearances = $_POST["appearances"];
 		$new_goals = $_POST["goals"];
 		$new_summary = $_POST["summary"];
-		$new_active = true;
+		$new_active = 1;
 
 		$sql = "UPDATE people_teams SET person=:NewPerson, team=:NewTeam, hall_team=:NewHallTeam, first=:NewFirst, last=:NewLast, appearances=:NewAppearances, goals=:NewGoals, summary=:NewSummary WHERE id = '$record_id'";
 					
@@ -31,9 +31,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

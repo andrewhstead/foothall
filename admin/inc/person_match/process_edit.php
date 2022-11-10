@@ -6,26 +6,26 @@
 		$new_team = $_POST["team"];
 		$new_match = $_POST["match"];
 		if ($_POST["status"] == "started") {
-			$new_started = true;
-			$new_substitute = false;
+			$new_started = 1;
+			$new_substitute = 0;
 		} elseif ($_POST["status"] == "substitute") {
-			$new_started = false;
-			$new_substitute = true;
+			$new_started = 0;
+			$new_substitute = 1;
 		}
 		$new_number = $_POST["number"];
 		$new_replaced = $_POST["replaced"];
 		$new_minute = $_POST["minute"];
 		if (isset($_POST["captain"])) {
-			$new_captain = true;
+			$new_captain = 1;
 		} else {
-			$new_captain = false;
+			$new_captain = 0;
 		}
 		if (isset($_POST["goalkeeper"])) {
-			$new_goalkeeper = true;
+			$new_goalkeeper = 1;
 		} else {
-			$new_goalkeeper = false;
+			$new_goalkeeper = 0;
 		}
-		$new_active = true;
+		$new_active = 1;
 
 		$sql = "UPDATE people_matches SET person=:NewPerson, team=:NewTeam, match_code=:NewMatch, started=:NewStarted, sub_appeared=:NewSubstitute, replaced=:NewReplaced, minute=:NewMinute, captain=:NewCaptain, goalkeeper=:NewGoalkeeper, shirt=:NewNumber WHERE id = '$record_id'";
 					
@@ -48,9 +48,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

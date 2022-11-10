@@ -22,9 +22,9 @@
 			if ($_POST['submit'] == 'Save and Add Another') {
 				redirect_to("add_new.php?type=$table_id");
 			} else if ($_POST['submit'] == 'Save and Close') {
-				if ($new_active == true) {
+				if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-				} else if ($new_active == false) {
+				} else if ($new_active == 0) {
 					redirect_to("view_list.php?type=$table_id&status=inactive");
 				}
 			}

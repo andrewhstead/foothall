@@ -11,14 +11,14 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_license_link = $_POST["license-link"];
 		if ($_POST["status"] == "active") {
-			$new_active = true;
-			$new_active = false;
+			$new_active = 1;
+			$new_active = 0;
 		} elseif ($_POST["status"] == "contender") {
-			$new_admitted = false;
-			$new_contender = true;
+			$new_admitted = 0;
+			$new_contender = 1;
 		} else {
-			$new_admitted = false;
-			$new_contender = false;
+			$new_admitted = 0;
+			$new_contender = 0;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -65,9 +65,9 @@
 
 			$_SESSION["success_message"] = "Your record has been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

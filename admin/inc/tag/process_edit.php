@@ -4,7 +4,7 @@
 		
 		$new_table_name = $_POST["table-name"];
 		$new_page_type = $_POST["page-type"];
-		$new_active == true;
+		$new_active == 1;
 
 		$sql = "UPDATE tag_list SET table_name=:NewTableName, page_type=:NewPageType WHERE id = '$record_id'";
 					
@@ -19,9 +19,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

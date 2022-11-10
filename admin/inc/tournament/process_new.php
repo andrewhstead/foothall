@@ -6,14 +6,14 @@
 		$new_year = $_POST["year"];
 		$new_name = $_POST["name"];
 		if (isset($_POST["active"])) {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 		if (isset($_POST["completed"])) {
-			$new_completed = true;
+			$new_completed = 1;
 		} else {
-			$new_completed = false;
+			$new_completed = 0;
 		}
 		if (!empty($_POST["host"])) {
 			$new_host = $_POST["host"];
@@ -94,9 +94,9 @@
 			if ($_POST['submit'] == 'Save and Add Teams') {
 				redirect_to("edit_record.php?type=tournament_teams");
 			} else if ($_POST['submit'] == 'Save and Finish') {
-				if ($new_active == true) {
+				if ($new_active == 1) {
 				redirect_to("view_list.php?type=tournaments&status=active");
-				} else if (($new_contender == true) && ($new_active == false)) {
+				} else if (($new_contender == 1) && ($new_active == 0)) {
 					redirect_to("view_list.php?type=tournaments&status=contenders");
 				} else if ($new_active == 0) {
 					redirect_to("view_list.php?type=tournaments&status=inactive");

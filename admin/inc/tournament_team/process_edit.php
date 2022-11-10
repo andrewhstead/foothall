@@ -17,9 +17,9 @@
 		$new_section = $_POST["section"];
 		$new_reached = $_POST["reached"];
 		if ($_POST["status"] == "active") {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 
 		$sql = "UPDATE tournament_teams SET tournament_name=:NewTournament, team_name=:NewTeam, display_name=:NewDisplayName, tournament_code=:NewTournamentCode, section=:NewSection, reached=:NewReached, active=:NewActive WHERE id = '$record_id'";
@@ -40,9 +40,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

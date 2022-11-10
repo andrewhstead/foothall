@@ -17,9 +17,9 @@
 		$new_section = $_POST["section"];
 		$new_reached = $_POST["reached"];
 		if ($_POST["status"] == "active") {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 
 		$sql = "INSERT INTO tournament_teams (tournament_name, team_name, display_name, tournament_code, section, reached, active)";
@@ -44,9 +44,9 @@
 			if ($_POST['submit'] == 'Save and Add Another') {
 				redirect_to("add_new.php?type=$table_id");
 			} else if ($_POST['submit'] == 'Save and Close') {
-				if ($new_active == true) {
+				if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-				} else if ($new_active == false) {
+				} else if ($new_active == 0) {
 					redirect_to("view_list.php?type=$table_id&status=inactive");
 				}
 			}

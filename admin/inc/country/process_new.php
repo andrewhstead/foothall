@@ -8,19 +8,19 @@
 		$new_successor_to = $_POST["successor-to"];
 		$new_continent = $_POST["continent"];
 		if (isset($_POST["active"])) {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 		if (isset($_POST["defunct"])) {
-			$new_defunct = true;
+			$new_defunct = 1;
 		} else {
-			$new_defunct = false;
+			$new_defunct = 0;
 		}
 		if (isset($_POST["affiliated"])) {
-			$new_affiliated = true;
+			$new_affiliated = 1;
 		} else {
-			$new_affiliated = false;
+			$new_affiliated = 0;
 		}
 		if (isset($_POST["profile"])) {
 			$new_profile = $_POST["profile"];
@@ -49,9 +49,9 @@
 
 			$_SESSION["success_message"] = "Your record has been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

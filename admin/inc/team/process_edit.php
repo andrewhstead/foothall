@@ -11,14 +11,14 @@
 		$new_picture_credit = $_POST["picture-credit"];
 		$new_license_link = $_POST["license-link"];
 		if ($_POST["status"] == "active") {
-			$new_active = true;
-			$new_contender = false;
+			$new_active = 1;
+			$new_contender = 0;
 		} elseif ($_POST["status"] == "contender") {
-			$new_active = false;
-			$new_contender = true;
+			$new_active = 0;
+			$new_contender = 1;
 		} else {
-			$new_active = false;
-			$new_contender = false;
+			$new_active = 0;
+			$new_contender = 0;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -64,9 +64,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if (($new_contender == true) && ($new_active == false)) {
+			} else if (($new_contender == 1) && ($new_active == 0)) {
 				redirect_to("view_list.php?type=$table_id&status=contenders");
 			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");

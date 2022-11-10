@@ -6,14 +6,14 @@
 		$new_year = $_POST["year"];
 		$new_name = $_POST["name"];
 		if (isset($_POST["active"])) {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 		if (isset($_POST["completed"])) {
-			$new_completed = true;
+			$new_completed = 1;
 		} else {
-			$new_completed = false;
+			$new_completed = 0;
 		}
 		$new_host = $_POST["host"];
 		if (!empty($_POST["host-2"])) {
@@ -77,9 +77,9 @@
 
 			$_SESSION["success_message"] = "Your edits have been saved successfully.";
 			
-			if ($new_active == true) {
+			if ($new_active == 1) {
 				redirect_to("view_list.php?type=$table_id&status=active");
-			} else if ($new_active == false) {
+			} else if ($new_active == 0) {
 				redirect_to("view_list.php?type=$table_id&status=inactive");
 			}
 			

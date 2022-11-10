@@ -4,9 +4,9 @@
 		
 		$new_option = $_POST["option"];
 		if (isset($_POST["active"])) {
-			$new_active = true;
+			$new_active = 1;
 		} else {
-			$new_active = false;
+			$new_active = 0;
 		}
 
 		$sql = "UPDATE team_votes SET option=:NewOption, active=:NewActive WHERE id = '$record_id'";

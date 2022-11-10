@@ -8,14 +8,14 @@
 		$new_score_1 = $_POST["score-1"];
 		$new_score_2 = $_POST["score-2"];
 		if (isset($_POST["extra-time"])) {
-			$new_extra_time = true;
+			$new_extra_time = 1;
 		} else {
-			$new_extra_time = false;
+			$new_extra_time = 0;
 		}
 		if (isset($_POST["penalties"])) {
-			$new_penalties = true;
+			$new_penalties = 1;
 		} else {
-			$new_penalties = false;
+			$new_penalties = 0;
 		}
 		if (!empty($POST["penalties-1"])) {
 			$penalties_1 = $POST["penalties-1"];
@@ -56,14 +56,14 @@
 			$new_nationality = $_POST["nationality"];
 		}
 		if ($_POST["status"] == "admitted") {
-			$new_admitted = true;
-			$new_contender = false;
+			$new_admitted = 1;
+			$new_contender = 0;
 		} elseif ($_POST["status"] == "contender") {
-			$new_admitted = false;
-			$new_contender = true;
+			$new_admitted = 0;
+			$new_contender = 1;
 		} else {
-			$new_admitted = false;
-			$new_contender = false;
+			$new_admitted = 0;
+			$new_contender = 0;
 		}
 		if (empty($_POST["admission-date"])) {
 			$new_admission_date = NULL;
@@ -128,9 +128,9 @@
 			} else if ($_POST['submit'] == 'Save and Add Goals') {
 				redirect_to("edit_record.php?type=goals");
 			} else if ($_POST['submit'] == 'Save and Finish') {
-				if ($new_admitted == true) {
+				if ($new_admitted == 1) {
 				redirect_to("view_list.php?type=matches&status=active");
-				} else if (($new_contender == true) && ($new_admitted == false)) {
+				} else if (($new_contender == 1) && ($new_admitted == 0)) {
 					redirect_to("view_list.php?type=matches&status=contenders");
 				} else if ($new_admitted == 0) {
 					redirect_to("view_list.php?type=matches&status=inactive");
@@ -194,10 +194,10 @@
 		$nationality = $dataRows["ref_nat"];
 		$contender = $dataRows["contender"];
 		$admitted = $dataRows["active"];
-		if (($contender == true) or ($admitted == true)) {
-			$inactive = false;
+		if (($contender == 1) or ($admitted == 1)) {
+			$inactive = 0;
 		} else {
-			$inactive = true;
+			$inactive = 1;
 		}
 		$admission_date = $dataRows["admission_date"];
 		$admission_poll = $dataRows["admission_poll"];
