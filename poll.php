@@ -72,13 +72,14 @@
 			<strong>
 				<?php
 					$date = date('Y-m-d H:i:s');
-					if ($date > $expiry) {
+					$current_date = new DateTime($date);
+					if ($current_date > $expiry) {
 						echo "Expired: ";
 					} else {
 						echo "Expires: ";
 					}
 				?>
-			</strong> 
+			</strong>
 			<?php echo date_format($expiry, "d/m/Y, H:i"); ?>
 		</p>
 		
@@ -198,7 +199,8 @@
 							echo htmlentities($name); 
 						} 
 						if ($poll_type == 'person') {
-							echo ' (<a class="standard-link" href="country.php?id='.htmlentities($country_id).'">'.htmlentities($nationality).'</a>)';
+							// echo ' (<a class="standard-link" href="country.php?id='.htmlentities($country_id).'">'.htmlentities($nationality).'</a>)';
+							echo ' ('.htmlentities($nationality).')'; 
 						}
 					?>
 				</span>
@@ -255,7 +257,7 @@
 					}
 					echo '<td>'.htmlentities($name).'</td>';
 					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_id.'"> <input type="hidden" name="poll-type" value="'.$poll_type.'">';
-					if ((isset($_COOKIE['general'])) AND (!isset($_COOKIE[$cookie_name]))) {
+					if ($current_date < $expiry AND (isset($_COOKIE['general'])) AND (!isset($_COOKIE[$cookie_name]))) {
 						echo '<input class="vote-button" type="submit" name="vote" value="&#10003;">';
 					}
 					echo '</form></td>';

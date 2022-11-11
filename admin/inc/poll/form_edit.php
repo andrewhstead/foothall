@@ -28,6 +28,12 @@
 					<label for="locked">Expired:</label>
 					<input type="checkbox" name="locked" id="locked" <?php if ($locked) { echo 'checked'; } ?>>
 					<br>
+					<label for="expiry">Published:</label>
+					<input type="datetime-local" name="published" id="published" value="<?php echo $published; ?>">
+					<br>
+					<label for="expiry">Modified:</label>
+					<input type="datetime-local" name="modified" id="modified" value="<?php echo $modified; ?>">
+					<br>
 					<label for="expiry">Expiry:</label>
 					<input type="datetime-local" name="expiry" id="expiry" value="<?php echo $expiry; ?>">
 			

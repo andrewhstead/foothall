@@ -9,10 +9,8 @@
 		$new_places = $_POST["places"];
 		if (isset($_POST["active"])) {
 			$new_active = 1;
-			$new_published = date('Y-m-d H:i:s');
 		} else {
-			$new_active = 0;
-			$new_published = NULL;			
+			$new_active = 0;		
 		}
 		if (isset($_POST["locked"])) {
 			$new_locked = 1;
@@ -20,6 +18,7 @@
 			$new_locked = 0;
 		}
 		$new_modified = date('Y-m-d H:i:s');
+		$new_published = $_POST["published"];
 		$new_expiry = $_POST["expiry"];
 		$new_intro_text = $_POST["intro-text"];
 		$new_description = $_POST["description"];
