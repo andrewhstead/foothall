@@ -60,7 +60,7 @@
 			<?php
 			
 				if (!$match_list) {
-					echo "<h2>Matches elected to The FootHall will appear here.</h2>";
+					echo "<h2>No matches have yet been elected to The FootHall.</h2>";
 				}
 						
 				foreach ($year_list as $year_head) {

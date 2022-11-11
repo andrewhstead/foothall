@@ -52,7 +52,7 @@
 			<?php
 					
 				if (!$team_list) {
-					echo "<h2>Teams elected to The FootHall will appear here.</h2>";
+					echo "<h2>No teams have yet been elected to The FootHall.</h2>";
 				}
 										
 				foreach ($type_list as $type_head) {

@@ -68,7 +68,7 @@
 			<?php
 			
 				if (!$player_list) {
-					echo "<h2>Players elected to The FootHall will appear here.</h2>";
+					echo "<h2>No players have yet been elected to The FootHall.</h2>";
 				}
 						
 				foreach ($countries as $country_menu) {

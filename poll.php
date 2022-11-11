@@ -57,6 +57,69 @@
 		$total_votes = $dataRows["votes"];
 		
 	}
+	
+	if ($poll_type == 'person') {
+		
+				$choices = "SELECT 
+					people.id AS option_id,
+					people.name AS object_heading,
+					people.nationality AS nationality,
+					people.active AS admitted,
+					people.intro_text AS intro_text,
+					people.position AS position,
+					people_votes.id AS contender_id,
+					people_votes.votes AS votes,
+					countries.id AS country_id 
+					FROM people_votes 
+					INNER JOIN people ON people_votes.option = people.name
+					INNER JOIN countries ON people.nationality = countries.abbreviation
+					WHERE people_votes.poll = $poll_id AND people_votes.active = true
+					ORDER BY votes desc, people.id";
+				$contender_list = $connectDB->query($choices);
+				$option_list = $connectDB->query($choices);
+			
+			} else if ($poll_type == 'match') {
+		
+				$choices = "SELECT 
+					matches.id AS option_id,
+					matches.title AS object_heading,
+					matches.active AS admitted,
+					matches.intro_text AS intro_text,
+					match_votes.id AS contender_id,
+					match_votes.votes AS votes
+					FROM match_votes 
+					INNER JOIN matches ON match_votes.option = matches.title
+					WHERE match_votes.poll = $poll_id AND match_votes.active = true
+					ORDER BY match_votes.votes desc, matches.id";
+				$contender_list = $connectDB->query($choices);
+				$option_list = $connectDB->query($choices);
+			
+			} else if ($poll_type == 'team') {
+		
+				$choices = "SELECT 
+					hall_teams.id AS option_id,
+					hall_teams.title AS object_heading,
+					hall_teams.active AS admitted,
+					hall_teams.intro_text AS intro_text,
+					team_votes.id AS contender_id,
+					team_votes.votes AS votes
+					FROM team_votes 
+					INNER JOIN hall_teams ON team_votes.option = hall_teams.title
+					WHERE team_votes.poll = $poll_id AND team_votes.active = true
+					ORDER BY team_votes.votes desc, hall_teams.id";
+				$contender_list = $connectDB->query($choices);
+				$option_list = $connectDB->query($choices);
+			
+	}
+	
+	$contenders = array();
+			
+	while ($dataRows = $contender_list->fetch()) {
+		
+		$contenders[] = $dataRows;
+		
+	}
+	
 ?>
 
 	<div class="page-template">
@@ -91,64 +154,6 @@
 			<?php echo nl2br($description); ?>
 		</p>
 		
-		<?php
-		
-			if ($poll_type == 'person') {
-		
-				$choices = "SELECT 
-					people.id AS person_id,
-					people.name AS player_name,
-					people.nationality AS nationality,
-					people.active AS admitted,
-					people.intro_text AS intro_text,
-					people.position AS position,
-					people_votes.id AS contender_id,
-					people_votes.votes AS votes,
-					countries.id AS country_id 
-					FROM people_votes 
-					INNER JOIN people ON people_votes.option = people.name
-					INNER JOIN countries ON people.nationality = countries.abbreviation
-					WHERE people_votes.poll = $poll_id AND people_votes.active = true
-					ORDER BY people_votes.votes desc, people.id";
-				$contender_list = $connectDB->query($choices);
-				$option_list = $connectDB->query($choices);
-			
-			} else if ($poll_type == 'match') {
-		
-				$choices = "SELECT 
-					matches.id AS match_id,
-					matches.title AS title,
-					matches.active AS admitted,
-					matches.intro_text AS intro_text,
-					match_votes.id AS contender_id,
-					match_votes.votes AS votes
-					FROM match_votes 
-					INNER JOIN matches ON match_votes.option = matches.title
-					WHERE match_votes.poll = $poll_id AND match_votes.active = true
-					ORDER BY match_votes.votes desc, matches.id";
-				$contender_list = $connectDB->query($choices);
-				$option_list = $connectDB->query($choices);
-			
-			} else if ($poll_type == 'team') {
-		
-				$choices = "SELECT 
-					hall_teams.id AS team_id,
-					hall_teams.title AS title,
-					hall_teams.active AS admitted,
-					hall_teams.intro_text AS intro_text,
-					team_votes.id AS contender_id,
-					team_votes.votes AS votes
-					FROM team_votes 
-					INNER JOIN hall_teams ON team_votes.option = hall_teams.title
-					WHERE team_votes.poll = $poll_id AND team_votes.active = true
-					ORDER BY team_votes.votes desc, hall_teams.id";
-				$contender_list = $connectDB->query($choices);
-				$option_list = $connectDB->query($choices);
-			
-			}
-		
-		?>
-		
 		<h2>
 			The Contenders
 		</h2>
@@ -157,65 +162,36 @@
 		
 		<?php
 		
-			while ($dataRows = $contender_list->fetch()) {
-			
-				if ($poll_type == 'person') {
-					
-					$contender_id = $dataRows["person_id"];
-					$admitted = $dataRows["admitted"];
-					$name = $dataRows["player_name"];
-					$nationality = $dataRows["nationality"];
-					$intro_text = $dataRows["intro_text"];
-					$position = $dataRows["position"];
-					$country_id = $dataRows["country_id"];
-					
-				} else if ($poll_type == 'match') {
-					
-					$contender_id = $dataRows["match_id"];
-					$admitted = $dataRows["admitted"];
-					$name = $dataRows["title"];
-					$intro_text = $dataRows["intro_text"];
-					
-				} else if ($poll_type == 'team') {
-					
-					$contender_id = $dataRows["team_id"];
-					$admitted = $dataRows["admitted"];
-					$name = $dataRows["title"];
-					$intro_text = $dataRows["intro_text"];
-					
-				}
-				
-		?>
+			array_multisort(array_column($contenders, 'option_id'), SORT_ASC, $contenders);
 		
-			<div class="poll-contender">
-				<span class="contender-head">
-					<?php 
+			foreach ($contenders as $contender_bio) {
+					
+				echo '<div class="poll-contender">';
+					echo '<span class="contender-head">';
 						if ($poll_type == 'person') {
-							echo '<img class="text-icon" src="img/flags/'.strtolower($nationality).'.png" alt="'.htmlentities($nationality).'"> ';
+							echo '<img class="text-icon" src="img/flags/'.strtolower($contender_bio["nationality"]).'.png" alt="'.htmlentities($contender_bio["nationality"]).'"> ';
 						}
-						if ($admitted) {
-							echo '<a class="standard-link" href="person.php?id='.$contender_id.'">'.htmlentities($name).'</a>';
+						if ($contender_bio["admitted"]) {
+							echo '<a class="standard-link" href="person.php?id='.$contender_bio["object_id"].'">'.htmlentities($contender_bio["object_heading"]).'</a>';
 							} else {
-							echo htmlentities($name); 
+							echo htmlentities($contender_bio["object_heading"]); 
 						} 
 						if ($poll_type == 'person') {
-							// echo ' (<a class="standard-link" href="country.php?id='.htmlentities($country_id).'">'.htmlentities($nationality).'</a>)';
-							echo ' ('.htmlentities($nationality).')'; 
+							// echo ' (<a class="standard-link" href="country.php?id='.htmlentities($contender_bio["country_id"]).'">'.htmlentities($contender_bio["nationality"]).'</a>)';
+							echo ' ('.htmlentities($contender_bio["nationality"]).')'; 
 						}
-					?>
-				</span>
-				<br>
-				<?php
+					echo '</span><br>';	
 					if ($poll_type == 'person') {
-						echo'<strong>Position:</strong> '.htmlentities($position).'<br>';
+						echo'<strong>Position:</strong> '.htmlentities($contender_bio["position"]).'<br>';
 					}
-				?>
-				<div class="formatted-text">
-					<?php echo html_entity_decode($intro_text); ?>
-				</div>
-			</div>
-		
-		<?php } ?>
+					echo '<div class="formatted-text">';
+						echo html_entity_decode($contender_bio["intro_text"]);
+					echo '</div>';				
+				echo '</div>';
+			
+			}
+			
+		?>
 		
 		</div>
 		
@@ -228,22 +204,12 @@
 			<?php
 
 				$ranking = 0;
+			
+				array_multisort(array_column($contenders, 'votes'), SORT_DESC, $contenders);
 				
-				while ($dataRows = $option_list->fetch()) {
+				foreach ($contenders as $contender_score) {
 
 					$ranking ++;
-					
-					$contender_id = $dataRows["contender_id"];
-					$votes = $dataRows["votes"];
-					
-					if ($poll_type == 'person') {
-						$name = $dataRows["player_name"];
-						$nationality = $dataRows["nationality"];
-					} else if ($poll_type == 'match') {
-						$name = $dataRows["title"];
-					} else if ($poll_type == 'team') {
-						$name = $dataRows["title"];
-					}
 					
 					if ($ranking <= $places) {
 						echo '<tr class="election-place">';
@@ -252,11 +218,11 @@
 					}
 					if ($poll_type == 'person') {
 						echo '<td><img class="poll-icon" src="img/flags/'
-						.strtolower($nationality).'.png" alt="'
-						.$nationality.'"></td>';
+						.strtolower($contender_score["nationality"]).'.png" alt="'
+						.$contender_score["nationality"].'"></td>';
 					}
-					echo '<td>'.htmlentities($name).'</td>';
-					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_id.'"> <input type="hidden" name="poll-type" value="'.$poll_type.'">';
+					echo '<td>'.htmlentities($contender_score["object_heading"]).'</td>';
+					echo '<td><form method="post" action="poll.php?id='.$poll_id.'"> <input type="hidden" name="chosen" value="'.$contender_score["option_id"].'"> <input type="hidden" name="poll-type" value="'.$poll_type.'">';
 					if ($current_date < $expiry AND (isset($_COOKIE['general'])) AND (!isset($_COOKIE[$cookie_name]))) {
 						echo '<input class="vote-button" type="submit" name="vote" value="&#10003;">';
 					}
@@ -269,13 +235,13 @@
 					if ($total_votes == 0) {
 						echo '0';
 					} else {
-						echo number_format((htmlentities($votes)/htmlentities($total_votes))*100, 1);
+						echo number_format((htmlentities($contender_score["votes"])/htmlentities($total_votes))*100, 1);
 					}
 					echo '%;">';
 					if ($total_votes == 0) {
 						echo '<span class="percentage">0%</span>';
 					} else {
-						echo '<span class="percentage">'.number_format((htmlentities($votes)/htmlentities($total_votes))*100, 1).'%</span>';
+						echo '<span class="percentage">'.number_format((htmlentities($contender_score["votes"])/htmlentities($total_votes))*100, 1).'%</span>';
 					}
 					echo '</div>';
 					
@@ -333,7 +299,6 @@
 		</div>
 		
 	</div>
-
 
 <?php
 
