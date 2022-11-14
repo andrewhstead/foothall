@@ -19,6 +19,7 @@
 		} else if ($_POST["amend"] == 'Accept Cookies') {
 			setcookie('general', 'accepted', time() + (86400 * 30), "/");
 			$_COOKIE['general'] = 'accepted';
+			unset($_SESSION['choice']);
 		}
 	}
 	

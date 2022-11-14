@@ -105,6 +105,10 @@ li.menu-link:hover {
 	color: #321c20;
 }
 
+.default-list li {
+	margin: 10px auto;
+}
+
 .breadcrumb {
 	margin: 10px 0 0 20px;
 	font-weight: bold;
